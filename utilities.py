@@ -96,26 +96,23 @@ class Presenter:
         if duration is not None:
             core.wait(duration)
 
-    def draw_stimuli_for_response(self, stimuli, response_keys, escape=True):
+    def draw_stimuli_for_response(self, stimuli, response_keys):
         """
         :param stimuli: either a psychopy.visual stimulus or a list of them to draw
         :param response_keys: a list containing strings of response keys
-        :param escape: a boolean that allows pressing esc to exit the program if True
         :return: a tuple (key_pressed, reaction_time_in_seconds)
         """
         self.draw_stimuli_for_duration(stimuli, duration=None)
-        response_keys = list(response_keys)
-        response_keys.append('escape')
         response = event.waitKeys(keyList=response_keys, timeStamped=core.Clock())[0]
-        if escape and response[0] == 'escape':
-            core.quit()
         return response
 
-    def show_instructions(self, instructions, key_to_continue='space',
+    def show_instructions(self, instructions, position=(0, 0), other_stim=(), key_to_continue='space',
                           next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8)):
         """
         Show a list of instructions strings
         :param instructions: an instruction string, or a list containing instruction strings
+        :param position: a tuple (x, y) position for the instruction text
+        :param other_stim: a list of other psychopy.visual stimuli to be displayed on each page of instructions
         :param key_to_continue: a string of the key to press
         :param next_instr_text: a string to show together with each page of instruction, could be None
         :param next_instr_pos: a tuple of floats, position for the above string
@@ -127,8 +124,8 @@ class Presenter:
         else:
             next_instr_stim = None
         for instr in instructions:
-            instr_stim = visual.TextStim(self.window, text=instr)
-            self.draw_stimuli_for_response([instr_stim, next_instr_stim], [key_to_continue])
+            instr_stim = visual.TextStim(self.window, text=instr, pos=position)
+            self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue])
 
     def show_fixation(self, duration):
         """
