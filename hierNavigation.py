@@ -45,7 +45,7 @@ def generate_trials():
         for i in range(num_runs):
             if anchor_counter[i][trial['anchor']] < num_trials_per_anc_per_run and \
                             direc_counter[i][trial['direction']] < num_trials_per_dir_per_run and \
-                            trial not in trial[i]:
+                            trial not in trials[i]:
                 trials[i].append(trial_list.pop(j))
                 anchor_counter[i][trial['anchor']] += 1
                 direc_counter[i][trial['direction']] += 1
