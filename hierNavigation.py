@@ -5,6 +5,16 @@ from config import *
 
 
 def show_one_trial(param):
+    # 0) face
+    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    # 1) fixation
+    presenter.show_fixation(random.choice(FIXATION_TIME))
+    # 2) number
+    num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
+    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    # 3) blank (mental navigation)
+    presenter.draw_stimuli_for_duration(visual.TextStim(presenter.window, ''), BLANK_TIME)
+    # 4) options
     return {}
 
 
@@ -44,8 +54,8 @@ def generate_trials():
         trial = trial_list[j]
         for i in range(num_runs):
             if anchor_counter[i][trial['anchor']] < num_trials_per_anc_per_run and \
-                            direc_counter[i][trial['direction']] < num_trials_per_dir_per_run and \
-                            trial not in trials[i]:
+                            direc_counter[i][trial['direction']] < num_trials_per_dir_per_run:  # and \
+                            # trial not in trials[i]:  # TODO repetition!!!!!!!!
                 trials[i].append(trial_list.pop(j))
                 anchor_counter[i][trial['anchor']] += 1
                 direc_counter[i][trial['direction']] += 1
@@ -89,16 +99,26 @@ if __name__ == '__main__':
     # load images
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
+    # randomize colors
+    DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[0], DIRECTIONS[1]: DIR_COLORS[1]} if random.randrange(2) == 0 else \
+                 {DIRECTIONS[0]: DIR_COLORS[1], DIRECTIONS[1]: DIR_COLORS[0]}
+    # randomize trials TODO
+    trials = generate_trials()
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
     dataLogger.write_data({i: stim._imName for i, stim in enumerate(images)})
 
-    trials = generate_trials()
-
     # show trials
+    presenter.show_instructions(INSTR_0)
     for run in trials:
+        # switch colors
+        DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[DIRECTIONS[1]], DIRECTIONS[1]: DIR_COLORS[DIRECTIONS[0]]}
+        # instructions
+        presenter.show_instructions('run #' + str(run) + '\n' + str(DIR_COLORS))
+        # start run
         for trial in run:
             data = show_one_trial(trial)
             trial['response'] = data
             dataLogger.write_data(trial)
+    presenter.show_instructions(INSTR_END)

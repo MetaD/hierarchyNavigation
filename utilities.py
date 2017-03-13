@@ -197,12 +197,35 @@ class Presenter:
         response = self.draw_stimuli_for_response(stimuli, response_keys)
         return response
 
+    def select_from_stimuli(self, stimuli, values, response_keys, post_selection_time=1, highlight=None,
+                            correctness_func=None, feedback_stims=(), feedback_time=1):
+        """
+        Draw stimuli on one screen and wait for a selection (key response). The selected stimulus can be highlighted.
+        A feedback stimulus can be optionally displayed next to the selected stimulus.
+        The value associated with the selected image (specified as parameters) will be returned.
+        :param stimuli: a list of psychopy.visual stimulus
+        :param values: a list of objects associated with stimuli. When a stimulus is selected, the value object with
+                       the same index will be returned
+        :param response_keys: a list of string response keys corresponding to the list of stimuli
+        :param post_selection_time: the duration (in seconds) to display the selected stimulus with a highlight (or
+                                    reduced opacity if highlight is None)
+        :param highlight: a psychopy.visual stimuli to be displayed at same position as the selected stimulus during
+                          both post_selection_time and feedback_time. If None, the selected stimulus will be shown with
+                          reduced opacity
+        :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
+                                 indicating whether the selection is correct or not
+        :param feedback_stims:
+        :param feedback_time:
+        :return:
+        """
+        pass
+
     def select_from_two_stimuli(self, left_stim, left_value, right_stim, right_value, other_stim=None, random_side=True,
                                 response_keys=('f', 'j'), post_selection_time=1, highlight=None,
                                 correctness_func=None, feedback_stims=(), feedback_time=1):
         """
-        Draw 2 stimuli on one screen and wait for a selection (key response). The selected stimulus becomes more
-        transparent. A feedback stimulus can be optionally displayed next to the selected stimulus.
+        Draw 2 stimuli on one screen and wait for a selection (key response). The selected stimulus can be highlighted.
+        A feedback stimulus can be optionally displayed next to the selected stimulus.
         The value associated with the selected image (specified as parameters) will be returned.
         :param left_stim: A psychopy.visual stimulus
         :param left_value: an object to be returned when the left_stim is selected
@@ -211,10 +234,11 @@ class Presenter:
         :param other_stim: an optional list of psychopy.visual stimuli to be displayed
         :param random_side: if True, the images will show on random sides
         :param response_keys: a list of two strings corresponds to left and right images
-        :param post_selection_time: the duration (in seconds) to display the selected stimulus with highlight or
-                                    reduced opacity
-        :param highlight: a psychopy.visual stimuli to be displayed at same position as the selected stimulus. If None,
-                          the selected stimulus will be shown with reduced opacity
+        :param post_selection_time: the duration (in seconds) to display the selected stimulus with a highlight (or
+                                    reduced opacity if highlight is None)
+        :param highlight: a psychopy.visual stimuli to be displayed at same position as the selected stimulus during
+                          both post_selection_time and feedback_time. If None, the selected stimulus will be shown with
+                          reduced opacity
         :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
                                  indicating whether the selection is correct or not
         :param feedback_stims: a tuple of two psychopy.visual stimuli (correct, incorrect) to be displayed beside the
