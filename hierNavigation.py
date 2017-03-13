@@ -5,21 +5,27 @@ from config import *
 
 
 def show_one_trial(param):
-    # 0) face
+    # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
-    # 1) fixation
+    # 1 fixation
     presenter.show_fixation(random.choice(FIXATION_TIME))
-    # 2) number
+    # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
-    # 3) blank (mental navigation)
+    # 3 blank (mental navigation)
     presenter.draw_stimuli_for_duration(visual.TextStim(presenter.window, ''), BLANK_TIME)
-    # 4) options
+    # 4.1 options
+    correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
+                     param['anchor'] - param['distance']
+    other_options = [index for index in range(len(images)) if (index != param['anchor'] and index != correct_option)]
+    other_options = random.sample(other_options, 3)  # 3 other random images
+    options = [correct_option] + other_options
+    random.shuffle(options)
+    option_stims = [images[index] for index in options]
+    # 4.2 feedback
+    presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, 0, highlight, lambda x: x == correct_option,
+                                  )
     return {}
-
-
-def show_one_run():
-    pass
 
 
 def generate_trials():

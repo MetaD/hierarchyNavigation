@@ -61,7 +61,7 @@ class Presenter:
         self.LIKERT_SCALE_OPTION_INTERVAL = 0.2
         self.LIKERT_SCALE_OPTION_POS_Y = -0.2
         self.LIKERT_SCALE_LABEL_POS_Y = -0.35
-        self.FEEDBACK_POS_Y = -0.4
+        self.FEEDBACK_POS_Y_DIFF = -0.4
         # Selection
         self.SELECTED_STIM_OPACITY_CHANGE = 0.3
 
@@ -214,11 +214,42 @@ class Presenter:
                           reduced opacity
         :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
                                  indicating whether the selection is correct or not
-        :param feedback_stims:
+        :param feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed beside the
+                               selection as a feedback
         :param feedback_time:
         :return:
         """
-        pass
+        # display stimuli and get response
+        response = self.draw_stimuli_for_response(stimuli, response_keys)
+        key_pressed = response[0]
+        rt = response[1]
+        selection = values[response_keys.index(key_pressed)]
+
+        # post selection screen
+        selected_stim = stimuli[response_keys.index(key_pressed)]
+        if highlight is None:
+            selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
+            self.draw_stimuli_for_duration(stimuli, post_selection_time)
+            selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
+        else:
+            highlight.pos = selected_stim.pos
+            stimuli.append(highlight)
+            self.draw_stimuli_for_duration(stimuli, post_selection_time)
+
+        # feedback
+        correct = None
+        if correctness_func is not None and len(feedback_stims) == 2:
+            correct = correctness_func(selection)
+            stim = feedback_stims[int(correct)]
+            stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
+            stimuli.append(stim)
+            self.draw_stimuli_for_duration(stimuli, feedback_time)
+
+        # return
+        if correct is None:
+            return {'response': selection, 'rt': rt}
+        else:
+            return {'response': selection, 'rt': rt, 'correct': correct}
 
     def select_from_two_stimuli(self, left_stim, left_value, right_stim, right_value, other_stim=None, random_side=True,
                                 response_keys=('f', 'j'), post_selection_time=1, highlight=None,
@@ -241,7 +272,7 @@ class Presenter:
                           reduced opacity
         :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
                                  indicating whether the selection is correct or not
-        :param feedback_stims: a tuple of two psychopy.visual stimuli (correct, incorrect) to be displayed beside the
+        :param feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed beside the
                                selection as a feedback
         :param feedback_time: the duration (in seconds) to display the selected stimulus only
         :return: a dictionary containing trial and response information.
@@ -253,41 +284,17 @@ class Presenter:
         old_left_pos, old_right_pos = left_stim.pos, right_stim.pos
         left_stim.pos = self.LEFT_CENTRAL_POS
         right_stim.pos = self.RIGHT_CENTRAL_POS
-
-        # display stimuli and get response
+        # display stuff and get response
         if other_stim is None:
             other_stim = []
-        all_stims = other_stim + [left_stim, right_stim]
-        response = self.draw_stimuli_for_response(all_stims, list(response_keys))
-        key_pressed = response[0]
-        rt = response[1]
-        selection = left_value if key_pressed == response_keys[0] else right_value
-
-        # post selection screen
-        selected_stim = left_stim if selection == left_value else right_stim
-        if highlight is None:
-            selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
-            self.draw_stimuli_for_duration(all_stims, post_selection_time)
-            selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
-        else:
-            highlight.pos = selected_stim.pos
-            all_stims.append(highlight)
-            self.draw_stimuli_for_duration(all_stims, post_selection_time)
-
-        # feedback
-        correct = None
-        if correctness_func is not None and len(feedback_stims) == 2:
-            correct = correctness_func(selection)
-            stim = feedback_stims[int(correct)]
-            stim.pos = (selected_stim.pos[0], self.FEEDBACK_POS_Y)
-            all_stims.append(stim)
-            self.draw_stimuli_for_duration(all_stims, feedback_time)
-
+        result = self.select_from_stimuli(other_stim + [left_stim, right_stim], [left_value, right_value],
+                                          response_keys, post_selection_time, highlight, correctness_func,
+                                          feedback_stims, feedback_time)
+        # recover previous positions
         left_stim.pos, right_stim.pos = old_left_pos, old_right_pos
-        if correct is None:
-            return {'stims': (left_value, right_value), 'response': selection, 'rt': rt}
-        else:
-            return {'stims': (left_value, right_value), 'response': selection, 'rt': rt, 'correct': correct}
+        # results
+        result['stimuli'] = (left_value, right_value)
+        return result
 
 
 class DataHandler:
