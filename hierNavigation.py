@@ -8,24 +8,38 @@ def show_one_trial(param):
     # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
     # 1 fixation
-    presenter.show_fixation(random.choice(FIXATION_TIME))
+    presenter.show_fixation(random.choice(FIXATION_TIMES))
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 blank (mental navigation)
-    presenter.draw_stimuli_for_duration(visual.TextStim(presenter.window, ''), BLANK_TIME)
-    # 4.1 options
+    presenter.show_blank_screen(random.choice(BLANK_TIMES))
+    # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
     other_options = [index for index in range(len(images)) if (index != param['anchor'] and index != correct_option)]
     other_options = random.sample(other_options, 3)  # 3 other random images
-    options = [correct_option] + other_options
+    options = other_options + [correct_option]
     random.shuffle(options)
     option_stims = [images[index] for index in options]
-    # 4.2 feedback
-    presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, 0, highlight, lambda x: x == correct_option,
-                                  )
-    return {}
+    for option, position in zip(option_stims, IMG_POSITIONS):
+        option.pos = position
+    # 5.0 feedback
+    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT)
+    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG)
+    no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
+    # 4&5 show options, get response, show feedback
+    response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
+                                             lambda x: x == correct_option, (incorrect_feedback, correct_feedback),
+                                             no_resp_feedback, FEEDBACK_TIME)
+    # 6 interval between trials
+    presenter.show_blank_screen(random.choice(TRIAL_INTERVALS))
+    # return
+    if response is None:
+        param['response'] = None
+    else:
+        param.update(response)
+    return param
 
 
 def generate_trials():
@@ -67,7 +81,6 @@ def generate_trials():
                 direc_counter[i][trial['direction']] += 1
                 break
         j -= 1
-    print trials
     return trials
 
 
@@ -103,6 +116,9 @@ if __name__ == '__main__':
     presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'))
     dataLogger.write_data(presenter.expInfo)
     # load images
+    example_images = presenter.load_all_images(IMG_FOLDER, '.png', img_prefix='usericon')
+    for img, pos in zip(example_images, IMG_POSITIONS):
+        img.pos = pos
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
     # randomize colors
@@ -115,13 +131,18 @@ if __name__ == '__main__':
     random.shuffle(images)  # status high -> low
     dataLogger.write_data({i: stim._imName for i, stim in enumerate(images)})
 
-    # show trials
+    # show instructions
     presenter.show_instructions(INSTR_0)
+    presenter.show_instructions(INSTR_1, TOP_INSTR_POS, example_images)
+    texts = [visual.TextStim(presenter.window, key, pos=pos, color='#000000', height=0.5)
+             for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
+    # show trials
     for run in trials:
         # switch colors
         DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[DIRECTIONS[1]], DIRECTIONS[1]: DIR_COLORS[DIRECTIONS[0]]}
         # instructions
-        presenter.show_instructions('run #' + str(run) + '\n' + str(DIR_COLORS))
+        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' + str(DIR_COLORS))
         # start run
         for trial in run:
             data = show_one_trial(trial)
