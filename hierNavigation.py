@@ -17,6 +17,7 @@ def show_one_trial(param):
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
+    print param, correct_option
     other_options = [index for index in range(len(images)) if (index != param['anchor'] and index != correct_option)]
     other_options = random.sample(other_options, 3)  # 3 other random images
     options = other_options + [correct_option]
@@ -32,6 +33,9 @@ def show_one_trial(param):
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
                                              lambda x: x == correct_option, (incorrect_feedback, correct_feedback),
                                              no_resp_feedback, FEEDBACK_TIME)
+    # 4.0 recover central positions
+    for option in option_stims:
+        option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
     presenter.show_blank_screen(random.choice(TRIAL_INTERVALS))
     # return
@@ -50,13 +54,13 @@ def generate_trials():
             if anchor - dist >= 0:
                 trial_list.append({
                     'anchor': anchor,
-                    'direction': DIRECTIONS[0],
+                    'direction': DIRECTIONS[1],  # up
                     'distance': dist
                 })
             if anchor + dist < NUM_FACES:
                 trial_list.append({
                     'anchor': anchor,
-                    'direction': DIRECTIONS[1],
+                    'direction': DIRECTIONS[0],  # down
                     'distance': dist
                 })
     trial_list *= NUM_TRIALS_PER_CONDITION
@@ -146,6 +150,5 @@ if __name__ == '__main__':
         # start run
         for trial in run:
             data = show_one_trial(trial)
-            trial['response'] = data
-            dataLogger.write_data(trial)
+            dataLogger.write_data(data)
     presenter.show_instructions(INSTR_END)
