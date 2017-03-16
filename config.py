@@ -6,7 +6,7 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 DIR_COLORS = ('#5cb85c', '#5bc0de')
-RESPONSE_KEYS = ('Q', 'W', 'A', 'S')
+RESPONSE_KEYS = ('q', 'w', 'a', 's')
 # Paths
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
@@ -18,8 +18,8 @@ FACE_TIME = 0.5
 FIXATION_TIMES = (1.5, 3.5)
 NUMBER_TIME = 0.5
 BLANK_TIMES = (3.5, 5.5)
-SELECTION_TIME = 0.5  # TODO 0.5 is way too fast
-FEEDBACK_TIME = 1.5
+SELECTION_TIME = 1  # TODO
+FEEDBACK_TIME = 1
 TRIAL_INTERVALS = (4, 6, 8)
 # Strings
 FEEDBACK_RIGHT = 'Yayyy'

@@ -17,7 +17,6 @@ def show_one_trial(param):
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
-    print param, correct_option
     other_options = [index for index in range(len(images)) if (index != param['anchor'] and index != correct_option)]
     other_options = random.sample(other_options, 3)  # 3 other random images
     options = other_options + [correct_option]
@@ -39,6 +38,7 @@ def show_one_trial(param):
     # 6 interval between trials
     presenter.show_blank_screen(random.choice(TRIAL_INTERVALS))
     # return
+    param['options'] = options
     if response is None:
         param['response'] = None
     else:
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     # show instructions
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(INSTR_1, TOP_INSTR_POS, example_images)
-    texts = [visual.TextStim(presenter.window, key, pos=pos, color='#000000', height=0.5)
+    texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color='#000000', height=0.5)
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
     # show trials
