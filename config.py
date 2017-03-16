@@ -1,12 +1,15 @@
 # Numbers/Experimental parameters
+MAX_NUM_TRIALS = 5  # -> just to test the program TODO
 NUM_TRIALS_PER_CONDITION = 4  # one condition == one face + one direction + one distance
 NUM_TRIALS_PER_RUN = 20
 NUM_FACES = 9
 DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
-DIR_COLORS = ('#5cb85c', '#5bc0de')
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
+DIR_COLORS = ('#f0ad4e', '#5bc0de')
+COLOR_NAMES = {'#f0ad4e': 'orange', '#5bc0de': 'blue'}
+FEEDBACK_COLORS = ('#ff0000', '#84ff84')  # (incorrect, correct)
 # Paths
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'

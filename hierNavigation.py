@@ -25,8 +25,8 @@ def show_one_trial(param):
     for option, position in zip(option_stims, IMG_POSITIONS):
         option.pos = position
     # 5.0 feedback
-    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT)
-    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG)
+    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT, color=FEEDBACK_COLORS[1])
+    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG, color=FEEDBACK_COLORS[0])
     no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
@@ -142,13 +142,20 @@ if __name__ == '__main__':
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
     # show trials
+    trial_counter = 0
     for run in trials:
         # switch colors
         DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[DIRECTIONS[1]], DIRECTIONS[1]: DIR_COLORS[DIRECTIONS[0]]}
         # instructions
-        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' + str(DIR_COLORS))
+        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' +
+                                    str({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()}))
         # start run
         for trial in run:
+            trial_counter += 1
             data = show_one_trial(trial)
             dataLogger.write_data(data)
+            if trial_counter >= MAX_NUM_TRIALS:
+                break
+        if trial_counter >= MAX_NUM_TRIALS:
+            break
     presenter.show_instructions(INSTR_END)
