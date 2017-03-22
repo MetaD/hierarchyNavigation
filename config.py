@@ -1,7 +1,8 @@
 # Numbers/Experimental parameters
+NUM_PRACTICE_TRIALS = 6
 MAX_NUM_TRIALS = 5  # -> just to test the program TODO
 NUM_TRIALS_PER_CONDITION = 4  # one condition == one face + one direction + one distance
-NUM_TRIALS_PER_RUN = 20
+NUM_TRIALS_PER_RUN = 30
 NUM_FACES = 9
 DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
@@ -20,9 +21,9 @@ IMG_POSITIONS = ((-0.5, 0.5), (0.5, 0.5), (-0.5, -0.5), (0.5, -0.5))  # order co
 FACE_TIME = 0.5
 FIXATION_TIMES = (1.5, 3.5)
 NUMBER_TIME = 0.5
-BLANK_TIMES = (3.5, 5.5)
-SELECTION_TIME = 1  # TODO
-FEEDBACK_TIME = 1
+BLANK_TIMES = (5.5, 7.5)
+SELECTION_TIME = 2  # TODO
+FEEDBACK_TIME = 1  # TODO
 TRIAL_INTERVALS = (4, 6, 8)
 # Strings
 FEEDBACK_RIGHT = 'Yayyy'

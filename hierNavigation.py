@@ -17,8 +17,12 @@ def show_one_trial(param):
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
-    other_options = [index for index in range(len(images)) if (index != param['anchor'] and index != correct_option)]
-    other_options = random.sample(other_options, 3)  # 3 other random images
+    other_options = []
+    while len(other_options) < 3:  # randomly pick 3 other adjacent images
+        candidate = random.choice([-1, 1]) + correct_option
+        if (candidate not in other_options) and (candidate > 0) and (candidate < len(images)) and \
+           (candidate != param['anchor']):
+            other_options.append(candidate)
     options = other_options + [correct_option]
     random.shuffle(options)
     option_stims = [images[index] for index in options]
@@ -65,7 +69,7 @@ def generate_trials():
                 })
     trial_list *= NUM_TRIALS_PER_CONDITION
     random.shuffle(trial_list)
-    # numbers
+    # calculations
     num_runs = len(trial_list) / NUM_TRIALS_PER_RUN
     num_trials_per_anc_per_run = NUM_TRIALS_PER_RUN / len(ANCHOR_INDEXES)
     num_trials_per_dir_per_run = NUM_TRIALS_PER_RUN / len(DIRECTIONS)
@@ -78,8 +82,8 @@ def generate_trials():
         trial = trial_list[j]
         for i in range(num_runs):
             if anchor_counter[i][trial['anchor']] < num_trials_per_anc_per_run and \
-                            direc_counter[i][trial['direction']] < num_trials_per_dir_per_run:  # and \
-                            # trial not in trials[i]:  # TODO repetition!!!!!!!!
+                            direc_counter[i][trial['direction']] < num_trials_per_dir_per_run and \
+                            trial not in trials[i]:
                 trials[i].append(trial_list.pop(j))
                 anchor_counter[i][trial['anchor']] += 1
                 direc_counter[i][trial['direction']] += 1
@@ -125,15 +129,17 @@ if __name__ == '__main__':
         img.pos = pos
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
-    # randomize colors
-    DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[0], DIRECTIONS[1]: DIR_COLORS[1]} if random.randrange(2) == 0 else \
-                 {DIRECTIONS[0]: DIR_COLORS[1], DIRECTIONS[1]: DIR_COLORS[0]}
     # randomize trials TODO
     trials = generate_trials()
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
     dataLogger.write_data({i: stim._imName for i, stim in enumerate(images)})
+    # randomize colors
+    DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[0], DIRECTIONS[1]: DIR_COLORS[1]} if random.randrange(2) == 0 else \
+                 {DIRECTIONS[0]: DIR_COLORS[1], DIRECTIONS[1]: DIR_COLORS[0]}
+    dataLogger.write_data({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()})
+    color_instr = 'less powerful = ' + DIR_COLORS[0] + ', more powerful = ' + DIR_COLORS[1]
 
     # show instructions
     presenter.show_instructions(INSTR_0)
@@ -141,14 +147,17 @@ if __name__ == '__main__':
     texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color='#000000', height=0.5)
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
+    # practice
+    for i in range(NUM_PRACTICE_TRIALS):
+        presenter.show_instructions(color_instr)
+        data = show_one_trial(random.choice(trials))
+        data['practice'] = True
+        dataLogger.write_data(data)
     # show trials
     trial_counter = 0
     for run in trials:
-        # switch colors
-        DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[DIRECTIONS[1]], DIRECTIONS[1]: DIR_COLORS[DIRECTIONS[0]]}
         # instructions
-        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' +
-                                    str({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()}))
+        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' + color_instr)
         # start run
         for trial in run:
             trial_counter += 1

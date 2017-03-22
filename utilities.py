@@ -210,8 +210,8 @@ class Presenter:
         return response
 
     def select_from_stimuli(self, stimuli, values, response_keys, max_wait=float('inf'), post_selection_time=1,
-                            highlight=None, correctness_func=None, feedback_stims=(), no_response_stim=None,
-                            feedback_time=1):
+                            highlight=None, correctness_func=None, positioned_feedback_stims=(), feedback_stims=(),
+                            no_response_stim=None, feedback_time=1):
         """
         Draw stimuli on one screen and wait for a selection (key response). The selected stimulus can be highlighted.
         A feedback stimulus can be optionally displayed next to the selected stimulus.
@@ -229,8 +229,10 @@ class Presenter:
                           reduced opacity
         :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
                                  indicating whether the selection is correct or not
-        :param feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed
+        :param positioned_feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed
                                beside the selection as feedback
+        :param feedback_stims: a tuple of two lists of psychopy.visual stimuli ([incorrect], [correct]) to be displayed
+                               at the positions they have
         :param no_response_stim: a psychopy.visual stimulus to be displayed when participants respond too slow
         :param feedback_time: the duration (in seconds) to display the stimuli with highlight and feedback
         :return: a dictionary containing trial and response information.
@@ -261,11 +263,15 @@ class Presenter:
 
             # feedback
             correct = None
-            if correctness_func is not None and len(feedback_stims) == 2:
+            if correctness_func is not None:
                 correct = correctness_func(selection)
-                stim = feedback_stims[int(correct)]
-                stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
-                stimuli.append(stim)
+                if len(positioned_feedback_stims) == 2:
+                    pos_stim = positioned_feedback_stims[int(correct)]
+                    pos_stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
+                    stimuli.append(pos_stim)
+                if len(feedback_stims) == 2:
+                    stims = feedback_stims[int(correct)]
+                    stimuli += stims
                 self.draw_stimuli_for_duration(stimuli, feedback_time)
 
             # return
@@ -276,7 +282,8 @@ class Presenter:
 
     def select_from_two_stimuli(self, left_stim, left_value, right_stim, right_value, other_stim=None, random_side=True,
                                 response_keys=('f', 'j'), max_wait=float('inf'), post_selection_time=1, highlight=None,
-                                correctness_func=None, feedback_stims=(), no_response_stim=None, feedback_time=1):
+                                correctness_func=None, positioned_feedback_stims=(), feedback_stims=(),
+                                no_response_stim=None, feedback_time=1):
         """
         Draw 2 stimuli on one screen and wait for a selection (key response). The selected stimulus can be highlighted.
         A feedback stimulus can be optionally displayed next to the selected stimulus.
@@ -297,8 +304,10 @@ class Presenter:
                           reduced opacity
         :param correctness_func: a function that takes the value associated with the selected stimuli and returns a bool
                                  indicating whether the selection is correct or not
-        :param feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed
+        :param positioned_feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed
                                beside the selection as feedback
+        :param feedback_stims: a tuple of two lists of psychopy.visual stimuli ([incorrect], [correct]) to be displayed
+                               at the positions they have
         :param no_response_stim: a psychopy.visual stimulus to be displayed when participants respond too slow
         :param feedback_time: the duration (in seconds) to display the stimuli with highlight and feedback
         :return: a dictionary containing trial and response information.
@@ -315,10 +324,10 @@ class Presenter:
             other_stim = []
         result = self.select_from_stimuli(other_stim + [left_stim, right_stim], [left_value, right_value],
                                           response_keys, max_wait, post_selection_time, highlight, correctness_func,
-                                          feedback_stims, no_response_stim, feedback_time)
+                                          positioned_feedback_stims, feedback_stims, no_response_stim, feedback_time)
         # recover previous positions
         left_stim.pos, right_stim.pos = old_left_pos, old_right_pos
-        # results
+
         result['stimuli'] = (left_value, right_value)
         return result
 
