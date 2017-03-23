@@ -271,9 +271,11 @@ class Presenter:
                     stimuli.append(pos_stim)
                 if feedback_stims is not None and len(feedback_stims) == 2:
                     stims = feedback_stims[int(correct)]
-                    if isinstance(stims, visual.BaseVisualStim):
-                        stims = [stims]
-                    stimuli += stims
+                    # if isinstance(stims, visual.BaseVisualStim):
+                    #     stims = [stims]
+                    # stimuli += stims
+                    stimuli.insert(0, stims[0])  # TODO only for hierarchy navigation
+                    stimuli.append(stims[1])  # TODO only for hierarchy navigation
                 self.draw_stimuli_for_duration(stimuli, feedback_time)
 
             # return
