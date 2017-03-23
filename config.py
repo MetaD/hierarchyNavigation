@@ -4,6 +4,7 @@ MAX_NUM_TRIALS = 5  # -> just to test the program TODO
 NUM_TRIALS_PER_CONDITION = 4  # one condition == one face + one direction + one distance
 NUM_TRIALS_PER_RUN = 30
 NUM_FACES = 9
+NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
@@ -33,4 +34,6 @@ FEEDBACK_SLOW = 'Too slow'
 INSTR_0 = 'WARNING\nThis experiment may contain content inappropriate for facial phobics and law-abiding citizens'
 INSTR_1 = 'You\'ll see 4 potential victims like this:'
 INSTR_2 = 'Press keys Q, W, A, S to select the target you want to murder, like this:'
+INSTR_PRACTICE = 'Practice'
+INSTR_3 = 'You are a real murderer now'
 INSTR_END = 'Everybody is dead.\nThank you for participating!'

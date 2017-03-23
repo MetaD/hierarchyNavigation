@@ -5,6 +5,7 @@ from config import *
 
 
 def show_one_trial(param):
+    print param
     # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
     # 1 fixation
@@ -17,13 +18,21 @@ def show_one_trial(param):
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
-    other_options = []
-    while len(other_options) < 3:  # randomly pick 3 other adjacent images
-        candidate = random.choice([-1, 1]) + correct_option
-        if (candidate not in other_options) and (candidate > 0) and (candidate < len(images)) and \
-           (candidate != param['anchor']):
-            other_options.append(candidate)
-    options = other_options + [correct_option]
+    options = [correct_option]
+    # 4.1 randomly pick 3 other adjacent images
+    abs_dist = 1  # absolute value of distance
+    while len(options) < NUM_OPTIONS:
+        dist_candidates = [-abs_dist, abs_dist]
+        while len(dist_candidates) > 0:
+            dist = random.choice(dist_candidates)
+            dist_candidates.remove(dist)
+            option = correct_option + dist
+            if (option not in options) and (option >= 0) and (option < len(images)) and (option != param['anchor']):
+                options.append(option)
+            if len(options) == NUM_OPTIONS:
+                break
+        abs_dist += 1
+        print options
     random.shuffle(options)
     option_stims = [images[index] for index in options]
     for option, position in zip(option_stims, IMG_POSITIONS):
@@ -35,8 +44,8 @@ def show_one_trial(param):
     # 4&5 show options, get response, show feedback
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
                                              lambda x: x == correct_option, (incorrect_feedback, correct_feedback),
-                                             no_resp_feedback, FEEDBACK_TIME)
-    # 4.0 recover central positions
+                                             (), no_resp_feedback, FEEDBACK_TIME)
+    # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
@@ -139,7 +148,8 @@ if __name__ == '__main__':
     DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[0], DIRECTIONS[1]: DIR_COLORS[1]} if random.randrange(2) == 0 else \
                  {DIRECTIONS[0]: DIR_COLORS[1], DIRECTIONS[1]: DIR_COLORS[0]}
     dataLogger.write_data({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()})
-    color_instr = 'less powerful = ' + DIR_COLORS[0] + ', more powerful = ' + DIR_COLORS[1]
+    color_instr = 'less powerful = ' + COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]] + \
+                  ', more powerful = ' + COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]]
 
     # show instructions
     presenter.show_instructions(INSTR_0)
@@ -148,12 +158,16 @@ if __name__ == '__main__':
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
     # practice
-    for i in range(NUM_PRACTICE_TRIALS):
+    presenter.show_instructions(INSTR_PRACTICE)
+    flattened_trials = [item for sublist in trials for item in sublist]
+    practice_trials = random.sample(flattened_trials, NUM_PRACTICE_TRIALS)
+    for trial in practice_trials:
         presenter.show_instructions(color_instr)
-        data = show_one_trial(random.choice(trials))
+        data = show_one_trial(trial.copy())
         data['practice'] = True
         dataLogger.write_data(data)
     # show trials
+    presenter.show_instructions(INSTR_3)
     trial_counter = 0
     for run in trials:
         # instructions
@@ -161,7 +175,7 @@ if __name__ == '__main__':
         # start run
         for trial in run:
             trial_counter += 1
-            data = show_one_trial(trial)
+            data = show_one_trial(trial.copy())
             dataLogger.write_data(data)
             if trial_counter >= MAX_NUM_TRIALS:
                 break
