@@ -1,8 +1,7 @@
 # Numbers/Experimental parameters
 NUM_PRACTICE_TRIALS = 6
 MAX_NUM_TRIALS = 5  # -> just to test the program TODO
-NUM_TRIALS_PER_CONDITION = 4  # one condition == one face + one direction + one distance
-NUM_TRIALS_PER_RUN = 30
+NUM_RUNS = 4
 NUM_FACES = 9
 NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')

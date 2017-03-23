@@ -59,11 +59,11 @@ def show_one_trial(param):
 
 def generate_trials():
     # generate unique combinations
-    trial_list = []
+    unique_trials = []
     practices = []
     for anchor in range(NUM_FACES):
         for dist in range(1, NUM_FACES):
-            trials = trial_list if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) else practices
+            trials = unique_trials if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) else practices
             if anchor - dist >= 0:
                 trials.append({
                     'anchor': anchor,
@@ -76,28 +76,9 @@ def generate_trials():
                     'direction': DIRECTIONS[0],  # down
                     'distance': dist
                 })
-    trial_list *= NUM_TRIALS_PER_CONDITION
-    random.shuffle(trial_list)
-    # calculations
-    num_runs = len(trial_list) / NUM_TRIALS_PER_RUN
-    num_trials_per_anc_per_run = NUM_TRIALS_PER_RUN / len(ANCHOR_INDEXES)
-    num_trials_per_dir_per_run = NUM_TRIALS_PER_RUN / len(DIRECTIONS)
-    anchor_counter = [{anchor: 0 for anchor in ANCHOR_INDEXES} for i in range(num_runs)]
-    direc_counter = [{direc: 0 for direc in DIRECTIONS} for i in range(num_runs)]
-    trials = [[] for i in range(num_runs)]  # a list of runs
-    # append trials to runs
-    j = len(trial_list) - 1  # iterate from back to front
-    while j >= 0:
-        trial = trial_list[j]
-        for i in range(num_runs):
-            if anchor_counter[i][trial['anchor']] < num_trials_per_anc_per_run and \
-                            direc_counter[i][trial['direction']] < num_trials_per_dir_per_run and \
-                            trial not in trials[i]:
-                trials[i].append(trial_list.pop(j))
-                anchor_counter[i][trial['anchor']] += 1
-                direc_counter[i][trial['direction']] += 1
-                break
-        j -= 1
+    trials = [list(unique_trials) for i in range(NUM_RUNS)]
+    for run in trials:
+        random.shuffle(run)
     return trials, practices
 
 
