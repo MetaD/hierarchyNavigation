@@ -1,4 +1,4 @@
-# Numbers/Experimental parameters
+# Experimental parameters
 NUM_PRACTICE_TRIALS = 6
 MAX_NUM_TRIALS = 5  # -> just to test the program TODO
 NUM_RUNS = 4
@@ -8,9 +8,12 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
+# Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'orange', '#5bc0de': 'blue'}
-FEEDBACK_COLORS = ('#ff0000', '#84ff84')  # (incorrect, correct)
+RED = '#ff0000'
+GREEN = '#84ff84'
+BLACK = '#000000'
 # Paths
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'

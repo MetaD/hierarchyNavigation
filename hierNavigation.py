@@ -36,13 +36,16 @@ def show_one_trial(param):
     for option, position in zip(option_stims, IMG_POSITIONS):
         option.pos = position
     # 5.0 feedback
-    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT, color=FEEDBACK_COLORS[1])
-    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG, color=FEEDBACK_COLORS[0])
+    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT, height=0.5)
+    correct_bg = visual.Rect(presenter.window, width=2, height=2, fillColor=GREEN)
+    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG, height=0.5, color=BLACK)
+    incorrect_bg = visual.Rect(presenter.window, width=2, height=2, fillColor=RED)
+    resp_feedback = ([correct_bg, correct_feedback], [incorrect_bg, incorrect_feedback])
     no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
-                                             lambda x: x == correct_option, (incorrect_feedback, correct_feedback),
-                                             (), no_resp_feedback, FEEDBACK_TIME)
+                                             lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
+                                             FEEDBACK_TIME)
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
@@ -135,7 +138,7 @@ if __name__ == '__main__':
     # show instructions
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(INSTR_1, TOP_INSTR_POS, example_images)
-    texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color='#000000', height=0.5)
+    texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
     # practice

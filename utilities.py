@@ -231,8 +231,8 @@ class Presenter:
                                  indicating whether the selection is correct or not
         :param positioned_feedback_stims: a tuple of two psychopy.visual stimuli (incorrect, correct) to be displayed
                                beside the selection as feedback
-        :param feedback_stims: a tuple of two lists of psychopy.visual stimuli ([incorrect], [correct]) to be displayed
-                               at the positions they have
+        :param feedback_stims: a tuple of either two psychopy.visual stimuli (incorrect, correct), or two lists of them
+                               ([incorrect], [correct]) to be displayed at the positions they come with
         :param no_response_stim: a psychopy.visual stimulus to be displayed when participants respond too slow
         :param feedback_time: the duration (in seconds) to display the stimuli with highlight and feedback
         :return: a dictionary containing trial and response information.
@@ -265,12 +265,14 @@ class Presenter:
             correct = None
             if correctness_func is not None:
                 correct = correctness_func(selection)
-                if len(positioned_feedback_stims) == 2:
+                if positioned_feedback_stims is not None and len(positioned_feedback_stims) == 2:
                     pos_stim = positioned_feedback_stims[int(correct)]
                     pos_stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
                     stimuli.append(pos_stim)
-                if len(feedback_stims) == 2:
+                if feedback_stims is not None and len(feedback_stims) == 2:
                     stims = feedback_stims[int(correct)]
+                    if isinstance(stims, visual.BaseVisualStim):
+                        stims = [stims]
                     stimuli += stims
                 self.draw_stimuli_for_duration(stimuli, feedback_time)
 
