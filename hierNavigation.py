@@ -5,7 +5,6 @@ from config import *
 
 
 def show_one_trial(param):
-    print param
     # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
     # 1 fixation
@@ -32,7 +31,6 @@ def show_one_trial(param):
             if len(options) == NUM_OPTIONS:
                 break
         abs_dist += 1
-        print options
     random.shuffle(options)
     option_stims = [images[index] for index in options]
     for option, position in zip(option_stims, IMG_POSITIONS):
@@ -62,16 +60,18 @@ def show_one_trial(param):
 def generate_trials():
     # generate unique combinations
     trial_list = []
-    for anchor in ANCHOR_INDEXES:
-        for dist in range(MIN_DISTANCE, NUM_FACES - MIN_DISTANCE):
+    practices = []
+    for anchor in range(NUM_FACES):
+        for dist in range(1, NUM_FACES):
+            trials = trial_list if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) else practices
             if anchor - dist >= 0:
-                trial_list.append({
+                trials.append({
                     'anchor': anchor,
                     'direction': DIRECTIONS[1],  # up
                     'distance': dist
                 })
             if anchor + dist < NUM_FACES:
-                trial_list.append({
+                trials.append({
                     'anchor': anchor,
                     'direction': DIRECTIONS[0],  # down
                     'distance': dist
@@ -98,7 +98,7 @@ def generate_trials():
                 direc_counter[i][trial['direction']] += 1
                 break
         j -= 1
-    return trials
+    return trials, practices
 
 
 def validation(items):
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
     # randomize trials TODO
-    trials = generate_trials()
+    trials, practices = generate_trials()
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
@@ -159,9 +159,8 @@ if __name__ == '__main__':
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
     # practice
     presenter.show_instructions(INSTR_PRACTICE)
-    flattened_trials = [item for sublist in trials for item in sublist]
-    practice_trials = random.sample(flattened_trials, NUM_PRACTICE_TRIALS)
-    for trial in practice_trials:
+    practices = random.sample(practices, NUM_PRACTICE_TRIALS)
+    for trial in practices:
         presenter.show_instructions(color_instr)
         data = show_one_trial(trial.copy())
         data['practice'] = True
