@@ -108,7 +108,7 @@ if __name__ == '__main__':
     img_prefix = sinfo['Gender'][0]
 
     # create data file
-    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.dat')
+    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
     # save info from the dialog box
     dataLogger.write_data({
         k: str(sinfo[k]) for k in sinfo.keys()
