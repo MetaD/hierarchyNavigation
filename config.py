@@ -10,7 +10,7 @@ MIN_DISTANCE = 2
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
-COLOR_NAMES = {'#f0ad4e': 'orange', '#5bc0de': 'blue'}
+COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}
 RED = '#ff0000'
 GREEN = '#84ff84'
 BLACK = '#000000'
@@ -29,13 +29,16 @@ SELECTION_TIME = 2  # TODO
 FEEDBACK_TIME = 1  # TODO
 TRIAL_INTERVALS = (4, 6, 8)
 # Strings
-FEEDBACK_RIGHT = 'Yayyy'
-FEEDBACK_WRONG = 'Wrong'
-FEEDBACK_SLOW = 'Too slow'
+FEEDBACK_RIGHT = 'Correct!'
+FEEDBACK_WRONG = 'Wrong.'
+FEEDBACK_SLOW = 'Too slow. Please respond faster.'
 # Instructions
-INSTR_0 = 'WARNING\nThis experiment may contain content inappropriate for facial phobics and law-abiding citizens'
-INSTR_1 = 'You\'ll see 4 potential victims like this:'
-INSTR_2 = 'Press keys Q, W, A, S to select the target you want to murder, like this:'
-INSTR_PRACTICE = 'Practice'
-INSTR_3 = 'You are a real murderer now'
-INSTR_END = 'Everybody is dead.\nThank you for participating!'
+INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the social hierarchy you\'ve learned.']
+INSTR_0.append('Each trial will begin with a \'reference\' face.\n\nA few seconds later, a number will appear.')
+INSTR_0.append('Your job is to figure out who is that number of steps MORE or LESS powerful than the \'reference\' face in the social hierarchy.\n\nThe color of the number indicates whether you need to figure out who is that number of steps MORE or LESS powerful than the reference face.')
+INSTR_bf_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter that, 4 faces will be briefly presented as possible response options. They won\'t be on the screen for very long, so it\'s important to try to figure out your response before they appear so that you can respond in time.'
+INSTR_1 = 'When the response options are presented, they\'ll look something like this:'
+INSTR_2 = 'Press the Q, W, A or S key to select a given face, like this:'
+INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
+INSTR_3 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
+INSTR_END = 'The experiment is complete!\nThank you for participating!'
