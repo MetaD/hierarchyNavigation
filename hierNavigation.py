@@ -132,19 +132,17 @@ if __name__ == '__main__':
     DIR_COLORS = {DIRECTIONS[0]: DIR_COLORS[0], DIRECTIONS[1]: DIR_COLORS[1]} if random.randrange(2) == 0 else \
                  {DIRECTIONS[0]: DIR_COLORS[1], DIRECTIONS[1]: DIR_COLORS[0]}
     dataLogger.write_data({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()})
-    down_color = COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]]
-    print down_color
-    color_instr = '{down_color} numbers mean figure out who is that number of steps LESS powerful than the reference face in the hierarchy.\n\n{up_color} numbers mean figure out who is that number of steps MORE powerful than the reference face in the hierarchy.'.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]], up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
-
+    color_instr = INSTR_COLOR.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]],
+                                     up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
-    presenter.show_instructions(INSTR_bf_1)
-    presenter.show_instructions(INSTR_1, TOP_INSTR_POS, example_images)
+    presenter.show_instructions(INSTR_1)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images)
     texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
              for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
-    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images + texts)
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts)
     # practice
     presenter.show_instructions(INSTR_PRACTICE)
     practices = random.sample(practices, NUM_PRACTICE_TRIALS)
@@ -154,7 +152,7 @@ if __name__ == '__main__':
         data['practice'] = True
         dataLogger.write_data(data)
     # show trials
-    presenter.show_instructions(INSTR_3)
+    presenter.show_instructions(INSTR_4)
     trial_counter = 0
     for run in trials:
         # instructions
