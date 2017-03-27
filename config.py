@@ -1,6 +1,6 @@
 # Experimental parameters
 NUM_PRACTICE_TRIALS = 6
-MAX_NUM_TRIALS = 5  # -> just to test the program TODO
+MAX_NUM_TRIALS = 120  # -> just to test the program TODO
 NUM_RUNS = 4
 NUM_FACES = 9
 NUM_OPTIONS = 4
@@ -27,7 +27,7 @@ NUMBER_TIME = 0.5
 BLANK_TIMES = (5.5, 7.5)
 SELECTION_TIME = 2  # TODO
 FEEDBACK_TIME = 1  # TODO
-TRIAL_INTERVALS = (4, 6, 8)
+TRIAL_INTERVALS = (4, 6) # 8... omitted longest ITI for behavioral piloting
 # Strings
 FEEDBACK_RIGHT = 'Correct!'
 FEEDBACK_WRONG = 'Wrong.'
@@ -38,8 +38,8 @@ INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the social hierarc
            'Your job is to figure out who is that number of steps MORE or LESS powerful than the "reference" face ' +
            'in the social hierarchy.\n\nThe color of the number indicates whether you need to figure out who is that ' +
            'number of steps MORE or LESS powerful than the reference face.']
-INSTR_COLOR = '{down_color} numbers mean figuring out who is that number of steps LESS powerful than the reference ' + \
-              'face in the hierarchy.\n\n{up_color} numbers mean figuring out who is that number of steps MORE ' + \
+INSTR_COLOR = '{down_color} numbers mean figure out who is that number of steps LESS powerful than the reference ' + \
+              'face in the hierarchy.\n\n{up_color} numbers mean figure out who is that number of steps MORE ' + \
               'powerful than the reference face in the hierarchy.'
 INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter that, 4 faces will be briefly ' + \
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' + \

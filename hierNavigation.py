@@ -12,8 +12,8 @@ def show_one_trial(param):
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
-    # 3 blank (mental navigation)
-    presenter.show_blank_screen(random.choice(BLANK_TIMES))
+    # 3 fixation (mental navigation)
+    presenter.show_fixation(random.choice(BLANK_TIMES))
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -50,7 +50,7 @@ def show_one_trial(param):
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
-    presenter.show_blank_screen(random.choice(TRIAL_INTERVALS))
+    presenter.show_fixation(random.choice(TRIAL_INTERVALS))
     # return
     param['options'] = options
     if response is None:
@@ -156,7 +156,8 @@ if __name__ == '__main__':
     trial_counter = 0
     for run in trials:
         # instructions
-        presenter.show_instructions('run #' + str(trials.index(run)) + '\n' + color_instr)
+        presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)+1) + '\n\n' + color_instr)
+
         # start run
         for trial in run:
             trial_counter += 1
