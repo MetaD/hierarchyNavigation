@@ -1,5 +1,5 @@
 # Experimental parameters
-NUM_PRACTICE_TRIALS = 6
+NUM_PRACTICE_TRIALS = 1
 MAX_NUM_TRIALS = 120  # -> just to test the program TODO
 NUM_RUNS = 4
 NUM_FACES = 9
@@ -24,23 +24,24 @@ IMG_POSITIONS = ((-0.5, 0.5), (0.5, 0.5), (-0.5, -0.5), (0.5, -0.5))  # order co
 FACE_TIME = 0.5
 FIXATION_TIMES = (1.5, 3.5)
 NUMBER_TIME = 0.5
-BLANK_TIMES = (5.5, 7.5)
-SELECTION_TIME = 2  # TODO
+#BLANK_TIMES = (5.5, 7.5)
+BLANK_TIME = 6
+SELECTION_TIME = 1.5  # TODO
 FEEDBACK_TIME = 1  # TODO
-TRIAL_INTERVALS = (4, 6) # 8... omitted longest ITI for behavioral piloting
+TRIAL_INTERVALS = (2, 3) # changed for behavioral piloting to speed things up (was 4, 6, 8)
 # Strings
 FEEDBACK_RIGHT = 'Correct!'
 FEEDBACK_WRONG = 'Wrong.'
 FEEDBACK_SLOW = 'Too slow. Please respond faster.'
 # Instructions
-INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the social hierarchy you\'ve learned.',
+INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the organization you\'ve learned about.',
            'Each trial will begin with a "reference" face.\n\nA few seconds later, a number will appear.',
            'Your job is to figure out who is that number of steps MORE or LESS powerful than the "reference" face ' +
-           'in the social hierarchy.\n\nThe color of the number indicates whether you need to figure out who is that ' +
+           'in the organization.\n\nThe color of the number indicates whether you need to figure out who is that ' +
            'number of steps MORE or LESS powerful than the reference face.']
 INSTR_COLOR = '{down_color} numbers mean figure out who is that number of steps LESS powerful than the reference ' + \
-              'face in the hierarchy.\n\n{up_color} numbers mean figure out who is that number of steps MORE ' + \
-              'powerful than the reference face in the hierarchy.'
+              'face in the organization.\n\n{up_color} numbers mean figure out who is that number of steps MORE ' + \
+              'powerful than the reference face in the organization.'
 INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter that, 4 faces will be briefly ' + \
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' + \
           'to figure out your response before they appear so that you can respond in time.'
