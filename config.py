@@ -7,6 +7,7 @@ NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
+MAX_DISTANCE = 4
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')

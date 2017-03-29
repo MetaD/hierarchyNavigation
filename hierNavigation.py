@@ -67,7 +67,9 @@ def generate_trials():
     practices = []
     for anchor in range(NUM_FACES):
         for dist in range(1, NUM_FACES):
-            trials = unique_trials if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) else practices
+            trials = unique_trials \
+                if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) and (dist <= MAX_DISTANCE) \
+                else practices
             if anchor - dist >= 0:
                 trials.append({
                     'anchor': anchor,
