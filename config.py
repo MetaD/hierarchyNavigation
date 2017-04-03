@@ -1,6 +1,6 @@
 # Experimental parameters
 NUM_PRACTICE_TRIALS = 1
-MAX_NUM_TRIALS = 120  # -> just to test the program TODO
+MAX_NUM_TRIALS = 999  # -> just to test the program TODO
 NUM_RUNS = 4
 NUM_FACES = 9
 NUM_OPTIONS = 4
@@ -25,11 +25,10 @@ IMG_POSITIONS = ((-0.5, 0.5), (0.5, 0.5), (-0.5, -0.5), (0.5, -0.5))  # order co
 FACE_TIME = 0.5
 FIXATION_TIMES = (1.5, 3.5)
 NUMBER_TIME = 0.5
-#BLANK_TIMES = (5.5, 7.5)
-BLANK_TIME = 6
+BLANK_TIME = 6  # (5.5, 7.5)
 SELECTION_TIME = 1.5  # TODO
 FEEDBACK_TIME = 1  # TODO
-TRIAL_INTERVALS = (2, 3) # changed for behavioral piloting to speed things up (was 4, 6, 8)
+TRIAL_INTERVALS = (2, 3)  # changed for behavioral piloting to speed things up (was 4, 6, 8)
 # Strings
 FEEDBACK_RIGHT = 'Correct!'
 FEEDBACK_WRONG = 'Wrong.'
