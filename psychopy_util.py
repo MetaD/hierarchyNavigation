@@ -1,16 +1,18 @@
 #
 # Utilities for PsychoPy experiments
 # Author: Meng Du
-# Nov 16 2016
+# April 2017
 #
 
 import os
 import json
 import random
+import logging
 from psychopy import gui, visual, core, event, info
+from serial_util import *
 
 
-def show_form_dialog(items, validation_func=None, reset_after_error=True, title='', order=(), tip=None):
+def show_form_dialog(items, validation_func=None, reset_after_error=True, title='', order=(), tip=None, logger=None):
     """
     Show a form to be filled within a dialog. The user input values will be stored in items.
     See wxgui.DlgFromDict
@@ -21,7 +23,9 @@ def show_form_dialog(items, validation_func=None, reset_after_error=True, title=
     :param title: a string form title
     :param order: a list containing keys in items, indicating the order of the items
     :param tip: a dictionary of tips for the items
+    :param logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
     """
+    log = logging.getLogger(logger)
     while True:
         original_items = items.copy()
         dialog = gui.DlgFromDict(dictionary=items, title=title, order=order, tip=tip)
@@ -33,11 +37,11 @@ def show_form_dialog(items, validation_func=None, reset_after_error=True, title=
             if valid:
                 break
             else:
-                print 'Error: ' + message
+                log.error('Error: ' + message)
                 if reset_after_error:
                     items = original_items
         else:
-            print 'User cancelled'
+            log.warning('User cancelled')
             core.quit()
 
 
@@ -45,14 +49,21 @@ class Presenter:
     """
     Methods that help to draw stuff in a window
     """
-    def __init__(self, fullscreen=True, window=None):
+    def __init__(self, fullscreen=True, window=None, logger=None, serial=None):
         """
         :param fullscreen: a boolean indicating either full screen or not
         :param window: an optional psychopy.visual.Window
                        a new full screen window will be created if this parameter is not provided
+        :param logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
+        :param serial: (SerialUtil object) if specified, responses will be obtained from the serial port instead of
+                       the keyboard, and stimuli
         """
         self.window = window if window is not None else visual.Window(fullscr=fullscreen)
-        self.expInfo = info.RunTimeInfo(win=window, refreshTest=None, verbose=False)
+        self.serial = serial
+        # logging
+        self.logger = logging.getLogger(logger)
+        logging.basicConfig(format='%(asctime)s %(message)s')
+        self.logger.info(info.RunTimeInfo(win=window, refreshTest=None, verbose=False))
         # Positions
         self.CENTRAL_POS = (0.0, 0.0)
         self.LEFT_CENTRAL_POS = (-0.5, 0.0)
@@ -78,13 +89,16 @@ class Presenter:
             img_files = [filename for filename in img_files if filename.startswith(img_prefix)]
         img_files = [img_path + filename for filename in img_files]
         img_stims = [visual.ImageStim(self.window, image=img_file) for img_file in img_files]
+        logging.info('Images loaded from ' + img_path)
         return img_stims
 
     def draw_stimuli_for_duration(self, stimuli, duration):
         """
-        Display the given stimuli for a given duration
+        Display the given stimuli for a given duration. If serial was specified at initialization, the stimuli will be
+        displayed until a trigger is received
         :param stimuli: either a psychopy.visual stimulus or a list of them to draw
-        :param duration: a float time duration in seconds
+        :param duration: a float time duration in seconds, or if serial was specified, an integer number of triggers to
+                         wait for
         """
         if isinstance(stimuli, visual.BaseVisualStim):
             stimuli.draw()
@@ -94,7 +108,11 @@ class Presenter:
                     stim.draw()
         self.window.flip()
         if duration is not None:
-            core.wait(duration)
+            if self.serial is None:
+                core.wait(duration)
+            else:
+                for i in range(duration):
+                    self.serial.wait_for_trigger()
 
     def draw_stimuli_for_response(self, stimuli, response_keys, max_wait=float('inf')):
         """
@@ -105,7 +123,10 @@ class Presenter:
         :return: a tuple (key_pressed, reaction_time_in_seconds)
         """
         self.draw_stimuli_for_duration(stimuli, duration=None)
-        response = event.waitKeys(maxWait=max_wait, keyList=response_keys, timeStamped=core.Clock())
+        if self.serial is None:
+            response = event.waitKeys(maxWait=max_wait, keyList=response_keys, timeStamped=core.Clock())
+        else:
+            response = self.serial.wait_for_trigger()
         if response is None:  # timed out
             return None
         return response[0]
@@ -127,9 +148,12 @@ class Presenter:
             next_instr_stim = visual.TextStim(self.window, text=next_instr_text, pos=next_instr_pos)
         else:
             next_instr_stim = None
-        for instr in instructions:
+        self.logger.info('Showing instructions')
+        for i, instr in enumerate(instructions):
             instr_stim = visual.TextStim(self.window, text=instr, pos=position)
+            self.logger.info('Instruction page ' + str(i))
             self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue])
+        self.logger.info('Ending instructions')
 
     def show_fixation(self, duration):
         """
@@ -137,7 +161,9 @@ class Presenter:
         :param duration: a time duration in seconds
         """
         plus_sign = visual.TextStim(self.window, text='+')
+        self.logger.info('Showing fixation')
         self.draw_stimuli_for_duration(plus_sign, duration)
+        self.logger.info('Ending fixation')
 
     def show_blank_screen(self, duration):
         """
@@ -145,7 +171,9 @@ class Presenter:
         :param duration: a time duration in seconds
         """
         blank = visual.TextStim(self.window, text='')
+        self.logger.info('Showing blank screen')
         self.draw_stimuli_for_duration(blank, duration)
+        self.logger.info('Ending blank screen')
 
     def likert_scale(self, instruction, num_options, option_texts=None, option_labels=None, side_labels=None,
                      response_keys=None):
@@ -206,7 +234,9 @@ class Presenter:
             response_keys = [str(i + 1) for i in range(num_options)]
             if num_options == 10:
                 response_keys[9] = '0'
+        self.logger.info('Showing Likert scale')
         response = self.draw_stimuli_for_response(stimuli, response_keys)
+        self.logger.info('Ending Likert scale')
         return response
 
     def select_from_stimuli(self, stimuli, values, response_keys, max_wait=float('inf'), post_selection_time=1,
@@ -238,12 +268,16 @@ class Presenter:
         :return: a dictionary containing trial and response information.
         """
         # display stimuli and get response
+        self.logger.info('Showing options')
         response = self.draw_stimuli_for_response(stimuli, response_keys, max_wait)
+        self.logger.info('Ending options')
         if response is None:  # response too slow
             if no_response_stim is None:
                 return
             # show feedback and return
+            self.logger.info('No response detected, showing feedback')
             self.draw_stimuli_for_duration(no_response_stim, feedback_time)
+            self.logger.info('Ending feedback')
             return
         else:
             key_pressed = response[0]
@@ -252,6 +286,7 @@ class Presenter:
 
             # post selection screen
             selected_stim = stimuli[response_keys.index(key_pressed)]
+            self.logger.info('Showing highlighted selection')
             if highlight is None:
                 selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
                 self.draw_stimuli_for_duration(stimuli, post_selection_time)
@@ -260,6 +295,7 @@ class Presenter:
                 highlight.pos = selected_stim.pos
                 stimuli.append(highlight)
                 self.draw_stimuli_for_duration(stimuli, post_selection_time)
+            self.logger.info('Ending highlighted selection')
 
             # feedback
             correct = None
@@ -276,7 +312,9 @@ class Presenter:
                     # stimuli += stims
                     stimuli.insert(0, stims[0])  # TODO only for hierarchy navigation
                     stimuli.append(stims[1])  # TODO only for hierarchy navigation
+                self.logger.info('Showing feedback')
                 self.draw_stimuli_for_duration(stimuli, feedback_time)
+                self.logger.info('Ending feedback')
 
             # return
             if correct is None:

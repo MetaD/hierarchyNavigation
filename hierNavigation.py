@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from utilities import *
+from psychopy_util import *
 from config import *
 
 
@@ -13,8 +13,7 @@ def show_one_trial(param):
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 fixation (mental navigation)
-    #presenter.show_fixation(random.choice(BLANK_TIMES))
-    presenter.show_fixation(BLANK_TIME)
+    presenter.show_fixation(random.choice(BLANK_TIMES))
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -110,7 +109,8 @@ if __name__ == '__main__':
     sid = int(sinfo['ID'])
     img_prefix = sinfo['Gender'][0]
 
-    # create data file
+    # create logging files
+    infoLogger = logging.getLogger()
     dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
     # save info from the dialog box
     dataLogger.write_data({
@@ -139,6 +139,7 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
+    infoLogger.info('Starting experiment')
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
     presenter.show_instructions(INSTR_1)
@@ -159,15 +160,19 @@ if __name__ == '__main__':
     trial_counter = 0
     for run in trials:
         # instructions
-        presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)+1) + '\n\n' + "Remember: " + color_instr)
+        presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)+1) + '\n\n' +
+                                    'Remember: ' + color_instr)
 
         # start run
         for trial in run:
             trial_counter += 1
+            infoLogger.info('Starting trial')
             data = show_one_trial(trial.copy())
+            infoLogger.info('Trial ended')
             dataLogger.write_data(data)
             if trial_counter >= MAX_NUM_TRIALS:
                 break
         if trial_counter >= MAX_NUM_TRIALS:
             break
     presenter.show_instructions(INSTR_END)
+    infoLogger.info('Experiment ended')
