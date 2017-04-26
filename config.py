@@ -1,6 +1,8 @@
 # Experimental parameters
+SERIAL_PORT = ''  # TODO
+BAUD_RATE = 0  # TODO
 NUM_PRACTICE_TRIALS = 1
-MAX_NUM_TRIALS = 999  # -> just to test the program TODO
+MAX_NUM_TRIALS = 999  # -> just to test the program
 NUM_RUNS = 4
 NUM_FACES = 9
 NUM_OPTIONS = 4

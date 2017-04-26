@@ -117,7 +117,8 @@ if __name__ == '__main__':
         k: str(sinfo[k]) for k in sinfo.keys()
     })
     # create window
-    presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'))
+    serial = SerialUtil(SERIAL_PORT, BAUD_RATE)
+    presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'), serial=serial)
     dataLogger.write_data(presenter.expInfo)
     # load images
     example_images = presenter.load_all_images(IMG_FOLDER, '.png', img_prefix='usericon')
