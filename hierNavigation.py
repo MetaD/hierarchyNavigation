@@ -111,6 +111,7 @@ if __name__ == '__main__':
 
     # create logging files
     infoLogger = logging.getLogger()
+    logging.basicConfig(filename=str(sid) + '.log', level=logging.INFO)
     dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
     # save info from the dialog box
     dataLogger.write_data({
