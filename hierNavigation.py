@@ -2,6 +2,7 @@
 
 from utilities import *
 from config import *
+import math
 
 
 def show_one_trial(param):
@@ -13,7 +14,6 @@ def show_one_trial(param):
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 fixation (mental navigation)
-    #presenter.show_fixation(random.choice(BLANK_TIMES))
     presenter.show_fixation(BLANK_TIME)
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
@@ -34,7 +34,7 @@ def show_one_trial(param):
         abs_dist += 1
     random.shuffle(options)
     option_stims = [images[index] for index in options]
-    for option, position in zip(option_stims, IMG_POSITIONS):
+    for option, position in zip(option_stims, img_positions):
         option.pos = position
     # 5.0 feedback
     correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT, height=0.2)
@@ -103,9 +103,17 @@ def validation(items):
     return True, ''
 
 
+def get_positions(window):
+    # calculate 4 image positions so that the distances from them to the screen center are the same
+    x0, y0 = window.size
+    x = float(IMG_DIST) / x0
+    y = float(IMG_DIST) / y0
+    return (-x, y), (x, y), (-x, -y), (x, -y)
+
+
 if __name__ == '__main__':
     # subject ID dialog
-    sinfo = {'ID': '', 'Gender': ['Female', 'Male'], 'Age': '', 'Mode': ['Test', 'Exp']}
+    sinfo = {'ID': '', 'Gender': ['Female', 'Male'], 'Age': '', 'Mode': ['Exp', 'Test']}
     show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Mode'])
     sid = int(sinfo['ID'])
     img_prefix = sinfo['Gender'][0]
@@ -118,10 +126,11 @@ if __name__ == '__main__':
     })
     # create window
     presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'))
+    img_positions = get_positions(presenter.window)
     dataLogger.write_data(presenter.expInfo)
     # load images
     example_images = presenter.load_all_images(IMG_FOLDER, '.png', img_prefix='usericon')
-    for img, pos in zip(example_images, IMG_POSITIONS):
+    for img, pos in zip(example_images, img_positions):
         img.pos = pos
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
@@ -142,10 +151,10 @@ if __name__ == '__main__':
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
     presenter.show_instructions(INSTR_1)
-    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
     texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
-             for key, pos in zip(RESPONSE_KEYS, IMG_POSITIONS)]
-    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts)
+             for key, pos in zip(RESPONSE_KEYS, img_positions)]
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
     # practice
     presenter.show_instructions(INSTR_PRACTICE)
     practices = random.sample(practices, NUM_PRACTICE_TRIALS)

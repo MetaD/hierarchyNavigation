@@ -19,8 +19,8 @@ BLACK = '#000000'
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
 # Positions
-TOP_INSTR_POS = (0, 0.8)
-IMG_POSITIONS = ((-0.5, 0.5), (0.5, 0.5), (-0.5, -0.5), (0.5, -0.5))  # order corresponds to RESPONSE_KEYS
+TOP_INSTR_POS = (0, 0.85)
+IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels
 # Times
 FACE_TIME = 0.5
 FIXATION_TIMES = (1.5, 3.5)
