@@ -2,7 +2,6 @@
 
 from psychopy_util import *
 from config import *
-import math
 
 
 def show_one_trial(param):
@@ -120,7 +119,10 @@ if __name__ == '__main__':
 
     # create logging files
     infoLogger = logging.getLogger()
-    logging.basicConfig(filename=str(sid) + '.log', level=logging.INFO)
+    if not os.path.isdir(LOG_FOLDER):
+        os.mkdir(LOG_FOLDER)
+    logging.basicConfig(filename=LOG_FOLDER + str(sid) + '.log', level=logging.INFO,
+                        format='%(asctime)s %(levelname)8s %(message)s')
     dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
     # save info from the dialog box
     dataLogger.write_data({
@@ -130,7 +132,6 @@ if __name__ == '__main__':
     serial = SerialUtil(SERIAL_PORT, BAUD_RATE)
     presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'), serial=serial)
     img_positions = get_positions(presenter.window)
-    dataLogger.write_data(presenter.expInfo)
     # load images
     example_images = presenter.load_all_images(IMG_FOLDER, '.png', img_prefix='usericon')
     for img, pos in zip(example_images, img_positions):
@@ -152,15 +153,15 @@ if __name__ == '__main__':
 
     # show instructions
     infoLogger.info('Starting experiment')
-    presenter.show_instructions(INSTR_0)
-    presenter.show_instructions(color_instr)
-    presenter.show_instructions(INSTR_1)
-    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
+    presenter.show_instructions(INSTR_0, next_instr_text=None)
+    presenter.show_instructions(color_instr, next_instr_text=None)
+    presenter.show_instructions(INSTR_1, next_instr_text=None)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None)
     texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
              for key, pos in zip(RESPONSE_KEYS, img_positions)]
-    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None)
     # practice
-    presenter.show_instructions(INSTR_PRACTICE)
+    presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None)
     practices = random.sample(practices, NUM_PRACTICE_TRIALS)
     for trial in practices:
         presenter.show_instructions(color_instr)
@@ -173,7 +174,7 @@ if __name__ == '__main__':
     for run in trials:
         # instructions
         presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)+1) + '\n\n' +
-                                    'Remember: ' + color_instr)
+                                    'Remember: ' + color_instr, next_instr_text=None)
 
         # start run
         for trial in run:
@@ -186,5 +187,5 @@ if __name__ == '__main__':
                 break
         if trial_counter >= MAX_NUM_TRIALS:
             break
-    presenter.show_instructions(INSTR_END)
+    presenter.show_instructions(INSTR_END, next_instr_text=None)
     infoLogger.info('Experiment ended')

@@ -1,6 +1,6 @@
 # Experimental parameters
-SERIAL_PORT = ''  # TODO
-BAUD_RATE = 0  # TODO
+SERIAL_PORT = '/dev/tty.UC-232AC'  # TODO
+BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
 NUM_RUNS = 4
@@ -20,6 +20,7 @@ BLACK = '#000000'
 # Paths
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
+LOG_FOLDER = 'log/'
 # Positions
 TOP_INSTR_POS = (0, 0.85)
 IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels

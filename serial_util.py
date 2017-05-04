@@ -11,14 +11,12 @@ import pty
 import threading
 import time
 
-_ser_name = ''
-
 
 class SerialUtil:
     def __init__(self, port='virtual', baudrate=9600, timeout=None, logger=None, trigger_interval=2,
                  trigger='5', responses=('1', '2', '3', '4'), read_size=1):
         """
-        
+        If using a virtual port, serial_util.close_virtual_port() needs to be called once finished.
         :param port: 
         :param baudrate: 
         :param timeout: 
@@ -29,21 +27,23 @@ class SerialUtil:
         :param read_size: 
         """
         self.logger = logging.getLogger(logger)
-        logging.basicConfig(format='%(asctime)s %(message)s')
         self.trigger = trigger
         self.responses = responses
         self.read_size = read_size
+        self.port = port
         if port == 'virtual':
+            self.sending = True
+            self.virtual_ser_name = ''
             self._virtual_sender(baudrate, timeout, trigger_interval)
         else:
             self.serial = serial.Serial(port, baudrate, timeout=timeout)
-        self.serial.flushInput()
+        # self.serial.flushInput()
 
-    def __del__(self):
-        if port == 'virtual':
-            
+    def close_virtual_port(self):
+        if self.port == 'virtual':
+            self.sending = False
 
-    def wait_for_trigger(self):
+    def wait_for_a_trigger(self):
         buff = []
         while True:
             char = self.serial.read(self.read_size)
@@ -53,15 +53,19 @@ class SerialUtil:
             elif char == self.trigger:
                 return buff
 
+    def wait_for_triggers(self, number):
+        responses = []
+        for i in range(0, number):
+            responses.append(self.wait_for_a_trigger())
+        return responses
+
     def _virtual_sender(self, baudrate, timeout, trigger_interval):
-        global _ser_name
 
         def _sender_thread():
-            global _ser_name
             master, slave = pty.openpty()
-            _ser_name = os.ttyname(slave)
+            self.virtual_ser_name = os.ttyname(slave)
             index = 0
-            while True:
+            while self.sending:
                 os.write(master, self.trigger)
                 time.sleep(float(trigger_interval)/2)
                 if index == len(self.responses):
@@ -72,11 +76,14 @@ class SerialUtil:
 
         th = threading.Thread(target=_sender_thread)
         th.start()
-        while True:
-            if len(_ser_name) > 0:
-                self.serial = serial.Serial(_ser_name, baudrate, timeout=timeout)
-                return
+        # while True:
+        #     if len(self.virtual_ser_name) > 0:
+        #         print self.virtual_ser_name
+        #         self.serial = serial.Serial(self.virtual_ser_name, baudrate, timeout=timeout)
+        #         return
 
-su = SerialUtil(read_size=10, timeout=0.1)
-print su.wait_for_trigger(), su.wait_for_trigger(), su.wait_for_trigger()
-
+if __name__ == '__main__':
+    su = SerialUtil()
+    print su.virtual_ser_name
+    time.sleep(100)
+    su.close_virtual_port()

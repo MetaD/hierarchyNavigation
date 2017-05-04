@@ -56,13 +56,13 @@ class Presenter:
                        a new full screen window will be created if this parameter is not provided
         :param logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
         :param serial: (SerialUtil object) if specified, responses will be obtained from the serial port instead of
-                       the keyboard, and stimuli
+                       the keyboard, and stimuli will be presented for durations in terms of number of scanner triggers
+                       instead of seconds
         """
         self.window = window if window is not None else visual.Window(fullscr=fullscreen)
         self.serial = serial
         # logging
         self.logger = logging.getLogger(logger)
-        logging.basicConfig(format='%(asctime)s %(message)s')
         self.logger.info(info.RunTimeInfo(win=window, refreshTest=None, verbose=False))
         # Positions
         self.CENTRAL_POS = (0.0, 0.0)
@@ -111,8 +111,7 @@ class Presenter:
             if self.serial is None:
                 core.wait(duration)
             else:
-                for i in range(duration):
-                    self.serial.wait_for_trigger()
+                self.serial.wait_for_triggers(duration)
 
     def draw_stimuli_for_response(self, stimuli, response_keys, max_wait=float('inf')):
         """
@@ -121,18 +120,27 @@ class Presenter:
         :param max_wait: a numeric value indicating the maximum number of seconds to wait for keys.
                          By default it waits forever
         :return: a tuple (key_pressed, reaction_time_in_seconds)
+                 when using scanner triggers, return a list of lists of responses between each trigger
         """
+        if max_wait is None:
+            max_wait = float('inf')
         self.draw_stimuli_for_duration(stimuli, duration=None)
         if self.serial is None:
             response = event.waitKeys(maxWait=max_wait, keyList=response_keys, timeStamped=core.Clock())
+            if response is None:  # timed out without a response
+                return None
+            response = response[0]
         else:
-            response = self.serial.wait_for_trigger()
-        if response is None:  # timed out
-            return None
-        return response[0]
+            if isinstance(max_wait, int):
+                duration = max_wait
+            else:
+                duration = 1
+                self.logger.warning('Duration unspecified, waiting for one trigger')
+            response = self.serial.wait_for_triggers(duration)
+        return response
 
     def show_instructions(self, instructions, position=(0, 0), other_stim=(), key_to_continue='space',
-                          next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8)):
+                          next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8), duration=None):
         """
         Show a list of instructions strings
         :param instructions: an instruction string, or a list containing instruction strings
@@ -141,6 +149,8 @@ class Presenter:
         :param key_to_continue: a string of the key to press
         :param next_instr_text: a string to show together with each page of instruction, could be None
         :param next_instr_pos: a tuple of floats, position for the above string
+        :param duration: (float or integer) if specified, the instructions will be shown for a maximum length of this
+                         number of seconds (or triggers if using a scanner)
         """
         if type(instructions) is str:
             instructions = [instructions]
@@ -152,7 +162,8 @@ class Presenter:
         for i, instr in enumerate(instructions):
             instr_stim = visual.TextStim(self.window, text=instr, pos=position)
             self.logger.info('Instruction page ' + str(i))
-            self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue])
+            self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue],
+                                           max_wait=duration)
         self.logger.info('Ending instructions')
 
     def show_fixation(self, duration):
