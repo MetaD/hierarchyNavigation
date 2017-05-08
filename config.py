@@ -1,5 +1,5 @@
 # Experimental parameters
-SERIAL_PORT = '/dev/tty.UC-232AC4'  # TODO
+SERIAL_PORT = '/dev/tty.UC-232AC1'
 BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
@@ -10,7 +10,7 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
-RESPONSE_KEYS = ('q', 'w', 'a', 's')
+RESPONSE_KEYS = ('q', 'w', 'a', 's')  # TODO
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}
@@ -23,7 +23,7 @@ DATA_FOLDER = 'data/'
 LOG_FOLDER = 'log/'
 # Positions
 TOP_INSTR_POS = (0, 0.85)
-IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels
+IMG_DIST = 415  # horizontal or vertical distance from images to the middle of screen, in pixels
 # Times
 FACE_TIME = 0.5
 FIXATION_TRIGGERS = (1, 2)

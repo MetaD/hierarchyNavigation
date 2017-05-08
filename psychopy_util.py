@@ -55,7 +55,7 @@ class Presenter:
         :param window: an optional psychopy.visual.Window
                        a new full screen window will be created if this parameter is not provided
         :param logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
-        :param serial: (SerialUtil object) if specified, responses will be obtained from the serial port instead of
+        :param serial: (an SerialUtil object) if specified, responses will be obtained from the serial port instead of
                        the keyboard, and stimuli will be presented for durations in terms of number of scanner triggers
                        instead of seconds
         """
@@ -149,7 +149,8 @@ class Presenter:
         return response
 
     def show_instructions(self, instructions, position=(0, 0), other_stim=(), key_to_continue='space',
-                          next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8), duration=None):
+                          next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8), duration=None,
+                          wait_trigger=False):
         """
         Show a list of instructions strings
         :param instructions: an instruction string, or a list containing instruction strings
@@ -170,11 +171,11 @@ class Presenter:
         self.logger.info('Showing instructions')
         for i, instr in enumerate(instructions):
             instr_stim = visual.TextStim(self.window, text=instr, pos=position)
-            log_text = 'Instruction: ' + instr[:50]
-            self.logger.info(log_text + '...' if len(instr) >= 50 else log_text)
+            log_text = 'Instruction: ' + instr[:30].replace('\n', ' ')
+            self.logger.info(log_text + '...' if len(instr) >= 30 else log_text)
             self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue],
-                                           max_wait=duration)
-        self.logger.info('Ending instructions')
+                                           max_wait=duration, wait_trigger=wait_trigger)
+        self.logger.info('End of instructions')
 
     def show_fixation(self, duration, wait_trigger=False):
         """
@@ -184,7 +185,7 @@ class Presenter:
         plus_sign = visual.TextStim(self.window, text='+')
         self.logger.info('Showing fixation')
         self.draw_stimuli_for_duration(plus_sign, duration, wait_trigger)
-        self.logger.info('Ending fixation')
+        self.logger.info('End of fixation')
 
     def show_blank_screen(self, duration, wait_trigger=False):
         """
@@ -194,7 +195,7 @@ class Presenter:
         blank = visual.TextStim(self.window, text='')
         self.logger.info('Showing blank screen')
         self.draw_stimuli_for_duration(blank, duration, wait_trigger)
-        self.logger.info('Ending blank screen')
+        self.logger.info('End of blank screen')
 
     def likert_scale(self, instruction, num_options, option_texts=None, option_labels=None, side_labels=None,
                      response_keys=None, wait_trigger=False):
@@ -257,7 +258,7 @@ class Presenter:
                 response_keys[9] = '0'
         self.logger.info('Showing Likert scale')
         response = self.draw_stimuli_for_response(stimuli, response_keys, wait_trigger)
-        self.logger.info('Ending Likert scale')
+        self.logger.info('End of Likert scale')
         return response
 
     def select_from_stimuli(self, stimuli, values, response_keys, max_wait=float('inf'), post_selection_time=1,
@@ -293,14 +294,14 @@ class Presenter:
         # display stimuli and get response
         self.logger.info('Showing options')
         response = self.draw_stimuli_for_response(stimuli, response_keys, max_wait, resp_wait_trigger)
-        self.logger.info('Ending options')
-        if response is None:  # response too slow
+        self.logger.info('End of options')
+        if response is None or len(response) == 0:  # response too slow
             if no_response_stim is None:
                 return
             # show feedback and return
-            self.logger.info('No response detected, showing feedback')
+            self.logger.info('No response received, showing feedback')
             self.draw_stimuli_for_duration(no_response_stim, no_resp_feedback_time, feedback_wait_trigger)
-            self.logger.info('Ending feedback')
+            self.logger.info('End of feedback')
             return
         else:
             key_pressed = response[0]
@@ -318,7 +319,7 @@ class Presenter:
                 highlight.pos = selected_stim.pos
                 stimuli.append(highlight)
                 self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
-            self.logger.info('Ending highlighted selection')
+            self.logger.info('End of highlighted selection')
 
             # feedback
             correct = None
@@ -337,7 +338,7 @@ class Presenter:
                     stimuli.append(stims[1])  # TODO only for hierarchy navigation
                 self.logger.info('Showing feedback')
                 self.draw_stimuli_for_duration(stimuli, feedback_time, feedback_wait_trigger)
-                self.logger.info('Ending feedback')
+                self.logger.info('End of feedback')
 
             # return
             if correct is None:
@@ -347,6 +348,7 @@ class Presenter:
 
 
 class DataHandler:
+    # TODO make it a log file
     def __init__(self, filepath, filename):
         """
         Open file

@@ -5,13 +5,18 @@ from config import *
 
 
 def show_one_trial(param):
+    infoLogger.info('Starting trial')
     # 0 anchor face
+    infoLogger.info('Showing anchor face')
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    infoLogger.info('End of anchor face')
     # 1 fixation
     presenter.show_fixation(random.choice(FIXATION_TRIGGERS), wait_trigger=True)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
+    infoLogger.info('Showing number')
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    infoLogger.info('End of number')
     # 3 fixation (mental navigation)
     presenter.show_fixation(random.choice(BLANK_TRIGGERS), wait_trigger=True)
     # 4.0 options
@@ -50,6 +55,7 @@ def show_one_trial(param):
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
+    infoLogger.info('End of trial')
     presenter.show_fixation(random.choice(ITI_TRIGGERS), wait_trigger=True)
     # return
     param['options'] = options
@@ -153,39 +159,37 @@ if __name__ == '__main__':
 
     # show instructions
     infoLogger.info('Starting experiment')
-    presenter.show_instructions(INSTR_0, next_instr_text=None)
-    presenter.show_instructions(color_instr, next_instr_text=None)
-    presenter.show_instructions(INSTR_1, next_instr_text=None)
-    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None)
+    presenter.show_instructions(INSTR_0, next_instr_text=None, wait_trigger=True)
+    presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
+    presenter.show_instructions(INSTR_1, next_instr_text=None, wait_trigger=True)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None, wait_trigger=True)
     texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
              for key, pos in zip(RESPONSE_KEYS, img_positions)]
-    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None)
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None, wait_trigger=True)
     # practice
-    presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None)
+    presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None, wait_trigger=True)
     practices = random.sample(practices, NUM_PRACTICE_TRIALS)
     for trial in practices:
-        presenter.show_instructions(color_instr)
+        presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
         data = show_one_trial(trial.copy())
         data['practice'] = True
         dataLogger.write_data(data)
     # show trials
-    presenter.show_instructions(INSTR_4)
+    presenter.show_instructions(INSTR_4, next_instr_text=None, wait_trigger=True)
     trial_counter = 0
     for run in trials:
         # instructions
         presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)+1) + '\n\n' +
-                                    'Remember: ' + color_instr, next_instr_text=None)
+                                    'Remember: ' + color_instr, next_instr_text=None, wait_trigger=True)
 
         # start run
         for trial in run:
             trial_counter += 1
-            infoLogger.info('Starting trial')
             data = show_one_trial(trial.copy())
-            infoLogger.info('Trial ended')
             dataLogger.write_data(data)
             if trial_counter >= MAX_NUM_TRIALS:
                 break
         if trial_counter >= MAX_NUM_TRIALS:
             break
-    presenter.show_instructions(INSTR_END, next_instr_text=None)
+    presenter.show_instructions(INSTR_END, next_instr_text=None, wait_trigger=True)
     infoLogger.info('Experiment ended')

@@ -47,17 +47,14 @@ class SerialUtil:
     def wait_for_a_trigger(self):
         buff = []
         while True:
-            print '??'
             char = self.serial.read(self.read_size)
             self.logger.info('Received from serial port: ' + char)
-            print '???', char
             if char in self.responses:
                 buff.append(char)
             elif char == self.trigger:
                 return buff
 
     def wait_for_triggers(self, number):
-        print '?'
         responses = []
         for i in range(0, number):
             responses.append(self.wait_for_a_trigger())
