@@ -15,6 +15,7 @@ import time
 class SerialUtil:
     def __init__(self, port='virtual', baudrate=9600, timeout=None, logger=None, trigger_interval=2,
                  trigger='5', responses=('1', '2', '3', '4'), read_size=1):
+        # TODO virtual port doesn't work
         """
         If using a virtual port, serial_util.close_virtual_port() needs to be called once finished.
         :param port: 
@@ -37,7 +38,7 @@ class SerialUtil:
             self._virtual_sender(baudrate, timeout, trigger_interval)
         else:
             self.serial = serial.Serial(port, baudrate, timeout=timeout)
-        # self.serial.flushInput()
+        self.serial.flushInput()
 
     def close_virtual_port(self):
         if self.port == 'virtual':
@@ -46,14 +47,17 @@ class SerialUtil:
     def wait_for_a_trigger(self):
         buff = []
         while True:
+            print '??'
             char = self.serial.read(self.read_size)
             self.logger.info('Received from serial port: ' + char)
+            print '???', char
             if char in self.responses:
                 buff.append(char)
             elif char == self.trigger:
                 return buff
 
     def wait_for_triggers(self, number):
+        print '?'
         responses = []
         for i in range(0, number):
             responses.append(self.wait_for_a_trigger())

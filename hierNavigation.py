@@ -8,12 +8,12 @@ def show_one_trial(param):
     # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
     # 1 fixation
-    presenter.show_fixation(random.choice(FIXATION_TIMES))
+    presenter.show_fixation(random.choice(FIXATION_TRIGGERS), wait_trigger=True)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 fixation (mental navigation)
-    presenter.show_fixation(random.choice(BLANK_TIMES))
+    presenter.show_fixation(random.choice(BLANK_TRIGGERS), wait_trigger=True)
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -45,12 +45,12 @@ def show_one_trial(param):
     # 4&5 show options, get response, show feedback
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
-                                             FEEDBACK_TIME)
+                                             FEEDBACK_TRIGGER, feedback_wait_trigger=True)
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
-    presenter.show_fixation(random.choice(TRIAL_INTERVALS))
+    presenter.show_fixation(random.choice(ITI_TRIGGERS), wait_trigger=True)
     # return
     param['options'] = options
     if response is None:

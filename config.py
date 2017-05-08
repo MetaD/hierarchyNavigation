@@ -1,5 +1,5 @@
 # Experimental parameters
-SERIAL_PORT = '/dev/tty.UC-232AC'  # TODO
+SERIAL_PORT = '/dev/tty.UC-232AC4'  # TODO
 BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
@@ -26,12 +26,12 @@ TOP_INSTR_POS = (0, 0.85)
 IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels
 # Times
 FACE_TIME = 0.5
-FIXATION_TIMES = (1.5, 3.5)
+FIXATION_TRIGGERS = (1, 2)
 NUMBER_TIME = 0.5
-BLANK_TIMES = (5.5, 7.5)
-SELECTION_TIME = 1.5  # TODO
-FEEDBACK_TIME = 1  # TODO
-TRIAL_INTERVALS = (2, 3)  # changed for behavioral piloting to speed things up (was 4, 6, 8)
+BLANK_TRIGGERS = (3, 4)
+SELECTION_TIME = 1.5
+FEEDBACK_TRIGGER = 2
+ITI_TRIGGERS = (2, 3, 4)
 # Strings
 FEEDBACK_RIGHT = 'Correct!'
 FEEDBACK_WRONG = 'Wrong.'
