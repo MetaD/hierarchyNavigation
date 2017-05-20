@@ -61,6 +61,20 @@ def show_one_trial(param):
     return param
 
 
+def show_one_question(param):
+    # 0 anchor face
+    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    # 1 fixation
+    presenter.show_fixation(random.choice(FIXATION_TIMES))
+    # 2 number
+    num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1,
+                               color=DIR_COLORS[param['direction']])
+    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    # 3 fixation (mental navigation)
+    presenter.show_fixation(BLANK_TIME)
+    # TODO questions
+
+
 def generate_trials():
     # generate unique combinations
     unique_trials = []
@@ -179,4 +193,13 @@ if __name__ == '__main__':
                 break
         if trial_counter >= MAX_NUM_TRIALS:
             break
+    # end
+    if NUM_QUESTIONS_END == 0:
+        presenter.show_instructions(INSTR_END)
+        quit()
+    # show questions at the end
+    presenter.show_instructions(INSTR_QUESTION)
+    question_trials = random.sample(trials[0], NUM_QUESTIONS_END)
+    for i in range(NUM_QUESTIONS_END):
+        show_one_question(question_trials[i])
     presenter.show_instructions(INSTR_END)

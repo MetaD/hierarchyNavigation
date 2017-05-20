@@ -1,7 +1,8 @@
 # Experimental parameters
 NUM_PRACTICE_TRIALS = 5  # 10
 MAX_NUM_TRIALS = 999  # -> just to test the program TODO
-NUM_RUNS = 3
+NUM_RUNS = 2
+NUM_QUESTIONS_END = 1
 NUM_FACES = 9
 NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')
@@ -50,4 +51,5 @@ INSTR_3 = 'Press the Q, W, A or S key to select a given face, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' + \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
+INSTR_QUESTION = 'It\'s the same task as before but we are asking questions now?????'  # TODO
 INSTR_END = 'The experiment is complete!\nThank you for participating!'
