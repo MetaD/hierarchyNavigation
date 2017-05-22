@@ -213,30 +213,30 @@ if __name__ == '__main__':
         person_q = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png', size=q_img_size)
         # arrange stimuli
         grey = '#757575'
-        shapes = [visual.Rect(presenter.window, width=0.2, height=0.9, pos=(-0.5, 0.3), lineWidth=0, fillColor=grey),
+        shapes = [visual.Rect(presenter.window, width=0.2, height=0.9, pos=(-0.5, 0.35), lineWidth=0, fillColor=grey),
                   visual.Rect(presenter.window, width=0.6, height=0.3, pos=(0.35, 0.4), lineWidth=0, fillColor=grey),
                   visual.Rect(presenter.window, width=0.6, height=0.3, pos=(-0.35, -0.4), lineWidth=0, fillColor=grey),
-                  visual.Rect(presenter.window, width=0.2, height=0.9, pos=(0.5, -0.3), lineWidth=0, fillColor=grey),
+                  visual.Rect(presenter.window, width=0.2, height=0.9, pos=(0.5, -0.35), lineWidth=0, fillColor=grey),
                   visual.Rect(presenter.window, width=0.6, height=0.15, pos=(0, -0.9), lineWidth=0, fillColor=grey)]
         #  a) 2 steps
         two_step_stim = [copy.copy(shape) for shape in shapes]
         two_step_stim += [quesion, option_c]
-        option_pos = [(-0.35, 0.3), (0.35, 0.65), (-0.35, -0.65), (0.35, -0.3), (0, -0.77)]
+        option_pos = [(-0.35, 0.3), (0.35, 0.62), (-0.35, -0.62), (0.35, -0.3), (0, -0.78)]
         two_step_stim += [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
                           for k, pos in zip(question_keys, option_pos)]
         two_step_arrows = [copy.copy(arrow) for arrow in arrows for i in range(2)]
-        two_arrow_pos = [(-0.5, 0.15), (-0.5, 0.45),    (0.25, 0.4), (0.45, 0.4),      # down, left
-                         (-0.45, -0.4), (-0.25, -0.4),  (0.5, -0.15), (0.5, -0.45)]    # right, up
+        two_arrow_pos = [(-0.5, 0.175), (-0.5, 0.525),  (0.25, 0.4), (0.45, 0.4),        # down, left
+                         (-0.45, -0.4), (-0.25, -0.4),  (0.5, -0.175), (0.5, -0.525)]    # right, up
         for stim, pos in zip(two_step_arrows, two_arrow_pos):
             stim.pos = pos
         two_step_stim += two_step_arrows
         two_step_stim += [copy.copy(person) for i in range(4)]
         two_step_stim += [copy.copy(person_q) for i in range(4)]
-        person_pos = [(-0.5, 0.3), (0.35, 0.4), (-0.35, -0.4), (0.5, -0.3),  # person
+        person_pos = [(-0.5, 0.35), (0.35, 0.4), (-0.35, -0.4), (0.5, -0.35),  # person
                       (-0.5, 0), (0.15, 0.4), (-0.15, -0.4), (0.5, 0)]         # person in question
         for i, pos in enumerate(person_pos):
             two_step_stim[i - 8].pos = pos
-        two_step_anchor_pos = [(-0.5, 0.6), (0.55, 0.4), (-0.55, -0.4), (0.5, -0.6)]  # down, left, right, up
+        two_step_anchor_pos = [(-0.5, 0.7), (0.55, 0.4), (-0.55, -0.4), (0.5, -0.7)]  # down, left, right, up
         #  b) 3 steps
         three_step_stim = shapes
         three_step_stim += [quesion, option_c]
