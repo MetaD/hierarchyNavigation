@@ -1,5 +1,5 @@
 # Experimental parameters
-NUM_PRACTICE_TRIALS = 0  # 5
+NUM_PRACTICE_TRIALS = 5
 MAX_NUM_TRIALS = 999  # -> just to test the program
 NUM_RUNS = 2
 NUM_FACES = 9
@@ -10,6 +10,7 @@ MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
 END_QUESTIONS = True
+QUESTION_KEYS = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}
@@ -54,4 +55,4 @@ INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the
 INSTR_QUESTION = 'In the next part, you will be asked to perform the same task and then answer a few questions.'
 INSTR_END = 'The experiment is complete!\nThank you for participating!'
 QUESTION = 'The options below illustrate a few ways that people visualize this problem. ' \
-           'Please press F, E, D, C or R to choose an option that is most similar to your approach.'
+           'Please press V, F, T, G or D to choose an option that is most similar to your approach.'

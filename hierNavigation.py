@@ -6,7 +6,6 @@ import copy
 
 
 def show_one_trial(param, question=False):
-    """
     # 0 anchor face
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
     # 1 fixation
@@ -16,8 +15,7 @@ def show_one_trial(param, question=False):
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 fixation (mental navigation)
     presenter.show_fixation(BLANK_TIME)
-    """
-    # 3.5 question
+    # - question
     if question:
         anchors = [visual.ImageStim(presenter.window, images[param['anchor']]._imName) for i in range(4)]
         if param['distance'] == 2:
@@ -30,7 +28,7 @@ def show_one_trial(param, question=False):
                 anchors[i].pos = pos
                 anchors[i].size = three_step_img_lg
             stims = three_step_stim + anchors
-        response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), question_keys,
+        response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
                                                  feedback_time=0)
         param['visualization'] = response
     # 4.0 options
@@ -131,19 +129,11 @@ def get_positions(window):
 
 
 if __name__ == '__main__':
-    """
     # subject ID dialog
     sinfo = {'ID': '', 'Gender': ['Female', 'Male'], 'Age': '', 'Mode': ['Exp', 'Test']}
     show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Mode'])
     sid = int(sinfo['ID'])
     img_prefix = sinfo['Gender'][0]
-    """
-    sid = 'testtest'
-    img_prefix = 'F'
-    sinfo = {'Mode': 'Exp'}
-    if os.path.exists(DATA_FOLDER + sid + '.txt'):
-        os.remove(DATA_FOLDER + sid + '.txt')
-    # TODO delete above
 
     # create data file
     dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
@@ -175,7 +165,6 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
-    """
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
     presenter.show_instructions(INSTR_1)
@@ -206,10 +195,9 @@ if __name__ == '__main__':
                 break
         if trial_counter >= MAX_NUM_TRIALS:
             break
-    """
+
     # show questions at the end
     if END_QUESTIONS:
-        question_keys = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
         quesion = visual.TextStim(presenter.window, QUESTION, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
         option_v = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
         # arrange stimuli
@@ -221,7 +209,7 @@ if __name__ == '__main__':
                   visual.Rect(presenter.window, width=0.6, height=0.15, pos=(0, -0.85), lineWidth=0, fillColor=grey)]
         option_pos = [(-0.73, 0.53), (-0.33, 0.53), (0.07, 0.53), (0.07, -0.17), (-0.33, -0.75)]
         option_letters = [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
-                          for k, pos in zip(question_keys, option_pos)]
+                          for k, pos in zip(QUESTION_KEYS, option_pos)]
         #  a) 2 steps
         two_step_img_size = (0.12, 0.12 * presenter.window.size[0] / presenter.window.size[1])
         two_step_stim = [copy.copy(shape) for shape in shapes]
@@ -253,9 +241,9 @@ if __name__ == '__main__':
         three_step_arrows = []
         for i in range(3):
             three_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
-        three_arrow_pos = [(-0.6, 0.2525),  (0.25, 0.35), (0.25, -0.35), (-0.2, -0.2525),   # down, left, right, up
-                           (-0.6, 0),        (0.4, 0.35), (0.4, -0.35), (-0.2, 0),          # down, left, right, up
-                           (-0.6, -0.2525), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.2255)]    # down, left, right, up
+        three_arrow_pos = [(-0.6, 0.245),  (0.25, 0.35), (0.25, -0.35), (-0.2, -0.245),   # down, left, right, up
+                           (-0.6, 0),       (0.4, 0.35), (0.4, -0.35), (-0.2, 0),         # down, left, right, up
+                           (-0.6, -0.245), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.245)]    # down, left, right, up
         for stim, pos in zip(three_step_arrows, three_arrow_pos):
             stim.pos = pos
             stim.size = (0.05, 0.05 * presenter.window.size[0] / presenter.window.size[1])
@@ -279,7 +267,7 @@ if __name__ == '__main__':
         } for i in range(4)]
         random.shuffle(question_trials)
         # start
-        # presenter.show_instructions(INSTR_QUESTION + '\n\nRemember: ' + color_instr)
+        presenter.show_instructions(INSTR_QUESTION + '\n\nRemember: ' + color_instr)
         for q in question_trials:
             data = show_one_trial(q, True)
             dataLogger.write_data(data)
