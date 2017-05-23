@@ -23,9 +23,12 @@ def show_one_trial(param, question=False):
         if param['distance'] == 2:
             for i, pos in enumerate(two_step_anchor_pos):
                 anchors[i].pos = pos
-                anchors[i].size = q_img_size
+                anchors[i].size = two_step_img_size
             stims = two_step_stim + anchors
         else:
+            for i, pos in enumerate(three_step_anchor_pos):
+                anchors[i].pos = pos
+                anchors[i].size = three_step_img_lg
             stims = three_step_stim + anchors
         response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), question_keys,
                                                  feedback_time=0)
@@ -36,7 +39,7 @@ def show_one_trial(param, question=False):
     options = [correct_option]
     # 4.1 randomly pick 3 other adjacent images
     abs_dist = 1  # absolute value of distance
-    while len(optgions) < NUM_OPTIONS:
+    while len(options) < NUM_OPTIONS:
         dist_candidates = [-abs_dist, abs_dist]
         while len(dist_candidates) > 0:
             dist = random.choice(dist_candidates)
@@ -207,22 +210,23 @@ if __name__ == '__main__':
     # show questions at the end
     if END_QUESTIONS:
         question_keys = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
-        q_img_size = (0.12, 0.12 * presenter.window.size[0] / presenter.window.size[1])
         quesion = visual.TextStim(presenter.window, QUESTION, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
-        option_c = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
+        option_v = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
         # arrange stimuli
         grey = '#727272'
         shapes = [visual.Rect(presenter.window, width=0.2, height=1, pos=(-0.6, 0), lineWidth=0, fillColor=grey),
                   visual.Rect(presenter.window, width=0.2, height=1, pos=(-0.2, 0), lineWidth=0, fillColor=grey),
-                  visual.Rect(presenter.window, width=0.59, height=0.3, pos=(0.4, 0.35), lineWidth=0, fillColor=grey),
-                  visual.Rect(presenter.window, width=0.59, height=0.3, pos=(0.4, -0.35), lineWidth=0, fillColor=grey),
+                  visual.Rect(presenter.window, width=0.6, height=0.3, pos=(0.4, 0.35), lineWidth=0, fillColor=grey),
+                  visual.Rect(presenter.window, width=0.6, height=0.3, pos=(0.4, -0.35), lineWidth=0, fillColor=grey),
                   visual.Rect(presenter.window, width=0.6, height=0.15, pos=(0, -0.85), lineWidth=0, fillColor=grey)]
-        #  a) 2 steps
-        two_step_stim = [copy.copy(shape) for shape in shapes]
-        two_step_stim += [quesion, option_c]
         option_pos = [(-0.73, 0.53), (-0.33, 0.53), (0.07, 0.53), (0.07, -0.17), (-0.33, -0.75)]
-        two_step_stim += [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
+        option_letters = [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
                           for k, pos in zip(question_keys, option_pos)]
+        #  a) 2 steps
+        two_step_img_size = (0.12, 0.12 * presenter.window.size[0] / presenter.window.size[1])
+        two_step_stim = [copy.copy(shape) for shape in shapes]
+        two_step_stim += [quesion, option_v]
+        two_step_stim += option_letters
         two_step_arrows = []
         for i in range(2):
             two_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
@@ -231,28 +235,41 @@ if __name__ == '__main__':
         for stim, pos in zip(two_step_arrows, two_arrow_pos):
             stim.pos = pos
         two_step_stim += two_step_arrows
-        two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=q_img_size)
+        two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=two_step_img_size)
                           for i in range(4)]
-        two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png', size=q_img_size)
-                          for i in range(4)]
+        two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png',
+                                           size=two_step_img_size) for i in range(4)]
         person_pos = [(-0.6, 0), (0.395, 0.35), (0.395, -0.35), (-0.2, 0),         # person
                       (-0.6, -0.35), (0.195, 0.35), (0.595, -0.35), (-0.2, 0.35)]  # person in question
         for i, pos in enumerate(person_pos):
             two_step_stim[i - 8].pos = pos
         two_step_anchor_pos = [(-0.6, 0.35), (0.595, 0.35), (0.195, -0.35), (-0.2, -0.35)]  # down, left, right, up
         #  b) 3 steps
+        three_step_img_lg = (0.1, 0.1 * presenter.window.size[0] / presenter.window.size[1])
+        three_step_img_sm = (0.08, 0.08 * presenter.window.size[0] / presenter.window.size[1])
         three_step_stim = shapes
-        three_step_stim += [quesion, option_c]
+        three_step_stim += [quesion, option_v]
+        three_step_stim += option_letters
         three_step_arrows = []
-        for i in range(2):
+        for i in range(3):
             three_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
-        three_arrow_pos = [(-0.5, 0.125), (0.25, 0.4), (-0.45, -0.4), (0.5, -0.475),  # down, left, right, up
-                           (-0.5, 0.475), (0.45, 0.4), (-0.25, -0.4), (0.5, -0.125)]  # down, left, right, up
-        three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=q_img_size)
+        three_arrow_pos = [(-0.6, 0.25),  (0.25, 0.35), (0.25, -0.35), (-0.2, -0.25),   # down, left, right, up
+                           (-0.6, 0),     (0.4, 0.35), (0.4, -0.35), (-0.2, 0),         # down, left, right, up
+                           (-0.6, -0.25), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.25)]    # down, left, right, up
+        for stim, pos in zip(three_step_arrows, three_arrow_pos):
+            stim.pos = pos
+            stim.size = (0.05, 0.05 * presenter.window.size[0] / presenter.window.size[1])
+        three_step_stim += three_step_arrows
+        three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=three_step_img_sm)
                             for i in range(8)]
-        three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png', size=q_img_size)
-                            for i in range(4)]
-        person_pos = [(), (), (), (), (), (), (), (), (), (), (), ()]
+        three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png',
+                                             size=three_step_img_lg) for i in range(4)]
+        person_pos = [(-0.6, 0.125), (0.325, 0.35), (0.325, -0.35), (-0.2, 0.125),      # person
+                      (-0.6, -0.125), (0.475, 0.35), (0.475, -0.35), (-0.2, -0.125),    # person
+                      (-0.6, -0.38), (0.17, 0.35), (0.63, -0.35), (-0.2, 0.38)]         # person in question
+        for i, pos in enumerate(person_pos):
+            three_step_stim[i - 12].pos = pos
+        three_step_anchor_pos = [(-0.6, 0.38), (0.63, 0.35), (0.17, -0.35), (-0.2, -0.38)]  # down, left, right, up
 
         # generate trials
         question_trials = [{
