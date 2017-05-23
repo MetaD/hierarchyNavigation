@@ -253,9 +253,9 @@ if __name__ == '__main__':
         three_step_arrows = []
         for i in range(3):
             three_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
-        three_arrow_pos = [(-0.6, 0.25),  (0.25, 0.35), (0.25, -0.35), (-0.2, -0.25),   # down, left, right, up
-                           (-0.6, 0),     (0.4, 0.35), (0.4, -0.35), (-0.2, 0),         # down, left, right, up
-                           (-0.6, -0.25), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.25)]    # down, left, right, up
+        three_arrow_pos = [(-0.6, 0.2525),  (0.25, 0.35), (0.25, -0.35), (-0.2, -0.2525),   # down, left, right, up
+                           (-0.6, 0),        (0.4, 0.35), (0.4, -0.35), (-0.2, 0),          # down, left, right, up
+                           (-0.6, -0.2525), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.2255)]    # down, left, right, up
         for stim, pos in zip(three_step_arrows, three_arrow_pos):
             stim.pos = pos
             stim.size = (0.05, 0.05 * presenter.window.size[0] / presenter.window.size[1])
