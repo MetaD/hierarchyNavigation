@@ -319,7 +319,7 @@ class Presenter:
             self.logger.info('Showing highlighted selection')
             if highlight is None:
                 # selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
-                original_color = selected_stim.color  # TODO
+                original_color = selected_stim.fillColor  # TODO
                 selected_stim.fillColor = '#A0A0A0'  # TODO
                 self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
                 selected_stim.fillColor = original_color  # TODO
