@@ -140,7 +140,7 @@ class Presenter:
                 duration = max_wait
             else:
                 duration = 1
-                self.logger.warning('Invalid duration, waiting for one trigger')
+                self.logger.warning('Invalid duration, waiting for one trigger')  # TODO
             response = self.serial.wait_for_triggers(duration)
         else:
             # wait for a time duration
@@ -354,10 +354,6 @@ class Presenter:
                 return {'response': selection, 'rt': rt}
             else:
                 return {'response': selection, 'rt': rt, 'correct': correct}
-
-    def dumb_textbox(self, width, height, pos=(0, 0), bg_color='white', text_color='black', min_length=0,
-                     length_warning=''):
-        pass
 
 
 class DataHandler:
