@@ -99,7 +99,6 @@ class DumbTextInput:
             text_changed = False
 
         if text_changed:
-            self.text_stim.setText(self.text)
             self.draw()
 
     def add_other_stim(self, other_stim):
@@ -114,8 +113,8 @@ class DumbTextInput:
 
     def wait_key(self):
         """
-        :return: all input text, reaction time in seconds, and a information tuple about the last key pressed
-                ('key_name', {'modifier_names': True/False})
+        :return: the complete input text string, reaction time in seconds, and a information tuple about the last key
+                 pressed ('key_name', {'modifier_names': True/False})
         """
         key = event.waitKeys(modifiers=True, timeStamped=self.timer)[0]
         self.update(key)
