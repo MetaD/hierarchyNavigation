@@ -166,7 +166,6 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
-
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
     presenter.show_instructions(INSTR_1)
@@ -200,7 +199,7 @@ if __name__ == '__main__':
 
     # show a free response question
     if OPEN_ENDED_QUESTION:
-        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q, pos=(0, 0.8), wrapWidth=1.5)
+        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q, pos=(0, 0.65), height=0.09, wrapWidth=1.8)
         cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
         text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
         warning_color = 0

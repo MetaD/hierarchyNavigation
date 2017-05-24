@@ -1,5 +1,5 @@
 #
-# A rudimentary text box stimulus for PsychoPy experiments
+# A rudimentary text input class for PsychoPy experiments
 # Author: Meng Du
 # May 2017
 #
@@ -10,19 +10,25 @@ from psychopy import visual, core, event
 
 
 class DumbTextInput:
+    """
+    DumbTextInput is a rudimentary textbox that allows users to enter texts in psychopy with a standard English keyboard.
+    It draws itself right after being created, and other psychopy.visual stimuli could be drawn together with it.
+    Example:
+        text_in = DumbTextInput(window=win, width=1.5, height=1,
+                                other_stim=[psychopy.visual.TextStim(win, 'Enter text below', pos=(0, 0.8))])
+        while True:
+            response, rt, last_key = text_in.wait_key()
+            if last_key[0] == 'return':  # or other conditions when you want to end the response
+                break
+
+    It's only been tested on Macs so far.
+    """
     def __init__(self, window, width, height, pos=(0, 0), bg_color='white', text_color='black', line_height=0.05,
                  padding=0.01, other_stim=(), **kwargs):
         """
-        DumbTextInput draws itself right after it's created, and other psychopy.visual stimuli could be drawn together
-        with it.
-        DumbTextInput accepts all input parameters that psychopy.visual.TextStim accepts
-        Usage:
-            text_in = DumbTextInput(window=win, width=1.5, height=1)
-            while True:
-                response, rt, last_key = text_in.wait_key()
-                if last_key[0] == 'return':  # or other conditions when you want to end the response
-                    break
+        Accept all input parameters that psychopy.visual.TextStim accepts
         :param padding: (float) distance between text and the border of the text box
+        :param other_stim: a list of other psychopy stimmuli to be displayed together
         """
         self._key_mapping = {
             'grave': ('`', '~'),
