@@ -2,6 +2,7 @@
 
 from psychopy_util import *
 from config import *
+import dumb_text_input as dt
 import copy
 
 
@@ -64,7 +65,7 @@ def show_one_trial(param, question=False):
                 anchors[i].pos = pos
                 anchors[i].size = three_step_img_lg
             stims = three_step_stim + anchors
-        visualization = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
+        visualization = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), MULTI_CHOICE_KEYS,
                                                       feedback_time=0)
         param['visualization'] = visualization
     # 6 interval between trials
@@ -165,6 +166,7 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
+
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
     presenter.show_instructions(INSTR_1)
@@ -196,9 +198,28 @@ if __name__ == '__main__':
         if trial_counter >= MAX_NUM_TRIALS:
             break
 
+    # show a free response question
+    if OPEN_ENDED_QUESTION:
+        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q, pos=(0, 0.8), wrapWidth=1.5)
+        cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
+        text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
+        warning_color = 0
+        while True:
+            response, rt, last_key = text_in.wait_key()
+            response = response.strip()
+            if last_key[0] == 'return' and last_key[1]['command']:
+                if len(response) == 0:
+                    warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
+                                              color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
+                    text_in.add_other_stim(warning)
+                    warning_color = 1 - warning_color  # toggle
+                else:
+                    break
+        dataLogger.write_data({'response': response, 'rt': rt})
+
     # show questions at the end
-    if END_QUESTIONS:
-        quesion = visual.TextStim(presenter.window, QUESTION, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
+    if MULTI_CHOICE_QUESTIONS:
+        quesion = visual.TextStim(presenter.window, INSTR_MULTI_CHOICE_Q, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
         option_v = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
         # arrange stimuli
         grey = '#727272'
@@ -209,7 +230,7 @@ if __name__ == '__main__':
                   visual.Rect(presenter.window, width=0.6, height=0.15, pos=(0, -0.85), lineWidth=0, fillColor=grey)]
         option_pos = [(-0.73, 0.53), (-0.33, 0.53), (0.07, 0.53), (0.07, -0.17), (-0.33, -0.75)]
         option_letters = [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
-                          for k, pos in zip(QUESTION_KEYS, option_pos)]
+                          for k, pos in zip(MULTI_CHOICE_KEYS, option_pos)]
         #  a) 2 steps
         two_step_img_size = (0.12, 0.12 * presenter.window.size[0] / presenter.window.size[1])
         two_step_stim = [copy.copy(shape) for shape in shapes]

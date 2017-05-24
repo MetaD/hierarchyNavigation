@@ -9,18 +9,18 @@ from psychopy import visual, core, event
 # TODO overflow control? try TextBox?
 
 
-class DumbTextbox:
+class DumbTextInput:
     def __init__(self, window, width, height, pos=(0, 0), bg_color='white', text_color='black', line_height=0.05,
                  padding=0.01, other_stim=(), **kwargs):
         """
-        DumbTextbox draws itself right after it's created, and other psychopy.visual stimuli could be drawn together
+        DumbTextInput draws itself right after it's created, and other psychopy.visual stimuli could be drawn together
         with it.
-        DumbTextbox accepts all input parameters that psychopy.visual.TextStim accepts
+        DumbTextInput accepts all input parameters that psychopy.visual.TextStim accepts
         Usage:
-            textbox = DumbTextbox(window=win, width=1, height=1)
+            text_in = DumbTextInput(window=win, width=1.5, height=1)
             while True:
-                response, rt = textbox.wait_key()
-                if response[-1] == '\n':  # or other conditions when you want to end the response
+                response, rt, last_key = text_in.wait_key()
+                if last_key[0] == 'return':  # or other conditions when you want to end the response
                     break
         :param padding: (float) distance between text and the border of the text box
         """
@@ -65,6 +65,7 @@ class DumbTextbox:
         for stim in self.other_stim:
             if stim is not None:  # skipping "None"
                 stim.draw()
+        self.text_stim.setText(self.text + u'\u258c')
         self.text_stim.draw()
         self.window.flip()
 
@@ -82,13 +83,18 @@ class DumbTextbox:
             else:
                 char = self._key_mapping[key_name] if modifiers['shift'] else key_name
             self.text += char
-        elif key_name in self._key_mapping:
+        elif key_name in self._key_mapping:  # key_name length > 1
             if isinstance(self._key_mapping[key_name], tuple):
                 self.text += self._key_mapping[key_name][1] if modifiers['shift'] else self._key_mapping[key_name][0]
+            elif any(modifiers.values()):
+                text_changed = False  # no text added if pressing return or space with a modifier
             else:
                 self.text += self._key_mapping[key_name]
         elif key_name == 'backspace':
-            self.text = self.text[:-1]
+            if any(modifiers.values()):
+                text_changed = False  # no text removed if pressing backspace with a modifier
+            else:
+                self.text = self.text[:-1]
         else:
             text_changed = False
 
@@ -101,7 +107,7 @@ class DumbTextbox:
         :param other_stim: a psychopy visual stimulus or a list of them 
         """
         if isinstance(other_stim, visual.BaseVisualStim):
-            self.other_stim.append(visual.BaseVisualStim)
+            self.other_stim.append(other_stim)
         else:
             self.other_stim += other_stim
         self.draw()
@@ -114,12 +120,3 @@ class DumbTextbox:
         key = event.waitKeys(modifiers=True, timeStamped=self.timer)[0]
         self.update(key)
         return self.text, key[2], (key[0], key[1])
-
-
-if __name__ == '__main__':
-    win = visual.Window(fullscr=False)
-    textbox = DumbTextbox(window=win, width=1.5, height=1, pos=(0, -0.2))
-    while True:
-        response, rt, last_key = textbox.wait_key()
-        if last_key[0] == 'return' and last_key[1]['command']:
-            break
