@@ -64,9 +64,9 @@ def show_one_trial(param, question=False):
                 anchors[i].pos = pos
                 anchors[i].size = three_step_img_lg
             stims = three_step_stim + anchors
-        response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
-                                                 feedback_time=0)
-        param['visualization'] = response
+        visualization = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
+                                                      feedback_time=0)
+        param['visualization'] = visualization
     # 6 interval between trials
     presenter.show_fixation(random.choice(TRIAL_INTERVALS))
     # return
