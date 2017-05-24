@@ -15,22 +15,6 @@ def show_one_trial(param, question=False):
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
     # 3 fixation (mental navigation)
     presenter.show_fixation(BLANK_TIME)
-    # - question
-    if question:
-        anchors = [visual.ImageStim(presenter.window, images[param['anchor']]._imName) for i in range(4)]
-        if param['distance'] == 2:
-            for i, pos in enumerate(two_step_anchor_pos):
-                anchors[i].pos = pos
-                anchors[i].size = two_step_img_size
-            stims = two_step_stim + anchors
-        else:
-            for i, pos in enumerate(three_step_anchor_pos):
-                anchors[i].pos = pos
-                anchors[i].size = three_step_img_lg
-            stims = three_step_stim + anchors
-        response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
-                                                 feedback_time=0)
-        param['visualization'] = response
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -67,6 +51,22 @@ def show_one_trial(param, question=False):
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
+    # - question
+    if question:
+        anchors = [visual.ImageStim(presenter.window, images[param['anchor']]._imName) for i in range(4)]
+        if param['distance'] == 2:
+            for i, pos in enumerate(two_step_anchor_pos):
+                anchors[i].pos = pos
+                anchors[i].size = two_step_img_size
+            stims = two_step_stim + anchors
+        else:
+            for i, pos in enumerate(three_step_anchor_pos):
+                anchors[i].pos = pos
+                anchors[i].size = three_step_img_lg
+            stims = three_step_stim + anchors
+        response = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), QUESTION_KEYS,
+                                                 feedback_time=0)
+        param['visualization'] = response
     # 6 interval between trials
     presenter.show_fixation(random.choice(TRIAL_INTERVALS))
     # return
