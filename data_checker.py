@@ -24,13 +24,13 @@ with open(CSV_FILE, 'w') as outfile:
                         prac_counter += 1
                         if jdict['response'] is not None:
                             prac_resp += 1
-                            if jdict['correct']:
+                            if 'correct' in jdict and jdict['correct']:
                                 prac_correct += 1
                     else:
                         real_counter += 1
                         if jdict['response'] is not None:
                             real_resp += 1
-                            if jdict['correct']:
+                            if 'correct' in jdict and jdict['correct']:
                                 real_correct += 1
             writer.writerow([datafile[:-4],
                              str(real_resp * 100.0 / real_counter)[:5] + '%',
