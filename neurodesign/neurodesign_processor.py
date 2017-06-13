@@ -1,6 +1,4 @@
-import os
-
-DIR = 'neurodesign_0/design_2/'
+DIR = 'design_2_1'
 FILE_NAMES = ('ITIs.txt', 'stimulus_0.txt', 'stimulus_1.txt')
 TRIAL_TIME = 11.0
 

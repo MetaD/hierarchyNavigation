@@ -4,6 +4,7 @@ BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
 NUM_RUNS = 4  # TODO
+NUM_TRIALS_PER_RUN = 24
 NUM_FACES = 9
 NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')
@@ -21,6 +22,7 @@ BLACK = '#000000'
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
 LOG_FOLDER = 'log/'
+DESIGN_FILENAME = 'test_designs.pkl'
 # Positions
 TOP_INSTR_POS = (0, 0.85)
 IMG_DIST = 415  # horizontal or vertical distance from images to the middle of screen, in pixels

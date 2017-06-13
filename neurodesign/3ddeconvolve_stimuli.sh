@@ -1,6 +1,6 @@
 #!/bin/tcsh
 
-3dDeconvolve -nodata 396 1              \
+3dDeconvolve -nodata 397 1              \
     -num_stimts 2                       \
     -polort A                           \
     -stim_times 1 stimulus_0.txt 'GAM'  \

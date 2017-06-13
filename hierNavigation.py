@@ -2,6 +2,7 @@
 
 from psychopy_util import *
 from config import *
+import pickle
 
 
 def show_one_trial(param):
@@ -66,33 +67,6 @@ def show_one_trial(param):
     return param
 
 
-def generate_trials():
-    # generate unique combinations
-    unique_trials = []
-    practices = []
-    for anchor in range(NUM_FACES):
-        for dist in range(1, NUM_FACES):
-            trials = unique_trials \
-                if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) and (dist <= MAX_DISTANCE) \
-                else practices
-            if anchor - dist >= 0:
-                trials.append({
-                    'anchor': anchor,
-                    'direction': DIRECTIONS[1],  # up
-                    'distance': dist
-                })
-            if anchor + dist < NUM_FACES:
-                trials.append({
-                    'anchor': anchor,
-                    'direction': DIRECTIONS[0],  # down
-                    'distance': dist
-                })
-    trials = [list(unique_trials) for i in range(NUM_RUNS)]
-    for run in trials:
-        random.shuffle(run)
-    return trials, practices
-
-
 def validation(items):
     # check empty field
     for key in items.keys():
@@ -144,8 +118,11 @@ if __name__ == '__main__':
         img.pos = pos
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
-    # randomize trials TODO
-    trials, practices = generate_trials()
+    # get trials from pickle file
+    trials = pickle.load(DESIGN_FILENAME)
+    practices = pickle.load(DESIGN_FILENAME)
+    print trials
+    print practices
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
