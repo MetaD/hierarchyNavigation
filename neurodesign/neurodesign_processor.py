@@ -1,4 +1,4 @@
-DIR = 'design_2_1'
+DIR = 'design_0_0x/'
 FILE_NAMES = ('ITIs.txt', 'stimulus_0.txt', 'stimulus_1.txt')
 TRIAL_TIME = 11.0
 
