@@ -1,4 +1,4 @@
-id,response rate,accuracy
+id,response rate,accuracy,free response,#1 visualization,#1 direction,#1 correct,#2 visualization,#2 direction,#2 correct,#3 visualization,#3 direction,#3 correct,#4 visualization,#4 direction,#4 correct
 1,94.79%,54.94%
 13,95.83%,19.56%
 15,91.66%,81.81%
@@ -22,16 +22,18 @@ id,response rate,accuracy
 44,97.22%,94.28%
 45,97.22%,47.14%
 46,98.61%,100.0%
-47,100.0%,76.92%
-48,92.45%,40.81%
-49,98.11%,46.15%
+47,100.0%,77.08%
+48,91.66%,43.18%,I ranked the members in my head. Before the choices appeared I was trying to remember what ranking that person was in the organization.,up,UP,True,down,DOWN,False,down,DOWN,False,up,UP,False
+49,97.91%,48.93%,"I tried to memorize people by looking at their facial features, what was special about their features and what distinguished them from others. I also tried to visualize a tree of hierarchy to clarify their level of power. 
+Before the four response choices appeared, I tried to visualize an image of the person.",up,DOWN,True,up,UP,False,up,DOWN,False,right,UP,False
 5,98.95%,35.78%
 50,20.0%,0.0%
-51,92.45%,26.53%
-52,90.56%,47.91%
-53,96.22%,37.25%
-54,84.90%,24.44%
-55,96.22%,37.25%
-56,54.71%,13.79%
+51,91.66%,22.72%,"I was trying to recall from the very first task which faces were ranked higher or loeer than the picture given. Thus, once the four images appeared I was aware of which one could be the answer.
+=",down,DOWN,True,right,DOWN,True,left,UP,True,down,UP,False
+52,89.58%,53.48%,I would memorize the names of each face and try to put them in order after experiencing which one I had previously answered right or wrong.,up,UP,False,down,DOWN,False,up,DOWN,False,up,UP,False
+53,95.83%,39.13%,"I tried to create a sequence starting with 3 people, then adding one to either the bottom of the sequence or the top of the sequence. I kept saying the sequence over and over again in my head to rehearse it so I could be more accurate. After I had a rough idea of the sequence, I could quickly think of the individuals that were higher on the list and lower on the list, to which I began by making rough estimates that were slightly inaccurate which eventually became more and more accurate over time.",down,DOWN,False,down,DOWN,False,up,UP,False,up,UP,True
+54,83.33%,25.0%,I felt like Jacob was the most powerful so if there was a large differential upwards I would pick him. I did not have a lot of strategies,down,DOWN,False,up,UP,False,down,DOWN,False,up,UP,True
+55,95.83%,36.95%,"Thinking of the people in two groups - the higher group and the lower group, and deciding which group each person fit into, and then where they fit within the specified group.",up,UP,True,up,DOWN,True,up,UP,False,down,DOWN,False
+56,50.0%,16.66%,"Felt weird, I was guessing the entire time because the timer would not give me enough time to look at each of the faces, it would flash a face, then tell me I was too slow.",none,DOWN,False,right,UP,False,down,DOWN,False,none,UP,False
 6,90.62%,56.32%
 7,94.79%,75.82%
