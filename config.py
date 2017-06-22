@@ -27,13 +27,13 @@ DESIGN_FILENAME = 'test_designs.pkl'
 TOP_INSTR_POS = (0, 0.85)
 IMG_DIST = 415  # horizontal or vertical distance from images to the middle of screen, in pixels
 # Times
-FACE_TIME = 0.5
-FIXATION_TRIGGERS = (1, 2)
+FACE_TIME = 1
+FIXATION_TIME = 0.5
 NUMBER_TIME = 0.5
-BLANK_TRIGGERS = (3, 4)
+BLANK_TRIGGER = 6
 SELECTION_TIME = 1.5
 FEEDBACK_TRIGGER = 2
-ITI_TRIGGERS = (2, 3, 4)
+# ITI_TRIGGERS = (4, 5, 6, 7)
 # Strings
 FEEDBACK_RIGHT = 'Correct!'
 FEEDBACK_WRONG = 'Wrong.'
