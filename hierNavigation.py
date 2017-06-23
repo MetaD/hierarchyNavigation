@@ -9,17 +9,17 @@ def show_one_trial(param):
     infoLogger.info('Starting trial')
     # 0 anchor face
     infoLogger.info('Showing anchor face')
-    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TRIGGER, wait_trigger=True)
     infoLogger.info('End of anchor face')
     # 1 fixation
-    presenter.show_fixation(random.choice(FIXATION_TRIGGERS), wait_trigger=True)
+    presenter.show_fixation(FIXATION_TIME, wait_trigger=False)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     infoLogger.info('Showing number')
-    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TRIGGER, wait_trigger=True)
     infoLogger.info('End of number')
     # 3 fixation (mental navigation)
-    presenter.show_fixation(random.choice(BLANK_TRIGGERS), wait_trigger=True)
+    presenter.show_fixation(BLANK_TRIGGER, wait_trigger=True)
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -57,7 +57,7 @@ def show_one_trial(param):
         option.pos = presenter.CENTRAL_POS
     # 6 interval between trials
     infoLogger.info('End of trial')
-    presenter.show_fixation(random.choice(ITI_TRIGGERS), wait_trigger=True)
+    presenter.show_fixation(param['iti'], wait_trigger=True)
     # return
     param['options'] = options
     if response is None:
