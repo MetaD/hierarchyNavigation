@@ -206,8 +206,8 @@ if __name__ == '__main__':
     img_prefix = sinfo['Gender'][0]
 
     # create data file
-    postfix = '' if sinfo['Type'] == 'Normal' else '_questions'
-    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '.txt')
+    file_postfix = '' if sinfo['Type'] == 'Normal' else '_questions'
+    dataLogger = DataHandler(DATA_FOLDER, str(sid) + file_postfix + '.txt')
     # save info from the dialog box
     dataLogger.write_data({
         k: str(sinfo[k]) for k in sinfo.keys()
@@ -236,7 +236,7 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
-    if sinfo['Type'] != 'After navigation':
+    if sinfo['Type'] != 'After navigation':  # normal or after mouse tracker
         presenter.show_instructions(INSTR_0)
         presenter.show_instructions(color_instr)
         presenter.show_instructions(INSTR_1)
@@ -271,9 +271,9 @@ if __name__ == '__main__':
             if trial_counter >= MAX_NUM_TRIALS:
                 break
 
-    # show a free response question
+    # show a free response question (strategy)
     if sinfo['Type'] == 'After navigation':
-        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
+        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q1, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
         cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
         text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
         warning_color = 0
@@ -290,8 +290,8 @@ if __name__ == '__main__':
                     break
         dataLogger.write_data({'response': response, 'rt': rt})
 
-    # show questions at the end
-    if sinfo['Type'] != 'Normal':
+    # show multiple choice questions
+    if sinfo['Type'] != 'Normal':  # after navigation or after mouse tracker
         two_step_stim, two_step_img_size, two_step_anchor_pos, \
         three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos = construct_questions()
         # generate trials
@@ -306,6 +306,25 @@ if __name__ == '__main__':
         for q in question_trials:
             data = show_one_trial(q, True)
             dataLogger.write_data(data)
+
+    # another free response question (what could make things easier)
+    if sinfo['Type'] == 'After navigation':
+        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q2, pos=(0, 0.65), wrapWidth=1.5)
+        cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
+        text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
+        warning_color = 0
+        while True:
+            response, rt, last_key = text_in.wait_key()
+            response = response.strip()
+            if last_key[0] == 'return' and last_key[1]['command']:
+                if len(response) == 0:
+                    warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
+                                              color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
+                    text_in.add_other_stim(warning)
+                    warning_color = 1 - warning_color  # toggle
+                else:
+                    break
+        dataLogger.write_data({'response': response, 'rt': rt})
 
     # end
     presenter.show_instructions(INSTR_END)

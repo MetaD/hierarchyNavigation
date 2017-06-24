@@ -53,13 +53,15 @@ INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practi
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
 INSTR_QUESTION = 'In the next part, you will be asked to perform the same task and then answer a few questions.'
 INSTR_END = 'The task is complete!\nThank you for participating!'
-INSTR_OPEN_ENDED_Q = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
-                     'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
-                     'use to arrive at your response on each trial?\n' \
-                     'Please describe what it felt like you were doing during the period after the reference face ' \
-                     'and number appeared, but before the 4 response choices appeared.'
+INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
+                      'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
+                      'use to arrive at your response on each trial?\n' \
+                      'Please describe what it felt like you were doing during the period after the reference face ' \
+                      'and number appeared, but before the 4 response choices appeared.'
 INSTR_OPEN_ENDED_CONT = 'Press command + enter to submit and continue'
 WARNING_OPEN_ENDED_Q = 'Your response is important to us. Please write something.'
 INSTR_MULTI_CHOICE_Q = 'The options below illustrate a few ways that people visualize this problem. ' \
                        'Please press V, F, T, G or D to choose an option that is most similar to your approach on ' \
                        'this trial.'
+INSTR_OPEN_ENDED_Q2 = 'If you found this task to be difficult, is there anything we could change that might make it ' \
+                      'easier?'
