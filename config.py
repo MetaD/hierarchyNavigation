@@ -9,8 +9,6 @@ ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('q', 'w', 'a', 's')
-OPEN_ENDED_QUESTION = True
-MULTI_CHOICE_QUESTIONS = True
 MULTI_CHOICE_KEYS = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
@@ -54,8 +52,8 @@ INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practi
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
 INSTR_QUESTION = 'In the next part, you will be asked to perform the same task and then answer a few questions.'
-INSTR_END = 'The experiment is complete!\nThank you for participating!'
-INSTR_OPEN_ENDED_Q = 'We\'d like to know more about the strategies that different people use to do this task.\n' \
+INSTR_END = 'The task is complete!\nThank you for participating!'
+INSTR_OPEN_ENDED_Q = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
                      'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
                      'use to arrive at your response on each trial?\n' \
                      'Please describe what it felt like you were doing during the period after the reference face ' \
