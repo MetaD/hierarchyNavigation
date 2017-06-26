@@ -124,9 +124,11 @@ def validation(items):
 def get_positions(window):
     # calculate 4 image positions so that the distances from them to the screen center are the same
     x0, y0 = window.size
-    x = float(IMG_DIST) / x0
-    y = float(IMG_DIST) / y0
-    return (-x, y), (x, y), (-x, -y), (x, -y)
+    x1 = float(IMG_DISTS[0]) / x0
+    y1 = float(IMG_DISTS[0]) / y0
+    x2 = float(IMG_DISTS[1]) / x0
+    y2 = float(IMG_DISTS[1]) / y0
+    return (-x2, y2), (-x1, y1), (x1, -y1), (x2, -y2)
 
 
 def construct_questions():
@@ -245,8 +247,6 @@ if __name__ == '__main__':
                  for key, pos in zip(RESPONSE_KEYS, img_positions)]
         presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
         # practice
-        if sinfo['Type'] == 'After mousetracker':
-            NUM_PRACTICE_TRIALS /= 2  # less practice
         presenter.show_instructions(INSTR_PRACTICE)
         practices = random.sample(practices, NUM_PRACTICE_TRIALS)
         for trial in practices:

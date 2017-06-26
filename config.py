@@ -8,7 +8,7 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
-RESPONSE_KEYS = ('q', 'w', 'a', 's')
+RESPONSE_KEYS = ('1', 'w', 'd', 'v')
 MULTI_CHOICE_KEYS = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
@@ -21,7 +21,7 @@ IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
 # Positions
 TOP_INSTR_POS = (0, 0.85)
-IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels
+IMG_DISTS = (300, 750)  # perpendicular distances from images to the middle of screen, in pixels
 # Times
 FACE_TIME = 1
 FIXATION_TIME = 0.5
@@ -47,7 +47,7 @@ INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter tha
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' \
           'to figure out your response before they appear so that you can respond in time.'
 INSTR_2 = 'When the response options are presented, they\'ll look like this:'
-INSTR_3 = 'Press the Q, W, A or S key to select a given face, like this:'
+INSTR_3 = 'Press 1, W, D or V to select a given face, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
