@@ -9,7 +9,7 @@ ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('1', 'w', 'd', 'v')
-MULTI_CHOICE_KEYS = ('d', 'f', 't', 'g', 'v')  # down, left, right, up, none
+MULTI_CHOICE_KEYS = ('a', 's', 'e', 'd', 'x')  # down, left, right, up, none
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}
@@ -31,8 +31,8 @@ SELECTION_TIME = 1.5
 FEEDBACK_TIME = 1.5
 TRIAL_INTERVALS = (2, 3)
 # Strings
-FEEDBACK_RIGHT = 'Correct!'
-FEEDBACK_WRONG = 'Wrong.'
+FEEDBACK_RIGHT = IMG_FOLDER + 'correct.png'
+FEEDBACK_WRONG = IMG_FOLDER + 'Wrong.png'
 FEEDBACK_SLOW = 'Too slow. Please respond faster.'
 # Instructions
 INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the organization you\'ve learned about.',
@@ -61,7 +61,7 @@ INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that differe
 INSTR_OPEN_ENDED_CONT = 'Press command + enter to submit and continue'
 WARNING_OPEN_ENDED_Q = 'Your response is important to us. Please write something.'
 INSTR_MULTI_CHOICE_Q = 'The options below illustrate a few ways that people visualize this problem. ' \
-                       'Please press V, F, T, G or D to choose an option that is most similar to your approach on ' \
+                       'Please press X, S, E, D or A to choose an option that is most similar to your approach on ' \
                        'this trial.'
 INSTR_OPEN_ENDED_Q2 = 'If you found this task to be difficult, is there anything we could change that might make it ' \
                       'easier?'

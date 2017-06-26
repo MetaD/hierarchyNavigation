@@ -37,13 +37,6 @@ def show_one_trial(param, question=False):
     option_stims = [images[index] for index in options]
     for option, position in zip(option_stims, img_positions):
         option.pos = position
-    # 5.0 feedback
-    correct_feedback = visual.TextStim(presenter.window, FEEDBACK_RIGHT, height=0.2)
-    correct_bg = visual.Rect(presenter.window, width=2.1, height=2.1, fillColor=GREEN)
-    incorrect_feedback = visual.TextStim(presenter.window, FEEDBACK_WRONG, height=0.2, color=BLACK)
-    incorrect_bg = visual.Rect(presenter.window, width=2.1, height=2.1, fillColor=RED)
-    resp_feedback = ([incorrect_bg, incorrect_feedback], [correct_bg, correct_feedback])
-    no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
     selection_time = float('inf') if question else SELECTION_TIME
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, selection_time, 0, highlight,
@@ -236,6 +229,13 @@ if __name__ == '__main__':
     dataLogger.write_data({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()})
     color_instr = INSTR_COLOR.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]],
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
+    # create feedback stimuli
+    correct_feedback = visual.ImageStim(presenter.window, FEEDBACK_RIGHT)
+    correct_bg = visual.Rect(presenter.window, width=2.1, height=2.1, fillColor=GREEN)
+    incorrect_feedback = visual.ImageStim(presenter.window, FEEDBACK_WRONG)
+    incorrect_bg = visual.Rect(presenter.window, width=2.1, height=2.1, fillColor=RED)
+    resp_feedback = ([incorrect_bg, incorrect_feedback], [correct_bg, correct_feedback])
+    no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
 
     # show instructions
     if sinfo['Type'] != 'After navigation':  # normal or after mouse tracker
