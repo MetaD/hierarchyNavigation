@@ -19,9 +19,9 @@ BLACK = '#000000'
 # Paths
 IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
-# Positions
+# Positions & Lengths
 TOP_INSTR_POS = (0, 0.85)
-IMG_DISTS = (300, 750)  # perpendicular distances from images to the middle of screen, in pixels
+IMG_SIDE_LENGTH = 300  # original length in pixels
 # Times
 FACE_TIME = 1
 FIXATION_TIME = 0.5
