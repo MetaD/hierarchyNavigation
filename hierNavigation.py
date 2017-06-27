@@ -141,6 +141,12 @@ def get_option_img_size(window):
     return img_height * y0 / x0, img_height
 
 
+def show_key_mapping():
+    texts = [visual.TextStim(presenter.window, key.upper(), pos=(pos[0] * 0.9, pos[1] * 0.9), color=BLACK, height=0.5)
+             for key, pos in zip(RESPONSE_KEYS, img_positions)]
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
+
+
 def construct_questions():
     quesion = visual.TextStim(presenter.window, INSTR_MULTI_CHOICE_Q, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
     option_v = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
@@ -255,9 +261,7 @@ if __name__ == '__main__':
         presenter.show_instructions(color_instr)
         presenter.show_instructions(INSTR_1)
         presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
-        texts = [visual.TextStim(presenter.window, key.upper(), pos=(pos[0]*0.9, pos[1]*0.9), color=BLACK, height=0.5)
-                 for key, pos in zip(RESPONSE_KEYS, img_positions)]
-        presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
+        show_key_mapping()
         # practice
         presenter.show_instructions(INSTR_PRACTICE)
         practices = random.sample(practices, NUM_PRACTICE_TRIALS)
@@ -314,7 +318,10 @@ if __name__ == '__main__':
         } for i in range(4)]
         random.shuffle(question_trials)
         # start
-        presenter.show_instructions(INSTR_QUESTION + '\n\nRemember: ' + color_instr)
+        which_task_instr = INSTR_WHICH_TASK[1] if sinfo['Type'] == 'After navigation' else INSTR_WHICH_TASK[0]
+        presenter.show_instructions(INSTR_QUESTION.format(which_task=which_task_instr) + '\n\nRemember: ' + color_instr)
+        if sinfo['Type'] == 'After navigation':  # show a reminder
+            show_key_mapping()
         for q in question_trials:
             data = show_one_trial(q, True)
             dataLogger.write_data(data)

@@ -51,7 +51,8 @@ INSTR_3 = 'Press 1, W, D or V to select a given face, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
-INSTR_QUESTION = 'In the next part, you will be asked to perform the same task and then answer a few questions.'
+INSTR_QUESTION = 'In the next part, you will be asked to perform {which_task}, and then answer a few questions.'
+INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')  # (normal/after mt, after navigation)
 INSTR_END = 'The task is complete!\nThank you for participating!'
 INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
                       'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
