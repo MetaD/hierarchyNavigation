@@ -288,7 +288,7 @@ if __name__ == '__main__':
                 break
 
     # show a free response question (strategy)
-    if sinfo['Type'] == 'After navigation':
+    if sinfo['Type'] != 'Normal':
         q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q1, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
         cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
         text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
