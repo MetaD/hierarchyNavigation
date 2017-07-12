@@ -1,0 +1,57 @@
+{"Gender": "Female", "Age": "20", "Type": "Normal", "Screen": "Exp", "ID": "63"}
+"#[ PsychoPy2 RuntimeInfoStart ]\n  #[[ PsychoPy ]] #---------\n    psychopyVersion: 1.85.2\n    psychopyHaveExtRush: True\n  #[[ Experiment ]] #---------\n    experimentRunTime: 2017_06_30 13:25 (Year_Month_Day Hour:Min)\n    experimentRunTime.epoch: 1498854334\n    experimentScript: hierNavigation.py\n    experimentScript.digestSHA1: 102456d76c04f5f7f5f900cc28c107b5ccd1c051\n    experimentScript.directory: /Users/lab/Desktop/Navigation\n  #[[ System ]] #---------\n    systemHaveInternetAccess: True\n    systemHostName: Labs-iMac.local\n    systemLocale: C\n    systemMemFreeRAM: 4100.328125\n    systemMemTotalRAM: 8192.0\n    systemPlatform: darwin 10.11.6 x86_64\n    systemPyo.InputDevices: {0: {'host api index': 0, 'latency': 0.0029931971803307533, 'default sr': 44100, 'name': u'Built-in Microph'}}\n    systemPyo.OutputDevices: {1: {'host api index': 0, 'latency': 0.00972789153456688, 'default sr': 44100, 'name': u'Built-in Output'}}\n    systemPyoVersion: 0.8.6\n    systemRebooted: Jun 19 19:26\n    systemSec.OpenSSLVersion: OpenSSL 0.9.8zh 14 Jan 2016\n    systemSec.pythonSSL: True\n    systemTimeNumpySD1000000_sec: 0.0052\n    systemUser: lab\n    systemUserID: 501\n    systemUserProcCount: 100\n    systemUserProcFlagged: 'Google Chrome' mdworker Safari\n    systemUsersCount: 1\n  #[[ Window ]] #---------\n    windowWinType: pyglet\n    windowUnits: norm\n    windowSize_pix: [1920 1080]\n    windowScreen: 0\n    windowRgb: [ 0.  0.  0.]\n    windowPos_pix: [0, 0]\n    windowMonitor.name: __blank__\n    windowMonitor.getWidth_cm: None\n    windowMonitor.getDistance_cm: None\n    windowMonitor.currentCalibName: 2017_06_30 13:25\n    windowIsFullScr: True\n  #[[ Python ]] #---------\n    pythonVersion: 2.7.12\n  #[[ OpenGL ]] #---------\n#[ PsychoPy2 RuntimeInfoEnd ]\n"
+{"0": "img/F2.jpg", "1": "img/F4.jpg", "2": "img/F9.jpg", "3": "img/F6.jpg", "4": "img/F1.jpg", "5": "img/F8.jpg", "6": "img/F7.jpg", "7": "img/F3.jpg", "8": "img/F5.jpg"}
+{"U": "Blue", "D": "Orange"}
+{"distance": 5, "direction": "U", "practice": true, "anchor": 6, "options": [1, 0, 2, 3], "response": null}
+{"rt": 0.6090600490570068, "distance": 1, "direction": "U", "correct": true, "response": 7, "practice": true, "anchor": 8, "options": [6, 4, 5, 7]}
+{"rt": 0.4472520351409912, "distance": 1, "direction": "D", "correct": true, "response": 7, "practice": true, "anchor": 6, "options": [5, 7, 8, 4]}
+{"rt": 0.4117460250854492, "distance": 2, "direction": "D", "correct": true, "response": 3, "practice": true, "anchor": 1, "options": [3, 2, 5, 4]}
+{"rt": 0.5277841091156006, "distance": 2, "direction": "U", "correct": true, "response": 6, "practice": true, "anchor": 8, "options": [5, 6, 4, 7]}
+{"rt": 0.8498427867889404, "distance": 4, "direction": "D", "correct": false, "response": 6, "anchor": 4, "options": [8, 6, 7, 5]}
+{"rt": 0.5766761302947998, "distance": 2, "direction": "U", "correct": true, "response": 1, "anchor": 3, "options": [1, 4, 2, 0]}
+{"rt": 0.5711989402770996, "distance": 2, "direction": "D", "correct": true, "response": 8, "anchor": 6, "options": [4, 7, 5, 8]}
+{"rt": 0.5646109580993652, "distance": 3, "direction": "U", "correct": false, "response": 1, "anchor": 3, "options": [4, 1, 0, 2]}
+{"rt": 0.5591762065887451, "distance": 3, "direction": "U", "correct": true, "response": 1, "anchor": 4, "options": [3, 1, 0, 2]}
+{"rt": 0.5864629745483398, "distance": 4, "direction": "U", "correct": true, "response": 1, "anchor": 5, "options": [2, 1, 0, 3]}
+{"rt": 0.6361889839172363, "distance": 2, "direction": "D", "correct": true, "response": 4, "anchor": 2, "options": [6, 4, 3, 5]}
+{"response": null, "distance": 3, "direction": "U", "anchor": 5, "options": [2, 3, 0, 1]}
+{"rt": 1.2445459365844727, "distance": 2, "direction": "U", "correct": true, "response": 4, "anchor": 6, "options": [2, 3, 4, 5]}
+{"rt": 0.5637311935424805, "distance": 2, "direction": "U", "correct": true, "response": 2, "anchor": 4, "options": [3, 2, 0, 1]}
+{"rt": 0.6466331481933594, "distance": 3, "direction": "U", "correct": true, "response": 3, "anchor": 6, "options": [4, 2, 5, 3]}
+{"rt": 0.8772859573364258, "distance": 2, "direction": "D", "correct": true, "response": 5, "anchor": 3, "options": [4, 7, 5, 6]}
+{"rt": 0.8908050060272217, "distance": 3, "direction": "D", "correct": false, "response": 6, "anchor": 2, "options": [3, 4, 5, 6]}
+{"rt": 0.6157848834991455, "distance": 4, "direction": "U", "correct": true, "response": 0, "anchor": 4, "options": [3, 1, 2, 0]}
+{"rt": 0.7442891597747803, "distance": 3, "direction": "D", "correct": true, "response": 7, "anchor": 4, "options": [7, 8, 5, 6]}
+{"rt": 0.5635490417480469, "distance": 4, "direction": "U", "correct": true, "response": 2, "anchor": 6, "options": [4, 2, 3, 1]}
+{"rt": 0.422731876373291, "distance": 2, "direction": "U", "correct": true, "response": 3, "anchor": 5, "options": [3, 2, 1, 4]}
+{"rt": 0.5190911293029785, "distance": 3, "direction": "D", "correct": true, "response": 6, "anchor": 3, "options": [5, 6, 4, 7]}
+{"rt": 1.131659984588623, "distance": 4, "direction": "D", "correct": true, "response": 7, "anchor": 3, "options": [6, 7, 5, 8]}
+{"rt": 0.48645806312561035, "distance": 2, "direction": "U", "correct": true, "response": 0, "anchor": 2, "options": [0, 4, 3, 1]}
+{"rt": 0.7080471515655518, "distance": 2, "direction": "D", "correct": true, "response": 7, "anchor": 5, "options": [8, 6, 7, 4]}
+{"rt": 0.8245420455932617, "distance": 4, "direction": "D", "correct": false, "response": 5, "anchor": 2, "options": [4, 5, 6, 7]}
+{"rt": 0.5448520183563232, "distance": 2, "direction": "D", "correct": true, "response": 6, "anchor": 4, "options": [5, 8, 6, 7]}
+{"rt": 1.2443468570709229, "distance": 3, "direction": "D", "correct": true, "response": 8, "anchor": 5, "options": [4, 6, 7, 8]}
+{"rt": 0.9108781814575195, "distance": 3, "direction": "D", "correct": true, "response": 5, "anchor": 2, "options": [5, 6, 4, 3]}
+{"rt": 0.635767936706543, "distance": 2, "direction": "U", "correct": true, "response": 3, "anchor": 5, "options": [2, 1, 3, 4]}
+{"rt": 0.5391509532928467, "distance": 3, "direction": "U", "correct": true, "response": 3, "anchor": 6, "options": [4, 1, 3, 2]}
+{"rt": 0.582953929901123, "distance": 2, "direction": "D", "correct": true, "response": 6, "anchor": 4, "options": [7, 6, 5, 8]}
+{"rt": 0.9608581066131592, "distance": 3, "direction": "U", "correct": false, "response": 3, "anchor": 5, "options": [1, 4, 2, 3]}
+{"rt": 0.707528829574585, "distance": 2, "direction": "D", "correct": true, "response": 7, "anchor": 5, "options": [6, 4, 7, 8]}
+{"rt": 0.5122339725494385, "distance": 4, "direction": "D", "correct": false, "response": 7, "anchor": 2, "options": [7, 6, 8, 5]}
+{"rt": 0.6374320983886719, "distance": 2, "direction": "U", "correct": true, "response": 1, "anchor": 3, "options": [0, 2, 1, 4]}
+{"rt": 0.652813196182251, "distance": 2, "direction": "U", "correct": true, "response": 0, "anchor": 2, "options": [3, 4, 0, 1]}
+{"rt": 0.9000320434570312, "distance": 3, "direction": "D", "correct": true, "response": 8, "anchor": 5, "options": [8, 7, 6, 4]}
+{"rt": 0.5607919692993164, "distance": 4, "direction": "U", "correct": true, "response": 0, "anchor": 4, "options": [0, 1, 2, 3]}
+{"rt": 0.6119480133056641, "distance": 2, "direction": "D", "correct": true, "response": 8, "anchor": 6, "options": [4, 7, 5, 8]}
+{"rt": 0.7560389041900635, "distance": 4, "direction": "D", "correct": false, "response": 6, "anchor": 3, "options": [7, 8, 5, 6]}
+{"rt": 0.5747208595275879, "distance": 3, "direction": "U", "correct": true, "response": 1, "anchor": 4, "options": [2, 1, 3, 0]}
+{"rt": 0.4971139430999756, "distance": 2, "direction": "D", "correct": true, "response": 4, "anchor": 2, "options": [6, 4, 5, 3]}
+{"rt": 0.6791369915008545, "distance": 3, "direction": "U", "correct": true, "response": 0, "anchor": 3, "options": [2, 0, 4, 1]}
+{"rt": 0.7334871292114258, "distance": 4, "direction": "U", "correct": false, "response": 0, "anchor": 6, "options": [3, 0, 1, 2]}
+{"rt": 0.8898041248321533, "distance": 3, "direction": "D", "correct": true, "response": 7, "anchor": 4, "options": [8, 6, 7, 5]}
+{"rt": 0.940716028213501, "distance": 4, "direction": "U", "correct": true, "response": 1, "anchor": 5, "options": [2, 0, 3, 1]}
+{"rt": 0.5761361122131348, "distance": 3, "direction": "D", "correct": true, "response": 6, "anchor": 3, "options": [8, 6, 7, 5]}
+{"rt": 0.9862611293792725, "distance": 2, "direction": "U", "correct": true, "response": 2, "anchor": 4, "options": [1, 3, 0, 2]}
+{"rt": 0.8436648845672607, "distance": 4, "direction": "D", "correct": false, "response": 5, "anchor": 4, "options": [8, 6, 7, 5]}
+{"rt": 0.9383358955383301, "distance": 2, "direction": "D", "correct": true, "response": 5, "anchor": 3, "options": [5, 7, 6, 4]}
+{"rt": 0.8210971355438232, "distance": 2, "direction": "U", "correct": true, "response": 4, "anchor": 6, "options": [5, 2, 4, 3]}
