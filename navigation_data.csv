@@ -1,20 +1,23 @@
-id,response rate,accuracy,free response,#1 visualization,#1 direction,#1 correct,#2 visualization,#2 direction,#2 correct,#3 visualization,#3 direction,#3 correct,#4 visualization,#4 direction,#4 correct
+id,response rate,accuracy,free response,#1 visualization,#1 direction,#1 correct,#2 visualization,#2 direction,#2 correct,#3 visualization,#3 direction,#3 correct,#4 visualization,#4 direction,#4 correct,how to make it easier
 1,94.79%,54.94%
+2,96.87%,59.13%
+3,96.87%,35.48%
+4,96.87%,30.10%
+5,98.95%,35.78%
+6,90.62%,56.32%
+7,94.79%,75.82%
 13,95.83%,19.56%
 15,91.66%,81.81%
 16,100.0%,28.12%
 19,96.87%,24.73%
-2,96.87%,59.13%
 20,93.75%,44.44%
 21,98.95%,28.42%
 28,98.61%,22.53%
 29,98.95%,90.52%
-3,96.87%,35.48%
 35,87.5%,27.38%
 36,90.62%,44.82%
 37,91.66%,31.81%
 38,91.66%,10.22%
-4,96.87%,30.10%
 40,93.75%,26.66%
 41,92.70%,73.03%
 42,97.91%,34.04%
@@ -26,7 +29,6 @@ id,response rate,accuracy,free response,#1 visualization,#1 direction,#1 correct
 48,91.66%,43.18%,I ranked the members in my head. Before the choices appeared I was trying to remember what ranking that person was in the organization.,up,UP,True,down,DOWN,False,down,DOWN,False,up,UP,False
 49,97.91%,48.93%,"I tried to memorize people by looking at their facial features, what was special about their features and what distinguished them from others. I also tried to visualize a tree of hierarchy to clarify their level of power. 
 Before the four response choices appeared, I tried to visualize an image of the person.",up,DOWN,True,up,UP,False,up,DOWN,False,right,UP,False
-5,98.95%,35.78%
 50,20.0%,0.0%
 51,91.66%,22.72%,"I was trying to recall from the very first task which faces were ranked higher or loeer than the picture given. Thus, once the four images appeared I was aware of which one could be the answer.
 =",down,DOWN,True,right,DOWN,True,left,UP,True,down,UP,False
@@ -35,5 +37,14 @@ Before the four response choices appeared, I tried to visualize an image of the 
 54,83.33%,25.0%,I felt like Jacob was the most powerful so if there was a large differential upwards I would pick him. I did not have a lot of strategies,down,DOWN,False,up,UP,False,down,DOWN,False,up,UP,True
 55,95.83%,36.95%,"Thinking of the people in two groups - the higher group and the lower group, and deciding which group each person fit into, and then where they fit within the specified group.",up,UP,True,up,DOWN,True,up,UP,False,down,DOWN,False
 56,50.0%,16.66%,"Felt weird, I was guessing the entire time because the timer would not give me enough time to look at each of the faces, it would flash a face, then tell me I was too slow.",none,DOWN,False,right,UP,False,down,DOWN,False,none,UP,False
-6,90.62%,56.32%
-7,94.79%,75.82%
+60,85.41%,19.51%,"I did not memorise anything, all i remember was Alex because her face look fierce, she might have the most power. I was just guessing the whole time as it was kind of confusing.",down,DOWN,False,right,UP,False,down,DOWN,False,up,UP,False,I am not sure as I dont really get the objective of it.
+61,100.0%,95.83%,"I mostly remembered names rather than faces- after the first task I had determined the order of names so I recalled that. I also noticed that I could recall the colors of each person's shirt- this was not explicitly memorized by me but I noticed it helped me sort out the correct answer when the 4 choices popped up.
+
+It felt very tense and stressful. I kept thining I would respond too slowly since that's what happened during my practice trials.",down,UP,True,down,DOWN,True,up,UP,True,down,DOWN,True,No not really
+62,89.58%,88.37%,It felt sort of stressful because there was such a short amount of time to figure out the answer and then select it. I tried to go through each of the people ahead or below the number of steps to figure out the answer so because of that it was much easier when needing to go only a few steps compared to many.,down,DOWN,True,down,DOWN,False,up,UP,True,down,UP,True,More time would defnitely make it easier. And smaller jumps away from the level of the reference picture.
+63,97.91%,80.85%,"After some trial and error, I began to form the hierarchy of the faces/people in my head and assigned them a ranking. In order to help with the tasks that determined who was more powerful, I sorted the people into tiers of two. So, Emily and Taylor were the top tier and so on. Also, it helped that each person had a different colored shirt on, so it was what helped me remember who went where in the rankings. Since I had established the order of each person in my head, during the period aftr te reference face and number appeared, I would count to that person in the ranking and the tiers would help expedite the counting.",up,UP,True,down,DOWN,True,down,DOWN,True,up,UP,False,The only issue I came across was that I was a bit fatigued after doing the same task over and over again which caused me to make some mistakes even though I knew the ranking of each person but maybe that's just me.
+64,4/5,4/4,,up,UP,False,down,DOWN,True,none,DOWN,True,none,UP,True,
+65,0/5,0/0,Visualizing and memorizing the people's faces helped me respond to each answer faster and more correctly. The process was really quick and I couldnt really focus on what the number and color meant. It was hard to move the mouse as quick as the computer wanted me to as well.,down,DOWN,False,left,UP,False,right,DOWN,False,up,UP,False,
+66,3/5,1/3,thinking back to the ranking task,left,DOWN,False,right,UP,False,down,DOWN,True,right,UP,False,
+67,93.75%,15.55%
+68,0/5,0/0,"I h=just tried to remember which faces were the most powerful and least powerful. Then I tried to geuss which ones would me more or less powerful according to the number of steps and the reference point. After the reference face, I was trying to visualize the faces and their associated power.",down,DOWN,True,down,DOWN,True,left,UP,False,up,UP,False,
