@@ -37,7 +37,7 @@ def show_one_trial(param, question=False):
     option_stims = [images[index] for index in options]
     for option, position in zip(option_stims, img_positions):
         option.pos = position
-        # option.size = option_img_size
+        option.size = option_img_size
     # 5.0 create feedback stimuli  # TODO why do I have to create rectangles every time???
     correct_feedback = visual.ImageStim(presenter.window, FEEDBACK_RIGHT)
     correct_bg = visual.Rect(presenter.window, width=2.1, height=2.1, fillColor=GREEN)
@@ -47,14 +47,14 @@ def show_one_trial(param, question=False):
     no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
     selection_time = float('inf') if question else SELECTION_TIME
-    # highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)
+    highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)  # TODO WHY does this change every time?!
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, selection_time, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
                                              FEEDBACK_TIME)
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
-        # option.size = None
+        option.size = None
     # - question
     if question:
         anchors = [visual.ImageStim(presenter.window, images[param['anchor']]._imName) for i in range(4)]
@@ -135,7 +135,7 @@ def get_positions(window):
 def get_option_img_size(window):
     # calculate the option image sizes so that they maintain a 1:1 height-width ratio and wouldn't overlap
     x0, y0 = window.size
-    img_height = 2.0 / NUM_OPTIONS * 0.9
+    img_height = 0.6
     return img_height * y0 / x0, img_height
 
 
