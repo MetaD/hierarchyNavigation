@@ -8,7 +8,7 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
-RESPONSE_KEYS = ('1', 'w', 'd', 'v')
+RESPONSE_KEYS = ('up', 'down', 'left', 'right')
 MULTI_CHOICE_KEYS = ('a', 's', 'e', 'd', 'x')  # down, left, right, up, none
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
@@ -21,7 +21,7 @@ IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
 # Positions & Lengths
 TOP_INSTR_POS = (0, 0.85)
-IMG_SIDE_LENGTH = 300  # original length in pixels
+IMG_DIST = 415  # horizontal or vertical distance from images to screen center, in pixels
 # Times
 FACE_TIME = 1
 FIXATION_TIME = 0.5
@@ -32,7 +32,7 @@ FEEDBACK_TIME = 1.5
 TRIAL_INTERVALS = (2, 3)
 # Strings
 FEEDBACK_RIGHT = IMG_FOLDER + 'correct.png'
-FEEDBACK_WRONG = IMG_FOLDER + 'Wrong.png'
+FEEDBACK_WRONG = IMG_FOLDER + 'wrong.png'
 FEEDBACK_SLOW = 'Too slow. Please respond faster.'
 # Instructions
 INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the organization you\'ve learned about.',
@@ -47,7 +47,7 @@ INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter tha
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' \
           'to figure out your response before they appear so that you can respond in time.'
 INSTR_2 = 'When the response options are presented, they\'ll look like this:'
-INSTR_3 = 'Press 1, W, D or V to select a given face, like this:'
+INSTR_3 = 'Press one of the arrow keys to select a given face, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
