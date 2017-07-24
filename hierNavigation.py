@@ -127,16 +127,15 @@ def validation(items):
 def get_positions(window):
     # calculate 4 image positions so that the distances from them to the screen center are the same
     x0, y0 = window.size
-    x = float(IMG_DIST) / x0
-    y = float(IMG_DIST) / y0
+    x = float(OPTION_IMG_DIST) / x0
+    y = float(OPTION_IMG_DIST) / y0
     return (0, y), (0, -y), (-x, 0), (x, 0)
 
 
 def get_option_img_size(window):
     # calculate the option image sizes so that they maintain a 1:1 height-width ratio and wouldn't overlap
     x0, y0 = window.size
-    img_height = 0.6
-    return img_height * y0 / x0, img_height
+    return OPTION_IMG_HEIGHT * y0 / x0, OPTION_IMG_HEIGHT
 
 
 def show_key_mapping():

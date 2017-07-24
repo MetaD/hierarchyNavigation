@@ -21,7 +21,8 @@ IMG_FOLDER = 'img/'
 DATA_FOLDER = 'data/'
 # Positions & Lengths
 TOP_INSTR_POS = (0, 0.85)
-IMG_DIST = 620  # horizontal or vertical distance from images to screen center, in pixels
+OPTION_IMG_DIST = 620  # horizontal or vertical distance from images to screen center, in pixels
+OPTION_IMG_HEIGHT = 0.5
 # Times
 FACE_TIME = 1
 FIXATION_TIME = 0.5
