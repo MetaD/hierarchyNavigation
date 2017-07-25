@@ -1,7 +1,7 @@
 # Experimental parameters
 NUM_PRACTICE_TRIALS = 5
 MAX_NUM_TRIALS = 999  # -> just to test the program
-NUM_RUNS = 2
+NUM_RUNS = 3
 NUM_FACES = 9
 NUM_OPTIONS = 4
 DIRECTIONS = ('D', 'U')
