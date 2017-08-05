@@ -222,7 +222,7 @@ if __name__ == '__main__':
     sinfo = {'ID': '',
              'Gender': ['Female', 'Male'],
              'Age': '',
-             'Type': ['Normal', 'After navigation', 'After mousetracker'],
+             'Type': ['Normal', 'After navigation'],
              'Screen': ['Exp', 'Test']}
     show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Type', 'Screen'])
     sid = int(sinfo['ID'])
@@ -261,7 +261,7 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # show instructions
-    if sinfo['Type'] != 'After navigation':  # normal or after mouse tracker
+    if sinfo['Type'] != 'After navigation':  # normal
         presenter.show_instructions(INSTR_0)
         presenter.show_instructions(color_instr)
         presenter.show_instructions(INSTR_1)
@@ -281,14 +281,19 @@ if __name__ == '__main__':
         trial_counter = 0
         for run in trials:
             # instructions
-            presenter.show_instructions('Run #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
+            presenter.show_instructions('Block #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
             # start run
+            correct_counter = 0
             for trial in run:
                 trial_counter += 1
                 data = show_one_trial(trial.copy())
+                if data['response'] is not None and data['correct']:
+                    correct_counter += 1
                 dataLogger.write_data(data)
                 if trial_counter >= MAX_NUM_TRIALS:
                     break
+            presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
+                                        ' points possible in this block')
             if trial_counter >= MAX_NUM_TRIALS:
                 break
 
