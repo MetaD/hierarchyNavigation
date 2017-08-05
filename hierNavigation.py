@@ -19,10 +19,10 @@ def show_one_trial(param, question=False):
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
-    options = [correct_option]
-    # 4.1 randomly pick 3 other adjacent images
+    options = []
+    # 4.1 randomly pick 3 other images adjacent to the answer
     abs_dist = 1  # absolute value of distance
-    while len(options) < NUM_OPTIONS:
+    while len(options) < NUM_OPTIONS - 1:
         dist_candidates = [-abs_dist, abs_dist]
         while len(dist_candidates) > 0:
             dist = random.choice(dist_candidates)
@@ -30,10 +30,11 @@ def show_one_trial(param, question=False):
             option = correct_option + dist
             if (option not in options) and (option >= 0) and (option < len(images)) and (option != param['anchor']):
                 options.append(option)
-            if len(options) == NUM_OPTIONS:
-                break
+                if len(options) == NUM_OPTIONS - 1:
+                    break
         abs_dist += 1
     random.shuffle(options)
+    options.insert(param['answer_index'], correct_option)
     option_stims = [images[index] for index in options]
     for option, position in zip(option_stims, img_positions):
         option.pos = position
@@ -86,6 +87,7 @@ def generate_trials():
     # generate unique combinations
     unique_trials = []
     practices = []
+    up_counter, down_counter = 0, 0
     for anchor in range(NUM_FACES):
         for dist in range(1, NUM_FACES):
             trials = unique_trials \
@@ -95,14 +97,20 @@ def generate_trials():
                 trials.append({
                     'anchor': anchor,
                     'direction': DIRECTIONS[1],  # up
-                    'distance': dist
+                    'distance': dist,
+                    'answer_index': up_counter % 4
                 })
+                if trials is unique_trials:
+                    up_counter += 1
             if anchor + dist < NUM_FACES:
                 trials.append({
                     'anchor': anchor,
                     'direction': DIRECTIONS[0],  # down
-                    'distance': dist
+                    'distance': dist,
+                    'answer_index': down_counter % 4
                 })
+                if trials is unique_trials:
+                    down_counter += 1
     trials = [list(unique_trials) for i in range(NUM_RUNS)]
     for run in trials:
         random.shuffle(run)
