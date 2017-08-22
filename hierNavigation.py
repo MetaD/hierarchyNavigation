@@ -324,7 +324,8 @@ if __name__ == '__main__':
         question_trials = [{
             'anchor': random.randint(NUM_FACES / 2 - 1, NUM_FACES / 2 + 1),
             'direction': DIRECTIONS[0] if i % 2 == 0 else DIRECTIONS[1],
-            'distance': 2 if i < 2 else 3
+            'distance': 2 if i < 2 else 3,
+            'answer_index': i
         } for i in range(4)]
         random.shuffle(question_trials)
         # start
