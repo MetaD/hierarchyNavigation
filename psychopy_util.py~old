@@ -9,10 +9,7 @@ import json
 import random
 import logging
 from psychopy import gui, visual, core, event, info
-try:
-    from serial_util import *
-except ImportError:
-    pass
+from serial_util import *
 
 
 def show_form_dialog(items, validation_func=None, reset_after_error=True, title='', order=(), tip=None, logger=None):
@@ -77,7 +74,7 @@ class Presenter:
         self.LIKERT_SCALE_LABEL_POS_Y = -0.35
         self.FEEDBACK_POS_Y_DIFF = -0.4
         # Selection
-        self.SELECTED_STIM_OPACITY_CHANGE = 0.5
+        self.SELECTED_STIM_OPACITY_CHANGE = 0.3
 
     def load_all_images(self, img_path, img_extension, img_prefix=None):
         """
@@ -87,7 +84,7 @@ class Presenter:
         :param img_prefix: a string prefix of file names. If specified, files without this prefix wouldn't be loaded
         :return: a list of psychopy.visual.ImageStim
         """
-        img_files = [filename for filename in sorted(os.listdir(img_path)) if filename.endswith(img_extension)]
+        img_files = [filename for filename in os.listdir(img_path) if filename.endswith(img_extension)]
         if img_prefix is not None:
             img_files = [filename for filename in img_files if filename.startswith(img_prefix)]
         img_files = [img_path + filename for filename in img_files]
@@ -140,7 +137,7 @@ class Presenter:
                 duration = max_wait
             else:
                 duration = 1
-                self.logger.warning('Invalid duration, waiting for one trigger')  # TODO
+                self.logger.warning('Invalid duration, waiting for one trigger')
             response = self.serial.wait_for_triggers(duration)
         else:
             # wait for a time duration
@@ -269,20 +266,17 @@ class Presenter:
                             no_response_stim=None, feedback_time=1, no_resp_feedback_time=1, resp_wait_trigger=False,
                             post_select_wait_trigger=False, feedback_wait_trigger=False):
         """
-        Draw stimuli on one screen and wait for a selection (key response). The selected stimulus can be optionally
-        highlighted (here the selected stimulus is assumed to be the element in the stimuli list which has the same
-        index as the pressed key in the response_keys list).
-        A feedback stimulus can be optionally displayed, either in its own position or next to the selected stimulus.
-        The value associated with the pressed response key will be returned. values and response_keys must have the same
-        length.
-        :param stimuli: a list of psychopy.visual stimulus to be displayed
-        :param values: a list of objects associated with the response keys. When a key is pressed to select a stimulus,
-                       the value object with the same index of the key will be returned
+        Draw stimuli on one screen and wait for a selection (key response). The selected stimulus can be highlighted.
+        A feedback stimulus can be optionally displayed next to the selected stimulus.
+        The value associated with the selected image (specified as parameters) will be returned.
+        :param stimuli: a list of psychopy.visual stimulus
+        :param values: a list of objects associated with stimuli. When a stimulus is selected, the value object with
+                       the same index will be returned
         :param response_keys: a list of string response keys corresponding to the list of stimuli
         :param max_wait: a numeric value indicating the maximum number of seconds to wait for keys.
                          By default it waits forever
         :param post_selection_time: the duration (in seconds) to display the selected stimulus with a highlight (or
-                                    reduced opacity if highlight is None). If this time is greater than 0, 
+                                    reduced opacity if highlight is None)
         :param highlight: a psychopy.visual stimuli to be displayed at same position as the selected stimulus during
                           both post_selection_time and feedback_time. If None, the selected stimulus will be shown with
                           reduced opacity
@@ -318,12 +312,9 @@ class Presenter:
             selected_stim = stimuli[response_keys.index(key_pressed)]
             self.logger.info('Showing highlighted selection')
             if highlight is None:
-                # selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
-                original_color = selected_stim.fillColor  # TODO
-                selected_stim.fillColor = '#A0A0A0'  # TODO
+                selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
                 self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
-                selected_stim.fillColor = original_color  # TODO
-                # selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
+                selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
             else:
                 highlight.pos = selected_stim.pos
                 stimuli.append(highlight)
@@ -356,17 +347,13 @@ class Presenter:
                 return {'response': selection, 'rt': rt, 'correct': correct}
 
 
-class DataLogger:
-    """
-    Write data or messages to file
-    """
-    def __init__(self, filepath, filename, log_name='', logging_info=False):
+class DataHandler:
+    # TODO make it a log file
+    def __init__(self, filepath, filename):
         """
         Open file
         :param filepath: a string data file path
         :param filename: a string data file name
-        :param log_name: a name for the log
-        :param logging_info: if True, messages or data will be logged with timestamps and logging levels
         """
         if filepath[len(filepath) - 1] != '/':
             filepath += '/'
@@ -375,16 +362,26 @@ class DataLogger:
         elif os.path.isfile(filepath + filename):
             raise IOError(filepath + filename + ' already exists')
 
-        handler = logging.FileHandler(filepath + filename)
-        if logging_info:
-            handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)8s %(message)s'))
-        self.logger = logging.getLogger(log_name)
-        self.logger.setLevel(logging.INFO)
-        self.logger.addHandler(handler)
+        self.dataFile = open(filepath + filename, mode='w')
 
-    def write_json(self, data):
+    def __del__(self):
         """
-        Write data to file
+        Close file
         """
-        string = json.dumps(data)
-        self.logger.info(string)
+        if hasattr(self, 'dataFile'):
+            self.dataFile.close()
+
+    def write_data(self, data):
+        """
+        Serialize data as a JSON object and write it to file with a newline character at the end
+        :param data: a JSON serializable object
+        """
+        json.dump(data, self.dataFile)
+        self.dataFile.write('\n')
+
+    def load_data(self):
+        """
+        Read the datafile
+        :return: a list of Python objects
+        """
+        return [json.loads(line) for line in self.dataFile]

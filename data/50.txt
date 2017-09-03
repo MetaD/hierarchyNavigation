@@ -1,0 +1,19 @@
+{"Gender": "Female", "Age": "23", "ID": "50", "Mode": "Exp"}
+"#[ PsychoPy2 RuntimeInfoStart ]\n  #[[ PsychoPy ]] #---------\n    psychopyVersion: 1.84.2\n    psychopyHaveExtRush: True\n  #[[ Experiment ]] #---------\n    experimentRunTime: 2017_05_31 12:51 (Year_Month_Day Hour:Min)\n    experimentRunTime.epoch: 1496260263\n    experimentScript: hierNavigation.py\n    experimentScript.digestSHA1: ef63411eb1069929addc76f16839126a1a371188\n    experimentScript.directory: /Users/csnlab/Desktop/Navigation\n  #[[ System ]] #---------\n    systemHaveInternetAccess: True\n    systemHostName: CSNLabs-iMac.local\n    systemLocale: C\n    systemMemFreeRAM: 3850.62890625\n    systemMemTotalRAM: 8192.0\n    systemPlatform: darwin 10.11.6 x86_64\n    systemPyo.InputDevices: {0: {'host api index': 0, 'latency': 0.0006122448830865324, 'default sr': 44100, 'name': u'Built-in Microph'}}\n    systemPyo.OutputDevices: {1: {'host api index': 0, 'latency': 0.01557823084294796, 'default sr': 44100, 'name': u'Built-in Output'}}\n    systemPyoVersion: 0.8.0\n    systemRebooted: May 17 09:26\n    systemSec.OpenSSLVersion: OpenSSL 0.9.8zh 14 Jan 2016\n    systemSec.pythonSSL: True\n    systemTimeNumpySD1000000_sec: 0.0057\n    systemUser: csnlab\n    systemUserID: 501\n    systemUserProcCount: 96\n    systemUserProcFlagged: 'Google Chrome' mdworker\n    systemUsersCount: 1\n  #[[ Window ]] #---------\n    windowWinType: pyglet\n    windowUnits: norm\n    windowSize_pix: [1920 1080]\n    windowScreen: 0\n    windowRgb: [ 0.  0.  0.]\n    windowPos_pix: [0, 0]\n    windowMonitor.name: __blank__\n    windowMonitor.getWidth_cm: None\n    windowMonitor.getDistance_cm: None\n    windowMonitor.currentCalibName: 2017_05_31 12:51\n    windowIsFullScr: True\n  #[[ Python ]] #---------\n    pythonVersion: 2.7.12\n  #[[ OpenGL ]] #---------\n#[ PsychoPy2 RuntimeInfoEnd ]\n"
+{"0": "img/F6.jpg", "1": "img/F7.jpg", "2": "img/F1.jpg", "3": "img/F4.jpg", "4": "img/F8.jpg", "5": "img/F2.jpg", "6": "img/F9.jpg", "7": "img/F3.jpg", "8": "img/F5.jpg"}
+{"U": "Orange", "D": "Blue"}
+{"distance": 5, "direction": "D", "practice": true, "anchor": 0, "options": [5, 3, 4, 6], "response": null}
+{"distance": 8, "direction": "D", "practice": true, "anchor": 0, "options": [6, 7, 5, 8], "response": null}
+{"distance": 7, "direction": "U", "practice": true, "anchor": 7, "options": [2, 3, 1, 0], "response": null}
+{"rt": 0.007200002670288086, "distance": 8, "direction": "U", "correct": true, "response": 0, "practice": true, "anchor": 8, "options": [0, 3, 2, 1]}
+{"rt": 0.9980039596557617, "distance": 7, "direction": "D", "correct": false, "response": 6, "practice": true, "anchor": 1, "options": [7, 5, 8, 6]}
+{"rt": 1.107598066329956, "distance": 4, "direction": "U", "correct": false, "response": 2, "anchor": 5, "options": [0, 1, 2, 3]}
+{"response": null, "distance": 4, "direction": "U", "anchor": 4, "options": [1, 2, 0, 3]}
+{"rt": 1.1592731475830078, "distance": 3, "direction": "D", "correct": false, "response": 4, "anchor": 3, "options": [5, 6, 7, 4]}
+{"response": null, "distance": 3, "direction": "U", "anchor": 5, "options": [3, 0, 2, 1]}
+{"response": null, "distance": 3, "direction": "U", "anchor": 4, "options": [3, 1, 0, 2]}
+{"response": null, "distance": 3, "direction": "D", "anchor": 4, "options": [7, 5, 8, 6]}
+{"response": null, "distance": 2, "direction": "U", "anchor": 6, "options": [5, 2, 4, 3]}
+{"response": null, "distance": 4, "direction": "D", "anchor": 2, "options": [7, 6, 4, 5]}
+{"response": null, "distance": 4, "direction": "U", "anchor": 6, "options": [4, 3, 2, 1]}
+{"response": null, "distance": 2, "direction": "D", "anchor": 6, "options": [5, 8, 4, 7]}
