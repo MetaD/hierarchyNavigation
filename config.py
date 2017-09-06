@@ -41,18 +41,18 @@ FEEDBACK_WRONG = IMG_FOLDER + 'wrong.png'
 FEEDBACK_SLOW = 'Too slow. Please respond faster.'
 # Instructions
 INSTR_0 = ['Welcome!\n\nIn this task, you will be asked about the organization you\'ve learned about.',
-           'Each trial will begin with a "reference" face.\n\nA few seconds later, a number will appear.',
-           'Your job is to figure out who is that number of steps MORE or LESS powerful than the "reference" face '
+           'Each trial will begin with a "reference" person.\n\nA few seconds later, a number will appear.',
+           'Your job is to figure out who is that number of steps MORE or LESS powerful than the "reference" person '
            'in the organization.\n\nThe color of the number indicates whether you need to figure out who is that '
-           'number of steps MORE or LESS powerful than the reference face.']
+           'number of steps MORE or LESS powerful than the reference person.']
 INSTR_COLOR = '{down_color} numbers mean figure out who is that number of steps LESS powerful than the reference ' \
-              'face in the organization.\n\n{up_color} numbers mean figure out who is that number of steps MORE ' \
-              'powerful than the reference face in the organization.'
+              'person in the organization.\n\n{up_color} numbers mean figure out who is that number of steps MORE ' \
+              'powerful than the reference person in the organization.'
 INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter that, 4 faces will be briefly ' \
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' \
           'to figure out your response before they appear so that you can respond in time.'
 INSTR_2 = 'When the response options are presented, they\'ll look like this:'
-INSTR_3 = 'Press one of the arrow keys to select a given face, like this:'
+INSTR_3 = 'Press one of the arrow keys to select a given person, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
@@ -62,7 +62,7 @@ INSTR_END = 'The task is complete!\nThank you for participating!'
 INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
                       'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
                       'use to arrive at your response on each trial?\n' \
-                      'Please describe what it felt like you were doing during the period after the reference face ' \
+                      'Please describe what it felt like you were doing during the period after the reference person ' \
                       'and number appeared, but before the 4 response choices appeared.'
 INSTR_OPEN_ENDED_CONT = 'Press command + enter to submit and continue'
 WARNING_OPEN_ENDED_Q = 'Your response is important to us. Please write something.'
