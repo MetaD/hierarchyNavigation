@@ -209,8 +209,8 @@ if __name__ == '__main__':
         k: str(sinfo[k]) for k in sinfo.keys()
     })
     # create window
-    serial = SerialUtil(SERIAL_PORT, BAUD_RATE)
-    presenter = Presenter(fullscreen=(sinfo['Mode'] == 'Exp'), logger='info', serial=serial)
+    serial = SerialUtil(SERIAL_PORT, BAUD_RATE, logger='info')
+    presenter = Presenter(fullscreen=(sinfo['Screen'] == 'Exp'), logger='info', serial=serial)
     option_img_size = get_option_img_size(presenter.window)
     img_positions = get_positions(presenter.window)
     # load images
@@ -221,10 +221,9 @@ if __name__ == '__main__':
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
     # get trials from pickle file
-    trials = pickle.load(DESIGN_FILENAME)
-    practices = pickle.load(DESIGN_FILENAME)
-    print trials  # todo
-    print practices
+    with open(DESIGN_FILENAME, 'r') as infile:
+        trials = pickle.load(infile)
+        practices = pickle.load(infile)
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
@@ -239,10 +238,10 @@ if __name__ == '__main__':
     # show instructions
     if sinfo['Type'] != 'After navigation':  # normal
         infoLogger.logger.info('Starting experiment')
-        presenter.show_instructions(INSTR_0, next_instr_text=None, wait_trigger=True)
-        presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
-        presenter.show_instructions(INSTR_1, next_instr_text=None, wait_trigger=True)
-        presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None, wait_trigger=True)
+        # presenter.show_instructions(INSTR_0, next_instr_text=None, wait_trigger=True)
+        # presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
+        # presenter.show_instructions(INSTR_1, next_instr_text=None, wait_trigger=True)
+        # presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None, wait_trigger=True)
         texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
                  for key, pos in zip(RESPONSE_KEYS, img_positions)]
         presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None, wait_trigger=True)

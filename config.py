@@ -1,9 +1,9 @@
 # Experimental parameters
-SERIAL_PORT = '/dev/tty.UC-232AC1'
+SERIAL_PORT = '/dev/tty.UC-232AC'
 BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
-NUM_RUNS = 4  # TODO
+NUM_RUNS = 4  # TODO 6?
 NUM_TRIALS_PER_RUN = 24
 NUM_FACES = 9
 NUM_OPTIONS = 4
@@ -53,8 +53,8 @@ INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter tha
           'to figure out your response before they appear so that you can respond in time.'
 INSTR_2 = 'When the response options are presented, they\'ll look like this:'
 INSTR_3 = 'Press one of the arrow keys to select a given person, like this:'
-INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
-                 'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
+INSTR_PRACTICE = 'We\'ll start by doing some practice trials.'  # '\n\nIn these practice trials, you\'ll be reminded of ' \
+                 # 'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
 INSTR_QUESTION = 'In the next part, you will be asked to perform {which_task}, and then answer a few questions.'
 INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')  # (normal/after mt, after navigation)
