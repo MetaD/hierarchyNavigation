@@ -1,6 +1,4 @@
 # Experimental parameters
-SERIAL_PORT = '/dev/tty.UC-232AC'
-BAUD_RATE = 19200  # TODO
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
 NUM_RUNS = 4  # TODO 6?
@@ -11,8 +9,9 @@ DIRECTIONS = ('D', 'U')
 ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
-RESPONSE_KEYS = ('1', '2', '3', '4')  # TODO order should be up, down, left, right
+RESPONSE_KEYS = ('4', '2', '3', '1')  # order should be up, down, left, right
 MULTI_CHOICE_KEYS = ('a', 's', 'e', 'd', 'x')  # down, left, right, up, none
+TRIGGER = '5'
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}

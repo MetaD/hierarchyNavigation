@@ -6,6 +6,8 @@ import pickle
 import dumb_text_input as dt
 import copy
 
+# TODO test all timing
+# TODO resp_wait_trigger?
 
 def show_one_trial(param, question=False):
     # 0 anchor face
@@ -209,8 +211,7 @@ if __name__ == '__main__':
         k: str(sinfo[k]) for k in sinfo.keys()
     })
     # create window
-    serial = SerialUtil(SERIAL_PORT, BAUD_RATE, logger='info')
-    presenter = Presenter(fullscreen=(sinfo['Screen'] == 'Exp'), logger='info', serial=serial)
+    presenter = Presenter(fullscreen=(sinfo['Screen'] == 'Exp'), info_logger='info', trigger=TRIGGER)
     option_img_size = get_option_img_size(presenter.window)
     img_positions = get_positions(presenter.window)
     # load images
@@ -244,24 +245,30 @@ if __name__ == '__main__':
         # presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None, wait_trigger=True)
         texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
                  for key, pos in zip(RESPONSE_KEYS, img_positions)]
-        presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None, wait_trigger=True)
-        # practice
-        presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None, wait_trigger=True)
+        for _ in range(3):
+            presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None,
+                                        key_to_continue='5')
+        # practice TODO practice???
+        for _ in range(2):
+            presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None, key_to_continue='5')
         practices = random.sample(practices, NUM_PRACTICE_TRIALS)
         for trial in practices:
-            presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
+            for _ in range(4):
+                presenter.show_instructions(color_instr, next_instr_text=None, key_to_continue='5')
             data = show_one_trial(trial.copy())
             data['practice'] = True
             dataLogger.write_json(data)
 
     # show trials
     if sinfo['Type'] == 'Normal':
-        presenter.show_instructions(INSTR_4, next_instr_text=None, wait_trigger=True)
+        for _ in range(2):
+            presenter.show_instructions(INSTR_4, next_instr_text=None, key_to_continue='5')
         trial_counter = 0
         for run in trials:
             # instructions
-            presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)) + '\n\n' +
-                                        'Remember: ' + color_instr, next_instr_text=None, wait_trigger=True)
+            for _ in range(5):
+                presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)) + '\n\n' +
+                                            'Remember: ' + color_instr, next_instr_text=None, key_to_continue='5')
 
             # start run
             correct_counter = 0
@@ -338,5 +345,5 @@ if __name__ == '__main__':
         dataLogger.write_json({'response': response, 'rt': rt})
 
     # end
-    presenter.show_instructions(INSTR_END, next_instr_text=None, wait_trigger=True)
+    presenter.show_instructions(INSTR_END, next_instr_text=None)
     infoLogger.logger.info('Experiment ended')

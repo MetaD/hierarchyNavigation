@@ -9,10 +9,6 @@ import json
 import random
 import logging
 from psychopy import gui, visual, core, event, info
-try:
-    from serial_util import *
-except ImportError:
-    pass
 
 
 def show_form_dialog(items, validation_func=None, reset_after_error=True, title='', order=(), tip=None, logger=None):
@@ -52,21 +48,20 @@ class Presenter:
     """
     Methods that help to draw stuff in a window
     """
-    def __init__(self, fullscreen=True, window=None, logger=None, serial=None):
+    def __init__(self, fullscreen=True, window=None, info_logger=None, trigger=None):
         """
         :param fullscreen: a boolean indicating either full screen or not
         :param window: an optional psychopy.visual.Window
                        a new full screen window will be created if this parameter is not provided
-        :param logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
-        :param serial: (an SerialUtil object) if specified, responses will be obtained from the serial port instead of
-                       the keyboard, and stimuli will be presented for durations in terms of number of scanner triggers
-                       instead of seconds
+        :param info_logger: (string / Unicode) a specific logger name to log information. Will log to the root logger if None
+        :param trigger: an ASCII character trigger when this is an fMRI task
         """
         self.window = window if window is not None else visual.Window(fullscr=fullscreen)
-        self.serial = serial
+        self.expInfo = info.RunTimeInfo(win=window, refreshTest=None, verbose=False)
+        self.trigger = trigger
         # logging
-        self.logger = logging.getLogger(logger)
-        self.logger.info(info.RunTimeInfo(win=window, refreshTest=None, verbose=False))
+        self.logger = logging.getLogger(info_logger)
+        self.logger.info(self.expInfo)
         # Positions
         self.CENTRAL_POS = (0.0, 0.0)
         self.LEFT_CENTRAL_POS = (-0.5, 0.0)
@@ -97,8 +92,9 @@ class Presenter:
 
     def draw_stimuli_for_duration(self, stimuli, duration, wait_trigger=False):
         """
-        Display the given stimuli for a given duration. If serial was specified at initialization, the stimuli will be
-        displayed until a trigger is received
+        Display the given stimuli for a given duration. If wait_trigger is True, the stimuli will be displayed until
+        a <duration> number of triggers are received
+
         :param stimuli: either a psychopy.visual stimulus or a list of them to draw
         :param duration: a float time duration in seconds, or if waiting for a scanner trigger, an integer number of
                          triggers to wait for
@@ -113,9 +109,9 @@ class Presenter:
         self.window.flip()
         if duration is not None:
             if wait_trigger:
-                if self.serial is None:
-                    raise RuntimeError('Serial device uninitialized')
-                self.serial.wait_for_triggers(duration)
+                for _ in range(duration):
+                    event.waitKeys(keyList=[self.trigger])
+                    self.logger.info('Received trigger ' + self.trigger)
             else:
                 core.wait(duration)
 
@@ -126,30 +122,41 @@ class Presenter:
         :param max_wait: a numeric value indicating the maximum number of seconds to wait for keys.
                          By default it waits forever
         :param wait_trigger: (boolean) whether to wait for triggers or seconds
-        :return: a tuple (key_pressed, reaction_time_in_seconds)
-                 when using scanner triggers, return a list of lists of responses between each trigger
+                             If true, the program will wait for a <max_wait> number of triggers before proceeding
+        :return: a tuple (key_pressed, reaction_time_in_seconds). Only the first response will be returned if there
+                 are multiple.
         """
         if max_wait is None:
             max_wait = float('inf')
         self.draw_stimuli_for_duration(stimuli, duration=None)
 
         if wait_trigger:
-            if self.serial is None:
-                raise RuntimeError('Serial device uninitialized')
             if isinstance(max_wait, int):
                 duration = max_wait
             else:
                 duration = 1
                 self.logger.warning('Invalid duration, waiting for one trigger')  # TODO
-            response = self.serial.wait_for_triggers(duration)
+            i = 0
+            responses = []
+            clock = core.Clock()
+            while i != duration:
+                results = event.waitKeys(keyList=[self.trigger] + response_keys, timeStamped=clock)
+                for resp in results:
+                    self.logger.info('Received signal ' + resp[0] + ' after ' + str(resp[1]) + ' seconds')
+                    if resp[0] == self.trigger:
+                        i += 1
+                    else:
+                        responses.append(resp)
+            if len(responses) == 0:
+                return None
+            return responses[0]
         else:
             # wait for a time duration
             response = event.waitKeys(maxWait=max_wait, keyList=response_keys, timeStamped=core.Clock())
             if response is None:  # timed out without a response
                 return None
-            response = response[0]
-
-        return response
+            self.logger.info('Received response ' + str(response))
+            return response[0]
 
     def show_instructions(self, instructions, position=(0, 0), other_stim=(), key_to_continue='space',
                           next_instr_text='Press space to continue', next_instr_pos=(0.0, -0.8), duration=None,
