@@ -1,7 +1,7 @@
 # Experimental parameters
 NUM_PRACTICE_TRIALS = 10
 MAX_NUM_TRIALS = 5  # -> just to test the program
-NUM_RUNS = 4  # TODO 6?
+NUM_RUNS = 6
 NUM_TRIALS_PER_RUN = 24
 NUM_FACES = 9
 NUM_OPTIONS = 4
