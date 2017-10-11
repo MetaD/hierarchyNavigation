@@ -218,9 +218,10 @@ if __name__ == '__main__':
     example_images = presenter.load_all_images(IMG_FOLDER, '.png', img_prefix='usericon')
     for img, pos in zip(example_images, img_positions):
         img.pos = pos
-    #     img.size = option_img_size  todo
+        img.size = option_img_size
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
+    buttonbox_img = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'buttonbox.png')
     # get trials from pickle file
     with open(DESIGN_FILENAME, 'r') as infile:
         trials = pickle.load(infile)
@@ -239,30 +240,13 @@ if __name__ == '__main__':
     # show instructions
     if sinfo['Type'] != 'After navigation':  # normal
         infoLogger.logger.info('Starting experiment')
-        # presenter.show_instructions(INSTR_0, next_instr_text=None, wait_trigger=True)
-        # presenter.show_instructions(color_instr, next_instr_text=None, wait_trigger=True)
-        # presenter.show_instructions(INSTR_1, next_instr_text=None, wait_trigger=True)
-        # presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_text=None, wait_trigger=True)
-        texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.5)
-                 for key, pos in zip(RESPONSE_KEYS, img_positions)]
+        example_images.insert(0, buttonbox_img)
         for _ in range(3):
-            presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_text=None,
+            presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images, next_instr_text=None,
                                         key_to_continue='5')
-        # practice TODO practice???
-        for _ in range(2):
-            presenter.show_instructions(INSTR_PRACTICE, next_instr_text=None, key_to_continue='5')
-        practices = random.sample(practices, NUM_PRACTICE_TRIALS)
-        for trial in practices:
-            for _ in range(4):
-                presenter.show_instructions(color_instr, next_instr_text=None, key_to_continue='5')
-            data = show_one_trial(trial.copy())
-            data['practice'] = True
-            dataLogger.write_json(data)
 
     # show trials
     if sinfo['Type'] == 'Normal':
-        for _ in range(2):
-            presenter.show_instructions(INSTR_4, next_instr_text=None, key_to_continue='5')
         trial_counter = 0
         for run in trials:
             # instructions

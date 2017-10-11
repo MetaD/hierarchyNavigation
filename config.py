@@ -25,7 +25,7 @@ LOG_FOLDER = 'log/'
 DESIGN_FILENAME = 'test_designs.pkl'
 # Positions & Lengths
 TOP_INSTR_POS = (0, 0.85)
-OPTION_IMG_DIST = 620  # horizontal or vertical distance from images to screen center, in pixels
+OPTION_IMG_DIST = 450  # horizontal or vertical distance from images to screen center, in pixels
 OPTION_IMG_HEIGHT = 0.5
 # Times
 FACE_TRIGGER = 1
@@ -51,12 +51,10 @@ INSTR_1 = 'You\'ll have a few seconds to figure out your response. \n\nAfter tha
           'presented as possible response options. They won\'t be on the screen for very long, so it\'s important ' \
           'to figure out your response before they appear so that you can respond in time.'
 INSTR_2 = 'When the response options are presented, they\'ll look like this:'
-INSTR_3 = 'Press one of the arrow keys to select a given person, like this:'
-INSTR_PRACTICE = 'We\'ll start by doing some practice trials.'  # '\n\nIn these practice trials, you\'ll be reminded of ' \
-                 # 'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
+INSTR_3 = 'Press one of the buttons to select a given person, like this:'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
 INSTR_QUESTION = 'In the next part, you will be asked to perform {which_task}, and then answer a few questions.'
-INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')  # (normal/after mt, after navigation)
+INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')
 INSTR_END = 'The task is complete!\nThank you for participating!'
 INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
                       'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \

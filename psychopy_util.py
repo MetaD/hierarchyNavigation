@@ -307,7 +307,7 @@ class Presenter:
         # display stimuli and get response
         self.logger.info('Showing options')
         response = self.draw_stimuli_for_response(stimuli, response_keys, max_wait, resp_wait_trigger)
-        self.logger.info('End of options')
+
         if response is None or len(response) == 0:  # response too slow
             if no_response_stim is None:
                 return
@@ -316,51 +316,54 @@ class Presenter:
             self.draw_stimuli_for_duration(no_response_stim, no_resp_feedback_time, feedback_wait_trigger)
             self.logger.info('End of feedback')
             return
+
+        # process response
+        key_pressed = response[0]
+        rt = response[1]
+
+        # keep the stimuli on screen until the specified duration passed
+        self.draw_stimuli_for_duration(stimuli, max_wait - rt, resp_wait_trigger)
+        self.logger.info('End of options')
+
+        # post selection screen
+        selection = values[response_keys.index(key_pressed)]
+        selected_stim = stimuli[response_keys.index(key_pressed)]
+        if highlight is None:
+            # selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
+            original_color = selected_stim.fillColor  # TODO
+            selected_stim.fillColor = '#A0A0A0'  # TODO
+            self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
+            selected_stim.fillColor = original_color  # TODO
+            # selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
         else:
-            key_pressed = response[0]
-            rt = response[1]
-            selection = values[response_keys.index(key_pressed)]
+            highlight.pos = selected_stim.pos
+            stimuli.append(highlight)
+            self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
 
-            # post selection screen
-            selected_stim = stimuli[response_keys.index(key_pressed)]
-            self.logger.info('Showing highlighted selection')
-            if highlight is None:
-                # selected_stim.opacity -= self.SELECTED_STIM_OPACITY_CHANGE
-                original_color = selected_stim.fillColor  # TODO
-                selected_stim.fillColor = '#A0A0A0'  # TODO
-                self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
-                selected_stim.fillColor = original_color  # TODO
-                # selected_stim.opacity += self.SELECTED_STIM_OPACITY_CHANGE
-            else:
-                highlight.pos = selected_stim.pos
-                stimuli.append(highlight)
-                self.draw_stimuli_for_duration(stimuli, post_selection_time, post_select_wait_trigger)
-            self.logger.info('End of highlighted selection')
+        # feedback
+        correct = None
+        if correctness_func is not None:
+            correct = correctness_func(selection)
+            if positioned_feedback_stims is not None and len(positioned_feedback_stims) == 2:
+                pos_stim = positioned_feedback_stims[int(correct)]
+                pos_stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
+                stimuli.append(pos_stim)
+            if feedback_stims is not None and len(feedback_stims) == 2:
+                stims = feedback_stims[int(correct)]
+                # if isinstance(stims, visual.BaseVisualStim):
+                #     stims = [stims]
+                # stimuli += stims
+                stimuli.insert(0, stims[0])  # TODO only for hierarchy navigation
+                stimuli.append(stims[1])  # TODO only for hierarchy navigation
+            self.logger.info('Showing feedback')
+            self.draw_stimuli_for_duration(stimuli, feedback_time, feedback_wait_trigger)
+            self.logger.info('End of feedback')
 
-            # feedback
-            correct = None
-            if correctness_func is not None:
-                correct = correctness_func(selection)
-                if positioned_feedback_stims is not None and len(positioned_feedback_stims) == 2:
-                    pos_stim = positioned_feedback_stims[int(correct)]
-                    pos_stim.pos = (selected_stim.pos[0], selected_stim.pos[1] + self.FEEDBACK_POS_Y_DIFF)
-                    stimuli.append(pos_stim)
-                if feedback_stims is not None and len(feedback_stims) == 2:
-                    stims = feedback_stims[int(correct)]
-                    # if isinstance(stims, visual.BaseVisualStim):
-                    #     stims = [stims]
-                    # stimuli += stims
-                    stimuli.insert(0, stims[0])  # TODO only for hierarchy navigation
-                    stimuli.append(stims[1])  # TODO only for hierarchy navigation
-                self.logger.info('Showing feedback')
-                self.draw_stimuli_for_duration(stimuli, feedback_time, feedback_wait_trigger)
-                self.logger.info('End of feedback')
-
-            # return
-            if correct is None:
-                return {'response': selection, 'rt': rt}
-            else:
-                return {'response': selection, 'rt': rt, 'correct': correct}
+        # return
+        if correct is None:
+            return {'response': selection, 'rt': rt}
+        else:
+            return {'response': selection, 'rt': rt, 'correct': correct}
 
 
 class DataLogger:
