@@ -4,7 +4,7 @@ import random
 import pickle
 
 DIR = 'neurodesign/'
-DESIGN_NUMS = ['0', '1', '2', '3']
+DESIGN_NUMS = ['0', '1', '2', '3', '4', '5']
 NUM_STIMULI = 2
 STIMULUS_DURATION = 11.0
 

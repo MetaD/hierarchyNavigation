@@ -143,6 +143,10 @@ if __name__ == '__main__':
     # get trials from pickle file
     with open(DESIGN_FILENAME, 'r') as infile:
         trials = pickle.load(infile)
+        if len(trials) < NUM_RUNS:
+            raise ValueError('Design file does not contain enough runs.')
+        else:
+            trials = trials[:NUM_RUNS]
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
