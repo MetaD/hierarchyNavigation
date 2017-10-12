@@ -1,7 +1,6 @@
 # Experimental parameters
-NUM_PRACTICE_TRIALS = 10
-MAX_NUM_TRIALS = 5  # -> just to test the program
-NUM_RUNS = 4  # TODO 6?
+MAX_NUM_TRIALS = 999  # -> just to test the program
+NUM_RUNS = 6
 NUM_TRIALS_PER_RUN = 24
 NUM_FACES = 9
 NUM_OPTIONS = 4
@@ -55,7 +54,7 @@ INSTR_3 = 'Press one of the buttons to select a given person, like this:'
 INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
 INSTR_QUESTION = 'In the next part, you will be asked to perform {which_task}, and then answer a few questions.'
 INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')
-INSTR_END = 'The task is complete!\nThank you for participating!'
+INSTR_END = 'This task is complete!\nThank you!'
 INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
                       'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
                       'use to arrive at your response on each trial?\n' \
