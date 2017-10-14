@@ -180,7 +180,7 @@ class Presenter:
             next_instr_stim = None
         self.logger.info('Showing instructions')
         for i, instr in enumerate(instructions):
-            instr_stim = visual.TextStim(self.window, text=instr, pos=position)
+            instr_stim = visual.TextStim(self.window, text=instr, pos=position, wrapWidth=1.7)
             log_text = 'Instruction: ' + instr[:30].replace('\n', ' ')
             self.logger.info(log_text + '...' if len(instr) >= 30 else log_text)
             self.draw_stimuli_for_response([instr_stim, next_instr_stim] + list(other_stim), [key_to_continue],

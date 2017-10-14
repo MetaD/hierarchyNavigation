@@ -104,12 +104,6 @@ def get_option_img_size(window):
     return OPTION_IMG_HEIGHT * y0 / x0, OPTION_IMG_HEIGHT
 
 
-def show_key_mapping():
-    texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.2)
-             for key, pos in zip(RESPONSE_KEYS, img_positions)]
-    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
-
-
 if __name__ == '__main__':
     # subject ID dialog
     sinfo = {'ID': '',
@@ -157,21 +151,27 @@ if __name__ == '__main__':
     dataLogger.write_json({direc: COLOR_NAMES[DIR_COLORS[direc]] for direc in DIR_COLORS.keys()})
     color_instr = INSTR_COLOR.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]],
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
+    # reorder runs
+    remainder = sid % NUM_RUNS
+    trials = trials[remainder:] + trials[:remainder]
 
     # show instructions
     infoLogger.logger.info('Starting experiment')
     example_images.insert(0, buttonbox_img)
     for _ in range(3):
         presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images, next_instr_text=None,
-                                    key_to_continue='5')
+                                    key_to_continue=TRIGGER)
 
     # show trials
     trial_counter = 0
     for run in trials:
         # instructions
-        for _ in range(5):
-            presenter.show_instructions('Run #' + str(trials.index(run)+1) + ' of ' + str(len(trials)) + '\n\n' +
-                                        'Remember: ' + color_instr, next_instr_text=None, key_to_continue='5')
+        instr = 'You have completed Run #' + str(trials.index(run)) + '.\n\n' \
+                if trial_counter > 0 else ''
+        instr += 'Run #' + str(trials.index(run) + 1) + ' of ' + str(len(trials)) + ' is starting soon.\n\n' + \
+                 'Remember: ' + color_instr
+        presenter.show_instructions(instr, next_instr_text=None)  # press space to continue here
+        presenter.show_instructions(instr, next_instr_text=None, key_to_continue=TRIGGER)  # then wait for 1 trigger
 
         # start run
         correct_counter = 0
@@ -183,11 +183,12 @@ if __name__ == '__main__':
             dataLogger.write_json(data)
             if trial_counter >= MAX_NUM_TRIALS:
                 break
-        presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
-                                    ' points possible in this block')
+        for _ in range(3):
+            presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
+                                        ' points possible in this run', next_instr_text=None, key_to_continue=TRIGGER)
         if trial_counter >= MAX_NUM_TRIALS:
             break
 
     # end
-    presenter.show_instructions(INSTR_END, next_instr_text=None)
+    presenter.show_instructions(INSTR_END, next_instr_text=None)  # press space to continue here
     infoLogger.logger.info('Experiment ended')
