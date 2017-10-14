@@ -158,9 +158,8 @@ if __name__ == '__main__':
     # show instructions
     infoLogger.logger.info('Starting experiment')
     example_images.insert(0, buttonbox_img)
-    for _ in range(3):
-        presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images, next_instr_text=None,
-                                    key_to_continue=TRIGGER)
+    presenter.show_instructions(INSTR_KEY, TOP_INSTR_POS, example_images, next_instr_text=None,
+                                key_to_continue=[TRIGGER, 'space'])  # wait for either space or trigger
 
     # show trials
     trial_counter = 0
@@ -170,7 +169,7 @@ if __name__ == '__main__':
                 if trial_counter > 0 else ''
         instr += 'Run #' + str(trials.index(run) + 1) + ' of ' + str(len(trials)) + ' is starting soon.\n\n' + \
                  'Remember: ' + color_instr
-        presenter.show_instructions(instr, next_instr_text=None)  # press space to continue here
+        presenter.show_instructions(instr, next_instr_text=INSTR_NEXT_RUN)  # press space here to continue
         presenter.show_instructions(instr, next_instr_text=None, key_to_continue=TRIGGER)  # then wait for 1 trigger
 
         # start run
@@ -190,5 +189,5 @@ if __name__ == '__main__':
             break
 
     # end
-    presenter.show_instructions(INSTR_END, next_instr_text=None)  # press space to continue here
+    presenter.show_instructions(INSTR_END, next_instr_text=INSTR_NEXT_RUN)  # press space here to end the program
     infoLogger.logger.info('Experiment ended')
