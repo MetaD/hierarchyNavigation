@@ -6,14 +6,14 @@ import numpy as np
 # This file is so shitty
 
 DATA_FOLDER = 'data/'
-CSV_FILE = 'navigation_data_77+.csv'
+CSV_FILE = 'navigation_data_77-109.csv'
 MIN_ID = 77
 
 all_data = {}
 for datafile in sorted(os.listdir(DATA_FOLDER)):
     if not datafile.endswith('.txt') or not datafile[0].isdigit():
         continue
-    sid = int(datafile[:2]) if 'questions' in datafile else int(datafile[:-4])
+    sid = int(datafile[:-14]) if 'questions' in datafile else int(datafile[:-4])
     if sid < MIN_ID:
         continue
     with open(DATA_FOLDER + datafile, 'r') as infile:
