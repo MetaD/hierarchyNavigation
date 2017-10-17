@@ -93,8 +93,8 @@ def validation(items):
 def get_positions(window):
     # calculate 4 image positions so that the distances from them to the screen center are the same
     x0, y0 = window.size
-    x = float(OPTION_IMG_DIST) / x0
-    y = float(OPTION_IMG_DIST) / y0
+    x = 2.0 * OPTION_IMG_DIST / x0
+    y = 2.0 * OPTION_IMG_DIST / y0
     return (0, y), (0, -y), (-x, 0), (x, 0)
 
 

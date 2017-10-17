@@ -24,7 +24,7 @@ LOG_FOLDER = 'log/'
 DESIGN_FILENAME = 'test_designs.pkl'
 # Positions & Lengths
 TOP_INSTR_POS = (0, 0.85)
-OPTION_IMG_DIST = 480  # horizontal or vertical distance from images to screen center, in pixels
+OPTION_IMG_DIST = 240  # TODO enough? horizontal or vertical distance from images to screen center, in pixels
 OPTION_IMG_HEIGHT = 0.5
 # Times
 FACE_TRIGGER = 1
