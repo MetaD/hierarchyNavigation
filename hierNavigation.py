@@ -6,8 +6,7 @@ import pickle
 import dumb_text_input as dt
 import copy
 
-# TODO test all timing
-# run 1: 410 seconds?
+# 399 seconds/run
 
 
 def show_one_trial(param):
@@ -59,7 +58,8 @@ def show_one_trial(param):
     highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)  # TODO WHY does this change every time?!
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, selection_time, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
-                                             FEEDBACK_TRIGGER, feedback_wait_trigger=True)
+                                             FEEDBACK_TRIGGER, no_resp_feedback_time=FEEDBACK_TRIGGER,
+                                             feedback_wait_trigger=True)
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
