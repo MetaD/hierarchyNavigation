@@ -7,6 +7,7 @@ DIR = 'neurodesign/'
 DESIGN_NUMS = ['0', '1', '2', '3', '4', '5']
 NUM_STIMULI = 2
 STIMULUS_DURATION = 11.0
+LAST_ITI = 4
 
 
 class ExpDesign:
@@ -112,7 +113,7 @@ if __name__ == '__main__':
         check_iti(all_onsets, design['ITIs'])
         # put the zero ITI at the back rather than front, and convert time to integer
         design['ITIs'] = [int(i) for i in design['ITIs'][1:]]
-        design['ITIs'].append(0)
+        design['ITIs'].append(LAST_ITI)
 
         designs.append(ExpDesign(directions=stim_order, itis=design['ITIs']))
 

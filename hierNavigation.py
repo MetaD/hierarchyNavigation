@@ -7,6 +7,7 @@ import dumb_text_input as dt
 import copy
 
 # TODO test all timing
+# run 1: 410 seconds?
 
 
 def show_one_trial(param):
