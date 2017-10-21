@@ -6,7 +6,7 @@ import pickle
 import dumb_text_input as dt
 import copy
 
-# 399 seconds/run
+# 399 seconds/run + 3 seconds/feedback
 
 
 def show_one_trial(param):
