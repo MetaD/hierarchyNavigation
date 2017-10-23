@@ -2,19 +2,24 @@ import operator
 from config import *
 import random
 import pickle
+import os
 
-DIR = 'neurodesign/'
-DESIGN_NUMS = ['0', '1', '2', '3', '4', '5']
+DIR = 'untitled/'
+DESIGN_IDS = [subdir[6:] for subdir in os.listdir(DIR) if subdir.startswith('design_')]
 NUM_STIMULI = 2
 STIMULUS_DURATION = 11.0
+PRE_STIM_TIME = 2.0
 LAST_ITI = 4
 
 
 class ExpDesign:
-    def __init__(self, directions, itis):
-        if len(directions) != len(itis) or len(directions) != NUM_TRIALS_PER_RUN:
+    def __init__(self, stim_order, itis):
+        if len(stim_order) != len(itis) or len(stim_order) != NUM_TRIALS_PER_RUN:
             raise ValueError('Wrong length of design parameters')
-        self.trials = zip(directions, itis)
+        self.trials = zip(stim_order, itis)
+
+    def __str__(self):
+        return str(self.trials)
 
 
 def get_order(stimuli_onset_lists):
@@ -40,7 +45,7 @@ def check_iti(onsets, itis):
     assert(itis[0] == 0)
     for i in range(len(onsets) - 1):
         assert(onsets[i] + STIMULUS_DURATION + itis[i + 1] == onsets[i + 1])
-    print('ITIs match stimuli onsets.')
+    # print('ITIs match stimuli onsets.')
 
 
 def generate_trials(filename):
@@ -101,8 +106,8 @@ def generate_trials(filename):
 
 if __name__ == '__main__':
     designs = []
-    for des in DESIGN_NUMS:
-        folder = DIR + 'design_' + des + '/'
+    for des in DESIGN_IDS:
+        folder = DIR + 'design' + des + '/'
         file_names = ['stimulus_{}.txt'.format(i) for i in range(NUM_STIMULI)] + ['ITIs.txt']
         design = {}
         for i, filename in enumerate(file_names):
@@ -115,6 +120,20 @@ if __name__ == '__main__':
         design['ITIs'] = [int(i) for i in design['ITIs'][1:]]
         design['ITIs'].append(LAST_ITI)
 
-        designs.append(ExpDesign(directions=stim_order, itis=design['ITIs']))
+        designs.append(ExpDesign(stim_order=stim_order, itis=design['ITIs']))
+        print des
+        print stim_order
 
-    generate_trials(DESIGN_FILENAME)
+        # real stimulus onsets
+        stim_onsets = [[] for _ in range(NUM_STIMULI)]
+        time = 0.0
+        for i in range(len(stim_order)):
+            stim_onsets[stim_order[i]].append(str(time + PRE_STIM_TIME))
+            time += STIMULUS_DURATION + float(design['ITIs'][i])
+
+        # txt for AFNI
+        for i in range(NUM_STIMULI):
+            with open(folder + 'real_stimulus_{}.txt'.format(i), 'w') as outfile:
+                outfile.write('\n'.join(stim_onsets[i]))
+
+    # generate_trials(DESIGN_FILENAME)
