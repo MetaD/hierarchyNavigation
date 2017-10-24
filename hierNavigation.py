@@ -6,7 +6,7 @@ import pickle
 import dumb_text_input as dt
 import copy
 
-# 399 seconds/run + 3 seconds/feedback
+# 399 seconds/run + 3 seconds/feedback TODO?
 
 
 def show_one_trial(param):
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     with open(DESIGN_FILENAME, 'r') as infile:
         trials = pickle.load(infile)
         if len(trials) < NUM_RUNS:
-            raise ValueError('Design file does not contain enough runs.')
+            raise ValueError(DESIGN_FILENAME + ' does not contain enough runs.')
         else:
             trials = trials[:NUM_RUNS]
     # randomize images

@@ -1,0 +1,39 @@
+$ ./3ddeconvolve_stimuli.sh 
+++ 3dDeconvolve: AFNI version=AFNI_17.1.10 (Jun  6 2017) [64-bit]
+++ Authored by: B. Douglas Ward, et al.
+++ using TR=1 seconds for -stim_times and -nodata
+++ using NT=397 time points for -nodata
+++ Imaging duration=397.0 s; Automatic polort=3
+++ -stim_times using TR=1 s for stimulus timing conversion
+++ -stim_times using TR=1 s for any -iresp output datasets
+++  [you can alter the -iresp TR via the -TR_times option]
+++ ** -stim_times NOTE ** guessing GLOBAL times if 1 time per line; LOCAL otherwise
+++ ** GUESSED ** -stim_times 1 using GLOBAL times
+++ ** GUESSED ** -stim_times 2 using GLOBAL times
+++ Number of time points: 397 (no censoring)
+ + Number of parameters:  6 [4 baseline ; 2 signal]
+++ Wrote matrix image to file X.jpg
+++ Wrote matrix values to file X.xmat.1D
+++ Wrote matrix values to file X.nocensor.xmat.1D
+++ ----- Signal+Baseline matrix condition [X] (397x6):  1.40328  ++ VERY GOOD ++
+++ ----- Signal-only matrix condition [X] (397x2):  1  ++ VERY GOOD ++
+++ ----- Baseline-only matrix condition [X] (397x4):  1.00576  ++ VERY GOOD ++
+++ ----- polort-only matrix condition [X] (397x4):  1.00576  ++ VERY GOOD ++
+++ Wrote matrix values to file X_XtXinv.xmat.1D
+++ +++++ Matrix inverse average error = 3.12888e-16  ++ VERY GOOD ++
+++ Matrix setup time = 1.26 s
+
+Stimulus: design_4/stim0 
+  h[ 0] norm. std. dev. =   0.1926
+
+Stimulus: design_4/stim1 
+  h[ 0] norm. std. dev. =   0.1931
+
+
+$ 1d_tool.py -cormat_cutoff 0.1 -show_cormat_warnings -infile X.xmat.1D
+
+Warnings regarding Correlation Matrix: X.xmat.1D
+
+  severity   correlation   cosine  regressor pair
+  --------   -----------   ------  ----------------------------------------
+  medium:      -0.210       0.000  ( 4 vs.  5)  design_4/stim0#0  vs.  design_4/stim1#0

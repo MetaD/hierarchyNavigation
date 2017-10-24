@@ -4,8 +4,8 @@ import random
 import pickle
 import os
 
-DIR = 'untitled/'
-DESIGN_IDS = [subdir[6:] for subdir in os.listdir(DIR) if subdir.startswith('design_')]
+DIR = 'neurodesign/'
+DESIGN_IDS = [subdir[6:] for subdir in os.listdir(DIR) if subdir.startswith('design')]
 NUM_STIMULI = 2
 STIMULUS_DURATION = 11.0
 PRE_STIM_TIME = 2.0
@@ -52,7 +52,7 @@ def generate_trials(filename):
     """
     Run this function to save a list of runs and another list of practice trials to a pickle file
     """
-    assert len(designs) == NUM_RUNS
+    assert len(designs) >= NUM_RUNS
     # generate unique combinations of anchor faces & distances
     up_trials, down_trials = [], []
     practices = []
@@ -125,15 +125,15 @@ if __name__ == '__main__':
         print stim_order
 
         # real stimulus onsets
-        stim_onsets = [[] for _ in range(NUM_STIMULI)]
-        time = 0.0
-        for i in range(len(stim_order)):
-            stim_onsets[stim_order[i]].append(str(time + PRE_STIM_TIME))
-            time += STIMULUS_DURATION + float(design['ITIs'][i])
+        # stim_onsets = [[] for _ in range(NUM_STIMULI)]
+        # time = 0.0
+        # for i in range(len(stim_order)):
+        #     stim_onsets[stim_order[i]].append(str(time + PRE_STIM_TIME))
+        #     time += STIMULUS_DURATION + float(design['ITIs'][i])
+        #
+        # # txt for AFNI
+        # for i in range(NUM_STIMULI):
+        #     with open(folder + 'real_stimulus_{}.txt'.format(i), 'w') as outfile:
+        #         outfile.write('\n'.join(stim_onsets[i]))
 
-        # txt for AFNI
-        for i in range(NUM_STIMULI):
-            with open(folder + 'real_stimulus_{}.txt'.format(i), 'w') as outfile:
-                outfile.write('\n'.join(stim_onsets[i]))
-
-    # generate_trials(DESIGN_FILENAME)
+    generate_trials(DESIGN_FILENAME)
