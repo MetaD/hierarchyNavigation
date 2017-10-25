@@ -5,7 +5,7 @@ import pickle
 import os
 
 DIR = 'neurodesign/'
-DESIGN_IDS = [subdir[6:] for subdir in os.listdir(DIR) if subdir.startswith('design')]
+DESIGN_IDS = [subdir[6:] for subdir in sorted(os.listdir(DIR)) if subdir.startswith('design')]
 NUM_STIMULI = 2
 STIMULUS_DURATION = 11.0
 PRE_STIM_TIME = 2.0
@@ -83,7 +83,9 @@ def generate_trials(filename):
         for run in runs:
             random.shuffle(run)
     # randomize answer indexes
-    answer_indexes = [[i for i in range(4) for _ in range(NUM_TRIALS_PER_RUN)] for _ in range(NUM_RUNS)]
+    answer_indexes = [[i for i in range(4) for _ in range(NUM_TRIALS_PER_RUN/4)] for _ in range(NUM_RUNS)]
+    for run in answer_indexes:
+        random.shuffle(run)
     # create trials
     trials = []
     for r in range(NUM_RUNS):

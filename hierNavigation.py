@@ -6,7 +6,8 @@ import pickle
 import dumb_text_input as dt
 import copy
 
-# 399 seconds/run + 3 seconds/feedback TODO?
+# run #12356: 399 trials + 3 feedback = 402 seconds
+# run #4: 401 + 3 = 404 seconds todo
 
 
 def show_one_trial(param):
