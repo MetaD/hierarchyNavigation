@@ -7,7 +7,7 @@ import dumb_text_input as dt
 import copy
 
 # run #12356: 399 trials + 3 feedback = 402 seconds
-# run #4: 401 + 3 = 404 seconds todo
+# run #4: 401 + 3 = 404 seconds
 
 
 def show_one_trial(param):
@@ -165,6 +165,7 @@ if __name__ == '__main__':
 
     # show trials
     trial_counter = 0
+    total_correct_counter = 0
     for run in trials:
         # instructions
         instr = 'You have completed Run #' + str(trials.index(run)) + '.\n\n' \
@@ -184,6 +185,7 @@ if __name__ == '__main__':
             dataLogger.write_json(data)
             if trial_counter >= MAX_NUM_TRIALS:
                 break
+        total_correct_counter += correct_counter
         for _ in range(3):
             presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
                                         ' points possible in this run', next_instr_text=None, key_to_continue=TRIGGER)
@@ -193,3 +195,4 @@ if __name__ == '__main__':
     # end
     presenter.show_instructions(INSTR_END, next_instr_text=INSTR_NEXT_RUN)  # press space here to end the program
     infoLogger.logger.info('Experiment ended')
+    dataLogger.write_json({'accuracy': float(total_correct_counter) / trial_counter})
