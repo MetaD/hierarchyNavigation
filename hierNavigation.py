@@ -87,7 +87,6 @@ def generate_trials():
     # generate unique combinations
     unique_trials = []
     practices = []
-    up_counter, down_counter = 0, 0
     for anchor in range(NUM_FACES):
         for dist in range(1, NUM_FACES):
             trials = unique_trials \
@@ -98,21 +97,26 @@ def generate_trials():
                     'anchor': anchor,
                     'direction': DIRECTIONS[1],  # up
                     'distance': dist,
-                    'answer_index': up_counter % 4
                 })
-                if trials is unique_trials:
-                    up_counter += 1
             if anchor + dist < NUM_FACES:
                 trials.append({
                     'anchor': anchor,
                     'direction': DIRECTIONS[0],  # down
                     'distance': dist,
-                    'answer_index': down_counter % 4
                 })
-                if trials is unique_trials:
-                    down_counter += 1
     trials = [list(unique_trials) for i in range(NUM_RUNS)]
+    for prac in practices:
+        prac['answer_index'] = random.randrange(4)
+    ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
+                   [i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)]]  # up & down trials
     for run in trials:
+        random.shuffle(ans_indexes[0])
+        random.shuffle(ans_indexes[1])
+        counters = [0, 0]
+        for trial in run:
+            direction = DIRECTIONS.index(trial['direction'])  # 0 or 1
+            trial['answer_index'] = ans_indexes[direction][counters[direction]]
+            counters[direction] += 1
         random.shuffle(run)
     return trials, practices
 
@@ -277,6 +281,7 @@ if __name__ == '__main__':
             dataLogger.write_data(data)
     # show trials
     if sinfo['Type'] == 'Normal':
+        total_correct_counter = 0
         presenter.show_instructions(INSTR_4)
         trial_counter = 0
         for run in trials:
@@ -292,10 +297,14 @@ if __name__ == '__main__':
                 dataLogger.write_data(data)
                 if trial_counter >= MAX_NUM_TRIALS:
                     break
+            total_correct_counter += correct_counter
             presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
                                         ' points possible in this block')
             if trial_counter >= MAX_NUM_TRIALS:
                 break
+        accuracy = float(total_correct_counter)/len(trials)/len(trials[0])  # overall accuracy
+        print 'accuracy', accuracy
+        dataLogger.write_data({'overall_accuracy': accuracy})
 
     # show a free response question (strategy)
     if sinfo['Type'] != 'Normal':
