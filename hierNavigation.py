@@ -13,17 +13,17 @@ import copy
 def show_one_trial(param):
     # 0 anchor face
     infoLogger.logger.info('Showing anchor face')
-    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TRIGGER, wait_trigger=True)
+    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME, wait_trigger=False)
     infoLogger.logger.info('End of anchor face')
     # 1 fixation
     presenter.show_fixation(FIXATION_TIME, wait_trigger=False)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
     infoLogger.logger.info('Showing number')
-    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TRIGGER, wait_trigger=True)
+    presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME, wait_trigger=False)
     infoLogger.logger.info('End of number')
     # 3 fixation (mental navigation)
-    presenter.show_fixation(BLANK_TRIGGER, wait_trigger=True)
+    presenter.show_fixation(BLANK_TIME, wait_trigger=False)
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -59,15 +59,15 @@ def show_one_trial(param):
     highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)  # TODO WHY does this change every time?!
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, selection_time, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
-                                             FEEDBACK_TRIGGER, no_resp_feedback_time=FEEDBACK_TRIGGER,
-                                             feedback_wait_trigger=True)
+                                             FEEDBACK_TIME, no_resp_feedback_time=FEEDBACK_TIME,
+                                             feedback_wait_trigger=False)
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
         option.size = None
     # 6 interval between trials
     infoLogger.logger.info('End of trial')
-    presenter.show_fixation(param['iti'], wait_trigger=True)
+    presenter.show_fixation(param['iti'], wait_trigger=False)
     # return
     param['options'] = options
     if response is None:
@@ -106,6 +106,47 @@ def get_option_img_size(window):
     return OPTION_IMG_HEIGHT * y0 / x0, OPTION_IMG_HEIGHT
 
 
+def show_key_mapping():
+    texts = [visual.TextStim(presenter.window, key.upper(), pos=pos, color=BLACK, height=0.2)
+             for key, pos in zip(RESPONSE_KEYS, img_positions)]
+    presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
+
+
+def generate_trials():
+    # generate unique combinations
+    unique_trials = []
+    for anchor in range(NUM_FACES):
+        for dist in range(1, NUM_FACES):
+            if (anchor in ANCHOR_INDEXES) and (dist >= MIN_DISTANCE) and (dist <= MAX_DISTANCE):
+                if anchor - dist >= 0:
+                    unique_trials.append({
+                        'anchor': anchor,
+                        'direction': DIRECTIONS[1],  # up
+                        'distance': dist,
+                        'iti': ITI_TIME
+                    })
+                if anchor + dist < NUM_FACES:
+                    unique_trials.append({
+                        'anchor': anchor,
+                        'direction': DIRECTIONS[0],  # down
+                        'distance': dist,
+                        'iti': ITI_TIME
+                    })
+    trials = [list(unique_trials) for _ in range(NUM_RUNS)]
+    ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
+                   [i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)]]  # up & down trials
+    for run in trials:
+        random.shuffle(ans_indexes[0])
+        random.shuffle(ans_indexes[1])
+        counters = [0, 0]
+        for trial in run:
+            direction = DIRECTIONS.index(trial['direction'])  # 0 or 1
+            trial['answer_index'] = ans_indexes[direction][counters[direction]]
+            counters[direction] += 1
+        random.shuffle(run)
+    return trials
+
+
 if __name__ == '__main__':
     # subject ID dialog
     sinfo = {'ID': '',
@@ -117,7 +158,7 @@ if __name__ == '__main__':
     img_prefix = sinfo['Gender'][0]
 
     # create data/log files
-    file_postfix = '_scanner'
+    file_postfix = '_pre_scan'
     infoLogger = DataLogger(LOG_FOLDER, str(sid) + file_postfix + '.log', log_name='info', logging_info=True)
     dataLogger = DataLogger(DATA_FOLDER, str(sid) + file_postfix + '.txt', log_name='data')
     # save info from the dialog box
@@ -135,14 +176,8 @@ if __name__ == '__main__':
         img.size = option_img_size
     images = presenter.load_all_images(IMG_FOLDER, '.jpg', img_prefix)
     highlight = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'highlight.png')
-    buttonbox_img = visual.ImageStim(presenter.window, image=IMG_FOLDER + 'buttonbox.png')
-    # get trials from pickle file
-    with open(DESIGN_FILENAME, 'r') as infile:
-        trials = pickle.load(infile)
-        if len(trials) < NUM_RUNS:
-            raise ValueError(DESIGN_FILENAME + ' does not contain enough runs.')
-        else:
-            trials = trials[:NUM_RUNS]
+    # get trials
+    trials = generate_trials()
     # randomize images
     random.seed(sid)
     random.shuffle(images)  # status high -> low
@@ -159,21 +194,20 @@ if __name__ == '__main__':
 
     # show instructions
     infoLogger.logger.info('Starting experiment')
-    example_images.insert(0, buttonbox_img)
-    presenter.show_instructions(INSTR_KEY, TOP_INSTR_POS, example_images, next_instr_text=None,
-                                key_to_continue=[TRIGGER, 'space'])  # wait for either space or trigger
+    presenter.show_instructions(INSTR_0)
+    presenter.show_instructions(color_instr)
+    presenter.show_instructions(INSTR_1)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
+    show_key_mapping()
 
     # show trials
     trial_counter = 0
     total_correct_counter = 0
     for run in trials:
         # instructions
-        instr = 'You have completed Run #' + str(trials.index(run)) + '.\n\n' \
-                if trial_counter > 0 else ''
-        instr += 'Run #' + str(trials.index(run) + 1) + ' of ' + str(len(trials)) + ' is starting soon.\n\n' + \
-                 'Remember: ' + color_instr
-        presenter.show_instructions(instr, next_instr_text=INSTR_NEXT_RUN)  # press space here to continue
-        presenter.show_instructions(instr, next_instr_text=None, key_to_continue=TRIGGER)  # then wait for 1 trigger
+        instr = 'Run #' + str(trials.index(run) + 1) + ' of ' + str(len(trials)) + ' is starting soon.\n\n' + \
+                'Remember: ' + color_instr
+        presenter.show_instructions(instr)
 
         # start run
         correct_counter = 0
@@ -186,13 +220,12 @@ if __name__ == '__main__':
             if trial_counter >= MAX_NUM_TRIALS:
                 break
         total_correct_counter += correct_counter
-        for _ in range(3):
-            presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
-                                        ' points possible in this run', next_instr_text=None, key_to_continue=TRIGGER)
+        presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
+                                    ' points possible in this run')
         if trial_counter >= MAX_NUM_TRIALS:
             break
 
     # end
-    presenter.show_instructions(INSTR_END, next_instr_text=INSTR_NEXT_RUN)  # press space here to end the program
+    presenter.show_instructions(INSTR_END)  # press space here to end the program
     infoLogger.logger.info('Experiment ended')
     dataLogger.write_json({'accuracy': float(total_correct_counter) / trial_counter})
