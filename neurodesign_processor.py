@@ -82,7 +82,7 @@ def generate_trials(filename):
     for runs in (down_runs, up_runs):
         for run in runs:
             random.shuffle(run)
-    # randomize answer indexes
+    # randomize answer indexes TODO WRONG
     answer_indexes = [[i for i in range(4) for _ in range(NUM_TRIALS_PER_RUN/4)] for _ in range(NUM_RUNS)]
     for run in answer_indexes:
         random.shuffle(run)
@@ -108,6 +108,8 @@ def generate_trials(filename):
 
 if __name__ == '__main__':
     designs = []
+    nav_onsets = []
+    face_onsets = []
     for des in DESIGN_IDS:
         folder = DIR + 'design' + des + '/'
         file_names = ['stimulus_{}.txt'.format(i) for i in range(NUM_STIMULI)] + ['ITIs.txt']
@@ -127,15 +129,31 @@ if __name__ == '__main__':
         print stim_order
 
         # real stimulus onsets
-        # stim_onsets = [[] for _ in range(NUM_STIMULI)]
-        # time = 0.0
-        # for i in range(len(stim_order)):
-        #     stim_onsets[stim_order[i]].append(str(time + PRE_STIM_TIME))
-        #     time += STIMULUS_DURATION + float(design['ITIs'][i])
-        #
-        # # txt for AFNI
+        stim_onsets = [[] for _ in range(NUM_STIMULI)]
+        face_onsets.append([[] for _ in range(NUM_STIMULI)])
+        nav_onsets.append([[] for _ in range(NUM_STIMULI)])
+        time = 0.0
+        for i in range(len(stim_order)):
+            stim_onsets[stim_order[i]].append(str(time + PRE_STIM_TIME))
+            # onset time files
+            face_onsets[-1][stim_order[i]].append(str(int(time)))
+            nav_onsets[-1][stim_order[i]].append(str(int(time + PRE_STIM_TIME)))
+            time += STIMULUS_DURATION + float(design['ITIs'][i])
+
+        # txt for AFNI
         # for i in range(NUM_STIMULI):
         #     with open(folder + 'real_stimulus_{}.txt'.format(i), 'w') as outfile:
         #         outfile.write('\n'.join(stim_onsets[i]))
 
-    generate_trials(DESIGN_FILENAME)
+    # more txt for AFNI
+    for stim in range(NUM_STIMULI):
+        with open(DIR + 'face_onsets_%d.txt' % stim, 'w') as outfile:
+            for run in face_onsets:
+                outfile.write(' '.join(run[stim]))
+                outfile.write('\n')
+        with open(DIR + 'nav_onsets_%d.txt' % stim, 'w') as outfile:
+            for run in nav_onsets:
+                outfile.write(' '.join(run[stim]))
+                outfile.write('\n')
+
+    # generate_trials(DESIGN_FILENAME)
