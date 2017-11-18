@@ -4,7 +4,7 @@ from __future__ import print_function
 import os
 import re
 
-SUBJECT_DIR_PATH = '.'
+SUBJECT_DIR_PATH = '../'
 SUBJECT_DIR_PREFIX = 'subj'
 PATH_BETWEEN_SUBJECT_AND_TASK_DIR = '/raw'
 TASK_DIR_NAME_PREFIX = 'Faces_SMS_run'
@@ -106,7 +106,7 @@ def main():
             continue
         new_run_names = old_run_names[remainder:] + old_run_names[:remainder]
         run_name_dict = {old_run_names[i]: new_run_names[i] for i in range(NUM_RUNS)}
-        path = subj_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/'
+        path = SUBJECT_DIR_PATH + subj_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/'
         try:
             new_folder_dict = rename_folders(path, run_name_dict)
         except ValueError as err:
@@ -117,5 +117,5 @@ def main():
 
 
 if __name__ == '__main__':
-    generate_test_files()
+    # generate_test_files()
     main()
