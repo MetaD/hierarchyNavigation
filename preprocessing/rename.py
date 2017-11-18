@@ -59,7 +59,8 @@ def rename_files(path, folder_name_dict, run_name_dict):
     Rename the file names that start with TASK_DIR_NAME_PREFIX
     according to their folder name
     :param path: string path to the files
-    :param reversed_run_name_dict: {new_run_#: old_run_#}
+    :param folder_name_dict: {new_folder_name: old_run_name}
+    :param run_name_dict: {old_run_#: new_run_#}
     """
     folder_name = path[path.index(TASK_DIR_NAME_PREFIX):-1]
     old_run_name = folder_name_dict[folder_name]
