@@ -6,7 +6,7 @@ import os
 import re
 
 
-SUBJECT_ID_RANGE = list(range(132, 134))
+SUBJECT_ID_RANGE = list(range(138, 139))
 SUBJECT_DIR_PATH = '../'
 SUBJECT_DIR_PREFIX = 'subj'
 PATH_BETWEEN_SUBJECT_AND_TASK_DIR = '/raw'
@@ -69,7 +69,8 @@ def rename_func_dirs(path, sid, task_prefix, run_num_dict=None, multi_run=True):
     for i, folder in enumerate(dir_list):
         new_name = 'sub-{}_task-{}'.format(sid, FUNC_NAME_DICT[task_prefix][0])
         if multi_run:
-            new_name += '_run-' + run_num_dict[run_ids[i]].zfill(2)
+            run_num = run_num_dict[run_ids[i]] if run_num_dict is not None else run_ids[i]
+            new_name += '_run-' + run_num.zfill(2)
         new_name += '_bold'
         rename(path + folder, path + new_name)
         folder_dict[new_name] = folder
@@ -136,7 +137,7 @@ def reorganize_files(subj_dir, sid, path, dir_list, file_extensions=('.json', '.
         os.makedirs(subj_dir + dir_type)
         for folder in dir_lists[dir_type]:
             for f in os.listdir(path + folder):
-                if any(f.endswith(ext) for ext in file_extensions):
+                if any(f == folder + ext for ext in file_extensions):
                     rename(path + folder + '/' + f, subj_dir + dir_type + '/' + f)
 
     rename(path, subj_dir + 'unused')
@@ -169,14 +170,14 @@ def generate_test_files():
             anat_name = ANAT_NAME_DICT.keys()[0] + '_17'
             anat_dir = subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/' + anat_name
             os.makedirs(anat_dir)
-            for file_postfix in ['.nii.gz', '.json', '_yo.ica', '_sth_else.pdf']:  # arbitrary stuff
+            for file_postfix in ['.nii.gz', '.json', '_yo.nii.gz', '_sth_else.pdf']:  # arbitrary stuff
                 open(anat_dir + '/' + anat_name + file_postfix, 'a').close()
             # field maps
             for d in ('PA', 'AP'):
                 fmap_name = FMAP_NAME_DICT.keys()[0] + d + '_5'
                 fmap_dir = subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/' + fmap_name
                 os.makedirs(fmap_dir)
-                for file_postfix in ['.nii.gz', '.json', '_yo.ica', '_sth_else.pdf']:  # arbitrary stuff
+                for file_postfix in ['.nii.gz', '.json', '_yo.nii.gz', '_sth_else.pdf']:  # arbitrary stuff
                     open(fmap_dir + '/' + fmap_name + file_postfix, 'a').close()
 
     except OSError as err:
@@ -201,6 +202,7 @@ def main():
         path = SUBJECT_DIR_PATH + subj_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/'
         sid = str(sid)
 
+        folder_dict = {}
         try:
             folder_dict = rename_anat_dirs(path, sid)
             folder_dict.update(rename_fmap_dirs(path, sid))
@@ -219,5 +221,5 @@ def main():
 
 
 if __name__ == '__main__':
-    generate_test_files()
+    # generate_test_files()
     main()
