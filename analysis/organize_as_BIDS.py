@@ -1,6 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
+#
+# Author: Meng Du
+# November 2017
+#
+
+
+"""
+This script renames and reorganizes the fMRI data into the Brain Imaging Data Structure (BIDS).
+
+It's not thoroughly tested for all cases -- use it with caution, and run a test before you
+use it on your actual files. You can test it by running generate_test_files() and then main()
+(see below), and see if there's anything wrong in the generated directories/files.
+
+It also assumes that one task has a latin square design made by subject_id % num_runs (see
+line #238). Change it based on your design.
+"""
+
 from __future__ import print_function
 import os
 import re
@@ -27,19 +44,19 @@ def rename(old_item, new_item):
 
 def rename_func_dirs(path, sid, task_prefix, run_num_dict=None, multi_run=True):
     """
-    Rename the folder names that starts with task_prefix
+    Rename the folder names in path that start with task_prefix, based on FUNC_NAME_DICT
     Assuming 1) the last number in the folder name indicates the position of this
                 run in the scanning sequence
              2) if multi_run is True, the first number in the folder name indicates
                 the number of run, starting from 1
-    :param path: string path to the folders
+    :param path: string path to data directory for one subject
     :param sid: string subject id
     :param task_prefix: string prefix of the task name
     :param run_num_dict: an optional dictionary of strings {old_run_#: new_run_#},
                          if run # needs to be changed
-    :param multi_run: whether the task contains multiple runs (i.e. run number 'runX' is
-                      present in the file name)
-    :return: {new_folder_name: old_run_name}, e.g. {'run1_5': 'run2', 'run2_4': 'run1'}
+    :param multi_run: whether the task contains multiple runs (run number 'runX' has to
+                      be present in the file name)
+    :return: a dictionary {new_folder_name: old_folder_name}
     """
     dir_list = [dir_name for dir_name in sorted(os.listdir(path))
                 if dir_name.startswith(task_prefix)]
@@ -79,6 +96,10 @@ def rename_func_dirs(path, sid, task_prefix, run_num_dict=None, multi_run=True):
 
 
 def rename_anat_dirs(path, sid):
+    """
+    Rename the anatomical scan directory based on ANAT_NAME_DICT.
+    See rename_func_dirs() for info on parameters and return value.
+    """
     folder_dict = {}
     for prefix in ANAT_NAME_DICT:
         anat_name = None
@@ -97,6 +118,10 @@ def rename_anat_dirs(path, sid):
 
 
 def rename_fmap_dirs(path, sid):
+    """
+    Rename the fieldmap scan directory based on FMAP_NAME_DICT.
+    See rename_func_dirs() for info on parameters and return value.
+    """
     folder_dict = {}
     for prefix in FMAP_NAME_DICT:
         dir_list = [dir_name for dir_name in os.listdir(path) if dir_name.startswith(prefix)]
@@ -110,10 +135,10 @@ def rename_fmap_dirs(path, sid):
 
 def rename_files(path, folder_name_dict):
     """
-    Rename the file inside the folders
-    according to their folder name
-    :param path: string path to the files
-    :param folder_name_dict: {new_folder_name: old_run_name}
+    Rename all files according to their parent folder name,
+    based on folder_name_dict
+    :param path: string path to the folders where files need renaming
+    :param folder_name_dict: {current_folder_name: old_name}
     """
     for folder_name in folder_name_dict:
         old_name = folder_name_dict[folder_name]
@@ -123,7 +148,19 @@ def rename_files(path, folder_name_dict):
                 rename(path + folder_name + '/' + filename, path + folder_name + '/' + new_name)
 
 
-def reorganize_files(subj_dir, sid, path, dir_list, file_extensions=('.json', '.nii.gz')):
+def reorganize_files(subj_dir, sid, dir_list, file_extensions=('.json', '.nii.gz')):
+    """
+    Reorganize files into BIDS (Brain Imaging Data Structure), i.e. move data from functional
+    scans, anatomical scans and field maps to sub-<id>/func, sub-<id>/anat, sub-<id>/fmap,
+    respectively. Only files that match <parent_folder_name>.<extension> (where <extension>
+    has to be one of the strings specified in file_extensions parameter) are moved. The other
+    files stay at where they are.
+    :param subj_dir: string path to the directory of a subject that needs to be reorganized
+    :param sid: string subject id
+    :param dir_list: a list of directory names where the files are (i.e. directories in
+                     subj_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR)
+    :param file_extensions: a list of file extensions that need to be moved
+    """
     dir_lists = {'/func': [], '/anat': [], '/fmap': []}
     for folder in dir_list:
         if 'bold' in folder:
@@ -133,18 +170,21 @@ def reorganize_files(subj_dir, sid, path, dir_list, file_extensions=('.json', '.
         elif any(postfix in folder for postfix in FMAP_NAME_DICT.values()):
             dir_lists['/fmap'].append(folder)
 
+    data_path = subj_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/'
     for dir_type in dir_lists:
         os.makedirs(subj_dir + dir_type)
         for folder in dir_lists[dir_type]:
-            for f in os.listdir(path + folder):
+            for f in os.listdir(data_path + folder):
                 if any(f == folder + ext for ext in file_extensions):
-                    rename(path + folder + '/' + f, subj_dir + dir_type + '/' + f)
+                    rename(data_path + folder + '/' + f, subj_dir + dir_type + '/' + f)
 
-    rename(path, subj_dir + 'unused')
     rename(subj_dir, SUBJECT_DIR_PATH + 'sub-' + sid)
 
 
 def generate_test_files():
+    """
+    Generate a bunch of directories and files to test main().
+    """
     try:
         for sid in SUBJECT_ID_RANGE:
             subject_dir = SUBJECT_DIR_PATH + SUBJECT_DIR_PREFIX + str(sid)
@@ -181,7 +221,7 @@ def generate_test_files():
                     open(fmap_dir + '/' + fmap_name + file_postfix, 'a').close()
 
     except OSError as err:
-        print(err)
+        print('Error when generating test files: {}'.format(err))
         return
 
 
@@ -217,7 +257,7 @@ def main():
                 rename(path + item, path + folder_dict[item])
         else:  # no error
             rename_files(path, folder_dict)
-            reorganize_files(SUBJECT_DIR_PATH + subj_dir + '/', sid, path, folder_dict.keys())
+            reorganize_files(SUBJECT_DIR_PATH + subj_dir + '/', sid, folder_dict.keys())
 
 
 if __name__ == '__main__':

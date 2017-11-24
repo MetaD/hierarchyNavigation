@@ -1,3 +1,40 @@
+#!/usr/bin/env python
+
+#
+# Author: Meng Du
+# November 2017
+#
+
+"""
+This script contains a few functions to convert data files between
+json, csv and python dictionary/list, or wide and long format.
+e.g. converting a json file to a python dictionary or a pickle file,
+     flatten the dictionary to a list,
+     converting data from wide format to long format,
+     save the list as a csv file, etc.
+
+Example:
+    # read a json file
+    # this will take a while, so if you need to load the same json file multiple times
+    # you can save it as a pickle file and then read from the pickle file instead
+    data_dict = load_json('data.json', pkl_file='temp.pkl')
+    # with open('temp.pkl', 'r') as infile:
+    #     data_dict = pickle.load(infile)
+
+    # flatten the dictionary to a list
+    data_list = [flatten(data_dict[sid], sid) for sid in data_dict]  # data_list is a list of tuples (col_names, values)
+    col_names, data = fill_missing_keys(data_list)
+
+    # write to csv (in wide format)
+    list2csv(data, 'wide_data.csv', col_names)
+
+    # convert to long format (see the docstring in cut_and_stack() for its usage)
+    long_cols, long_data = cut_and_stack(col_names, data, cut_start=64, cut_length=11, cut_number=40,
+                                         skip_cols=range(3, 64) + range(504, 3181))
+    list2csv(long_data, 'long_data.csv', long_cols)
+"""
+
+
 import pickle
 import yaml
 import csv
@@ -35,10 +72,10 @@ def flatten(obj, obj_id=None):
     def _flatten(x, name=''):  # recursion
         if type(x) is dict:
             for k in x:
-                if len(k) == 13 and k[:2] == '14':  # is a time stamp, skip TODO this is only for trust game
-                    _flatten(x[k], name)
-                else:
-                    _flatten(x[k], name + k + '.')
+#                 if len(k) == 13 and k[:2] == '14':  # is a time stamp, skip TODO this is only for trust game
+#                     _flatten(x[k], name)
+#                 else:
+                _flatten(x[k], name + k + '.')
         elif type(x) is list:
             for i, a in enumerate(x):
                 _flatten(a, name + str(i) + '.')
@@ -127,8 +164,8 @@ def cut_and_stack(wide_cols, wide_data, cut_start, cut_length, cut_number, skip_
     continuous when columns in skip_cols are excluded.
     :param wide_cols: (list) original data column names
     :param wide_data: (2D list) original data; each sublist should have the same length as wide_cols
-    :param cut_start: (integer) the index indicating where the repetition start. Columns and data will be cut and fold
-                      right before this start index
+    :param cut_start: (integer) the index indicating where the repetition start. Columns and data will be cut and
+                      stacked right before this start index
     :param cut_length: (integer) length of each repetition
     :param cut_number: (integer) number of repetitions
     :param skip_cols: (a list of integers) column indexes to be excluded.
@@ -189,12 +226,12 @@ def cut_and_stack(wide_cols, wide_data, cut_start, cut_length, cut_number, skip_
     return cols, data
 
 
-def list2csv(data, csv_filename, col_names=None):
+def list2csv(data, csv_filename, col_names=None, delimiter=','):
     """
     Write a 2-dimensional data list to a csv file.
     """
     with open(csv_filename, 'w') as outfile:
-        writer = csv.writer(outfile, delimiter=',')
+        writer = csv.writer(outfile, delimiter=delimiter)
         if col_names:
             writer.writerow(col_names)
         for row in data:
