@@ -10,6 +10,11 @@
 """
 This script renames and reorganizes the fMRI data into the Brain Imaging Data Structure (BIDS).
 
+Usage:
+        python organize_as_BIDS.py <subject_id_1> <subject_id_2> ...
+    OR
+        python organize_as_BIDS.py --all
+
 It's not thoroughly tested for all cases -- use it with caution, and run a test before you
 use it on your actual files. You can test it by running generate_test_files() and then main()
 (see below), and see if there's anything wrong in the generated directories/files.
@@ -20,10 +25,10 @@ line #238). Change it based on your design.
 
 from __future__ import print_function
 import os
+import sys
 import re
 
 
-SUBJECT_ID_RANGE = list(range(138, 139))
 SUBJECT_DIR_PATH = '../'
 SUBJECT_DIR_PREFIX = 'subj'
 PATH_BETWEEN_SUBJECT_AND_TASK_DIR = '/raw'
@@ -35,6 +40,7 @@ FUNC_NAME_DICT = {  # {current name: (new name, number of runs)}
 }
 ANAT_NAME_DICT = {'MPRAGE_4_min_1X1X1mm': 'T1w'}
 FMAP_NAME_DICT = {'SpinEchoFieldMap_': 'epi'}
+TOTAL_READOUT_TIME = '0.059740927'
 
 
 def rename(old_item, new_item):
@@ -151,7 +157,7 @@ def rename_files(path, folder_name_dict):
 def reorganize_files(subj_dir, sid, dir_list, file_extensions=('.json', '.nii.gz')):
     """
     Reorganize files into BIDS (Brain Imaging Data Structure), i.e. move data from functional
-    scans, anatomical scans and field maps to sub-<id>/func, sub-<id>/anat, sub-<id>/fmap,
+    scans, anatomical scans and fieldmaps to sub-<id>/func, sub-<id>/anat, sub-<id>/fmap,
     respectively. Only files that match <parent_folder_name>.<extension> (where <extension>
     has to be one of the strings specified in file_extensions parameter) are moved. The other
     files stay at where they are.
@@ -181,12 +187,42 @@ def reorganize_files(subj_dir, sid, dir_list, file_extensions=('.json', '.nii.gz
     rename(subj_dir, SUBJECT_DIR_PATH + 'sub-' + sid)
 
 
-def generate_test_files():
+def fix_fmap_json(sid, total_readout_time=None):
+    """
+    Add the "IntendedFor" and optionally "TotalReadoutTime" to the json files for fieldmap data
+    so the fieldmaps are intended for all functional scans.
+    Assuming the files are already organized as BIDS.
+    :parameter sid: string subject id
+    :parameter total_readout_time: string or float number, or None if unnecessary
+    """
+    # get functional scan names
+    subject_path = SUBJECT_DIR_PATH + 'sub-%s/' % sid
+    func_names = ['func/' + f for f in os.listdir(subject_path + 'func/') if f.endswith('bold.nii.gz')]
+    intended_for = '\t"IntendedFor": ["' + '",\n\t\t"'.join(func_names) + '"\n\t],\n'
+
+    # change json
+    json_filenames = [f for f in os.listdir(subject_path + 'fmap/') if f.endswith('json')]
+    for json_name in json_filenames:
+        json_name = subject_path + 'fmap/' + json_name
+        # read
+        with open(json_name, 'r') as json_file:
+            json_content = json_file.readlines()
+        # change
+        json_content[-2] = json_content[-2][:-1] + ',\n'
+        json_content.insert(-1, intended_for)
+        if total_readout_time is not None:
+            json_content.insert(-1, '\t"TotalReadoutTime": %s\n' % str(total_readout_time))
+        # write
+        with open(json_name, 'w') as json_file:
+            json_file.write(''.join(json_content))
+
+
+def generate_test_files(subject_ids):
     """
     Generate a bunch of directories and files to test main().
     """
     try:
-        for sid in SUBJECT_ID_RANGE:
+        for sid in subject_ids:
             subject_dir = SUBJECT_DIR_PATH + SUBJECT_DIR_PREFIX + str(sid)
             os.makedirs(subject_dir)
             os.makedirs(subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR)
@@ -212,13 +248,15 @@ def generate_test_files():
             os.makedirs(anat_dir)
             for file_postfix in ['.nii.gz', '.json', '_yo.nii.gz', '_sth_else.pdf']:  # arbitrary stuff
                 open(anat_dir + '/' + anat_name + file_postfix, 'a').close()
-            # field maps
+            # fieldmaps
             for d in ('PA', 'AP'):
                 fmap_name = FMAP_NAME_DICT.keys()[0] + d + '_5'
                 fmap_dir = subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/' + fmap_name
                 os.makedirs(fmap_dir)
                 for file_postfix in ['.nii.gz', '.json', '_yo.nii.gz', '_sth_else.pdf']:  # arbitrary stuff
                     open(fmap_dir + '/' + fmap_name + file_postfix, 'a').close()
+                with open(fmap_dir + '/' + fmap_name + '.json', 'w') as f:
+                    f.write('{\n\t"ABC": 123\n}\n')
 
     except OSError as err:
         print('Error when generating test files: {}'.format(err))
@@ -226,16 +264,28 @@ def generate_test_files():
 
 
 def main():
+    try:
+        if len(sys.argv) < 1:
+            raise RuntimeError
+        subject_ids = sys.argv[1:]
+        if len(subject_ids) == 1 and subject_ids[0] == '--all':
+            subject_ids = None
+    except RuntimeError:
+        print('Usage:\n\t\tpython organize_as_BIDS.py <subject_id_1> <subject_id_2> ...'
+              '\n\tOR\n\t\tpython organize_as_BIDS.py --all')
+        quit()
+
     for subj_dir in os.listdir(SUBJECT_DIR_PATH):
+        # TODO iterate through subject_ids instead (and print errors)
         if not subj_dir.startswith(SUBJECT_DIR_PREFIX):
             continue
-        sid = int(subj_dir[len(SUBJECT_DIR_PREFIX):])
-        if sid not in SUBJECT_ID_RANGE:
+        sid = subj_dir[len(SUBJECT_DIR_PREFIX):]
+        if subject_ids is not None and sid not in subject_ids:
             continue
 
         num_latin_sq_runs = FUNC_NAME_DICT[LATIN_SQUARE_TASK_PREFIX][1]
         old_run_nums = [str(i + 1) for i in range(num_latin_sq_runs)]
-        remainder = sid % num_latin_sq_runs
+        remainder = int(sid) % num_latin_sq_runs
         new_run_nums = old_run_nums[remainder:] + old_run_nums[:remainder]
         run_num_dict = {old_run_nums[i]: new_run_nums[i] for i in range(num_latin_sq_runs)}
 
@@ -258,8 +308,9 @@ def main():
         else:  # no error
             rename_files(path, folder_dict)
             reorganize_files(SUBJECT_DIR_PATH + subj_dir + '/', sid, folder_dict.keys())
+            fix_fmap_json(sid, total_readout_time=TOTAL_READOUT_TIME)
 
 
 if __name__ == '__main__':
-    # generate_test_files()
+    generate_test_files(list(range(101, 102)))
     main()
