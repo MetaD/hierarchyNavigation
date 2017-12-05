@@ -187,10 +187,32 @@ def reorganize_files(subj_dir, sid, dir_list, file_extensions=('.json', '.nii.gz
     rename(subj_dir, SUBJECT_DIR_PATH + 'sub-' + sid)
 
 
+def append_to_json(filename, contents):
+    """
+    Append contents to a json file, i.e. insert the content string(s) to the second last line
+    (before the "}") of the file.
+    :parameter filename: string path and file name of the json
+    :parameter contents: (string, or a list of strings) content to insert
+    """
+    # read
+    with open(filename, 'r') as json_file:
+        json_content = json_file.readlines()
+    # change
+    if len(json_content[-2]) > 2 and json_content[-2][-1] != ',':
+        json_content[-2] = json_content[-2][:-1] + ',\n'
+    if type(contents) is str:
+        contents = [contents]
+    for line in contents:
+        json_content.insert(-1, line)
+    # write
+    with open(filename, 'w') as json_file:
+        json_file.write(''.join(json_content))
+
+
 def fix_fmap_json(sid, total_readout_time=None):
     """
-    Add the "IntendedFor" and optionally "TotalReadoutTime" to the json files for fieldmap data
-    so the fieldmaps are intended for all functional scans.
+    Add the "IntendedFor" and optionally "TotalReadoutTime" parameters to the json files for
+    fieldmap data so the fieldmaps are intended for all functional scans.
     Assuming the files are already organized as BIDS.
     :parameter sid: string subject id
     :parameter total_readout_time: string or float number, or None if unnecessary
@@ -204,17 +226,22 @@ def fix_fmap_json(sid, total_readout_time=None):
     json_filenames = [f for f in os.listdir(subject_path + 'fmap/') if f.endswith('json')]
     for json_name in json_filenames:
         json_name = subject_path + 'fmap/' + json_name
-        # read
-        with open(json_name, 'r') as json_file:
-            json_content = json_file.readlines()
-        # change
-        json_content[-2] = json_content[-2][:-1] + ',\n'
-        json_content.insert(-1, intended_for)
-        if total_readout_time is not None:
-            json_content.insert(-1, '\t"TotalReadoutTime": %s\n' % str(total_readout_time))
-        # write
-        with open(json_name, 'w') as json_file:
-            json_file.write(''.join(json_content))
+        contents = intended_for if total_readout_time is None \
+                   else [intended_for, '\t"TotalReadoutTime": %s\n' % str(total_readout_time)]
+        append_to_json(json_name, contents)
+
+
+def fix_func_json(sid):
+    """
+    Add the "TaskName" parameter to json files for functional scans.
+    Assuming the files are already organized as BIDS.
+    :parameter sid: string subject id
+    """
+    subject_path = SUBJECT_DIR_PATH + 'sub-%s/' % sid
+    json_filenames = [f for f in os.listdir(subject_path + 'func/') if f.endswith('json')]
+    for json_name in json_filenames:
+        task_name = re.search(r'task-\w+_', json_name).group()[5:-1]
+        append_to_json(subject_path + 'func/' + json_name, '\t"TaskName": "%s"\n' % task_name)
 
 
 def generate_test_files(subject_ids):
@@ -236,18 +263,24 @@ def generate_test_files(subject_ids):
                 open(run_dir + '/irrelevant_file.txt', 'a').close()
                 for file_postfix in ['.nii.gz', '.json', '_yo.ica', '_sth_else.pdf']:  # arbitrary stuff
                     open(run_dir + '/' + run_name + file_postfix, 'a').close()
+                with open(run_dir + '/' + run_name + '.json', 'w') as f:
+                    f.write('{\n\t"ABC": 123\n}\n')
             # a one-run task
             run_name = FUNC_NAME_DICT.keys()[2] + '_20'
             run_dir = subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/' + run_name
             os.makedirs(run_dir)
             for file_postfix in ['.nii.gz', '.json', '_yo.ica', '_sth_else.pdf']:  # arbitrary stuff
                 open(run_dir + '/' + run_name + file_postfix, 'a').close()
+            with open(run_dir + '/' + run_name + '.json', 'w') as f:
+                f.write('{\n\t"ABC": 123\n}\n')
             # anatomical
             anat_name = ANAT_NAME_DICT.keys()[0] + '_17'
             anat_dir = subject_dir + PATH_BETWEEN_SUBJECT_AND_TASK_DIR + '/' + anat_name
             os.makedirs(anat_dir)
             for file_postfix in ['.nii.gz', '.json', '_yo.nii.gz', '_sth_else.pdf']:  # arbitrary stuff
                 open(anat_dir + '/' + anat_name + file_postfix, 'a').close()
+            with open(anat_dir + '/' + anat_name + '.json', 'w') as f:
+                f.write('{\n\t"ABC": 123\n}\n')
             # fieldmaps
             for d in ('PA', 'AP'):
                 fmap_name = FMAP_NAME_DICT.keys()[0] + d + '_5'
@@ -265,8 +298,8 @@ def generate_test_files(subject_ids):
 
 def main():
     try:
-        if len(sys.argv) < 1:
-            raise RuntimeError
+        if len(sys.argv) < 2:
+            raise RuntimeError()
         subject_ids = sys.argv[1:]
         if len(subject_ids) == 1 and subject_ids[0] == '--all':
             subject_ids = None
@@ -309,8 +342,9 @@ def main():
             rename_files(path, folder_dict)
             reorganize_files(SUBJECT_DIR_PATH + subj_dir + '/', sid, folder_dict.keys())
             fix_fmap_json(sid, total_readout_time=TOTAL_READOUT_TIME)
+            fix_func_json(sid)
 
 
 if __name__ == '__main__':
-    generate_test_files(list(range(101, 102)))
+    generate_test_files(list(range(101, 103)))
     main()

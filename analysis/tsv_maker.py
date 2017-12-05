@@ -7,10 +7,14 @@ TASK_TSV = ''
 NUM_RUNS = 6
 NUM_TRIALS_PER_RUN = 24
 NUM_ONSET_DIFF = 1.5
-FIX_ONSET_DIFF = 2
+FIX_ONSET_DIFF = 2.0
+# durations
+FACE_DURATION = 1.0
+NUM_NAV_DURATION = 6.5
+FIX_NAV_DURATION = 6.0
 
 
-def faces():
+def faces(stim):  # stim: 'face', 'num' or 'fix'
     # onset times
     temp_onsets = [[], []]  # down, up
     with open('face_onsets_down.txt', 'r') as infile:
@@ -22,8 +26,9 @@ def faces():
         run_onsets = [int(onset) for onset in temp_onsets[0][i] + temp_onsets[1][i]]
         face_onsets.append(sorted(run_onsets))
 
-    participants = [['subject_id', 'sex', 'age', 'up_color', 'down_color']]
-    event_header = ['run_index', 'trial_index',
+    participants = [['participant_id', 'sex', 'age', 'up_color', 'down_color']]
+    event_header = ['onset', 'duration',
+                    'run_index', 'trial_index',
                     'face_onset', 'num_onset', 'fix_onset',
                     'anchor', 'direction', 'steps', 'answer_position', 'congruent_with',
                     'response', 'response_position', 'response_time', 'correct']
@@ -45,9 +50,17 @@ def faces():
         for i, trial in enumerate(sdata[3:-1]):
             run_num = trial_num / NUM_TRIALS_PER_RUN + 1
             trial_index = trial_num % NUM_TRIALS_PER_RUN
-            info = [run_num, trial_index + 1]
 
             face_onset = face_onsets[run_num_dict[run_num] - 1][trial_index]
+            if stim == 'face':
+                info = [face_onset, FACE_DURATION]
+            elif stim == 'num':
+                info = [face_onset + NUM_ONSET_DIFF, NUM_NAV_DURATION]
+            elif stim == 'fix':
+                info = [face_onset + FIX_ONSET_DIFF, FIX_NAV_DURATION]
+            else:
+                raise RuntimeError('Invalid stimulus name.')
+            info += [run_num, trial_index + 1]
             info += [face_onset, face_onset + NUM_ONSET_DIFF, face_onset + FIX_ONSET_DIFF]
 
             options = ['top', 'bottom', 'left', 'right']
@@ -74,7 +87,7 @@ def faces():
             trial_num += 1
 
             if trial_num % NUM_TRIALS_PER_RUN == 0:  # end of run, save to file
-                filename = 'sub-%s_task-face_run-0%d_event.tsv' % (sid, run_num_dict[run_num])
+                filename = 'sub-%s_task-face_run-0%d_events.tsv' % (sid, run_num_dict[run_num])
                 print filename
                 list2csv(run_data, filename, delimiter='\t')
                 run_data = [event_header]
@@ -82,4 +95,4 @@ def faces():
     list2csv(participants, 'participants.tsv', delimiter='\t')
 
 
-faces()
+faces('fix')
