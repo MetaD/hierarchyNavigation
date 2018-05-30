@@ -4,6 +4,7 @@ from psychopy_util import *
 from config import *
 import dumb_text_input as dt
 import copy
+from psychopy.iohub.client import launchHubServer
 
 
 def show_one_trial(param, question=False):
@@ -221,6 +222,110 @@ def construct_questions():
            three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos
 
 
+def navigation():
+    presenter.show_instructions(INSTR_0)
+    presenter.show_instructions(color_instr)
+    presenter.show_instructions(INSTR_1)
+    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
+    show_key_mapping()
+
+    # practice
+    presenter.show_instructions(INSTR_PRACTICE)
+    global practices
+    practices = random.sample(practices, NUM_PRACTICE_TRIALS)
+    for trial in practices:
+        presenter.show_instructions(color_instr)
+        data = show_one_trial(trial.copy())
+        data['practice'] = True
+        dataLogger.write_data(data)
+
+    # show trials
+    total_correct_counter = 0
+    presenter.show_instructions(INSTR_4)
+    trial_counter = 0
+    for run in trials:
+        # instructions
+        presenter.show_instructions('Block #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
+        # start run
+        correct_counter = 0
+        for trial in run:
+            trial_counter += 1
+            data = show_one_trial(trial.copy())
+            if data['response'] is not None and data['correct']:
+                correct_counter += 1
+            dataLogger.write_data(data)
+            if trial_counter >= MAX_NUM_TRIALS:
+                break
+        total_correct_counter += correct_counter
+        presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
+                                    ' points possible in this block')
+        if trial_counter >= MAX_NUM_TRIALS:
+            break
+    accuracy = float(total_correct_counter) / len(trials) / len(trials[0])  # overall accuracy
+    print('accuracy', accuracy)
+    dataLogger.write_data({'overall_accuracy': accuracy})
+
+
+def post_navigation():
+    # show a free response question (strategy)
+    q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q1, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
+    cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
+    text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
+    warning_color = 0
+    while True:
+        response, rt, last_key = text_in.wait_key()
+        response = response.strip()
+        if last_key[0] == 'return' and last_key[1]['command']:
+            if len(response) == 0:
+                warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
+                                          color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
+                text_in.add_other_stim(warning)
+                warning_color = 1 - warning_color  # toggle
+            else:
+                break
+    dataLogger.write_data({'response': response, 'rt': rt})
+
+    # show multiple choice questions
+    global two_step_stim, two_step_img_size, two_step_anchor_pos, \
+    three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos
+    two_step_stim, two_step_img_size, two_step_anchor_pos, \
+    three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos = construct_questions()
+    # generate trials
+    question_trials = [{
+        'anchor': random.randint(NUM_FACES / 2 - 1, NUM_FACES / 2 + 1),
+        'direction': DIRECTIONS[0] if i % 2 == 0 else DIRECTIONS[1],
+        'distance': 2 if i < 2 else 3,
+        'answer_index': i
+    } for i in range(4)]
+    random.shuffle(question_trials)
+    # start
+    which_task_instr = INSTR_WHICH_TASK[1] if sinfo['Type'] == 'After navigation' else INSTR_WHICH_TASK[0]
+    presenter.show_instructions(INSTR_QUESTION.format(which_task=which_task_instr) + '\n\nRemember: ' + color_instr)
+    if sinfo['Type'] == 'After navigation':  # show a reminder
+        show_key_mapping()
+    for q in question_trials:
+        data = show_one_trial(q, True)
+        dataLogger.write_data(data)
+
+    # another free response question (what could make things easier)
+    q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q2, pos=(0, 0.65), wrapWidth=1.5)
+    cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
+    text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
+    warning_color = 0
+    while True:
+        response, rt, last_key = text_in.wait_key()
+        response = response.strip()
+        if last_key[0] == 'return' and last_key[1]['command']:
+            if len(response) == 0:
+                warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
+                                          color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
+                text_in.add_other_stim(warning)
+                warning_color = 1 - warning_color  # toggle
+            else:
+                break
+    dataLogger.write_data({'response': response, 'rt': rt})
+
+
 if __name__ == '__main__':
     # subject ID dialog
     sinfo = {'ID': '',
@@ -264,106 +369,14 @@ if __name__ == '__main__':
     color_instr = INSTR_COLOR.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]],
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
-    # show instructions
-    if sinfo['Type'] != 'After navigation':  # normal
-        presenter.show_instructions(INSTR_0)
-        presenter.show_instructions(color_instr)
-        presenter.show_instructions(INSTR_1)
-        presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
-        show_key_mapping()
-        # practice
-        presenter.show_instructions(INSTR_PRACTICE)
-        practices = random.sample(practices, NUM_PRACTICE_TRIALS)
-        for trial in practices:
-            presenter.show_instructions(color_instr)
-            data = show_one_trial(trial.copy())
-            data['practice'] = True
-            dataLogger.write_data(data)
-    # show trials
-    if sinfo['Type'] == 'Normal':
-        total_correct_counter = 0
-        presenter.show_instructions(INSTR_4)
-        trial_counter = 0
-        for run in trials:
-            # instructions
-            presenter.show_instructions('Block #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
-            # start run
-            correct_counter = 0
-            for trial in run:
-                trial_counter += 1
-                data = show_one_trial(trial.copy())
-                if data['response'] is not None and data['correct']:
-                    correct_counter += 1
-                dataLogger.write_data(data)
-                if trial_counter >= MAX_NUM_TRIALS:
-                    break
-            total_correct_counter += correct_counter
-            presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
-                                        ' points possible in this block')
-            if trial_counter >= MAX_NUM_TRIALS:
-                break
-        accuracy = float(total_correct_counter)/len(trials)/len(trials[0])  # overall accuracy
-        print 'accuracy', accuracy
-        dataLogger.write_data({'overall_accuracy': accuracy})
-
-    # show a free response question (strategy)
-    if sinfo['Type'] != 'Normal':
-        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q1, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
-        cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
-        text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
-        warning_color = 0
-        while True:
-            response, rt, last_key = text_in.wait_key()
-            response = response.strip()
-            if last_key[0] == 'return' and last_key[1]['command']:
-                if len(response) == 0:
-                    warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
-                                              color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
-                    text_in.add_other_stim(warning)
-                    warning_color = 1 - warning_color  # toggle
-                else:
-                    break
-        dataLogger.write_data({'response': response, 'rt': rt})
-
-    # show multiple choice questions
-    if sinfo['Type'] != 'Normal':  # after navigation or after mouse tracker
-        two_step_stim, two_step_img_size, two_step_anchor_pos, \
-        three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos = construct_questions()
-        # generate trials
-        question_trials = [{
-            'anchor': random.randint(NUM_FACES / 2 - 1, NUM_FACES / 2 + 1),
-            'direction': DIRECTIONS[0] if i % 2 == 0 else DIRECTIONS[1],
-            'distance': 2 if i < 2 else 3,
-            'answer_index': i
-        } for i in range(4)]
-        random.shuffle(question_trials)
-        # start
-        which_task_instr = INSTR_WHICH_TASK[1] if sinfo['Type'] == 'After navigation' else INSTR_WHICH_TASK[0]
-        presenter.show_instructions(INSTR_QUESTION.format(which_task=which_task_instr) + '\n\nRemember: ' + color_instr)
-        if sinfo['Type'] == 'After navigation':  # show a reminder
-            show_key_mapping()
-        for q in question_trials:
-            data = show_one_trial(q, True)
-            dataLogger.write_data(data)
-
-    # another free response question (what could make things easier)
+    # show everything
+    if sinfo['Type'] == 'Normal':  # normal
+        navigation()
     if sinfo['Type'] == 'After navigation':
-        q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q2, pos=(0, 0.65), wrapWidth=1.5)
-        cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
-        text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
-        warning_color = 0
-        while True:
-            response, rt, last_key = text_in.wait_key()
-            response = response.strip()
-            if last_key[0] == 'return' and last_key[1]['command']:
-                if len(response) == 0:
-                    warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
-                                              color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
-                    text_in.add_other_stim(warning)
-                    warning_color = 1 - warning_color  # toggle
-                else:
-                    break
-        dataLogger.write_data({'response': response, 'rt': rt})
+        two_step_stim, two_step_img_size, two_step_anchor_pos, \
+        three_step_stim, three_step_img_lg, three_step_img_sm, \
+        three_step_anchor_pos = None, None, None, None, None, None, None
+        post_navigation()
 
     # end
     presenter.show_instructions(INSTR_END)
