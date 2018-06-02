@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+import sys, os
+sys.path.append(os.getcwd() + '/pygaze')
 from psychopy_util import *
 from config import *
 import dumb_text_input as dt
 import copy
-from psychopy.iohub.client import launchHubServer
+from pygaze import libscreen, eyetracker
 
 
 def show_one_trial(param, question=False):
@@ -326,16 +328,23 @@ def post_navigation():
     dataLogger.write_data({'response': response, 'rt': rt})
 
 
+def eyetribe_setup():
+    pg_display = libscreen.Display(disptype='psychopy', dispsize=(1280, 800))
+    tracker = eyetracker.EyeTracker(pg_display, trackertype='eyetribe')  # 'dummy'
+    tracker.calibrate()
+    return tracker
+
+
 if __name__ == '__main__':
     # subject ID dialog
-    sinfo = {'ID': '',
+    sinfo = {'ID': '419',  # TODO
              'Gender': ['Female', 'Male'],
              'Age': '',
-             'Type': ['Normal', 'After navigation'],
+             'Type': 'Normal', # ['Normal', 'After navigation'],
              'Screen': ['Exp', 'Test']}
-    show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Type', 'Screen'])
+    # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Type', 'Screen'])
     sid = int(sinfo['ID'])
-    img_prefix = sinfo['Gender'][0]
+    img_prefix = 'F'# sinfo['Gender'][0]
 
     # create data file
     file_postfix = '' if sinfo['Type'] == 'Normal' else '_questions'
@@ -371,6 +380,7 @@ if __name__ == '__main__':
 
     # show everything
     if sinfo['Type'] == 'Normal':  # normal
+        tracker = eyetribe_setup()
         navigation()
     if sinfo['Type'] == 'After navigation':
         two_step_stim, two_step_img_size, two_step_anchor_pos, \
