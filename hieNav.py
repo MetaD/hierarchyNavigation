@@ -6,7 +6,7 @@ from psychopy_util import *
 from config import *
 import dumb_text_input as dt
 import copy
-from pygaze import libscreen, eyetracker
+from pygaze import libscreen, eyetracker, settings
 
 
 def show_one_trial(param, question=False):
@@ -329,7 +329,8 @@ def post_navigation():
 
 
 def eyetribe_setup():
-    pg_display = libscreen.Display(disptype='psychopy', dispsize=(1280, 800))
+    settings.SCREENSIZE = (28.6, 17.9)
+    pg_display = libscreen.Display(disptype='psychopy', dispsize=presenter.window.size)
     tracker = eyetracker.EyeTracker(pg_display, trackertype='eyetribe')  # 'dummy'
     tracker.calibrate()
     return tracker
@@ -341,10 +342,12 @@ if __name__ == '__main__':
              'Gender': ['Female', 'Male'],
              'Age': '',
              'Type': 'Normal', # ['Normal', 'After navigation'],
-             'Screen': ['Exp', 'Test']}
+             'Screen': 'Exp'} #, 'Test']}
     # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Type', 'Screen'])
     sid = int(sinfo['ID'])
     img_prefix = 'F'# sinfo['Gender'][0]
+
+    # tracker = eyetribe_setup()
 
     # create data file
     file_postfix = '' if sinfo['Type'] == 'Normal' else '_questions'
@@ -380,7 +383,6 @@ if __name__ == '__main__':
 
     # show everything
     if sinfo['Type'] == 'Normal':  # normal
-        tracker = eyetribe_setup()
         navigation()
     if sinfo['Type'] == 'After navigation':
         two_step_stim, two_step_img_size, two_step_anchor_pos, \
