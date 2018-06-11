@@ -129,9 +129,9 @@ class EyeTribe:
         else:
             t = ''
         # assemble line
-        line = self._separator.join(map(str,[u'MSG', ts, t, safe_decode(message)]))
+        line = self._separator.join(map(str, [u'MSG', ts, t, safe_decode(message)]))
         # write message
-        self._logfile.write(line + u'\n') # to internal buffer
+        self._logfile.write(line + u'\n')  # to internal buffer
 
     def sample(self):
 
@@ -147,10 +147,10 @@ class EyeTribe:
         gaze		--	a (x,y) tuple indicating the point of regard
         """
 
-        if self._newestframe == None:
+        if self._newestframe is None:
             return None, None
         else:
-            return (self._newestframe['avgx'],self._newestframe['avgy'])
+            return self._newestframe['avgx'], self._newestframe['avgy']
 
     def pupil_size(self):
 
@@ -166,7 +166,7 @@ class EyeTribe:
         pupsize	--	a float indicating the pupil size (in arbitrary units)
         """
 
-        if self._currentsample == None:
+        if self._currentsample is None:
             return None
         else:
             return self._newestframe['psize']
@@ -389,8 +389,8 @@ class ParallelEyeTribe:
         # to a different CPU core. This prevents the ongoing experiment
         # (or whatever you're doing in the main Thread) from interfering
         # with the processing (and recording) of gaze data.
-        self.eyetribe_process = Process(target=_run_eyetribe_process, \
-            args=[logfilename, host, port, self._connection_alive, \
+        self.eyetribe_process = Process(target=_run_eyetribe_process,
+            args=[logfilename, host, port, self._connection_alive,
             self._command_queue])
         self.eyetribe_process.name = u'pygaze_eyetribe'
         self.eyetribe_process.daemon = True
@@ -1322,12 +1322,13 @@ class calibration:
         """
 
         # send the request
-        response = self.connection.request('calibration', 'pointstart', {'x':x,'y':y})
+        response = self.connection.request('calibration', 'pointstart', {'x': x, 'y': y})
         # return value or error
         if response['statuscode'] == 200:
             return True
         else:
-            raise Exception("Error in calibration.pointstart: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in calibration.pointstart: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def pointend(self):
 

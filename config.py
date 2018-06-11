@@ -9,7 +9,9 @@ ANCHOR_INDEXES = (2, 3, 4, 5, 6)
 MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('up', 'down', 'left', 'right')
-MULTI_CHOICE_KEYS = ('a', 's', 'e', 'd', 'x')  # down, left, right, up, none
+# Eye tracker
+SCREEN_SIZE = (28.6, 17.9)
+SCREEN_DIST = 50
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}

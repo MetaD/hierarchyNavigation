@@ -6,7 +6,7 @@ from psychopy_util import *
 from config import *
 import dumb_text_input as dt
 import copy
-from pygaze import libscreen, eyetracker, settings
+from eyetribe import EyeTribeTracker
 
 
 def show_one_trial(param, question=False):
@@ -59,22 +59,6 @@ def show_one_trial(param, question=False):
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
         option.size = None
-    # - question
-    if question:
-        anchors = [visual.ImageStim(presenter.window, images[param['anchor']]._imName) for i in range(4)]
-        if param['distance'] == 2:
-            for i, pos in enumerate(two_step_anchor_pos):
-                anchors[i].pos = pos
-                anchors[i].size = two_step_img_size
-            stims = two_step_stim + anchors
-        else:
-            for i, pos in enumerate(three_step_anchor_pos):
-                anchors[i].pos = pos
-                anchors[i].size = three_step_img_lg
-            stims = three_step_stim + anchors
-        visualization = presenter.select_from_stimuli(stims, ('down', 'up', 'left', 'right', 'none'), MULTI_CHOICE_KEYS,
-                                                      feedback_time=0)
-        param['visualization'] = visualization
     # 6 interval between trials
     presenter.show_fixation(random.choice(TRIAL_INTERVALS))
     # return
@@ -159,71 +143,6 @@ def show_key_mapping():
     presenter.show_instructions(INSTR_3, TOP_INSTR_POS, example_images + texts, next_instr_pos=(0, -0.9))
 
 
-def construct_questions():
-    quesion = visual.TextStim(presenter.window, INSTR_MULTI_CHOICE_Q, pos=(0, 0.9), height=0.08, wrapWidth=1.95)
-    option_v = visual.TextStim(presenter.window, 'None of the above', pos=(0, -0.85))
-    # arrange stimuli
-    grey = '#727272'
-    shapes = [visual.Rect(presenter.window, width=0.2, height=1, pos=(-0.6, 0), lineWidth=0, fillColor=grey),
-              visual.Rect(presenter.window, width=0.2, height=1, pos=(-0.2, 0), lineWidth=0, fillColor=grey),
-              visual.Rect(presenter.window, width=0.6, height=0.3, pos=(0.4, 0.35), lineWidth=0, fillColor=grey),
-              visual.Rect(presenter.window, width=0.6, height=0.3, pos=(0.4, -0.35), lineWidth=0, fillColor=grey),
-              visual.Rect(presenter.window, width=0.6, height=0.15, pos=(0, -0.85), lineWidth=0, fillColor=grey)]
-    option_pos = [(-0.73, 0.53), (-0.33, 0.53), (0.07, 0.53), (0.07, -0.17), (-0.33, -0.75)]
-    option_letters = [visual.TextStim(presenter.window, str(k.upper()), pos=pos, color='yellow')
-                      for k, pos in zip(MULTI_CHOICE_KEYS, option_pos)]
-    #  a) 2 steps
-    two_step_img_size = (0.12, 0.12 * presenter.window.size[0] / presenter.window.size[1])
-    two_step_stim = [copy.copy(shape) for shape in shapes]
-    two_step_stim += [quesion, option_v]
-    two_step_stim += option_letters
-    two_step_arrows = []
-    for i in range(2):
-        two_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
-    two_arrow_pos = [(-0.6, 0.175), (0.3, 0.35), (0.3, -0.35), (-0.2, -0.175),  # down, left, right, up
-                     (-0.6, -0.175), (0.5, 0.35), (0.5, -0.35), (-0.2, 0.175)]  # down, left, right, up
-    for stim, pos in zip(two_step_arrows, two_arrow_pos):
-        stim.pos = pos
-    two_step_stim += two_step_arrows
-    two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=two_step_img_size)
-                      for i in range(4)]
-    two_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png',
-                                       size=two_step_img_size) for i in range(4)]
-    person_pos = [(-0.6, 0), (0.395, 0.35), (0.395, -0.35), (-0.2, 0),  # person
-                  (-0.6, -0.35), (0.195, 0.35), (0.595, -0.35), (-0.2, 0.35)]  # person in question
-    for i, pos in enumerate(person_pos):
-        two_step_stim[i - 8].pos = pos
-    two_step_anchor_pos = [(-0.6, 0.35), (0.595, 0.35), (0.195, -0.35), (-0.2, -0.35)]  # down, left, right, up
-    #  b) 3 steps
-    three_step_img_lg = (0.1, 0.1 * presenter.window.size[0] / presenter.window.size[1])
-    three_step_img_sm = (0.08, 0.08 * presenter.window.size[0] / presenter.window.size[1])
-    three_step_stim = shapes
-    three_step_stim += [quesion, option_v]
-    three_step_stim += option_letters
-    three_step_arrows = []
-    for i in range(3):
-        three_step_arrows += presenter.load_all_images(IMG_FOLDER, '.png', 'arrow')
-    three_arrow_pos = [(-0.6, 0.245), (0.25, 0.35), (0.25, -0.35), (-0.2, -0.245),  # down, left, right, up
-                       (-0.6, 0), (0.4, 0.35), (0.4, -0.35), (-0.2, 0),  # down, left, right, up
-                       (-0.6, -0.245), (0.55, 0.35), (0.55, -0.35), (-0.2, 0.245)]  # down, left, right, up
-    for stim, pos in zip(three_step_arrows, three_arrow_pos):
-        stim.pos = pos
-        stim.size = (0.05, 0.05 * presenter.window.size[0] / presenter.window.size[1])
-    three_step_stim += three_step_arrows
-    three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person.png', size=three_step_img_sm)
-                        for i in range(8)]
-    three_step_stim += [visual.ImageStim(presenter.window, image=IMG_FOLDER + 'person_in_q.png',
-                                         size=three_step_img_lg) for i in range(4)]
-    person_pos = [(-0.6, 0.125), (0.325, 0.35), (0.325, -0.35), (-0.2, 0.125),  # person
-                  (-0.6, -0.125), (0.475, 0.35), (0.475, -0.35), (-0.2, -0.125),  # person
-                  (-0.6, -0.38), (0.17, 0.35), (0.63, -0.35), (-0.2, 0.38)]  # person in question
-    for i, pos in enumerate(person_pos):
-        three_step_stim[i - 12].pos = pos
-    three_step_anchor_pos = [(-0.6, 0.38), (0.63, 0.35), (0.17, -0.35), (-0.2, -0.38)]  # down, left, right, up
-    return two_step_stim, two_step_img_size, two_step_anchor_pos, \
-           three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos
-
-
 def navigation():
     presenter.show_instructions(INSTR_0)
     presenter.show_instructions(color_instr)
@@ -268,90 +187,24 @@ def navigation():
     dataLogger.write_data({'overall_accuracy': accuracy})
 
 
-def post_navigation():
-    # show a free response question (strategy)
-    q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q1, pos=(0, 0.65), height=0.09, wrapWidth=1.9)
-    cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
-    text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
-    warning_color = 0
-    while True:
-        response, rt, last_key = text_in.wait_key()
-        response = response.strip()
-        if last_key[0] == 'return' and last_key[1]['command']:
-            if len(response) == 0:
-                warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
-                                          color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
-                text_in.add_other_stim(warning)
-                warning_color = 1 - warning_color  # toggle
-            else:
-                break
-    dataLogger.write_data({'response': response, 'rt': rt})
-
-    # show multiple choice questions
-    global two_step_stim, two_step_img_size, two_step_anchor_pos, \
-    three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos
-    two_step_stim, two_step_img_size, two_step_anchor_pos, \
-    three_step_stim, three_step_img_lg, three_step_img_sm, three_step_anchor_pos = construct_questions()
-    # generate trials
-    question_trials = [{
-        'anchor': random.randint(NUM_FACES / 2 - 1, NUM_FACES / 2 + 1),
-        'direction': DIRECTIONS[0] if i % 2 == 0 else DIRECTIONS[1],
-        'distance': 2 if i < 2 else 3,
-        'answer_index': i
-    } for i in range(4)]
-    random.shuffle(question_trials)
-    # start
-    which_task_instr = INSTR_WHICH_TASK[1] if sinfo['Type'] == 'After navigation' else INSTR_WHICH_TASK[0]
-    presenter.show_instructions(INSTR_QUESTION.format(which_task=which_task_instr) + '\n\nRemember: ' + color_instr)
-    if sinfo['Type'] == 'After navigation':  # show a reminder
-        show_key_mapping()
-    for q in question_trials:
-        data = show_one_trial(q, True)
-        dataLogger.write_data(data)
-
-    # another free response question (what could make things easier)
-    q_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_Q2, pos=(0, 0.65), wrapWidth=1.5)
-    cont_stim = visual.TextStim(presenter.window, INSTR_OPEN_ENDED_CONT, pos=(0, -0.9), height=0.08, wrapWidth=1.5)
-    text_in = dt.DumbTextInput(presenter.window, width=1.5, height=1, pos=(0, -0.2), other_stim=[q_stim, cont_stim])
-    warning_color = 0
-    while True:
-        response, rt, last_key = text_in.wait_key()
-        response = response.strip()
-        if last_key[0] == 'return' and last_key[1]['command']:
-            if len(response) == 0:
-                warning = visual.TextStim(presenter.window, WARNING_OPEN_ENDED_Q, pos=(-0.75, 0.35), height=0.04,
-                                          color='yellow' if warning_color == 0 else 'red', alignHoriz='left')
-                text_in.add_other_stim(warning)
-                warning_color = 1 - warning_color  # toggle
-            else:
-                break
-    dataLogger.write_data({'response': response, 'rt': rt})
-
-
 def eyetribe_setup():
-    settings.SCREENSIZE = (28.6, 17.9)
-    pg_display = libscreen.Display(disptype='psychopy', dispsize=presenter.window.size)
-    tracker = eyetracker.EyeTracker(pg_display, trackertype='eyetribe')  # 'dummy'
+    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST, logfile=str(sid) + '_tracker')
     tracker.calibrate()
     return tracker
 
 
 if __name__ == '__main__':
     # subject ID dialog
-    sinfo = {'ID': '419',  # TODO
+    sinfo = {'ID': random.randint(1, 200),  # TODO
              'Gender': ['Female', 'Male'],
              'Age': '',
-             'Type': 'Normal', # ['Normal', 'After navigation'],
              'Screen': 'Exp'} #, 'Test']}
-    # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Type', 'Screen'])
+    # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Screen'])  # TODO
     sid = int(sinfo['ID'])
-    img_prefix = 'F'# sinfo['Gender'][0]
-
-    # tracker = eyetribe_setup()
+    img_prefix = 'F'  # sinfo['Gender'][0]  TODO
 
     # create data file
-    file_postfix = '' if sinfo['Type'] == 'Normal' else '_questions'
-    dataLogger = DataHandler(DATA_FOLDER, str(sid) + file_postfix + '.txt')
+    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '_eye.txt')
     # save info from the dialog box
     dataLogger.write_data({
         k: str(sinfo[k]) for k in sinfo.keys()
@@ -381,14 +234,9 @@ if __name__ == '__main__':
     color_instr = INSTR_COLOR.format(down_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[0]]],
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
+    # eye tribe setup
+    tracker = eyetribe_setup()
     # show everything
-    if sinfo['Type'] == 'Normal':  # normal
-        navigation()
-    if sinfo['Type'] == 'After navigation':
-        two_step_stim, two_step_img_size, two_step_anchor_pos, \
-        three_step_stim, three_step_img_lg, three_step_img_sm, \
-        three_step_anchor_pos = None, None, None, None, None, None, None
-        post_navigation()
-
+    navigation()
     # end
     presenter.show_instructions(INSTR_END)
