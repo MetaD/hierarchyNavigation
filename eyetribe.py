@@ -390,7 +390,7 @@ class EyeTribeTracker(BaseEyeTracker):
 
         return self.connected
 
-    def drift_correction(self, pos=None, fix_triggered=False):
+    def drift_correction(self, pos=None, fix_triggered=True):
 
         """Performs a drift check
 
@@ -411,24 +411,25 @@ class EyeTribeTracker(BaseEyeTracker):
                        or 'escape' is pressed
         """
 
-        if pos == None:
+        if pos is None:
             pos = self.dispsize[0] / 2, self.dispsize[1] / 2
         if fix_triggered:
             return self.fix_triggered_drift_correction(pos)
-        self.draw_drift_correction_target(pos[0], pos[1])
-        pressed = False
-        while not pressed:
-            pressed, presstime = self.kb.get_key()
-            if pressed:
-                if pressed == 'escape' or pressed == 'q':
-                    print("libeyetribe.EyeTribeTracker.drift_correction: 'q' or 'escape' pressed")
-                    return self.calibrate()
-                gazepos = self.sample()
-                if ((gazepos[0] - pos[0]) ** 2 + (gazepos[1] - pos[1]) ** 2) ** 0.5 < self.pxerrdist:
-                    return True
-                else:
-                    self.errorbeep.play()
-        return False
+        raise RuntimeError('Don\'t trigger drift correction by key alright?')
+        # self.draw_drift_correction_target(pos[0], pos[1])
+        # pressed = False
+        # while not pressed:
+        #     pressed, presstime = self.kb.get_key()
+        #     if pressed:
+        #         if pressed == 'escape' or pressed == 'q':
+        #             print("libeyetribe.EyeTribeTracker.drift_correction: 'q' or 'escape' pressed")
+        #             return self.calibrate()
+        #         gazepos = self.sample()
+        #         if ((gazepos[0] - pos[0]) ** 2 + (gazepos[1] - pos[1]) ** 2) ** 0.5 < self.pxerrdist:
+        #             return True
+        #         else:
+        #             self.errorbeep.play()
+        # return False
 
     def draw_drift_correction_target(self, x, y):
 
@@ -486,9 +487,9 @@ class EyeTribeTracker(BaseEyeTracker):
         while len(lx) < min_samples:
 
             # pressing escape enters the calibration screen
-            if self.kb.get_key()[0] in ['escape', 'q']:
-                print("libeyetribe.EyeTribeTracker.fix_triggered_drift_correction: 'q' or 'escape' pressed")
-                return self.calibrate()
+            # if self.kb.get_key()[0] in ['escape', 'q']:
+            #     print("libeyetribe.EyeTribeTracker.fix_triggered_drift_correction: 'q' or 'escape' pressed")
+            #     return self.calibrate()
 
             # collect a sample
             x, y = self.sample()
@@ -619,12 +620,6 @@ class EyeTribeTracker(BaseEyeTracker):
         self.eyetribe.start_recording()
         self.recording = True
 
-    def status_msg(self, msg):
-
-        """Not supported for EyeTribeTracker (yet)"""
-
-        print("function not supported yet")
-
     def stop_recording(self):
 
         """Stop recording eye position
@@ -664,7 +659,7 @@ class EyeTribeTracker(BaseEyeTracker):
         if eventdetection in ['pygaze', 'native']:
             self.eventdetection = eventdetection
 
-        return ('pygaze', 'pygaze', 'pygaze')
+        return 'pygaze', 'pygaze', 'pygaze'
 
     def wait_for_event(self, event):
 
@@ -923,9 +918,9 @@ class EyeTribeTracker(BaseEyeTracker):
             # print warning, since EyeTribe does not have a blink detection
             # built into their API
 
-            print("WARNING! 'native' event detection has been selected, \
-				but EyeTribe does not offer saccade detection; PyGaze \
-				algorithm will be used")
+            print("WARNING! 'native' event detection has been selected, "
+                  "but EyeTribe does not offer saccade detection; PyGaze "
+                  "algorithm will be used")
 
         # # # # #
         # PyGaze method
@@ -990,9 +985,9 @@ class EyeTribeTracker(BaseEyeTracker):
             # print warning, since EyeTribe does not have a blink detection
             # built into their API
 
-            print("WARNING! 'native' event detection has been selected, \
-				but EyeTribe does not offer saccade detection; PyGaze \
-				algorithm will be used")
+            print("WARNING! 'native' event detection has been selected, "
+                  "but EyeTribe does not offer saccade detection; PyGaze "
+                  "algorithm will be used")
 
         # # # # #
         # PyGaze method
