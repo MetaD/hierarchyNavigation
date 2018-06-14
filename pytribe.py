@@ -589,7 +589,7 @@ class connection:
                     # if this is another category, check if the request
                     # matches
                     elif 'request' in self.resplist[i] and \
-                        self.resplist[i]['request'] == request:
+                            self.resplist[i]['request'] == request:
                         return self.resplist.pop(i)
         # on a connection error, get_response returns False and a connection
         # error should be returned
@@ -838,6 +838,7 @@ class tracker:
         response = self.connection.request('tracker', 'get', ['iscalibrated'])
         # return value or error
         if response['statuscode'] == 200:
+            print response
             return response['values']['iscalibrated']
         else:
             raise Exception("Error in tracker.get_iscalibrated: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))

@@ -188,7 +188,10 @@ def navigation():
 
 
 def eyetribe_setup():
-    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST, logfile=str(sid) + '_tracker')
+    if not os.path.isdir('log'):
+        os.mkdir('log')
+    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST,
+                              logfile='log/' + str(sid) + '_tracker')
     tracker.calibrate()
     return tracker
 
