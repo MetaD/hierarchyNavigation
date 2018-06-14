@@ -838,7 +838,8 @@ class tracker:
         response = self.connection.request('tracker', 'get', ['iscalibrated'])
         # return value or error
         if response['statuscode'] == 200:
-            print response
+            if 'iscalibrated' not in response['values']:  # TODO why is it not there???
+                return False
             return response['values']['iscalibrated']
         else:
             raise Exception("Error in tracker.get_iscalibrated: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
@@ -1297,10 +1298,11 @@ class calibration:
         for attempt in range(max_attempts):
             # send the request
             response = self.connection.request('calibration', 'start',
-                {'pointcount':pointcount})
+                {'pointcount': pointcount})
             # return value or error
             if response['statuscode'] == 200:
                 return
+            print(response['values']['statusmessage'])
             self.abort()
         raise Exception("Error in calibration.start: %s (code %d)" \
             % (response['values']['statusmessage'],response['statuscode']))
