@@ -20,7 +20,7 @@ from py3compat import *
 # EYETRIBE CLASS
 
 # The original EyeTribe class from earlier versions of PyTribe.
-class EyeTribe:
+class EyeTribe(object):
 
     """class for eye tracking and data collection using an EyeTribe tracker
     """
@@ -75,10 +75,10 @@ class EyeTribe:
         self._dpthread.daemon = True
         self._dpthread.name = 'dataprocessor'
 
-        # start all threads
-        self._hbthread.start()
-        self._ssthread.start()
-        self._dpthread.start()
+        # start all threads TODO start after calibration????
+        # self._hbthread.start()
+        # self._ssthread.start()
+        # self._dpthread.start()
 
         # initialize calibration
         self.calibration = calibration(self._connection)
@@ -437,10 +437,10 @@ class ParallelEyeTribe:
 
         global _current_sample
 
-        if _current_sample == None:
+        if _current_sample is None:
             return None, None
         else:
-            return (_current_sample['avgx'], _current_sample['avgy'])
+            return _current_sample['avgx'], _current_sample['avgy']
 
     def pupil_size(self):
 
@@ -458,7 +458,7 @@ class ParallelEyeTribe:
 
         global _current_sample
 
-        if _current_sample == None:
+        if _current_sample is None:
             return None
         else:
             return _current_sample['psize']
@@ -547,7 +547,8 @@ class connection:
 
         # initialize a connection
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((self.host,self.port))
+        self.sock.connect((self.host, self.port))
+        self.sock.settimeout(3)
         # Create lock
         self._request_lock = Lock()
 
@@ -566,6 +567,17 @@ class connection:
         msg = self.create_json(category, request, values)
         # send the message over the connection
         self._request_lock.acquire()
+        # clear buffer
+        self.sock.settimeout(0.1)
+        while True:
+            try:
+                trash = self.sock.recv(32768)
+            except socket.timeout:
+                break
+            if len(trash) < 1024:
+                break
+        self.sock.settimeout(3)
+        # send msg
         self.sock.send(msg)
         # print request in DEBUG mode
         if self.DEBUG:
@@ -589,7 +601,7 @@ class connection:
                     # if this is another category, check if the request
                     # matches
                     elif 'request' in self.resplist[i] and \
-                        self.resplist[i]['request'] == request:
+                            self.resplist[i]['request'] == request:
                         return self.resplist.pop(i)
         # on a connection error, get_response returns False and a connection
         # error should be returned
@@ -605,9 +617,6 @@ class connection:
         # try to get a new response
         try:
             response = self.sock.recv(32768)
-            # print reply in DEBUG mode
-            if self.DEBUG:
-                print("REPLY: '%s'" % response)
         # if it fails, revive the connection and return a connection error
         except socket.error:
             print("reviving connection")
@@ -619,7 +628,13 @@ class connection:
         # add parsed responses to the internal list
         for r in response:
             if r:
-                self.resplist.append(self.parse_json(r))
+                # print reply in DEBUG mode
+                if self.DEBUG:
+                    print("REPLY: '%s'" % r)
+                try:
+                    self.resplist.append(self.parse_json(r))
+                except ValueError:  # ignoring incomplete json?
+                    continue
 
         return True
 
@@ -655,15 +670,15 @@ class connection:
 
         # error if the values are anything other than a dict, tuple or list
         if values is not None and type(values) not in [dict, list, tuple]:
-            raise Exception("values should be dict, tuple or list, not '%s' (values = %s)" % (type(values),values))
+            raise Exception("values should be dict, tuple or list, not '%s' (values = %s)" % (type(values), values))
 
         # create the json message
-        if request == None:
-            jsondict = {"category":category}
-        elif values == None:
-            jsondict = {"category":category, "request":request}
+        if request is None:
+            jsondict = {"category": category}
+        elif values is None:
+            jsondict = {"category": category, "request": request}
         else:
-            jsondict = {"category":category, "request":request, "values":values}
+            jsondict = {"category": category, "request": request, "values": values}
 
         return json.dumps(jsondict)
 
@@ -709,7 +724,6 @@ class connection:
         # initialize a connection
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((self.host,self.port))
-
 
     def close(self):
 
@@ -1124,9 +1138,9 @@ class tracker:
         """
 
         # check passed value
-        if push == None:
+        if push is None:
             # toggle state
-            self.push = self.push != True
+            self.push = self.push is not True
         elif type(push) == bool:
             # set state to passed value
             self.push = push

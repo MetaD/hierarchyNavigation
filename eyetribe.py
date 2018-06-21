@@ -716,9 +716,9 @@ class EyeTribeTracker(BaseEyeTracker):
             # print warning, since EyeTribe does not have a blink detection
             # built into their API
 
-            print("WARNING! 'native' event detection has been selected, \
-				but EyeTribe does not offer blink detection; PyGaze algorithm \
-				will be used")
+            print("WARNING! 'native' event detection has been selected, "
+                  "but EyeTribe does not offer blink detection; PyGaze algorithm "
+                  "will be used")
 
         # # # # #
         # PyGaze method
@@ -756,9 +756,9 @@ class EyeTribeTracker(BaseEyeTracker):
             # print warning, since EyeTribe does not have a blink detection
             # built into their API
 
-            print("WARNING! 'native' event detection has been selected, \
-				but EyeTribe does not offer blink detection; PyGaze algorithm \
-				will be used")
+            print("WARNING! 'native' event detection has been selected, "
+                  "but EyeTribe does not offer blink detection; PyGaze algorithm "
+                  "will be used")
 
         # # # # #
         # PyGaze method
