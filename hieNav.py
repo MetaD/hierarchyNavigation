@@ -188,7 +188,7 @@ def navigation():
 
 
 def eyetribe_setup():
-    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST, logfile=str(sid) + '_tracker')
+    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST, logfile='log/%d_tracker' % sid)
     tracker.calibrate()
     return tracker
 
@@ -205,6 +205,8 @@ if __name__ == '__main__':
 
     # create data file
     dataLogger = DataHandler(DATA_FOLDER, str(sid) + '_eye.txt')
+    if not os.path.isdir('log'):
+        os.mkdir('log')
     # save info from the dialog box
     dataLogger.write_data({
         k: str(sinfo[k]) for k in sinfo.keys()
