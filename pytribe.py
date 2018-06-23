@@ -75,7 +75,7 @@ class EyeTribe(object):
         self._dpthread.daemon = True
         self._dpthread.name = 'dataprocessor'
 
-        # start all threads TODO start after calibration????
+        # start all threads
         self._hbthread.start()
         self._ssthread.start()
         self._dpthread.start()
@@ -556,7 +556,7 @@ class connection:
         # Create lock
         self._request_lock = Lock()
 
-    def request(self, category, request, values):
+    def request(self, category, request, values, num_try=3):
 
         """Send a message over the connection
 
@@ -594,8 +594,8 @@ class connection:
         success = self.get_response()
         self._request_lock.release()
 
-        # return the appropriate response
         if success:
+            # return the appropriate response
             for i in range(len(self.resplist)):
                 # check if the category matches
                 if self.resplist[i]['category'] == category:
@@ -605,11 +605,26 @@ class connection:
                     # if this is another category, check if the request
                     # matches
                     elif 'request' in self.resplist[i] and \
-                            self.resplist[i]['request'] == request:  # TODO and values in there
-                        return self.resplist.pop(i)
-        # on a connection error, get_response returns False and a connection
-        # error should be returned
+                            self.resplist[i]['request'] == request:
+                        try:
+                            if (values is None) or ('values' not in self.resplist[i]) or \
+                                    all(value in self.resplist[i]['values'] for value in values):
+                                return self.resplist.pop(i)
+                        except KeyError:
+                            print(self.resplist[i])
+                            raise
+            # no requested value found in response list
+            if num_try > 0:  # try again for a few other times
+                print('??')
+                return self.request(category, request, values, num_try - 1)
+            else:  # base case (failed all of them)
+                print('?')
+                return {'statuscode': 901, 'values': {
+                    'statusmessage': 'failed to request ' + str(values)
+                }}
         else:
+            # on a connection error, get_response returns False and a connection
+            # error should be returned
             return self.parse_json('{"statuscode":901,"values":{"statusmessage":"connection error"}}')
 
     def get_response(self):
@@ -1318,7 +1333,7 @@ class calibration:
 
         self.connection = connection
 
-    def start(self, pointcount=9, max_attempts=5):
+    def start(self, pointcount=9, max_attempts=2):
 
         """Starts the calibration, using the passed number of calibration
         points
@@ -1335,13 +1350,13 @@ class calibration:
         for attempt in range(max_attempts):
             # send the request
             response = self.connection.request('calibration', 'start',
-                {'pointcount':pointcount})
+                                               {'pointcount': pointcount})
             # return value or error
             if response['statuscode'] == 200:
                 return
             self.abort()
-        raise Exception("Error in calibration.start: %s (code %d)" \
-            % (response['values']['statusmessage'],response['statuscode']))
+        raise Exception("Error in calibration.start: %s (code %d)"
+                        % (response['values']['statusmessage'], response['statuscode']))
 
     def pointstart(self, x, y):
 
@@ -1449,34 +1464,33 @@ class calibration:
                             (response['values']['statusmessage'], response['statuscode']))
 
         # return True if this was not the final calibration point
-        if not 'calibresult' in response['values']:
+        if 'values' not in response or 'calibresult' not in response['values']:
             return True
 
         # if this was the final calibration point, return the results
         else:
             # return calibration dict
-            returndict =  {	'result':response['values']['calibresult']['result'],
-                            'deg':response['values']['calibresult']['deg'],
-                            'Rdeg':response['values']['calibresult']['degl'],
-                            'Ldeg':response['values']['calibresult']['degr'],
-                            'calibpoints':[]
-                            }
+            returndict = {'result': response['values']['calibresult']['result'],
+                          'deg': response['values']['calibresult']['deg'],
+                          'Rdeg': response['values']['calibresult']['degl'],
+                          'Ldeg': response['values']['calibresult']['degr'],
+                          'calibpoints': []}
             for pointdict in response['values']['calibresult']['calibpoints']:
-                returndict['calibpoints'].append({	'state':pointdict['state'],
-                                            'cpx':pointdict['cp']['x'],
-                                            'cpy':pointdict['cp']['y'],
-                                            'mecpx':pointdict['mecp']['x'],
-                                            'mecpy':pointdict['mecp']['y'],
-                                            'acd':pointdict['acd']['ad'],
-                                            'Lacd':pointdict['acd']['adl'],
-                                            'Racd':pointdict['acd']['adr'],
-                                            'mepix':pointdict['mepix']['mep'],
-                                            'Lmepix':pointdict['mepix']['mepl'],
-                                            'Rmepix':pointdict['mepix']['mepr'],
-                                            'asdp':pointdict['asdp']['asd'],
-                                            'Lasdp':pointdict['asdp']['asdl'],
-                                            'Rasdp':pointdict['asdp']['asdr']
-                                            })
+                returndict['calibpoints'].append({
+                    'state': pointdict['state'],
+                    'cpx': pointdict['cp']['x'],
+                    'cpy': pointdict['cp']['y'],
+                    'mecpx': pointdict['mecp']['x'],
+                    'mecpy': pointdict['mecp']['y'],
+                    'acd': pointdict['acd']['ad'],
+                    'Lacd': pointdict['acd']['adl'],
+                    'Racd': pointdict['acd']['adr'],
+                    'mepix': pointdict['mepix']['mep'],
+                    'Lmepix': pointdict['mepix']['mepl'],
+                    'Rmepix': pointdict['mepix']['mepr'],
+                    'asdp': pointdict['asdp']['asd'],
+                    'Lasdp': pointdict['asdp']['asdl'],
+                    'Rasdp': pointdict['asdp']['asdr']})
             return returndict
 
     def abort(self):
