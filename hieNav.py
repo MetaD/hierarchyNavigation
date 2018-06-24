@@ -150,7 +150,7 @@ def navigation():
     presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
     show_key_mapping()
 
-    # practice
+    # practices
     presenter.show_instructions(INSTR_PRACTICE)
     global practices
     practices = random.sample(practices, NUM_PRACTICE_TRIALS)

@@ -10,7 +10,7 @@ MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('up', 'down', 'left', 'right')
 # Eye tracker
-SCREEN_SIZE = (28.6, 17.9)
+SCREEN_SIZE = (28.6, 17.9)  # TODO
 SCREEN_DIST = 50
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
