@@ -10,8 +10,8 @@ MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('up', 'down', 'left', 'right')
 # Eye tracker
-SCREEN_SIZE = (28.6, 17.9)
-SCREEN_DIST = 50
+SCREEN_SIZE = (28.64, 17.9)  # TODO
+SCREEN_DIST = 50  # TODO
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
 COLOR_NAMES = {'#f0ad4e': 'Orange', '#5bc0de': 'Blue'}
@@ -53,19 +53,7 @@ INSTR_2 = 'When the response options are presented, they\'ll look like this:'
 INSTR_3 = 'Press one of the arrow keys to select a given person, like this:'
 INSTR_PRACTICE = 'We\'ll start by doing some practice trials.\n\nIn these practice trials, you\'ll be reminded of ' \
                  'the meaning of the numbers\' colors before each trial (but this won\'t happen in the main task).'
-INSTR_4 = 'You\'ve completed all of the practice trials.\n\nNow we\'ll begin the task.'
-INSTR_QUESTION = 'In the next part, you will be asked to perform {which_task}, and then answer a few questions.'
-INSTR_WHICH_TASK = ('the same task', 'a few trials of the second task again')  # (normal/after mt, after navigation)
-INSTR_END = 'The task is complete!\nThank you for participating!'
-INSTR_OPEN_ENDED_Q1 = 'We\'d like to know more about the strategies that different people use to do the second task.\n' \
-                      'What strategies (e.g., memory tricks, ways of visualizing the information), if any, did you ' \
-                      'use to arrive at your response on each trial?\n' \
-                      'Please describe what it felt like you were doing during the period after the reference person ' \
-                      'and number appeared, but before the 4 response choices appeared.'
-INSTR_OPEN_ENDED_CONT = 'Press command + enter to submit and continue'
-WARNING_OPEN_ENDED_Q = 'Your response is important to us. Please write something.'
-INSTR_MULTI_CHOICE_Q = 'The options below illustrate a few ways that people visualize this problem. ' \
-                       'Please press X, S, E, D or A to choose an option that is most similar to your approach on ' \
-                       'this trial.'
-INSTR_OPEN_ENDED_Q2 = 'If you found this task to be difficult, is there anything we could change that might make it ' \
-                      'easier?'
+INSTR_4 = 'You\'ve completed all of the practice trials.\n\nPlease find the experimenter to start the task.'
+INSTR_END = ['You\'ve completed the first half of this task! Please take a break, and find the experimenter '
+             'whenever you are ready to start the next half.',
+             'This task is complete!\nThank you for participating!']

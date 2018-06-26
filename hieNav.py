@@ -4,21 +4,34 @@ import sys, os
 sys.path.append(os.getcwd() + '/pygaze')
 from psychopy_util import *
 from config import *
-import dumb_text_input as dt
-import copy
 from eyetribe import EyeTribeTracker
 
 
-def show_one_trial(param, question=False):
+def show_one_trial(param, trial_index):
+    # START RECORDING
+    if trial_index != 'prac':
+        tracker.start_recording()
     # 0 anchor face
+    if trial_index != 'prac':
+        tracker.log('Trial #%d face starts' % trial_index)
     presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d face ends' % trial_index)
     # 1 fixation
     presenter.show_fixation(FIXATION_TIME)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
+    if trial_index != 'prac':
+        tracker.log('Trial #%d number starts' % trial_index)
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d number ends' % trial_index)
     # 3 fixation (mental navigation)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d navigation starts' % trial_index)
     presenter.show_fixation(BLANK_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d navigation ends' % trial_index)
     # 4.0 options
     correct_option = param['anchor'] + param['distance'] if param['direction'] == DIRECTIONS[0] else \
                      param['anchor'] - param['distance']
@@ -50,11 +63,15 @@ def show_one_trial(param, question=False):
     resp_feedback = ([incorrect_bg, incorrect_feedback], [correct_bg, correct_feedback])
     no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
-    selection_time = float('inf') if question else SELECTION_TIME
     highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)  # TODO WHY does this change every time?!
-    response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, selection_time, 0, highlight,
+    if trial_index != 'prac':
+        tracker.log('Trial #%d options starts' % trial_index)
+    response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
                                              FEEDBACK_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d options ends' % trial_index)
+        tracker.stop_recording()
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
@@ -67,6 +84,7 @@ def show_one_trial(param, question=False):
         param['response'] = None
     else:
         param.update(response)
+    param['trial_index'] = trial_index
     return param
 
 
@@ -144,70 +162,69 @@ def show_key_mapping():
 
 
 def navigation():
-    presenter.show_instructions(INSTR_0)
-    presenter.show_instructions(color_instr)
-    presenter.show_instructions(INSTR_1)
-    presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
-    show_key_mapping()
-
-    # practice
-    presenter.show_instructions(INSTR_PRACTICE)
-    global practices
-    practices = random.sample(practices, NUM_PRACTICE_TRIALS)
-    for trial in practices:
+    if sinfo['Section'] == 'Instr':
+        presenter.show_instructions(INSTR_0)
         presenter.show_instructions(color_instr)
-        data = show_one_trial(trial.copy())
-        data['practice'] = True
-        dataLogger.write_data(data)
+        presenter.show_instructions(INSTR_1)
+        presenter.show_instructions(INSTR_2, TOP_INSTR_POS, example_images, next_instr_pos=(0, -0.9))
+        show_key_mapping()
 
-    # show trials
-    total_correct_counter = 0
-    presenter.show_instructions(INSTR_4)
-    trial_counter = 0
-    for run in trials:
-        # instructions
-        presenter.show_instructions('Block #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
-        # start run
-        correct_counter = 0
-        for trial in run:
-            trial_counter += 1
-            data = show_one_trial(trial.copy())
-            if data['response'] is not None and data['correct']:
-                correct_counter += 1
+        # practices
+        presenter.show_instructions(INSTR_PRACTICE)
+        global practices
+        practices = random.sample(practices, NUM_PRACTICE_TRIALS)
+        for trial in practices:
+            presenter.show_instructions(color_instr)
+            data = show_one_trial(trial.copy(), trial_index='prac')
+            data['practice'] = True
             dataLogger.write_data(data)
+        presenter.show_instructions(INSTR_4)
+
+    else:
+        # show trials
+        total_correct_counter = 0
+        trial_counter = 0
+        for run in trials:
+            # instructions
+            presenter.show_instructions('Block #' + str(trials.index(run) + 1) + '\n\nRemember: ' + color_instr)
+            # start run
+            correct_counter = 0
+            for trial in run:
+                trial_counter += 1
+                data = show_one_trial(trial.copy(), trial_counter)
+                if data['response'] is not None and data['correct']:
+                    correct_counter += 1
+                dataLogger.write_data(data)
+                if trial_counter >= MAX_NUM_TRIALS:
+                    break
+            total_correct_counter += correct_counter
+            presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
+                                        ' points possible in this block')
             if trial_counter >= MAX_NUM_TRIALS:
                 break
-        total_correct_counter += correct_counter
-        presenter.show_instructions('You earned ' + str(correct_counter) + ' point(s) out of ' + str(len(run)) +
-                                    ' points possible in this block')
-        if trial_counter >= MAX_NUM_TRIALS:
-            break
-    accuracy = float(total_correct_counter) / len(trials) / len(trials[0])  # overall accuracy
-    print('accuracy', accuracy)
-    dataLogger.write_data({'overall_accuracy': accuracy})
-
-
-def eyetribe_setup():
-    if not os.path.isdir('log'):
-        os.mkdir('log')
-    tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST,
-                              logfile='log/' + str(sid) + '_tracker')
-    tracker.calibrate()
-    return tracker
+        # end
+        presenter.show_instructions(INSTR_END[int(sinfo['Section'] - 1)], next_instr_text=None)
+        accuracy = float(total_correct_counter) / len(trials) / len(trials[0])  # overall accuracy
+        print('accuracy', accuracy)
+        dataLogger.write_data({'overall_accuracy': accuracy})
 
 
 if __name__ == '__main__':
     # subject ID dialog
-    sinfo = {'ID': random.randint(1, 200),  # TODO
+    sinfo = {'ID': '',
              'Gender': ['Female', 'Male'],
              'Age': '',
-             'Screen': 'Exp'} #, 'Test']}
-    # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Screen'])  # TODO
+             'Section': ['Instr', '1', '2'],
+             'Screen': ['Exp', 'Test']}
+    show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Section', 'Screen'])
     sid = int(sinfo['ID'])
-    img_prefix = 'F'  # sinfo['Gender'][0]  TODO
+    img_prefix = sinfo['Gender'][0]
 
     # create data file
-    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '_eye.txt')
+    postfix = 'prac' if sinfo['Section'] == 'Instr' else sinfo['Section']
+    dataLogger = DataHandler(DATA_FOLDER, str(sid) + '_eye_%s.txt' % postfix)
+    if not os.path.isdir('log'):
+        os.mkdir('log')
     # save info from the dialog box
     dataLogger.write_data({
         k: str(sinfo[k]) for k in sinfo.keys()
@@ -238,8 +255,9 @@ if __name__ == '__main__':
                                      up_color=COLOR_NAMES[DIR_COLORS[DIRECTIONS[1]]])
 
     # eye tribe setup
-    tracker = eyetribe_setup()
+    if sinfo['Section'] != 'Instr':
+        tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST,
+                                  logfile='log/%d_tracker_%s' % (sid, sinfo['Section']))
+        tracker.show_calibration()
     # show everything
     navigation()
-    # end
-    presenter.show_instructions(INSTR_END)

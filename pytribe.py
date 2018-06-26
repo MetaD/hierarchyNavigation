@@ -20,7 +20,7 @@ from py3compat import *
 # EYETRIBE CLASS
 
 # The original EyeTribe class from earlier versions of PyTribe.
-class EyeTribe:
+class EyeTribe(object):
 
     """class for eye tracking and data collection using an EyeTribe tracker
     """
@@ -37,7 +37,7 @@ class EyeTribe:
         """
 
         # initialize data collectors
-        self._logfile = codecs.open('%s.tsv' % (logfilename), 'w', u'utf-8')
+        self._logfile = codecs.open('%s.tsv' % logfilename, 'w', u'utf-8')
         self._separator = u'\t'
         self._log_header()
         self._queue = Queue()
@@ -192,15 +192,19 @@ class EyeTribe:
         # close the connection
         self._connection.close()
 
-    def _wait_while_calibrating(self):
+    def _wait_while_not_calibrated(self):
 
-        """Waits until the tracker is not in the calibration state
+        """Waits until the tracker is calibrated
         """
 
-        while self._tracker.get_iscalibrating():
-            pass
-
-        return True
+        while True:
+            try:
+                is_calibrated = self._tracker.get_iscalibrated()
+            except KeyError:
+                continue
+            if is_calibrated:
+                return
+            time.sleep(0.2)
 
     def _heartbeater(self, heartbeatinterval):
 
@@ -221,7 +225,7 @@ class EyeTribe:
         # keep beating until it is signalled that we should stop
         while self._beating:
             # do not bother the tracker when it is calibrating
-            #self._wait_while_calibrating()
+            # self._wait_while_calibrating()
             # wait for the Threading Lock to be released, then lock it
             self._lock.acquire(True)
             # send heartbeat
@@ -245,7 +249,7 @@ class EyeTribe:
         # keep streaming until it is signalled that we should stop
         while self._streaming:
             # do not bother the tracker when it is calibrating
-            #self._wait_while_calibrating()
+            self._wait_while_not_calibrated()
             # wait for the Threading Lock to be released, then lock it
             self._lock.acquire(True)
             # get a new sample
@@ -286,7 +290,7 @@ class EyeTribe:
             # release the Threading Lock
             self._lock.release()
             # update newest sample
-            if sample != None:
+            if sample is not None:
                 # check if the new sample is the same as the current sample
                 if not self._currentsample['timestamp'] == sample['timestamp']:
                     # update current sample
@@ -306,7 +310,7 @@ class EyeTribe:
         """
 
         # assemble new line
-        line = self._separator.join(map(str,[	sample['timestamp'],
+        line = self._separator.join(map(str, [sample['timestamp'],
                                         sample['time'],
                                         sample['fix'],
                                         sample['state'],
@@ -344,9 +348,9 @@ class EyeTribe:
                                 'Lrawx','Lrawy','Lavgx','Lavgy','Lpsize','Lpupilx','Lpupily',
                                 'Rrawx','Rrawy','Ravgx','Ravgy','Rpsize','Rpupilx','Rpupily'
                                 ])
-        self._logfile.write(header + '\n') # to internal buffer
-        self._logfile.flush() # internal buffer to RAM
-        os.fsync(self._logfile.fileno()) # RAM file cache to disk
+        self._logfile.write(header + '\n')  # to internal buffer
+        self._logfile.flush()  # internal buffer to RAM
+        os.fsync(self._logfile.fileno())  # RAM file cache to disk
         self._firstlog = False
 
 
@@ -437,10 +441,10 @@ class ParallelEyeTribe:
 
         global _current_sample
 
-        if _current_sample == None:
+        if _current_sample is None:
             return None, None
         else:
-            return (_current_sample['avgx'], _current_sample['avgy'])
+            return _current_sample['avgx'], _current_sample['avgy']
 
     def pupil_size(self):
 
@@ -458,7 +462,7 @@ class ParallelEyeTribe:
 
         global _current_sample
 
-        if _current_sample == None:
+        if _current_sample is None:
             return None
         else:
             return _current_sample['psize']
@@ -547,11 +551,12 @@ class connection:
 
         # initialize a connection
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((self.host,self.port))
+        self.sock.connect((self.host, self.port))
+        self.sock.settimeout(3)
         # Create lock
         self._request_lock = Lock()
 
-    def request(self, category, request, values):
+    def request(self, category, request, values, num_try=3):
 
         """Send a message over the connection
 
@@ -566,10 +571,21 @@ class connection:
         msg = self.create_json(category, request, values)
         # send the message over the connection
         self._request_lock.acquire()
+        # clear buffer
+        self.sock.settimeout(0.1)
+        while True:
+            try:
+                trash = self.sock.recv(32768)
+            except socket.timeout:
+                break
+            if len(trash) < 1024:
+                break
+        self.sock.settimeout(3)
+        # send msg
         self.sock.send(msg)
         # print request in DEBUG mode
         if self.DEBUG:
-            print("REQUEST: '%s'" % msg)
+            print("REQUEST: %s" % msg)
 
         # give the tracker a wee bit of time to reply
         time.sleep(0.005)
@@ -578,8 +594,8 @@ class connection:
         success = self.get_response()
         self._request_lock.release()
 
-        # return the appropriate response
         if success:
+            # return the appropriate response
             for i in range(len(self.resplist)):
                 # check if the category matches
                 if self.resplist[i]['category'] == category:
@@ -590,10 +606,23 @@ class connection:
                     # matches
                     elif 'request' in self.resplist[i] and \
                             self.resplist[i]['request'] == request:
-                        return self.resplist.pop(i)
-        # on a connection error, get_response returns False and a connection
-        # error should be returned
+                        try:
+                            if (values is None) or (request != 'get') or ('values' not in self.resplist[i]) or \
+                                    all(value in self.resplist[i]['values'] for value in values):
+                                return self.resplist.pop(i)
+                        except KeyError:
+                            print(self.resplist[i])
+                            raise
+            # no requested value found in response list
+            if num_try > 0:  # try again for a few other times
+                return self.request(category, request, values, num_try - 1)
+            else:  # base case (failed all of them)
+                return {'statuscode': 901, 'values': {
+                    'statusmessage': 'failed to request ' + str(values)
+                }}
         else:
+            # on a connection error, get_response returns False and a connection
+            # error should be returned
             return self.parse_json('{"statuscode":901,"values":{"statusmessage":"connection error"}}')
 
     def get_response(self):
@@ -605,9 +634,6 @@ class connection:
         # try to get a new response
         try:
             response = self.sock.recv(32768)
-            # print reply in DEBUG mode
-            if self.DEBUG:
-                print("REPLY: '%s'" % response)
         # if it fails, revive the connection and return a connection error
         except socket.error:
             print("reviving connection")
@@ -619,7 +645,13 @@ class connection:
         # add parsed responses to the internal list
         for r in response:
             if r:
-                self.resplist.append(self.parse_json(r))
+                # print reply in DEBUG mode
+                if self.DEBUG:
+                    print("REPLY: %s" % r)
+                try:
+                    self.resplist.append(self.parse_json(r))
+                except ValueError:  # ignoring incomplete json?
+                    continue
 
         return True
 
@@ -655,15 +687,15 @@ class connection:
 
         # error if the values are anything other than a dict, tuple or list
         if values is not None and type(values) not in [dict, list, tuple]:
-            raise Exception("values should be dict, tuple or list, not '%s' (values = %s)" % (type(values),values))
+            raise Exception("values should be dict, tuple or list, not '%s' (values = %s)" % (type(values), values))
 
         # create the json message
-        if request == None:
-            jsondict = {"category":category}
-        elif values == None:
-            jsondict = {"category":category, "request":request}
+        if request is None:
+            jsondict = {"category": category}
+        elif values is None:
+            jsondict = {"category": category, "request": request}
         else:
-            jsondict = {"category":category, "request":request, "values":values}
+            jsondict = {"category": category, "request": request, "values": values}
 
         return json.dumps(jsondict)
 
@@ -709,7 +741,6 @@ class connection:
         # initialize a connection
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.connect((self.host,self.port))
-
 
     def close(self):
 
@@ -761,7 +792,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['push']
         else:
-            raise Exception("Error in tracker.get_push: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_push: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_heartbeatinterval(self):
 
@@ -775,7 +807,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['heartbeatinterval']
         else:
-            raise Exception("Error in tracker.get_heartbeatinterval: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_heartbeatinterval: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_version(self):
 
@@ -788,7 +821,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['version']
         else:
-            raise Exception("Error in tracker.get_version: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_version: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_trackerstate(self):
 
@@ -814,7 +848,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['trackerstate']
         else:
-            raise Exception("Error in tracker.get_trackerstate: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_trackerstate: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_framerate(self):
 
@@ -827,7 +862,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['framerate']
         else:
-            raise Exception("Error in tracker.get_framerate: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_framerate: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_iscalibrated(self):
 
@@ -835,14 +871,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'get', ['iscalibrated'])
+        response = self.connection.request('tracker', 'get', ['iscalibrated', 'iscalibrating'])
         # return value or error
         if response['statuscode'] == 200:
-            if 'iscalibrated' not in response['values']:  # TODO why is it not there???
-                return False
-            return response['values']['iscalibrated']
+            return response['values']['iscalibrated'] and (not response['values']['iscalibrating'])
         else:
-            raise Exception("Error in tracker.get_iscalibrated: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_iscalibrated: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_iscalibrating(self):
 
@@ -855,7 +890,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['iscalibrating']
         else:
-            raise Exception("Error in tracker.get_iscalibrating: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_iscalibrating: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_calibresult(self):
 
@@ -935,10 +971,11 @@ class tracker:
 
         # return value or error
         if response['statuscode'] != 200:
-            raise Exception("Error in tracker.get_calibresult: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_calibresult: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
         # return True if this was not the final calibration point
-        if not 'calibpoints' in response['values']:
+        if 'values' not in response or 'calibresult' not in response['values']:
             return None
 
         # if this was the final calibration point, return the results
@@ -1001,7 +1038,8 @@ class tracker:
         response = self.connection.request('tracker', 'get', ['frame'])
         # raise error if needed
         if response['statuscode'] != 200:
-            raise Exception("Error in tracker.get_frame: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_frame: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
         # calculate pupil size
         # if both eyes are available, take the average
         if response['values']['frame']['lefteye']['psize'] > 0 and \
@@ -1057,7 +1095,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['screenindex']
         else:
-            raise Exception("Error in tracker.get_screenindex: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_screenindex: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_screenresw(self):
 
@@ -1070,7 +1109,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['screenresw']
         else:
-            raise Exception("Error in tracker.get_screenresw: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_screenresw: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_screenresh(self):
 
@@ -1083,7 +1123,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['screenresh']
         else:
-            raise Exception("Error in tracker.get_screenresh: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_screenresh: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_screenpsyw(self):
 
@@ -1096,7 +1137,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['screenpsyw']
         else:
-            raise Exception("Error in tracker.get_screenpsyw: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_screenpsyw: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def get_screenpsyh(self):
 
@@ -1109,7 +1151,8 @@ class tracker:
         if response['statuscode'] == 200:
             return response['values']['screenpsyh']
         else:
-            raise Exception("Error in tracker.get_screenpsyh: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.get_screenpsyh: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_push(self, push=None):
 
@@ -1126,9 +1169,9 @@ class tracker:
         """
 
         # check passed value
-        if push == None:
+        if push is None:
             # toggle state
-            self.push = self.push != True
+            self.push = self.push is not True
         elif type(push) == bool:
             # set state to passed value
             self.push = push
@@ -1137,13 +1180,13 @@ class tracker:
             raise Exception("tracker.set_push: push keyword argument should be a Boolean or None, not '%s'" % push)
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'push':str(self.push).lower()})
+        response = self.connection.request('tracker', 'set', {'push': str(self.push).lower()})
         # return value or error
         if response['statuscode'] == 200:
             return self.push
         else:
-            raise Exception("Error in tracker.set_push: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
-
+            raise Exception("Error in tracker.set_push: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_version(self, version):
 
@@ -1155,12 +1198,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'version':version})
+        response = self.connection.request('tracker', 'set', {'version': version})
         # return value or error
         if response['statuscode'] == 200:
             return version
         else:
-            raise Exception("Error in tracker.set_version: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_version: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_screenindex(self, index):
 
@@ -1173,12 +1217,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenindex':index})
+        response = self.connection.request('tracker', 'set', {'screenindex': index})
         # return value or error
         if response['statuscode'] == 200:
             return index
         else:
-            raise Exception("Error in tracker.set_screenindex: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_screenindex: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_screenresw(self, width):
 
@@ -1191,12 +1236,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenresw':width})
+        response = self.connection.request('tracker', 'set', {'screenresw': width})
         # return value or error
         if response['statuscode'] == 200:
             return width
         else:
-            raise Exception("Error in tracker.set_screenresw: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_screenresw: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_screenresh(self, height):
 
@@ -1214,7 +1260,8 @@ class tracker:
         if response['statuscode'] == 200:
             return height
         else:
-            raise Exception("Error in tracker.set_screenresh: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_screenresh: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_screenpsyw(self, width):
 
@@ -1227,12 +1274,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenpsyw':width})
+        response = self.connection.request('tracker', 'set', {'screenpsyw': width})
         # return value or error
         if response['statuscode'] == 200:
             return width
         else:
-            raise Exception("Error in tracker.set_screenpsyw: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_screenpsyw: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def set_screenpsyh(self, height):
 
@@ -1245,12 +1293,13 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenpsyh':height})
+        response = self.connection.request('tracker', 'set', {'screenpsyh': height})
         # return value or error
         if response['statuscode'] == 200:
             return height
         else:
-            raise Exception("Error in tracker.set_screenpsyh: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in tracker.set_screenpsyh: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
 
 class calibration:
@@ -1281,7 +1330,7 @@ class calibration:
 
         self.connection = connection
 
-    def start(self, pointcount=9, max_attempts=5):
+    def start(self, pointcount=9, max_attempts=2):
 
         """Starts the calibration, using the passed number of calibration
         points
@@ -1298,14 +1347,13 @@ class calibration:
         for attempt in range(max_attempts):
             # send the request
             response = self.connection.request('calibration', 'start',
-                {'pointcount': pointcount})
+                                               {'pointcount': pointcount})
             # return value or error
             if response['statuscode'] == 200:
                 return
-            print(response['values']['statusmessage'])
             self.abort()
-        raise Exception("Error in calibration.start: %s (code %d)" \
-            % (response['values']['statusmessage'],response['statuscode']))
+        raise Exception("Error in calibration.start: %s (code %d)"
+                        % (response['values']['statusmessage'], response['statuscode']))
 
     def pointstart(self, x, y):
 
@@ -1409,37 +1457,37 @@ class calibration:
         response = self.connection.request('calibration', 'pointend', None)
         # return value or error
         if response['statuscode'] != 200:
-            raise Exception("Error in calibration.pointend: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in calibration.pointend: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
         # return True if this was not the final calibration point
-        if not 'calibresult' in response['values']:
+        if 'values' not in response or 'calibresult' not in response['values']:
             return True
 
         # if this was the final calibration point, return the results
         else:
             # return calibration dict
-            returndict =  {	'result':response['values']['calibresult']['result'],
-                            'deg':response['values']['calibresult']['deg'],
-                            'Rdeg':response['values']['calibresult']['degl'],
-                            'Ldeg':response['values']['calibresult']['degr'],
-                            'calibpoints':[]
-                            }
+            returndict = {'result': response['values']['calibresult']['result'],
+                          'deg': response['values']['calibresult']['deg'],
+                          'Rdeg': response['values']['calibresult']['degl'],
+                          'Ldeg': response['values']['calibresult']['degr'],
+                          'calibpoints': []}
             for pointdict in response['values']['calibresult']['calibpoints']:
-                returndict['calibpoints'].append({	'state':pointdict['state'],
-                                            'cpx':pointdict['cp']['x'],
-                                            'cpy':pointdict['cp']['y'],
-                                            'mecpx':pointdict['mecp']['x'],
-                                            'mecpy':pointdict['mecp']['y'],
-                                            'acd':pointdict['acd']['ad'],
-                                            'Lacd':pointdict['acd']['adl'],
-                                            'Racd':pointdict['acd']['adr'],
-                                            'mepix':pointdict['mepix']['mep'],
-                                            'Lmepix':pointdict['mepix']['mepl'],
-                                            'Rmepix':pointdict['mepix']['mepr'],
-                                            'asdp':pointdict['asdp']['asd'],
-                                            'Lasdp':pointdict['asdp']['asdl'],
-                                            'Rasdp':pointdict['asdp']['asdr']
-                                            })
+                returndict['calibpoints'].append({
+                    'state': pointdict['state'],
+                    'cpx': pointdict['cp']['x'],
+                    'cpy': pointdict['cp']['y'],
+                    'mecpx': pointdict['mecp']['x'],
+                    'mecpy': pointdict['mecp']['y'],
+                    'acd': pointdict['acd']['ad'],
+                    'Lacd': pointdict['acd']['adl'],
+                    'Racd': pointdict['acd']['adr'],
+                    'mepix': pointdict['mepix']['mep'],
+                    'Lmepix': pointdict['mepix']['mepl'],
+                    'Rmepix': pointdict['mepix']['mepr'],
+                    'asdp': pointdict['asdp']['asd'],
+                    'Lasdp': pointdict['asdp']['asdl'],
+                    'Rasdp': pointdict['asdp']['asdr']})
             return returndict
 
     def abort(self):
@@ -1458,7 +1506,8 @@ class calibration:
         if response['statuscode'] == 200:
             return True
         else:
-            raise Exception("Error in calibration.abort: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in calibration.abort: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
     def clear(self):
 
@@ -1475,7 +1524,8 @@ class calibration:
         if response['statuscode'] == 200:
             return True
         else:
-            raise Exception("Error in calibration.clear: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in calibration.clear: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
 
 class heartbeat:
@@ -1517,7 +1567,8 @@ class heartbeat:
         if response['statuscode'] == 200:
             return True
         else:
-            raise Exception("Error in heartbeat.beat: %s (code %d)" % (response['values']['statusmessage'],response['statuscode']))
+            raise Exception("Error in heartbeat.beat: %s (code %d)" %
+                            (response['values']['statusmessage'], response['statuscode']))
 
 
 # # # # #
