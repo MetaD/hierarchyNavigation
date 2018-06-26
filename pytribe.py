@@ -310,7 +310,7 @@ class EyeTribe(object):
         """
 
         # assemble new line
-        line = self._separator.join(map(str,[	sample['timestamp'],
+        line = self._separator.join(map(str, [sample['timestamp'],
                                         sample['time'],
                                         sample['fix'],
                                         sample['state'],
@@ -607,7 +607,7 @@ class connection:
                     elif 'request' in self.resplist[i] and \
                             self.resplist[i]['request'] == request:
                         try:
-                            if (values is None) or ('values' not in self.resplist[i]) or \
+                            if (values is None) or (request != 'get') or ('values' not in self.resplist[i]) or \
                                     all(value in self.resplist[i]['values'] for value in values):
                                 return self.resplist.pop(i)
                         except KeyError:
@@ -615,10 +615,8 @@ class connection:
                             raise
             # no requested value found in response list
             if num_try > 0:  # try again for a few other times
-                print('??')
                 return self.request(category, request, values, num_try - 1)
             else:  # base case (failed all of them)
-                print('?')
                 return {'statuscode': 901, 'values': {
                     'statusmessage': 'failed to request ' + str(values)
                 }}
@@ -1182,14 +1180,13 @@ class tracker:
             raise Exception("tracker.set_push: push keyword argument should be a Boolean or None, not '%s'" % push)
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'push':str(self.push).lower()})
+        response = self.connection.request('tracker', 'set', {'push': str(self.push).lower()})
         # return value or error
         if response['statuscode'] == 200:
             return self.push
         else:
             raise Exception("Error in tracker.set_push: %s (code %d)" %
                             (response['values']['statusmessage'], response['statuscode']))
-
 
     def set_version(self, version):
 
@@ -1220,7 +1217,7 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenindex':index})
+        response = self.connection.request('tracker', 'set', {'screenindex': index})
         # return value or error
         if response['statuscode'] == 200:
             return index
@@ -1239,7 +1236,7 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenresw':width})
+        response = self.connection.request('tracker', 'set', {'screenresw': width})
         # return value or error
         if response['statuscode'] == 200:
             return width
@@ -1277,7 +1274,7 @@ class tracker:
         """
 
         # send the request
-        response = self.connection.request('tracker', 'set', {'screenpsyw':width})
+        response = self.connection.request('tracker', 'set', {'screenpsyw': width})
         # return value or error
         if response['statuscode'] == 200:
             return width
