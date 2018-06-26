@@ -528,7 +528,7 @@ class EyeTribeTracker(BaseEyeTracker):
         ps = self.eyetribe.pupil_size()
 
         # invalid data
-        if ps == None:
+        if ps is None:
             return -1
 
         # check if the new pupil size is the same as the previous
@@ -554,7 +554,7 @@ class EyeTribeTracker(BaseEyeTracker):
 
         # invalid data
         if s == (None, None):
-            return (-1, -1)
+            return -1, -1
 
         # check if the new sample is the same as the previous
         if s != self.prevsample:

@@ -975,7 +975,7 @@ class tracker:
                             (response['values']['statusmessage'], response['statuscode']))
 
         # return True if this was not the final calibration point
-        if not 'calibpoints' in response['values']:
+        if 'values' not in response or 'calibresult' not in response['values']:
             return None
 
         # if this was the final calibration point, return the results

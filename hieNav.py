@@ -1,21 +1,31 @@
 #!/usr/bin/env python
 
+import sys, os
+sys.path.append(os.getcwd() + '/pygaze')
 from psychopy_util import *
 from config import *
 from eyetribe import EyeTribeTracker
 
 
 def show_one_trial(param, trial_index):
-    # 0 anchor face
-    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
-    # 1 fixation
-    presenter.show_fixation(FIXATION_TIME)
     # START RECORDING
     if trial_index != 'prac':
         tracker.start_recording()
+    # 0 anchor face
+    if trial_index != 'prac':
+        tracker.log('Trial #%d face starts' % trial_index)
+    presenter.draw_stimuli_for_duration(images[param['anchor']], FACE_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d face ends' % trial_index)
+    # 1 fixation
+    presenter.show_fixation(FIXATION_TIME)
     # 2 number
     num_stim = visual.TextStim(presenter.window, str(param['distance']), height=1, color=DIR_COLORS[param['direction']])
+    if trial_index != 'prac':
+        tracker.log('Trial #%d number starts' % trial_index)
     presenter.draw_stimuli_for_duration(num_stim, NUMBER_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d number ends' % trial_index)
     # 3 fixation (mental navigation)
     if trial_index != 'prac':
         tracker.log('Trial #%d navigation starts' % trial_index)
@@ -54,9 +64,14 @@ def show_one_trial(param, trial_index):
     no_resp_feedback = visual.TextStim(presenter.window, FEEDBACK_SLOW)
     # 4&5 show options, get response, show feedback
     highlight.size = (option_img_size[0] * 1.1, option_img_size[1] * 1.1)  # TODO WHY does this change every time?!
+    if trial_index != 'prac':
+        tracker.log('Trial #%d options starts' % trial_index)
     response = presenter.select_from_stimuli(option_stims, options, RESPONSE_KEYS, SELECTION_TIME, 0, highlight,
                                              lambda x: x == correct_option, None, resp_feedback, no_resp_feedback,
                                              FEEDBACK_TIME)
+    if trial_index != 'prac':
+        tracker.log('Trial #%d options ends' % trial_index)
+        tracker.stop_recording()
     # 4.2 recover central positions
     for option in option_stims:
         option.pos = presenter.CENTRAL_POS
