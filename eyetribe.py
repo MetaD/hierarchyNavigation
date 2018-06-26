@@ -248,7 +248,7 @@ class EyeTribeTracker(BaseEyeTracker):
                     # self.screen.draw_circle(colour=(252,233,79),
                     # 	pos=(p['cpx'],p['cpy']), r=p['mepix'], pw=0,
                     # 	fill=True)
-                    line = visual.Line(win=self.presenter.window, lineColor='black',
+                    line = visual.Line(win=self.presenter.window, units='pix', lineWidth=0.5,
                                        start=get_psychopy_pos(p['cpx'], p['cpy']),
                                        end=get_psychopy_pos(p['mecpx'], p['mecpy']))
                     # draw the point
@@ -272,16 +272,13 @@ class EyeTribeTracker(BaseEyeTracker):
             # draw result
             if calibresult['result']:
                 stimuli.append(visual.TextStim(self.presenter.window, text='Calibration successful',
-                                               color='#84ff84', pos=(0, -0.4)))
+                                               color='#84ff84', pos=(0, -0.4), height=0.05))
             else:
                 stimuli.append(visual.TextStim(self.presenter.window, text='Calibration failed',
-                                               color='red', pos=(0, -0.4)))
+                                               color='red', pos=(0, -0.4), height=0.05))
             # draw average accuracy
-            stimuli.append(visual.TextStim(self.presenter.window, pos=(0, -0.5),
+            stimuli.append(visual.TextStim(self.presenter.window, pos=(0, -0.5), height=0.08,
                                            text='Average error = %.2f degrees' % (calibresult['deg'])))
-            # draw input options
-            stimuli.append(visual.TextStim(self.presenter.window, pos=(0, -0.6),
-                                           text='Press Space to continue or R to restart'))
         # show the results
         self.presenter.draw_stimuli_for_response(stimuli, response_keys=['space'])
 

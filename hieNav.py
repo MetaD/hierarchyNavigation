@@ -211,14 +211,14 @@ def navigation():
 
 if __name__ == '__main__':
     # subject ID dialog
-    sinfo = {'ID': random.randint(1, 200),  # TODO
+    sinfo = {'ID': '',
              'Gender': ['Female', 'Male'],
              'Age': '',
-             'Screen': 'Exp',  #, 'Test']}
-             'Section': '1'}  #, 'Instr', '1', '2']}
-    # show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Screen'])  # TODO
+             'Section': ['Instr', '1', '2'],
+             'Screen': ['Exp', 'Test']}
+    show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Section', 'Screen'])
     sid = int(sinfo['ID'])
-    img_prefix = 'F'  # sinfo['Gender'][0]  TODO
+    img_prefix = sinfo['Gender'][0]
 
     # create data file
     postfix = 'prac' if sinfo['Section'] == 'Instr' else sinfo['Section']
@@ -256,7 +256,8 @@ if __name__ == '__main__':
 
     # eye tribe setup
     if sinfo['Section'] != 'Instr':
-        tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST, logfile='log/%d_tracker' % sid)
+        tracker = EyeTribeTracker(presenter, SCREEN_SIZE, SCREEN_DIST,
+                                  logfile='log/%d_tracker_%s' % (sid, sinfo['Section']))
         tracker.show_calibration()
     # show everything
     navigation()
