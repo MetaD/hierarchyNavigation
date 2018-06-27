@@ -10,7 +10,7 @@ MIN_DISTANCE = 2
 MAX_DISTANCE = 4
 RESPONSE_KEYS = ('up', 'down', 'left', 'right')
 # Eye tracker
-SCREEN_SIZE = (28.64, 17.9)  # TODO
+SCREEN_SIZE = (47.35, 26.63)  # iMac
 SCREEN_DIST = 50  # TODO
 # Colors
 DIR_COLORS = ('#f0ad4e', '#5bc0de')
