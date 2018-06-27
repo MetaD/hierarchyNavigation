@@ -109,7 +109,8 @@ def generate_trials():
                     'direction': DIRECTIONS[0],  # down
                     'distance': dist,
                 })
-    trials = [list(unique_trials) for i in range(NUM_RUNS)]
+    trials = [list(unique_trials) for i in range(NUM_RUNS * 2)]
+    trials = trials[NUM_RUNS * section : NUM_RUNS * (section + 1)]
     for prac in practices:
         prac['answer_index'] = random.randrange(4)
     ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
@@ -203,7 +204,7 @@ def navigation():
             if trial_counter >= MAX_NUM_TRIALS:
                 break
         # end
-        presenter.show_instructions(INSTR_END[int(sinfo['Section'] - 1)], next_instr_text=None)
+        presenter.show_instructions(INSTR_END[section], next_instr_text=None)
         accuracy = float(total_correct_counter) / len(trials) / len(trials[0])  # overall accuracy
         print('accuracy', accuracy)
         dataLogger.write_data({'overall_accuracy': accuracy})
@@ -219,6 +220,7 @@ if __name__ == '__main__':
     show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Section', 'Screen'])
     sid = int(sinfo['ID'])
     img_prefix = sinfo['Gender'][0]
+    section = 'prac' if sinfo['Section'] == 'prac' else int(sinfo['Section']) - 1
 
     # create data file
     postfix = 'prac' if sinfo['Section'] == 'Instr' else sinfo['Section']
