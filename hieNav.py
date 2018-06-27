@@ -110,7 +110,8 @@ def generate_trials():
                     'distance': dist,
                 })
     trials = [list(unique_trials) for i in range(NUM_RUNS * 2)]
-    trials = trials[NUM_RUNS * section : NUM_RUNS * (section + 1)]
+    if section != 'prac':
+        trials = trials[NUM_RUNS * section : NUM_RUNS * (section + 1)]
     for prac in practices:
         prac['answer_index'] = random.randrange(4)
     ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
@@ -220,7 +221,7 @@ if __name__ == '__main__':
     show_form_dialog(sinfo, validation, order=['ID', 'Gender', 'Age', 'Section', 'Screen'])
     sid = int(sinfo['ID'])
     img_prefix = sinfo['Gender'][0]
-    section = 'prac' if sinfo['Section'] == 'prac' else int(sinfo['Section']) - 1
+    section = 'prac' if sinfo['Section'] == 'Instr' else int(sinfo['Section']) - 1
 
     # create data file
     postfix = 'prac' if sinfo['Section'] == 'Instr' else sinfo['Section']
