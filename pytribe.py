@@ -574,8 +574,8 @@ class connection:
         # create a JSON formatted string
         try:
             msg = self.create_json(category, request, values)
-        except AttributeError as e:
-            print('AttributeError')
+        except AttributeError:
+            print('JSON AttributeError')
             return self.parse_json('{"statuscode":901,"values":{"statusmessage":"json error"}}')
         # send the message over the connection
         self._request_lock.acquire()
@@ -735,7 +735,11 @@ class connection:
         """
 
         # parse json message
-        parsed = json.loads(jsonmsg)
+        try:
+            parsed = json.loads(jsonmsg)
+        except AttributeError:
+            print('JSON AttributeError')
+            return
 
         return parsed
 
