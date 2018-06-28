@@ -284,7 +284,11 @@ class EyeTribe(object):
             self._lock.acquire(True)
             # read new item from the queue
             if not queue.empty():
-                sample = queue.get()
+                try:
+                    sample = queue.get()
+                except EOFError as e:
+                    print(str(e))
+                    return
             else:
                 sample = None
             # release the Threading Lock
@@ -568,7 +572,11 @@ class connection:
         """
 
         # create a JSON formatted string
-        msg = self.create_json(category, request, values)
+        try:
+            msg = self.create_json(category, request, values)
+        except AttributeError as e:
+            print('AttributeError')
+            return self.parse_json('{"statuscode":901,"values":{"statusmessage":"json error"}}')
         # send the message over the connection
         self._request_lock.acquire()
         # clear buffer
