@@ -110,8 +110,6 @@ def generate_trials():
                     'distance': dist,
                 })
     trials = [list(unique_trials) for i in range(NUM_RUNS * 2)]
-    if section != 'prac':
-        trials = trials[NUM_RUNS * section : NUM_RUNS * (section + 1)]
     for prac in practices:
         prac['answer_index'] = random.randrange(4)
     ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
@@ -125,6 +123,8 @@ def generate_trials():
             trial['answer_index'] = ans_indexes[direction][counters[direction]]
             counters[direction] += 1
         random.shuffle(run)
+    if section != 'prac':
+        trials = trials[NUM_RUNS * section : NUM_RUNS * (section + 1)]
     return trials, practices
 
 
