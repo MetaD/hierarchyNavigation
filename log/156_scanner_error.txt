@@ -1,0 +1,60 @@
+
+2018-06-13 18:27:19,656     INFO Received response [('space', 107.60500192642212)]
+2018-06-13 18:27:19,656     INFO End of instructions
+2018-06-13 18:27:19,656     INFO Showing instructions
+2018-06-13 18:27:19,689     INFO Instruction: You have completed Run #3.  Ru...
+2018-06-13 18:27:19,868     INFO Received response [('5', 0.16016197204589844)] ***** FIRST TRIGGER *****
+...
+2018-06-13 18:33:41,867     INFO End of feedback
+2018-06-13 18:33:41,868     INFO End of trial
+2018-06-13 18:33:41,872     INFO Showing fixation
+2018-06-13 18:33:42,866     INFO Received trigger 5
+2018-06-13 18:33:43,866     INFO Received trigger 5
+2018-06-13 18:33:44,865     INFO Received trigger 5
+2018-06-13 18:33:45,866     INFO Received trigger 5 ***** LAST TRIGGER ***** 387 TRIGGERS ***** SHOULD BE 405 *****
+2018-06-13 18:33:45,866     INFO End of fixation
+2018-06-13 18:33:45,866     INFO Showing anchor face
+2018-06-13 18:33:48,813     INFO Received trigger 5
+2018-06-13 18:33:48,813     INFO End of anchor face
+2018-06-13 18:33:48,816     INFO Showing fixation
+2018-06-13 18:33:49,320     INFO End of fixation
+2018-06-13 18:33:49,323     INFO Showing number
+2018-06-13 18:33:52,081     INFO Received trigger 5
+2018-06-13 18:33:52,081     INFO End of number
+2018-06-13 18:33:52,084     INFO Showing fixation
+2018-06-13 18:33:53,990     INFO Received trigger 5
+2018-06-13 18:33:57,675     INFO Received trigger 5
+2018-06-13 18:33:58,102     INFO Received trigger 5
+2018-06-13 18:33:58,568     INFO Received trigger 5
+2018-06-13 18:33:59,245     INFO Received trigger 5
+2018-06-13 18:33:59,858     INFO Received trigger 5
+2018-06-13 18:33:59,859     INFO End of fixation
+2018-06-13 18:33:59,878     INFO Showing options
+2018-06-13 18:34:00,489     INFO Received response [('3', 0.6024889945983887)]
+2018-06-13 18:34:01,401     INFO End of options
+2018-06-13 18:34:01,419     INFO Showing feedback
+2018-06-13 18:34:06,478     INFO Received trigger 5
+2018-06-13 18:34:07,054     INFO Received trigger 5
+2018-06-13 18:34:07,054     INFO End of feedback
+2018-06-13 18:34:07,056     INFO End of trial
+2018-06-13 18:34:07,059     INFO Showing fixation
+2018-06-13 18:34:07,804     INFO Received trigger 5
+2018-06-13 18:34:08,650     INFO Received trigger 5
+2018-06-13 18:34:09,194     INFO Received trigger 5
+2018-06-13 18:34:09,664     INFO Received trigger 5
+2018-06-13 18:34:09,664     INFO End of fixation
+2018-06-13 18:34:09,665     INFO Showing instructions
+2018-06-13 18:34:09,674     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-13 18:34:12,611     INFO Received response [('5', 2.9238898754119873)]
+2018-06-13 18:34:12,611     INFO End of instructions
+2018-06-13 18:34:12,612     INFO Showing instructions
+2018-06-13 18:34:12,622     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-13 18:34:13,368     INFO Received response [('5', 0.7315089702606201)]
+2018-06-13 18:34:13,368     INFO End of instructions
+2018-06-13 18:34:13,368     INFO Showing instructions
+2018-06-13 18:34:13,377     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-13 18:34:13,923     INFO Received response [('5', 0.5362329483032227)]
+2018-06-13 18:34:13,923     INFO End of instructions
+2018-06-13 18:34:13,931     INFO Showing instructions
+2018-06-13 18:34:13,968     INFO Instruction: You have completed Run #4.  Ru...
+2018-06-13 18:34:24,784     INFO Received response [('space', 10.797276020050049)]
