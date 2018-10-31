@@ -1,0 +1,41 @@
+2018-10-26 09:33:25,867     INFO #[ PsychoPy2 RuntimeInfoStart ]
+  #[[ PsychoPy ]] #---------
+    psychopyVersion: 1.85.6
+    psychopyHaveExtRush: True
+  #[[ Experiment ]] #---------
+    experimentRunTime: 2018_10_26 09:33 (Year_Month_Day Hour:Min)
+    experimentRunTime.epoch: 1540571602
+    experimentScript: hierNavigation.py
+    experimentScript.digestSHA1: 41db721267675f1651d6739789b3b39ca34ae597
+    experimentScript.directory: /Users/mengdu/Repos/hierarchyNavigation
+  #[[ System ]] #---------
+    systemHaveInternetAccess: True
+    systemHostName: mengsmbpserver.ad.medctr.ucla.edu
+    systemLocale: C
+    systemMemFreeRAM: 2623.32421875
+    systemMemTotalRAM: 8192.0
+    systemPlatform: darwin 10.13.6 x86_64
+    systemPyo.InputDevices: {0: {'host api index': 0, 'latency': 0.0029478457290679216, 'default sr': 44100, 'name': u'Built-in Microph'}}
+    systemPyo.OutputDevices: {1: {'host api index': 0, 'latency': 0.018798185512423515, 'default sr': 44100, 'name': u'Built-in Output'}, 2: {'host api index': 0, 'latency': 0.0014375000027939677, 'default sr': 48000, 'name': u'HDMI'}}
+    systemPyoVersion: 0.8.6
+    systemRebooted: Oct 24 21:59
+    systemSec.OpenSSLVersion: LibreSSL 2.2.7
+    systemSec.pythonSSL: True
+    systemTimeNumpySD1000000_sec: 0.0048
+    systemUser: mengdu
+    systemUserID: 501
+    systemUserProcCount: 166
+    systemUserProcFlagged: 'Google Chrome' mdworker Safari
+    systemUsersCount: 1
+  #[[ Window ]] #---------
+    windowRefreshTimeSD_ms: 0.031
+    windowRefreshTimeMedian_ms: 16.665
+    windowRefreshTimeAvg_ms: 16.666
+  #[[ Python ]] #---------
+    pythonVersion: 2.7.12
+  #[[ OpenGL ]] #---------
+#[ PsychoPy2 RuntimeInfoEnd ]
+
+2018-10-26 09:33:26,049     INFO Starting experiment
+2018-10-26 09:33:26,049     INFO Showing instructions
+2018-10-26 09:33:26,148     INFO Instruction: Press one of the buttons to se...
