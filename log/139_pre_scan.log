@@ -1,0 +1,460 @@
+2017-11-21 18:49:45,185     INFO #[ PsychoPy2 RuntimeInfoStart ]
+  #[[ PsychoPy ]] #---------
+    psychopyVersion: 1.85.4
+    psychopyHaveExtRush: True
+  #[[ Experiment ]] #---------
+    experimentRunTime: 2017_11_21 18:49 (Year_Month_Day Hour:Min)
+    experimentRunTime.epoch: 1511318982
+    experimentScript: hierNavigation.py
+    experimentScript.digestSHA1: 1f7f9a21a22ed531418a3eeed5c556b3b77acaf4
+    experimentScript.directory: /Users/csnl/Repos/hierarchyNavigation
+  #[[ System ]] #---------
+    systemHaveInternetAccess: True
+    systemHostName: CSNLs-MacBook-Air.local
+    systemLocale: C
+    systemMemFreeRAM: 4146.37890625
+    systemMemTotalRAM: 8192.0
+    systemPlatform: darwin 10.13 x86_64
+    systemPyo.InputDevices: {0: {'host api index': 0, 'latency': 0.0029478457290679216, 'default sr': 44100, 'name': u'Built-in Microph'}, 2: {'host api index': 0, 'latency': 0.009999999776482582, 'default sr': 44100, 'name': u'NoMachine Audio Adapter'}, 3: {'host api index': 0, 'latency': 0.009999999776482582, 'default sr': 44100, 'name': u'NoMachine Microphone Adapter'}}
+    systemPyo.OutputDevices: {1: {'host api index': 0, 'latency': 0.007551020476967096, 'default sr': 44100, 'name': u'Built-in Output'}, 2: {'host api index': 0, 'latency': 0.001451247138902545, 'default sr': 44100, 'name': u'NoMachine Audio Adapter'}, 3: {'host api index': 0, 'latency': 0.001451247138902545, 'default sr': 44100, 'name': u'NoMachine Microphone Adapter'}}
+    systemPyoVersion: 0.8.6
+    systemRebooted: Oct 27 16:03
+    systemSec.OpenSSLVersion: LibreSSL 2.2.7
+    systemSec.pythonSSL: True
+    systemTimeNumpySD1000000_sec: 0.0053
+    systemUser: csnl
+    systemUserID: 501
+    systemUserProcCount: 179
+    systemUserProcFlagged: 'Google Chrome' mdworker iTunes Safari
+    systemUsersCount: 1
+  #[[ Window ]] #---------
+    windowRefreshTimeSD_ms: 0.034
+    windowRefreshTimeMedian_ms: 16.671
+    windowRefreshTimeAvg_ms: 16.668
+  #[[ Python ]] #---------
+    pythonVersion: 2.7.12
+  #[[ OpenGL ]] #---------
+#[ PsychoPy2 RuntimeInfoEnd ]
+
+2017-11-21 18:49:45,434     INFO Starting experiment
+2017-11-21 18:49:45,526     INFO Showing instructions
+2017-11-21 18:49:45,552     INFO Instruction: Welcome!  In this task, you wi...
+2017-11-21 18:50:00,693     INFO Received response [('space', 15.125771045684814)]
+2017-11-21 18:50:00,713     INFO Instruction: Each trial will begin with a "...
+2017-11-21 18:50:03,029     INFO Received response [('space', 2.3003671169281006)]
+2017-11-21 18:50:03,072     INFO Instruction: Your job is to figure out who ...
+2017-11-21 18:50:04,376     INFO Received response [('space', 1.297299861907959)]
+2017-11-21 18:50:04,376     INFO End of instructions
+2017-11-21 18:50:04,383     INFO Showing instructions
+2017-11-21 18:50:04,424     INFO Instruction: Blue numbers mean figure out w...
+2017-11-21 18:50:07,792     INFO Received response [('space', 3.363356113433838)]
+2017-11-21 18:50:07,792     INFO End of instructions
+2017-11-21 18:50:07,799     INFO Showing instructions
+2017-11-21 18:50:07,839     INFO Instruction: You'll have a few seconds to f...
+2017-11-21 18:50:09,927     INFO Received response [('space', 2.081054925918579)]
+2017-11-21 18:50:09,927     INFO End of instructions
+2017-11-21 18:50:09,934     INFO Showing instructions
+2017-11-21 18:50:09,947     INFO Instruction: When the response options are ...
+2017-11-21 18:50:10,913     INFO Received response [('space', 0.9502809047698975)]
+2017-11-21 18:50:10,913     INFO End of instructions
+2017-11-21 18:50:10,958     INFO Showing instructions
+2017-11-21 18:50:10,969     INFO Instruction: Press one of the arrow keys to...
+2017-11-21 18:50:12,126     INFO Received response [('space', 1.146009922027588)]
+2017-11-21 18:50:12,126     INFO End of instructions
+2017-11-21 18:50:12,132     INFO Showing instructions
+2017-11-21 18:50:12,169     INFO Instruction: Run #1 of 1 is starting soon. ...
+2017-11-21 18:50:15,622     INFO Received response [('space', 3.4426729679107666)]
+2017-11-21 18:50:15,622     INFO End of instructions
+2017-11-21 18:50:15,623     INFO Showing anchor face
+2017-11-21 18:50:16,631     INFO End of anchor face
+2017-11-21 18:50:16,645     INFO Showing fixation
+2017-11-21 18:50:17,164     INFO End of fixation
+2017-11-21 18:50:17,181     INFO Showing number
+2017-11-21 18:50:18,198     INFO End of number
+2017-11-21 18:50:18,201     INFO Showing fixation
+2017-11-21 18:50:24,214     INFO End of fixation
+2017-11-21 18:50:24,245     INFO Showing options
+2017-11-21 18:50:25,032     INFO Received response [('left', 0.7674100399017334)]
+2017-11-21 18:50:25,781     INFO End of options
+2017-11-21 18:50:25,797     INFO Showing feedback
+2017-11-21 18:50:27,815     INFO End of feedback
+2017-11-21 18:50:27,817     INFO End of trial
+2017-11-21 18:50:27,820     INFO Showing fixation
+2017-11-21 18:50:31,832     INFO End of fixation
+2017-11-21 18:50:31,833     INFO Showing anchor face
+2017-11-21 18:50:32,849     INFO End of anchor face
+2017-11-21 18:50:32,852     INFO Showing fixation
+2017-11-21 18:50:33,366     INFO End of fixation
+2017-11-21 18:50:33,370     INFO Showing number
+2017-11-21 18:50:34,383     INFO End of number
+2017-11-21 18:50:34,386     INFO Showing fixation
+2017-11-21 18:50:40,400     INFO End of fixation
+2017-11-21 18:50:40,420     INFO Showing options
+2017-11-21 18:50:41,370     INFO Received response [('up', 0.9372899532318115)]
+2017-11-21 18:50:41,946     INFO End of options
+2017-11-21 18:50:41,949     INFO Showing feedback
+2017-11-21 18:50:43,967     INFO End of feedback
+2017-11-21 18:50:43,968     INFO End of trial
+2017-11-21 18:50:43,971     INFO Showing fixation
+2017-11-21 18:50:47,984     INFO End of fixation
+2017-11-21 18:50:47,991     INFO Showing anchor face
+2017-11-21 18:50:49,001     INFO End of anchor face
+2017-11-21 18:50:49,005     INFO Showing fixation
+2017-11-21 18:50:49,518     INFO End of fixation
+2017-11-21 18:50:49,520     INFO Showing number
+2017-11-21 18:50:50,534     INFO End of number
+2017-11-21 18:50:50,537     INFO Showing fixation
+2017-11-21 18:50:56,551     INFO End of fixation
+2017-11-21 18:50:56,571     INFO Showing options
+2017-11-21 18:50:57,442     INFO Received response [('down', 0.8578979969024658)]
+2017-11-21 18:50:58,094     INFO End of options
+2017-11-21 18:50:58,101     INFO Showing feedback
+2017-11-21 18:51:00,119     INFO End of feedback
+2017-11-21 18:51:00,120     INFO End of trial
+2017-11-21 18:51:00,123     INFO Showing fixation
+2017-11-21 18:51:04,135     INFO End of fixation
+2017-11-21 18:51:04,136     INFO Showing anchor face
+2017-11-21 18:51:05,152     INFO End of anchor face
+2017-11-21 18:51:05,156     INFO Showing fixation
+2017-11-21 18:51:05,669     INFO End of fixation
+2017-11-21 18:51:05,672     INFO Showing number
+2017-11-21 18:51:06,686     INFO End of number
+2017-11-21 18:51:06,691     INFO Showing fixation
+2017-11-21 18:51:12,703     INFO End of fixation
+2017-11-21 18:51:12,722     INFO Showing options
+2017-11-21 18:51:13,558     INFO Received response [('up', 0.8217759132385254)]
+2017-11-21 18:51:14,248     INFO End of options
+2017-11-21 18:51:14,252     INFO Showing feedback
+2017-11-21 18:51:16,270     INFO End of feedback
+2017-11-21 18:51:16,274     INFO End of trial
+2017-11-21 18:51:16,278     INFO Showing fixation
+2017-11-21 18:51:20,287     INFO End of fixation
+2017-11-21 18:51:20,288     INFO Showing anchor face
+2017-11-21 18:51:21,304     INFO End of anchor face
+2017-11-21 18:51:21,307     INFO Showing fixation
+2017-11-21 18:51:21,821     INFO End of fixation
+2017-11-21 18:51:21,826     INFO Showing number
+2017-11-21 18:51:22,837     INFO End of number
+2017-11-21 18:51:22,841     INFO Showing fixation
+2017-11-21 18:51:28,855     INFO End of fixation
+2017-11-21 18:51:28,874     INFO Showing options
+2017-11-21 18:51:29,633     INFO Received response [('down', 0.7458250522613525)]
+2017-11-21 18:51:30,392     INFO End of options
+2017-11-21 18:51:30,404     INFO Showing feedback
+2017-11-21 18:51:32,422     INFO End of feedback
+2017-11-21 18:51:32,423     INFO End of trial
+2017-11-21 18:51:32,426     INFO Showing fixation
+2017-11-21 18:51:36,439     INFO End of fixation
+2017-11-21 18:51:36,440     INFO Showing anchor face
+2017-11-21 18:51:37,456     INFO End of anchor face
+2017-11-21 18:51:37,459     INFO Showing fixation
+2017-11-21 18:51:37,973     INFO End of fixation
+2017-11-21 18:51:37,975     INFO Showing number
+2017-11-21 18:51:38,989     INFO End of number
+2017-11-21 18:51:38,992     INFO Showing fixation
+2017-11-21 18:51:45,006     INFO End of fixation
+2017-11-21 18:51:45,025     INFO Showing options
+2017-11-21 18:51:45,905     INFO Received response [('down', 0.8653521537780762)]
+2017-11-21 18:51:46,558     INFO End of options
+2017-11-21 18:51:46,572     INFO Showing feedback
+2017-11-21 18:51:48,590     INFO End of feedback
+2017-11-21 18:51:48,592     INFO End of trial
+2017-11-21 18:51:48,595     INFO Showing fixation
+2017-11-21 18:51:52,607     INFO End of fixation
+2017-11-21 18:51:52,608     INFO Showing anchor face
+2017-11-21 18:51:53,624     INFO End of anchor face
+2017-11-21 18:51:53,627     INFO Showing fixation
+2017-11-21 18:51:54,141     INFO End of fixation
+2017-11-21 18:51:54,144     INFO Showing number
+2017-11-21 18:51:55,157     INFO End of number
+2017-11-21 18:51:55,161     INFO Showing fixation
+2017-11-21 18:52:01,175     INFO End of fixation
+2017-11-21 18:52:01,194     INFO Showing options
+2017-11-21 18:52:01,823     INFO Received response [('down', 0.6154739856719971)]
+2017-11-21 18:52:02,726     INFO End of options
+2017-11-21 18:52:02,740     INFO Showing feedback
+2017-11-21 18:52:04,758     INFO End of feedback
+2017-11-21 18:52:04,760     INFO End of trial
+2017-11-21 18:52:04,763     INFO Showing fixation
+2017-11-21 18:52:08,775     INFO End of fixation
+2017-11-21 18:52:08,776     INFO Showing anchor face
+2017-11-21 18:52:09,793     INFO End of anchor face
+2017-11-21 18:52:09,796     INFO Showing fixation
+2017-11-21 18:52:10,309     INFO End of fixation
+2017-11-21 18:52:10,312     INFO Showing number
+2017-11-21 18:52:11,326     INFO End of number
+2017-11-21 18:52:11,329     INFO Showing fixation
+2017-11-21 18:52:17,343     INFO End of fixation
+2017-11-21 18:52:17,366     INFO Showing options
+2017-11-21 18:52:17,885     INFO Received response [('up', 0.5091018676757812)]
+2017-11-21 18:52:18,884     INFO End of options
+2017-11-21 18:52:18,893     INFO Showing feedback
+2017-11-21 18:52:20,910     INFO End of feedback
+2017-11-21 18:52:20,911     INFO End of trial
+2017-11-21 18:52:20,914     INFO Showing fixation
+2017-11-21 18:52:24,927     INFO End of fixation
+2017-11-21 18:52:24,928     INFO Showing anchor face
+2017-11-21 18:52:25,944     INFO End of anchor face
+2017-11-21 18:52:25,947     INFO Showing fixation
+2017-11-21 18:52:26,461     INFO End of fixation
+2017-11-21 18:52:26,464     INFO Showing number
+2017-11-21 18:52:27,478     INFO End of number
+2017-11-21 18:52:27,481     INFO Showing fixation
+2017-11-21 18:52:33,494     INFO End of fixation
+2017-11-21 18:52:33,514     INFO Showing options
+2017-11-21 18:52:34,304     INFO Received response [('up', 0.7756409645080566)]
+2017-11-21 18:52:35,036     INFO End of options
+2017-11-21 18:52:35,044     INFO Showing feedback
+2017-11-21 18:52:37,062     INFO End of feedback
+2017-11-21 18:52:37,063     INFO End of trial
+2017-11-21 18:52:37,066     INFO Showing fixation
+2017-11-21 18:52:41,079     INFO End of fixation
+2017-11-21 18:52:41,079     INFO Showing anchor face
+2017-11-21 18:52:42,096     INFO End of anchor face
+2017-11-21 18:52:42,099     INFO Showing fixation
+2017-11-21 18:52:42,613     INFO End of fixation
+2017-11-21 18:52:42,615     INFO Showing number
+2017-11-21 18:52:43,629     INFO End of number
+2017-11-21 18:52:43,632     INFO Showing fixation
+2017-11-21 18:52:49,647     INFO End of fixation
+2017-11-21 18:52:49,669     INFO Showing options
+2017-11-21 18:52:50,949     INFO Received response [('left', 1.2696919441223145)]
+2017-11-21 18:52:51,194     INFO End of options
+2017-11-21 18:52:51,212     INFO Showing feedback
+2017-11-21 18:52:53,230     INFO End of feedback
+2017-11-21 18:52:53,233     INFO End of trial
+2017-11-21 18:52:53,239     INFO Showing fixation
+2017-11-21 18:52:57,248     INFO End of fixation
+2017-11-21 18:52:57,248     INFO Showing anchor face
+2017-11-21 18:52:58,264     INFO End of anchor face
+2017-11-21 18:52:58,267     INFO Showing fixation
+2017-11-21 18:52:58,781     INFO End of fixation
+2017-11-21 18:52:58,784     INFO Showing number
+2017-11-21 18:52:59,798     INFO End of number
+2017-11-21 18:52:59,801     INFO Showing fixation
+2017-11-21 18:53:05,814     INFO End of fixation
+2017-11-21 18:53:05,840     INFO Showing options
+2017-11-21 18:53:06,487     INFO Received response [('left', 0.6396169662475586)]
+2017-11-21 18:53:07,359     INFO End of options
+2017-11-21 18:53:07,364     INFO Showing feedback
+2017-11-21 18:53:09,382     INFO End of feedback
+2017-11-21 18:53:09,383     INFO End of trial
+2017-11-21 18:53:09,386     INFO Showing fixation
+2017-11-21 18:53:13,399     INFO End of fixation
+2017-11-21 18:53:13,399     INFO Showing anchor face
+2017-11-21 18:53:14,416     INFO End of anchor face
+2017-11-21 18:53:14,419     INFO Showing fixation
+2017-11-21 18:53:14,932     INFO End of fixation
+2017-11-21 18:53:14,935     INFO Showing number
+2017-11-21 18:53:15,949     INFO End of number
+2017-11-21 18:53:15,953     INFO Showing fixation
+2017-11-21 18:53:21,966     INFO End of fixation
+2017-11-21 18:53:21,989     INFO Showing options
+2017-11-21 18:53:22,527     INFO Received response [('right', 0.5276381969451904)]
+2017-11-21 18:53:23,506     INFO End of options
+2017-11-21 18:53:23,516     INFO Showing feedback
+2017-11-21 18:53:25,533     INFO End of feedback
+2017-11-21 18:53:25,535     INFO End of trial
+2017-11-21 18:53:25,538     INFO Showing fixation
+2017-11-21 18:53:29,551     INFO End of fixation
+2017-11-21 18:53:29,551     INFO Showing anchor face
+2017-11-21 18:53:30,567     INFO End of anchor face
+2017-11-21 18:53:30,570     INFO Showing fixation
+2017-11-21 18:53:31,084     INFO End of fixation
+2017-11-21 18:53:31,087     INFO Showing number
+2017-11-21 18:53:32,101     INFO End of number
+2017-11-21 18:53:32,104     INFO Showing fixation
+2017-11-21 18:53:38,117     INFO End of fixation
+2017-11-21 18:53:38,136     INFO Showing options
+2017-11-21 18:53:38,765     INFO Received response [('down', 0.6144399642944336)]
+2017-11-21 18:53:39,671     INFO End of options
+2017-11-21 18:53:39,684     INFO Showing feedback
+2017-11-21 18:53:41,702     INFO End of feedback
+2017-11-21 18:53:41,703     INFO End of trial
+2017-11-21 18:53:41,707     INFO Showing fixation
+2017-11-21 18:53:45,718     INFO End of fixation
+2017-11-21 18:53:45,719     INFO Showing anchor face
+2017-11-21 18:53:46,736     INFO End of anchor face
+2017-11-21 18:53:46,743     INFO Showing fixation
+2017-11-21 18:53:47,253     INFO End of fixation
+2017-11-21 18:53:47,255     INFO Showing number
+2017-11-21 18:53:48,269     INFO End of number
+2017-11-21 18:53:48,272     INFO Showing fixation
+2017-11-21 18:53:54,287     INFO End of fixation
+2017-11-21 18:53:54,306     INFO Showing options
+2017-11-21 18:53:55,393     INFO Received response [('down', 1.074558973312378)]
+2017-11-21 18:53:55,829     INFO End of options
+2017-11-21 18:53:55,836     INFO Showing feedback
+2017-11-21 18:53:57,853     INFO End of feedback
+2017-11-21 18:53:57,855     INFO End of trial
+2017-11-21 18:53:57,858     INFO Showing fixation
+2017-11-21 18:54:01,870     INFO End of fixation
+2017-11-21 18:54:01,871     INFO Showing anchor face
+2017-11-21 18:54:02,888     INFO End of anchor face
+2017-11-21 18:54:02,891     INFO Showing fixation
+2017-11-21 18:54:03,404     INFO End of fixation
+2017-11-21 18:54:03,407     INFO Showing number
+2017-11-21 18:54:04,421     INFO End of number
+2017-11-21 18:54:04,424     INFO Showing fixation
+2017-11-21 18:54:10,438     INFO End of fixation
+2017-11-21 18:54:10,457     INFO Showing options
+2017-11-21 18:54:11,164     INFO Received response [('up', 0.6935880184173584)]
+2017-11-21 18:54:11,978     INFO End of options
+2017-11-21 18:54:11,987     INFO Showing feedback
+2017-11-21 18:54:14,005     INFO End of feedback
+2017-11-21 18:54:14,006     INFO End of trial
+2017-11-21 18:54:14,009     INFO Showing fixation
+2017-11-21 18:54:18,022     INFO End of fixation
+2017-11-21 18:54:18,025     INFO Showing anchor face
+2017-11-21 18:54:19,039     INFO End of anchor face
+2017-11-21 18:54:19,042     INFO Showing fixation
+2017-11-21 18:54:19,556     INFO End of fixation
+2017-11-21 18:54:19,559     INFO Showing number
+2017-11-21 18:54:20,572     INFO End of number
+2017-11-21 18:54:20,576     INFO Showing fixation
+2017-11-21 18:54:26,589     INFO End of fixation
+2017-11-21 18:54:26,609     INFO Showing options
+2017-11-21 18:54:27,888     INFO Received response [('right', 1.2649028301239014)]
+2017-11-21 18:54:28,142     INFO End of options
+2017-11-21 18:54:28,156     INFO Showing feedback
+2017-11-21 18:54:30,173     INFO End of feedback
+2017-11-21 18:54:30,175     INFO End of trial
+2017-11-21 18:54:30,178     INFO Showing fixation
+2017-11-21 18:54:34,190     INFO End of fixation
+2017-11-21 18:54:34,191     INFO Showing anchor face
+2017-11-21 18:54:35,207     INFO End of anchor face
+2017-11-21 18:54:35,210     INFO Showing fixation
+2017-11-21 18:54:35,724     INFO End of fixation
+2017-11-21 18:54:35,727     INFO Showing number
+2017-11-21 18:54:36,740     INFO End of number
+2017-11-21 18:54:36,743     INFO Showing fixation
+2017-11-21 18:54:42,758     INFO End of fixation
+2017-11-21 18:54:42,778     INFO Showing options
+2017-11-21 18:54:43,646     INFO Received response [('left', 0.8553121089935303)]
+2017-11-21 18:54:44,303     INFO End of options
+2017-11-21 18:54:44,307     INFO Showing feedback
+2017-11-21 18:54:46,325     INFO End of feedback
+2017-11-21 18:54:46,330     INFO End of trial
+2017-11-21 18:54:46,334     INFO Showing fixation
+2017-11-21 18:54:50,343     INFO End of fixation
+2017-11-21 18:54:50,343     INFO Showing anchor face
+2017-11-21 18:54:51,359     INFO End of anchor face
+2017-11-21 18:54:51,364     INFO Showing fixation
+2017-11-21 18:54:51,876     INFO End of fixation
+2017-11-21 18:54:51,879     INFO Showing number
+2017-11-21 18:54:52,892     INFO End of number
+2017-11-21 18:54:52,895     INFO Showing fixation
+2017-11-21 18:54:58,909     INFO End of fixation
+2017-11-21 18:54:58,929     INFO Showing options
+2017-11-21 18:54:59,483     INFO Received response [('up', 0.540930986404419)]
+2017-11-21 18:55:00,452     INFO End of options
+2017-11-21 18:55:00,459     INFO Showing feedback
+2017-11-21 18:55:02,477     INFO End of feedback
+2017-11-21 18:55:02,478     INFO End of trial
+2017-11-21 18:55:02,481     INFO Showing fixation
+2017-11-21 18:55:06,494     INFO End of fixation
+2017-11-21 18:55:06,494     INFO Showing anchor face
+2017-11-21 18:55:07,511     INFO End of anchor face
+2017-11-21 18:55:07,514     INFO Showing fixation
+2017-11-21 18:55:08,027     INFO End of fixation
+2017-11-21 18:55:08,030     INFO Showing number
+2017-11-21 18:55:09,045     INFO End of number
+2017-11-21 18:55:09,048     INFO Showing fixation
+2017-11-21 18:55:15,061     INFO End of fixation
+2017-11-21 18:55:15,155     INFO Showing options
+2017-11-21 18:55:15,711     INFO Received response [('right', 0.5504410266876221)]
+2017-11-21 18:55:16,678     INFO End of options
+2017-11-21 18:55:16,694     INFO Showing feedback
+2017-11-21 18:55:18,712     INFO End of feedback
+2017-11-21 18:55:18,713     INFO End of trial
+2017-11-21 18:55:18,716     INFO Showing fixation
+2017-11-21 18:55:22,729     INFO End of fixation
+2017-11-21 18:55:22,730     INFO Showing anchor face
+2017-11-21 18:55:23,746     INFO End of anchor face
+2017-11-21 18:55:23,749     INFO Showing fixation
+2017-11-21 18:55:24,262     INFO End of fixation
+2017-11-21 18:55:24,265     INFO Showing number
+2017-11-21 18:55:25,279     INFO End of number
+2017-11-21 18:55:25,282     INFO Showing fixation
+2017-11-21 18:55:31,296     INFO End of fixation
+2017-11-21 18:55:31,317     INFO Showing options
+2017-11-21 18:55:32,010     INFO Received response [('right', 0.6805620193481445)]
+2017-11-21 18:55:32,849     INFO End of options
+2017-11-21 18:55:32,862     INFO Showing feedback
+2017-11-21 18:55:34,880     INFO End of feedback
+2017-11-21 18:55:34,881     INFO End of trial
+2017-11-21 18:55:34,885     INFO Showing fixation
+2017-11-21 18:55:38,897     INFO End of fixation
+2017-11-21 18:55:38,898     INFO Showing anchor face
+2017-11-21 18:55:39,914     INFO End of anchor face
+2017-11-21 18:55:39,917     INFO Showing fixation
+2017-11-21 18:55:40,431     INFO End of fixation
+2017-11-21 18:55:40,433     INFO Showing number
+2017-11-21 18:55:41,447     INFO End of number
+2017-11-21 18:55:41,451     INFO Showing fixation
+2017-11-21 18:55:47,465     INFO End of fixation
+2017-11-21 18:55:47,489     INFO Showing options
+2017-11-21 18:55:48,120     INFO Received response [('left', 0.6226921081542969)]
+2017-11-21 18:55:49,009     INFO End of options
+2017-11-21 18:55:49,014     INFO Showing feedback
+2017-11-21 18:55:51,032     INFO End of feedback
+2017-11-21 18:55:51,033     INFO End of trial
+2017-11-21 18:55:51,036     INFO Showing fixation
+2017-11-21 18:55:55,049     INFO End of fixation
+2017-11-21 18:55:55,050     INFO Showing anchor face
+2017-11-21 18:55:56,065     INFO End of anchor face
+2017-11-21 18:55:56,068     INFO Showing fixation
+2017-11-21 18:55:56,582     INFO End of fixation
+2017-11-21 18:55:56,585     INFO Showing number
+2017-11-21 18:55:57,599     INFO End of number
+2017-11-21 18:55:57,603     INFO Showing fixation
+2017-11-21 18:56:03,616     INFO End of fixation
+2017-11-21 18:56:03,636     INFO Showing options
+2017-11-21 18:56:04,264     INFO Received response [('right', 0.6146540641784668)]
+2017-11-21 18:56:05,169     INFO End of options
+2017-11-21 18:56:05,182     INFO Showing feedback
+2017-11-21 18:56:07,200     INFO End of feedback
+2017-11-21 18:56:07,201     INFO End of trial
+2017-11-21 18:56:07,204     INFO Showing fixation
+2017-11-21 18:56:11,217     INFO End of fixation
+2017-11-21 18:56:11,218     INFO Showing anchor face
+2017-11-21 18:56:12,234     INFO End of anchor face
+2017-11-21 18:56:12,240     INFO Showing fixation
+2017-11-21 18:56:12,751     INFO End of fixation
+2017-11-21 18:56:12,753     INFO Showing number
+2017-11-21 18:56:13,767     INFO End of number
+2017-11-21 18:56:13,771     INFO Showing fixation
+2017-11-21 18:56:19,785     INFO End of fixation
+2017-11-21 18:56:19,809     INFO Showing options
+2017-11-21 18:56:20,545     INFO Received response [('right', 0.7283010482788086)]
+2017-11-21 18:56:21,323     INFO End of options
+2017-11-21 18:56:21,334     INFO Showing feedback
+2017-11-21 18:56:23,352     INFO End of feedback
+2017-11-21 18:56:23,353     INFO End of trial
+2017-11-21 18:56:23,356     INFO Showing fixation
+2017-11-21 18:56:27,369     INFO End of fixation
+2017-11-21 18:56:27,369     INFO Showing anchor face
+2017-11-21 18:56:28,386     INFO End of anchor face
+2017-11-21 18:56:28,389     INFO Showing fixation
+2017-11-21 18:56:28,902     INFO End of fixation
+2017-11-21 18:56:28,905     INFO Showing number
+2017-11-21 18:56:29,919     INFO End of number
+2017-11-21 18:56:29,922     INFO Showing fixation
+2017-11-21 18:56:35,936     INFO End of fixation
+2017-11-21 18:56:35,955     INFO Showing options
+2017-11-21 18:56:36,623     INFO Received response [('left', 0.6540019512176514)]
+2017-11-21 18:56:37,481     INFO End of options
+2017-11-21 18:56:37,485     INFO Showing feedback
+2017-11-21 18:56:39,503     INFO End of feedback
+2017-11-21 18:56:39,505     INFO End of trial
+2017-11-21 18:56:39,508     INFO Showing fixation
+2017-11-21 18:56:43,520     INFO End of fixation
+2017-11-21 18:56:43,527     INFO Showing instructions
+2017-11-21 18:56:43,540     INFO Instruction: You earned 24 point(s) out of ...
+2017-11-21 18:56:45,722     INFO Received response [('space', 2.169356107711792)]
+2017-11-21 18:56:45,723     INFO End of instructions
+2017-11-21 18:56:45,729     INFO Showing instructions
+2017-11-21 18:56:45,737     INFO Instruction: This task is complete! Thank y...
+2017-11-21 18:56:48,627     INFO Received response [('space', 2.873321056365967)]
+2017-11-21 18:56:48,634     INFO End of instructions
+2017-11-21 18:56:48,634     INFO Experiment ended

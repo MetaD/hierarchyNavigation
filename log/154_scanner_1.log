@@ -1,0 +1,3154 @@
+2018-06-03 19:31:08,888     INFO #[ PsychoPy2 RuntimeInfoStart ]
+  #[[ PsychoPy ]] #---------
+    psychopyVersion: 1.85.4
+    psychopyHaveExtRush: True
+  #[[ Experiment ]] #---------
+    experimentRunTime: 2018_06_03 19:31 (Year_Month_Day Hour:Min)
+    experimentRunTime.epoch: 1528079466
+    experimentScript: hierNavigation.py
+    experimentScript.digestSHA1: 03a4e2f88e9622ad044d5af6149a3a60a2635480
+    experimentScript.directory: /Users/mengdu/Repos/hierarchy/navigation
+  #[[ System ]] #---------
+    systemHaveInternetAccess: True
+    systemHostName: mengs-mbp.ad.medctr.ucla.edu
+    systemLocale: C
+    systemMemFreeRAM: 4119.6875
+    systemMemTotalRAM: 8192.0
+    systemPlatform: darwin 10.13.4 x86_64
+    systemPyo.InputDevices: {0: {'host api index': 0, 'latency': 0.0029478457290679216, 'default sr': 44100, 'name': u'Built-in Microph'}, 3: {'host api index': 0, 'latency': 0.009999999776482582, 'default sr': 44100, 'name': u'NoMachine Audio Adapter'}, 4: {'host api index': 0, 'latency': 0.009999999776482582, 'default sr': 44100, 'name': u'NoMachine Microphone Adapter'}}
+    systemPyo.OutputDevices: {1: {'host api index': 0, 'latency': 0.018798185512423515, 'default sr': 44100, 'name': u'Built-in Output'}, 2: {'host api index': 0, 'latency': 0.0014375000027939677, 'default sr': 48000, 'name': u'HDMI'}, 3: {'host api index': 0, 'latency': 0.001451247138902545, 'default sr': 44100, 'name': u'NoMachine Audio Adapter'}, 4: {'host api index': 0, 'latency': 0.001451247138902545, 'default sr': 44100, 'name': u'NoMachine Microphone Adapter'}}
+    systemPyoVersion: 0.8.6
+    systemRebooted: May 2 02:12
+    systemSec.OpenSSLVersion: LibreSSL 2.2.7
+    systemSec.pythonSSL: True
+    systemTimeNumpySD1000000_sec: 0.0045
+    systemUser: mengdu
+    systemUserID: 501
+    systemUserProcCount: 152
+    systemUserProcFlagged: iTunes mdworker Safari
+    systemUsersCount: 1
+  #[[ Window ]] #---------
+    windowRefreshTimeSD_ms: 0.021
+    windowRefreshTimeMedian_ms: 16.666
+    windowRefreshTimeAvg_ms: 16.666
+  #[[ Python ]] #---------
+    pythonVersion: 2.7.12
+  #[[ OpenGL ]] #---------
+#[ PsychoPy2 RuntimeInfoEnd ]
+
+2018-06-03 19:31:09,094     INFO Starting experiment
+2018-06-03 19:31:09,094     INFO Showing instructions
+2018-06-03 19:31:09,203     INFO Instruction: Press one of the buttons to se...
+2018-06-03 19:39:07,393     INFO Received response [('5', 478.1672761440277)]
+2018-06-03 19:39:07,393     INFO End of instructions
+2018-06-03 19:39:07,404     INFO Showing instructions
+2018-06-03 19:39:07,453     INFO Instruction: Run #1 of 4 is starting soon. ...
+2018-06-03 19:39:50,266     INFO Received response [('space', 42.79936194419861)]
+2018-06-03 19:39:50,267     INFO End of instructions
+2018-06-03 19:39:50,267     INFO Showing instructions
+2018-06-03 19:39:50,299     INFO Instruction: Run #1 of 4 is starting soon. ...
+2018-06-03 19:40:06,831     INFO Received response [('5', 16.51642394065857)]
+2018-06-03 19:40:06,831     INFO End of instructions
+2018-06-03 19:40:06,831     INFO Showing anchor face
+2018-06-03 19:40:07,831     INFO Received trigger 5
+2018-06-03 19:40:07,831     INFO End of anchor face
+2018-06-03 19:40:07,835     INFO Showing fixation
+2018-06-03 19:40:08,347     INFO End of fixation
+2018-06-03 19:40:08,352     INFO Showing number
+2018-06-03 19:40:08,831     INFO Received trigger 5
+2018-06-03 19:40:08,831     INFO End of number
+2018-06-03 19:40:08,834     INFO Showing fixation
+2018-06-03 19:40:09,830     INFO Received trigger 5
+2018-06-03 19:40:10,831     INFO Received trigger 5
+2018-06-03 19:40:11,830     INFO Received trigger 5
+2018-06-03 19:40:12,831     INFO Received trigger 5
+2018-06-03 19:40:13,830     INFO Received trigger 5
+2018-06-03 19:40:14,831     INFO Received trigger 5
+2018-06-03 19:40:14,831     INFO End of fixation
+2018-06-03 19:40:14,859     INFO Showing options
+2018-06-03 19:40:16,363     INFO No response received, showing feedback
+2018-06-03 19:40:16,830     INFO Received trigger 5
+2018-06-03 19:40:17,829     INFO Received trigger 5
+2018-06-03 19:40:17,829     INFO End of feedback
+2018-06-03 19:40:17,830     INFO End of trial
+2018-06-03 19:40:17,834     INFO Showing fixation
+2018-06-03 19:40:18,829     INFO Received trigger 5
+2018-06-03 19:40:19,830     INFO Received trigger 5
+2018-06-03 19:40:20,829     INFO Received trigger 5
+2018-06-03 19:40:21,829     INFO Received trigger 5
+2018-06-03 19:40:21,830     INFO End of fixation
+2018-06-03 19:40:21,830     INFO Showing anchor face
+2018-06-03 19:40:22,829     INFO Received trigger 5
+2018-06-03 19:40:22,829     INFO End of anchor face
+2018-06-03 19:40:22,832     INFO Showing fixation
+2018-06-03 19:40:23,346     INFO End of fixation
+2018-06-03 19:40:23,349     INFO Showing number
+2018-06-03 19:40:23,829     INFO Received trigger 5
+2018-06-03 19:40:23,830     INFO End of number
+2018-06-03 19:40:23,833     INFO Showing fixation
+2018-06-03 19:40:24,828     INFO Received trigger 5
+2018-06-03 19:40:25,829     INFO Received trigger 5
+2018-06-03 19:40:26,828     INFO Received trigger 5
+2018-06-03 19:40:27,829     INFO Received trigger 5
+2018-06-03 19:40:28,828     INFO Received trigger 5
+2018-06-03 19:40:29,829     INFO Received trigger 5
+2018-06-03 19:40:29,829     INFO End of fixation
+2018-06-03 19:40:29,848     INFO Showing options
+2018-06-03 19:40:30,465     INFO Received response [('4', 0.6030747890472412)]
+2018-06-03 19:40:31,376     INFO End of options
+2018-06-03 19:40:31,379     INFO Showing feedback
+2018-06-03 19:40:31,829     INFO Received trigger 5
+2018-06-03 19:40:32,828     INFO Received trigger 5
+2018-06-03 19:40:32,828     INFO End of feedback
+2018-06-03 19:40:32,829     INFO End of trial
+2018-06-03 19:40:32,832     INFO Showing fixation
+2018-06-03 19:40:33,829     INFO Received trigger 5
+2018-06-03 19:40:34,828     INFO Received trigger 5
+2018-06-03 19:40:35,828     INFO Received trigger 5
+2018-06-03 19:40:36,828     INFO Received trigger 5
+2018-06-03 19:40:37,828     INFO Received trigger 5
+2018-06-03 19:40:38,828     INFO Received trigger 5
+2018-06-03 19:40:38,828     INFO End of fixation
+2018-06-03 19:40:38,828     INFO Showing anchor face
+2018-06-03 19:40:39,828     INFO Received trigger 5
+2018-06-03 19:40:39,828     INFO End of anchor face
+2018-06-03 19:40:39,831     INFO Showing fixation
+2018-06-03 19:40:40,345     INFO End of fixation
+2018-06-03 19:40:40,348     INFO Showing number
+2018-06-03 19:40:40,828     INFO Received trigger 5
+2018-06-03 19:40:40,828     INFO End of number
+2018-06-03 19:40:40,831     INFO Showing fixation
+2018-06-03 19:40:41,830     INFO Received trigger 5
+2018-06-03 19:40:42,827     INFO Received trigger 5
+2018-06-03 19:40:43,828     INFO Received trigger 5
+2018-06-03 19:40:44,826     INFO Received trigger 5
+2018-06-03 19:40:45,827     INFO Received trigger 5
+2018-06-03 19:40:46,826     INFO Received trigger 5
+2018-06-03 19:40:46,826     INFO End of fixation
+2018-06-03 19:40:46,844     INFO Showing options
+2018-06-03 19:40:48,179     INFO Received response [('3', 1.3181250095367432)]
+2018-06-03 19:40:48,375     INFO End of options
+2018-06-03 19:40:48,393     INFO Showing feedback
+2018-06-03 19:40:48,826     INFO Received trigger 5
+2018-06-03 19:40:49,826     INFO Received trigger 5
+2018-06-03 19:40:49,826     INFO End of feedback
+2018-06-03 19:40:49,827     INFO End of trial
+2018-06-03 19:40:49,831     INFO Showing fixation
+2018-06-03 19:40:50,826     INFO Received trigger 5
+2018-06-03 19:40:51,827     INFO Received trigger 5
+2018-06-03 19:40:52,826     INFO Received trigger 5
+2018-06-03 19:40:53,826     INFO Received trigger 5
+2018-06-03 19:40:54,826     INFO Received trigger 5
+2018-06-03 19:40:54,826     INFO End of fixation
+2018-06-03 19:40:54,826     INFO Showing anchor face
+2018-06-03 19:40:55,826     INFO Received trigger 5
+2018-06-03 19:40:55,826     INFO End of anchor face
+2018-06-03 19:40:55,830     INFO Showing fixation
+2018-06-03 19:40:56,344     INFO End of fixation
+2018-06-03 19:40:56,360     INFO Showing number
+2018-06-03 19:40:56,825     INFO Received trigger 5
+2018-06-03 19:40:56,826     INFO End of number
+2018-06-03 19:40:56,829     INFO Showing fixation
+2018-06-03 19:40:57,826     INFO Received trigger 5
+2018-06-03 19:40:58,825     INFO Received trigger 5
+2018-06-03 19:40:59,826     INFO Received trigger 5
+2018-06-03 19:41:00,825     INFO Received trigger 5
+2018-06-03 19:41:01,826     INFO Received trigger 5
+2018-06-03 19:41:02,825     INFO Received trigger 5
+2018-06-03 19:41:02,825     INFO End of fixation
+2018-06-03 19:41:02,850     INFO Showing options
+2018-06-03 19:41:03,689     INFO Received response [('4', 0.8291242122650146)]
+2018-06-03 19:41:04,365     INFO End of options
+2018-06-03 19:41:04,376     INFO Showing feedback
+2018-06-03 19:41:04,825     INFO Received trigger 5
+2018-06-03 19:41:05,825     INFO Received trigger 5
+2018-06-03 19:41:05,825     INFO End of feedback
+2018-06-03 19:41:05,826     INFO End of trial
+2018-06-03 19:41:05,829     INFO Showing fixation
+2018-06-03 19:41:06,826     INFO Received trigger 5
+2018-06-03 19:41:07,825     INFO Received trigger 5
+2018-06-03 19:41:08,826     INFO Received trigger 5
+2018-06-03 19:41:09,825     INFO Received trigger 5
+2018-06-03 19:41:09,825     INFO End of fixation
+2018-06-03 19:41:09,825     INFO Showing anchor face
+2018-06-03 19:41:10,825     INFO Received trigger 5
+2018-06-03 19:41:10,825     INFO End of anchor face
+2018-06-03 19:41:10,829     INFO Showing fixation
+2018-06-03 19:41:11,342     INFO End of fixation
+2018-06-03 19:41:11,346     INFO Showing number
+2018-06-03 19:41:11,824     INFO Received trigger 5
+2018-06-03 19:41:11,824     INFO End of number
+2018-06-03 19:41:11,827     INFO Showing fixation
+2018-06-03 19:41:12,825     INFO Received trigger 5
+2018-06-03 19:41:13,824     INFO Received trigger 5
+2018-06-03 19:41:14,823     INFO Received trigger 5
+2018-06-03 19:41:15,824     INFO Received trigger 5
+2018-06-03 19:41:16,823     INFO Received trigger 5
+2018-06-03 19:41:17,824     INFO Received trigger 5
+2018-06-03 19:41:17,824     INFO End of fixation
+2018-06-03 19:41:17,843     INFO Showing options
+2018-06-03 19:41:18,938     INFO Received response [('2', 1.0789470672607422)]
+2018-06-03 19:41:19,364     INFO End of options
+2018-06-03 19:41:19,375     INFO Showing feedback
+2018-06-03 19:41:19,823     INFO Received trigger 5
+2018-06-03 19:41:20,824     INFO Received trigger 5
+2018-06-03 19:41:20,824     INFO End of feedback
+2018-06-03 19:41:20,826     INFO End of trial
+2018-06-03 19:41:20,830     INFO Showing fixation
+2018-06-03 19:41:21,823     INFO Received trigger 5
+2018-06-03 19:41:22,824     INFO Received trigger 5
+2018-06-03 19:41:23,823     INFO Received trigger 5
+2018-06-03 19:41:24,824     INFO Received trigger 5
+2018-06-03 19:41:25,823     INFO Received trigger 5
+2018-06-03 19:41:26,823     INFO Received trigger 5
+2018-06-03 19:41:26,823     INFO End of fixation
+2018-06-03 19:41:26,824     INFO Showing anchor face
+2018-06-03 19:41:27,823     INFO Received trigger 5
+2018-06-03 19:41:27,823     INFO End of anchor face
+2018-06-03 19:41:27,826     INFO Showing fixation
+2018-06-03 19:41:28,342     INFO End of fixation
+2018-06-03 19:41:28,345     INFO Showing number
+2018-06-03 19:41:28,823     INFO Received trigger 5
+2018-06-03 19:41:28,823     INFO End of number
+2018-06-03 19:41:28,827     INFO Showing fixation
+2018-06-03 19:41:29,823     INFO Received trigger 5
+2018-06-03 19:41:30,823     INFO Received trigger 5
+2018-06-03 19:41:31,822     INFO Received trigger 5
+2018-06-03 19:41:32,823     INFO Received trigger 5
+2018-06-03 19:41:33,822     INFO Received trigger 5
+2018-06-03 19:41:34,823     INFO Received trigger 5
+2018-06-03 19:41:34,823     INFO End of fixation
+2018-06-03 19:41:34,842     INFO Showing options
+2018-06-03 19:41:36,344     INFO Received response [('2', 1.4862618446350098)]
+2018-06-03 19:41:36,371     INFO End of options
+2018-06-03 19:41:36,374     INFO Showing feedback
+2018-06-03 19:41:36,821     INFO Received trigger 5
+2018-06-03 19:41:37,822     INFO Received trigger 5
+2018-06-03 19:41:37,822     INFO End of feedback
+2018-06-03 19:41:37,824     INFO End of trial
+2018-06-03 19:41:37,828     INFO Showing fixation
+2018-06-03 19:41:38,821     INFO Received trigger 5
+2018-06-03 19:41:39,822     INFO Received trigger 5
+2018-06-03 19:41:40,821     INFO Received trigger 5
+2018-06-03 19:41:41,822     INFO Received trigger 5
+2018-06-03 19:41:41,822     INFO End of fixation
+2018-06-03 19:41:41,823     INFO Showing anchor face
+2018-06-03 19:41:42,821     INFO Received trigger 5
+2018-06-03 19:41:42,821     INFO End of anchor face
+2018-06-03 19:41:42,824     INFO Showing fixation
+2018-06-03 19:41:43,341     INFO End of fixation
+2018-06-03 19:41:43,344     INFO Showing number
+2018-06-03 19:41:43,822     INFO Received trigger 5
+2018-06-03 19:41:43,822     INFO End of number
+2018-06-03 19:41:43,827     INFO Showing fixation
+2018-06-03 19:41:44,821     INFO Received trigger 5
+2018-06-03 19:41:45,821     INFO Received trigger 5
+2018-06-03 19:41:46,820     INFO Received trigger 5
+2018-06-03 19:41:47,821     INFO Received trigger 5
+2018-06-03 19:41:48,820     INFO Received trigger 5
+2018-06-03 19:41:49,821     INFO Received trigger 5
+2018-06-03 19:41:49,821     INFO End of fixation
+2018-06-03 19:41:49,841     INFO Showing options
+2018-06-03 19:41:50,881     INFO Received response [('1', 1.0240049362182617)]
+2018-06-03 19:41:51,367     INFO End of options
+2018-06-03 19:41:51,373     INFO Showing feedback
+2018-06-03 19:41:51,820     INFO Received trigger 5
+2018-06-03 19:41:52,821     INFO Received trigger 5
+2018-06-03 19:41:52,822     INFO End of feedback
+2018-06-03 19:41:52,824     INFO End of trial
+2018-06-03 19:41:52,828     INFO Showing fixation
+2018-06-03 19:41:53,820     INFO Received trigger 5
+2018-06-03 19:41:54,821     INFO Received trigger 5
+2018-06-03 19:41:55,820     INFO Received trigger 5
+2018-06-03 19:41:56,821     INFO Received trigger 5
+2018-06-03 19:41:57,820     INFO Received trigger 5
+2018-06-03 19:41:58,820     INFO Received trigger 5
+2018-06-03 19:41:58,820     INFO End of fixation
+2018-06-03 19:41:58,821     INFO Showing anchor face
+2018-06-03 19:41:59,820     INFO Received trigger 5
+2018-06-03 19:41:59,820     INFO End of anchor face
+2018-06-03 19:41:59,823     INFO Showing fixation
+2018-06-03 19:42:00,341     INFO End of fixation
+2018-06-03 19:42:00,343     INFO Showing number
+2018-06-03 19:42:00,820     INFO Received trigger 5
+2018-06-03 19:42:00,820     INFO End of number
+2018-06-03 19:42:00,824     INFO Showing fixation
+2018-06-03 19:42:01,818     INFO Received trigger 5
+2018-06-03 19:42:02,819     INFO Received trigger 5
+2018-06-03 19:42:03,818     INFO Received trigger 5
+2018-06-03 19:42:04,819     INFO Received trigger 5
+2018-06-03 19:42:05,818     INFO Received trigger 5
+2018-06-03 19:42:06,819     INFO Received trigger 5
+2018-06-03 19:42:06,819     INFO End of fixation
+2018-06-03 19:42:06,839     INFO Showing options
+2018-06-03 19:42:07,727     INFO Received response [('4', 0.8711860179901123)]
+2018-06-03 19:42:08,369     INFO End of options
+2018-06-03 19:42:08,372     INFO Showing feedback
+2018-06-03 19:42:08,818     INFO Received trigger 5
+2018-06-03 19:42:09,818     INFO Received trigger 5
+2018-06-03 19:42:09,818     INFO End of feedback
+2018-06-03 19:42:09,820     INFO End of trial
+2018-06-03 19:42:09,823     INFO Showing fixation
+2018-06-03 19:42:10,819     INFO Received trigger 5
+2018-06-03 19:42:11,818     INFO Received trigger 5
+2018-06-03 19:42:12,819     INFO Received trigger 5
+2018-06-03 19:42:13,818     INFO Received trigger 5
+2018-06-03 19:42:14,818     INFO Received trigger 5
+2018-06-03 19:42:14,819     INFO End of fixation
+2018-06-03 19:42:14,819     INFO Showing anchor face
+2018-06-03 19:42:15,818     INFO Received trigger 5
+2018-06-03 19:42:15,818     INFO End of anchor face
+2018-06-03 19:42:15,821     INFO Showing fixation
+2018-06-03 19:42:16,339     INFO End of fixation
+2018-06-03 19:42:16,342     INFO Showing number
+2018-06-03 19:42:16,819     INFO Received trigger 5
+2018-06-03 19:42:16,819     INFO End of number
+2018-06-03 19:42:16,823     INFO Showing fixation
+2018-06-03 19:42:17,818     INFO Received trigger 5
+2018-06-03 19:42:18,818     INFO Received trigger 5
+2018-06-03 19:42:19,818     INFO Received trigger 5
+2018-06-03 19:42:20,818     INFO Received trigger 5
+2018-06-03 19:42:21,817     INFO Received trigger 5
+2018-06-03 19:42:22,818     INFO Received trigger 5
+2018-06-03 19:42:22,818     INFO End of fixation
+2018-06-03 19:42:22,838     INFO Showing options
+2018-06-03 19:42:23,789     INFO Received response [('3', 0.9340310096740723)]
+2018-06-03 19:42:24,371     INFO End of options
+2018-06-03 19:42:24,388     INFO Showing feedback
+2018-06-03 19:42:24,817     INFO Received trigger 5
+2018-06-03 19:42:25,818     INFO Received trigger 5
+2018-06-03 19:42:25,818     INFO End of feedback
+2018-06-03 19:42:25,820     INFO End of trial
+2018-06-03 19:42:25,824     INFO Showing fixation
+2018-06-03 19:42:26,817     INFO Received trigger 5
+2018-06-03 19:42:27,816     INFO Received trigger 5
+2018-06-03 19:42:28,816     INFO Received trigger 5
+2018-06-03 19:42:29,816     INFO Received trigger 5
+2018-06-03 19:42:30,816     INFO Received trigger 5
+2018-06-03 19:42:31,817     INFO Received trigger 5
+2018-06-03 19:42:32,816     INFO Received trigger 5
+2018-06-03 19:42:32,816     INFO End of fixation
+2018-06-03 19:42:32,816     INFO Showing anchor face
+2018-06-03 19:42:33,817     INFO Received trigger 5
+2018-06-03 19:42:33,817     INFO End of anchor face
+2018-06-03 19:42:33,822     INFO Showing fixation
+2018-06-03 19:42:34,338     INFO End of fixation
+2018-06-03 19:42:34,341     INFO Showing number
+2018-06-03 19:42:34,816     INFO Received trigger 5
+2018-06-03 19:42:34,816     INFO End of number
+2018-06-03 19:42:34,819     INFO Showing fixation
+2018-06-03 19:42:35,816     INFO Received trigger 5
+2018-06-03 19:42:36,815     INFO Received trigger 5
+2018-06-03 19:42:37,816     INFO Received trigger 5
+2018-06-03 19:42:38,815     INFO Received trigger 5
+2018-06-03 19:42:39,816     INFO Received trigger 5
+2018-06-03 19:42:40,815     INFO Received trigger 5
+2018-06-03 19:42:40,815     INFO End of fixation
+2018-06-03 19:42:40,833     INFO Showing options
+2018-06-03 19:42:41,964     INFO Received response [('2', 1.1268589496612549)]
+2018-06-03 19:42:42,344     INFO End of options
+2018-06-03 19:42:42,354     INFO Showing feedback
+2018-06-03 19:42:42,815     INFO Received trigger 5
+2018-06-03 19:42:43,816     INFO Received trigger 5
+2018-06-03 19:42:43,816     INFO End of feedback
+2018-06-03 19:42:43,818     INFO End of trial
+2018-06-03 19:42:43,823     INFO Showing fixation
+2018-06-03 19:42:44,815     INFO Received trigger 5
+2018-06-03 19:42:45,816     INFO Received trigger 5
+2018-06-03 19:42:46,815     INFO Received trigger 5
+2018-06-03 19:42:47,816     INFO Received trigger 5
+2018-06-03 19:42:48,815     INFO Received trigger 5
+2018-06-03 19:42:48,815     INFO End of fixation
+2018-06-03 19:42:48,815     INFO Showing anchor face
+2018-06-03 19:42:49,815     INFO Received trigger 5
+2018-06-03 19:42:49,815     INFO End of anchor face
+2018-06-03 19:42:49,820     INFO Showing fixation
+2018-06-03 19:42:50,337     INFO End of fixation
+2018-06-03 19:42:50,340     INFO Showing number
+2018-06-03 19:42:50,815     INFO Received trigger 5
+2018-06-03 19:42:50,815     INFO End of number
+2018-06-03 19:42:50,819     INFO Showing fixation
+2018-06-03 19:42:51,816     INFO Received trigger 5
+2018-06-03 19:42:52,815     INFO Received trigger 5
+2018-06-03 19:42:53,815     INFO Received trigger 5
+2018-06-03 19:42:54,814     INFO Received trigger 5
+2018-06-03 19:42:55,814     INFO Received trigger 5
+2018-06-03 19:42:56,813     INFO Received trigger 5
+2018-06-03 19:42:56,813     INFO End of fixation
+2018-06-03 19:42:56,832     INFO Showing options
+2018-06-03 19:42:57,835     INFO Received response [('4', 0.998438835144043)]
+2018-06-03 19:42:58,355     INFO End of options
+2018-06-03 19:42:58,369     INFO Showing feedback
+2018-06-03 19:42:58,813     INFO Received trigger 5
+2018-06-03 19:42:59,813     INFO Received trigger 5
+2018-06-03 19:42:59,814     INFO End of feedback
+2018-06-03 19:42:59,815     INFO End of trial
+2018-06-03 19:42:59,821     INFO Showing fixation
+2018-06-03 19:43:00,813     INFO Received trigger 5
+2018-06-03 19:43:01,814     INFO Received trigger 5
+2018-06-03 19:43:02,813     INFO Received trigger 5
+2018-06-03 19:43:03,814     INFO Received trigger 5
+2018-06-03 19:43:03,814     INFO End of fixation
+2018-06-03 19:43:03,815     INFO Showing anchor face
+2018-06-03 19:43:04,813     INFO Received trigger 5
+2018-06-03 19:43:04,813     INFO End of anchor face
+2018-06-03 19:43:04,816     INFO Showing fixation
+2018-06-03 19:43:05,320     INFO End of fixation
+2018-06-03 19:43:05,322     INFO Showing number
+2018-06-03 19:43:05,813     INFO Received trigger 5
+2018-06-03 19:43:05,814     INFO End of number
+2018-06-03 19:43:05,819     INFO Showing fixation
+2018-06-03 19:43:06,813     INFO Received trigger 5
+2018-06-03 19:43:07,814     INFO Received trigger 5
+2018-06-03 19:43:08,812     INFO Received trigger 5
+2018-06-03 19:43:09,813     INFO Received trigger 5
+2018-06-03 19:43:10,812     INFO Received trigger 5
+2018-06-03 19:43:11,813     INFO Received trigger 5
+2018-06-03 19:43:11,814     INFO End of fixation
+2018-06-03 19:43:11,834     INFO Showing options
+2018-06-03 19:43:12,742     INFO Received response [('1', 0.8900260925292969)]
+2018-06-03 19:43:13,362     INFO End of options
+2018-06-03 19:43:13,368     INFO Showing feedback
+2018-06-03 19:43:13,812     INFO Received trigger 5
+2018-06-03 19:43:14,813     INFO Received trigger 5
+2018-06-03 19:43:14,813     INFO End of feedback
+2018-06-03 19:43:14,815     INFO End of trial
+2018-06-03 19:43:14,820     INFO Showing fixation
+2018-06-03 19:43:15,812     INFO Received trigger 5
+2018-06-03 19:43:16,813     INFO Received trigger 5
+2018-06-03 19:43:17,813     INFO Received trigger 5
+2018-06-03 19:43:18,813     INFO Received trigger 5
+2018-06-03 19:43:19,812     INFO Received trigger 5
+2018-06-03 19:43:19,812     INFO End of fixation
+2018-06-03 19:43:19,813     INFO Showing anchor face
+2018-06-03 19:43:20,812     INFO Received trigger 5
+2018-06-03 19:43:20,812     INFO End of anchor face
+2018-06-03 19:43:20,816     INFO Showing fixation
+2018-06-03 19:43:21,335     INFO End of fixation
+2018-06-03 19:43:21,338     INFO Showing number
+2018-06-03 19:43:21,811     INFO Received trigger 5
+2018-06-03 19:43:21,811     INFO End of number
+2018-06-03 19:43:21,814     INFO Showing fixation
+2018-06-03 19:43:22,812     INFO Received trigger 5
+2018-06-03 19:43:23,811     INFO Received trigger 5
+2018-06-03 19:43:24,811     INFO Received trigger 5
+2018-06-03 19:43:25,810     INFO Received trigger 5
+2018-06-03 19:43:26,811     INFO Received trigger 5
+2018-06-03 19:43:27,811     INFO Received trigger 5
+2018-06-03 19:43:27,811     INFO End of fixation
+2018-06-03 19:43:27,830     INFO Showing options
+2018-06-03 19:43:28,658     INFO Received response [('2', 0.8237512111663818)]
+2018-06-03 19:43:29,344     INFO End of options
+2018-06-03 19:43:29,351     INFO Showing feedback
+2018-06-03 19:43:29,810     INFO Received trigger 5
+2018-06-03 19:43:30,810     INFO Received trigger 5
+2018-06-03 19:43:30,810     INFO End of feedback
+2018-06-03 19:43:30,811     INFO End of trial
+2018-06-03 19:43:30,814     INFO Showing fixation
+2018-06-03 19:43:31,811     INFO Received trigger 5
+2018-06-03 19:43:32,810     INFO Received trigger 5
+2018-06-03 19:43:33,811     INFO Received trigger 5
+2018-06-03 19:43:34,810     INFO Received trigger 5
+2018-06-03 19:43:35,811     INFO Received trigger 5
+2018-06-03 19:43:36,810     INFO Received trigger 5
+2018-06-03 19:43:37,811     INFO Received trigger 5
+2018-06-03 19:43:37,811     INFO End of fixation
+2018-06-03 19:43:37,812     INFO Showing anchor face
+2018-06-03 19:43:38,810     INFO Received trigger 5
+2018-06-03 19:43:38,810     INFO End of anchor face
+2018-06-03 19:43:38,813     INFO Showing fixation
+2018-06-03 19:43:39,318     INFO End of fixation
+2018-06-03 19:43:39,321     INFO Showing number
+2018-06-03 19:43:39,811     INFO Received trigger 5
+2018-06-03 19:43:39,811     INFO End of number
+2018-06-03 19:43:39,815     INFO Showing fixation
+2018-06-03 19:43:40,810     INFO Received trigger 5
+2018-06-03 19:43:41,810     INFO Received trigger 5
+2018-06-03 19:43:42,810     INFO Received trigger 5
+2018-06-03 19:43:43,810     INFO Received trigger 5
+2018-06-03 19:43:44,809     INFO Received trigger 5
+2018-06-03 19:43:45,810     INFO Received trigger 5
+2018-06-03 19:43:45,810     INFO End of fixation
+2018-06-03 19:43:45,832     INFO Showing options
+2018-06-03 19:43:46,481     INFO Received response [('1', 0.6313178539276123)]
+2018-06-03 19:43:47,369     INFO End of options
+2018-06-03 19:43:47,383     INFO Showing feedback
+2018-06-03 19:43:47,809     INFO Received trigger 5
+2018-06-03 19:43:48,808     INFO Received trigger 5
+2018-06-03 19:43:48,808     INFO End of feedback
+2018-06-03 19:43:48,809     INFO End of trial
+2018-06-03 19:43:48,812     INFO Showing fixation
+2018-06-03 19:43:49,809     INFO Received trigger 5
+2018-06-03 19:43:50,808     INFO Received trigger 5
+2018-06-03 19:43:51,809     INFO Received trigger 5
+2018-06-03 19:43:52,808     INFO Received trigger 5
+2018-06-03 19:43:53,808     INFO Received trigger 5
+2018-06-03 19:43:54,808     INFO Received trigger 5
+2018-06-03 19:43:55,809     INFO Received trigger 5
+2018-06-03 19:43:55,809     INFO End of fixation
+2018-06-03 19:43:55,810     INFO Showing anchor face
+2018-06-03 19:43:56,807     INFO Received trigger 5
+2018-06-03 19:43:56,808     INFO End of anchor face
+2018-06-03 19:43:56,811     INFO Showing fixation
+2018-06-03 19:43:57,317     INFO End of fixation
+2018-06-03 19:43:57,320     INFO Showing number
+2018-06-03 19:43:57,809     INFO Received trigger 5
+2018-06-03 19:43:57,809     INFO End of number
+2018-06-03 19:43:57,814     INFO Showing fixation
+2018-06-03 19:43:58,808     INFO Received trigger 5
+2018-06-03 19:43:59,809     INFO Received trigger 5
+2018-06-03 19:44:00,807     INFO Received trigger 5
+2018-06-03 19:44:01,808     INFO Received trigger 5
+2018-06-03 19:44:02,807     INFO Received trigger 5
+2018-06-03 19:44:03,808     INFO Received trigger 5
+2018-06-03 19:44:03,808     INFO End of fixation
+2018-06-03 19:44:03,828     INFO Showing options
+2018-06-03 19:44:04,690     INFO Received response [('3', 0.858004093170166)]
+2018-06-03 19:44:05,341     INFO End of options
+2018-06-03 19:44:05,348     INFO Showing feedback
+2018-06-03 19:44:05,808     INFO Received trigger 5
+2018-06-03 19:44:06,807     INFO Received trigger 5
+2018-06-03 19:44:06,807     INFO End of feedback
+2018-06-03 19:44:06,808     INFO End of trial
+2018-06-03 19:44:06,811     INFO Showing fixation
+2018-06-03 19:44:07,808     INFO Received trigger 5
+2018-06-03 19:44:08,807     INFO Received trigger 5
+2018-06-03 19:44:09,808     INFO Received trigger 5
+2018-06-03 19:44:10,807     INFO Received trigger 5
+2018-06-03 19:44:11,807     INFO Received trigger 5
+2018-06-03 19:44:12,806     INFO Received trigger 5
+2018-06-03 19:44:13,807     INFO Received trigger 5
+2018-06-03 19:44:14,806     INFO Received trigger 5
+2018-06-03 19:44:14,806     INFO End of fixation
+2018-06-03 19:44:14,806     INFO Showing anchor face
+2018-06-03 19:44:15,806     INFO Received trigger 5
+2018-06-03 19:44:15,806     INFO End of anchor face
+2018-06-03 19:44:15,810     INFO Showing fixation
+2018-06-03 19:44:16,315     INFO End of fixation
+2018-06-03 19:44:16,318     INFO Showing number
+2018-06-03 19:44:16,805     INFO Received trigger 5
+2018-06-03 19:44:16,806     INFO End of number
+2018-06-03 19:44:16,809     INFO Showing fixation
+2018-06-03 19:44:17,806     INFO Received trigger 5
+2018-06-03 19:44:18,805     INFO Received trigger 5
+2018-06-03 19:44:19,807     INFO Received trigger 5
+2018-06-03 19:44:20,806     INFO Received trigger 5
+2018-06-03 19:44:21,806     INFO Received trigger 5
+2018-06-03 19:44:22,805     INFO Received trigger 5
+2018-06-03 19:44:22,805     INFO End of fixation
+2018-06-03 19:44:22,824     INFO Showing options
+2018-06-03 19:44:23,913     INFO Received response [('3', 1.0819318294525146)]
+2018-06-03 19:44:24,350     INFO End of options
+2018-06-03 19:44:24,364     INFO Showing feedback
+2018-06-03 19:44:24,805     INFO Received trigger 5
+2018-06-03 19:44:25,806     INFO Received trigger 5
+2018-06-03 19:44:25,806     INFO End of feedback
+2018-06-03 19:44:25,808     INFO End of trial
+2018-06-03 19:44:25,813     INFO Showing fixation
+2018-06-03 19:44:26,805     INFO Received trigger 5
+2018-06-03 19:44:27,806     INFO Received trigger 5
+2018-06-03 19:44:28,805     INFO Received trigger 5
+2018-06-03 19:44:29,805     INFO Received trigger 5
+2018-06-03 19:44:30,805     INFO Received trigger 5
+2018-06-03 19:44:31,806     INFO Received trigger 5
+2018-06-03 19:44:32,804     INFO Received trigger 5
+2018-06-03 19:44:32,805     INFO End of fixation
+2018-06-03 19:44:32,805     INFO Showing anchor face
+2018-06-03 19:44:33,805     INFO Received trigger 5
+2018-06-03 19:44:33,806     INFO End of anchor face
+2018-06-03 19:44:33,811     INFO Showing fixation
+2018-06-03 19:44:34,315     INFO End of fixation
+2018-06-03 19:44:34,318     INFO Showing number
+2018-06-03 19:44:34,805     INFO Received trigger 5
+2018-06-03 19:44:34,805     INFO End of number
+2018-06-03 19:44:34,808     INFO Showing fixation
+2018-06-03 19:44:35,805     INFO Received trigger 5
+2018-06-03 19:44:36,804     INFO Received trigger 5
+2018-06-03 19:44:37,804     INFO Received trigger 5
+2018-06-03 19:44:38,803     INFO Received trigger 5
+2018-06-03 19:44:39,804     INFO Received trigger 5
+2018-06-03 19:44:40,803     INFO Received trigger 5
+2018-06-03 19:44:40,803     INFO End of fixation
+2018-06-03 19:44:40,821     INFO Showing options
+2018-06-03 19:44:41,568     INFO Received response [('1', 0.7381360530853271)]
+2018-06-03 19:44:42,342     INFO End of options
+2018-06-03 19:44:42,346     INFO Showing feedback
+2018-06-03 19:44:42,803     INFO Received trigger 5
+2018-06-03 19:44:43,804     INFO Received trigger 5
+2018-06-03 19:44:43,804     INFO End of feedback
+2018-06-03 19:44:43,805     INFO End of trial
+2018-06-03 19:44:43,808     INFO Showing fixation
+2018-06-03 19:44:44,803     INFO Received trigger 5
+2018-06-03 19:44:45,803     INFO Received trigger 5
+2018-06-03 19:44:46,804     INFO Received trigger 5
+2018-06-03 19:44:47,803     INFO Received trigger 5
+2018-06-03 19:44:48,804     INFO Received trigger 5
+2018-06-03 19:44:49,803     INFO Received trigger 5
+2018-06-03 19:44:49,803     INFO End of fixation
+2018-06-03 19:44:49,804     INFO Showing anchor face
+2018-06-03 19:44:50,803     INFO Received trigger 5
+2018-06-03 19:44:50,803     INFO End of anchor face
+2018-06-03 19:44:50,809     INFO Showing fixation
+2018-06-03 19:44:51,314     INFO End of fixation
+2018-06-03 19:44:51,317     INFO Showing number
+2018-06-03 19:44:51,803     INFO Received trigger 5
+2018-06-03 19:44:51,803     INFO End of number
+2018-06-03 19:44:51,806     INFO Showing fixation
+2018-06-03 19:44:52,803     INFO Received trigger 5
+2018-06-03 19:44:53,803     INFO Received trigger 5
+2018-06-03 19:44:54,804     INFO Received trigger 5
+2018-06-03 19:44:55,802     INFO Received trigger 5
+2018-06-03 19:44:56,803     INFO Received trigger 5
+2018-06-03 19:44:57,802     INFO Received trigger 5
+2018-06-03 19:44:57,802     INFO End of fixation
+2018-06-03 19:44:57,822     INFO Showing options
+2018-06-03 19:44:59,038     INFO Received response [('2', 1.2088980674743652)]
+2018-06-03 19:44:59,338     INFO End of options
+2018-06-03 19:44:59,345     INFO Showing feedback
+2018-06-03 19:44:59,802     INFO Received trigger 5
+2018-06-03 19:45:00,803     INFO Received trigger 5
+2018-06-03 19:45:00,803     INFO End of feedback
+2018-06-03 19:45:00,805     INFO End of trial
+2018-06-03 19:45:00,810     INFO Showing fixation
+2018-06-03 19:45:01,802     INFO Received trigger 5
+2018-06-03 19:45:02,803     INFO Received trigger 5
+2018-06-03 19:45:03,801     INFO Received trigger 5
+2018-06-03 19:45:04,802     INFO Received trigger 5
+2018-06-03 19:45:05,801     INFO Received trigger 5
+2018-06-03 19:45:06,801     INFO Received trigger 5
+2018-06-03 19:45:07,800     INFO Received trigger 5
+2018-06-03 19:45:07,800     INFO End of fixation
+2018-06-03 19:45:07,801     INFO Showing anchor face
+2018-06-03 19:45:08,801     INFO Received trigger 5
+2018-06-03 19:45:08,801     INFO End of anchor face
+2018-06-03 19:45:08,807     INFO Showing fixation
+2018-06-03 19:45:09,312     INFO End of fixation
+2018-06-03 19:45:09,315     INFO Showing number
+2018-06-03 19:45:09,800     INFO Received trigger 5
+2018-06-03 19:45:09,800     INFO End of number
+2018-06-03 19:45:09,803     INFO Showing fixation
+2018-06-03 19:45:10,801     INFO Received trigger 5
+2018-06-03 19:45:11,800     INFO Received trigger 5
+2018-06-03 19:45:12,801     INFO Received trigger 5
+2018-06-03 19:45:13,800     INFO Received trigger 5
+2018-06-03 19:45:14,800     INFO Received trigger 5
+2018-06-03 19:45:15,800     INFO Received trigger 5
+2018-06-03 19:45:15,800     INFO End of fixation
+2018-06-03 19:45:15,819     INFO Showing options
+2018-06-03 19:45:16,429     INFO Received response [('4', 0.6010780334472656)]
+2018-06-03 19:45:17,344     INFO End of options
+2018-06-03 19:45:17,361     INFO Showing feedback
+2018-06-03 19:45:17,801     INFO Received trigger 5
+2018-06-03 19:45:18,800     INFO Received trigger 5
+2018-06-03 19:45:18,800     INFO End of feedback
+2018-06-03 19:45:18,801     INFO End of trial
+2018-06-03 19:45:18,804     INFO Showing fixation
+2018-06-03 19:45:19,800     INFO Received trigger 5
+2018-06-03 19:45:20,800     INFO Received trigger 5
+2018-06-03 19:45:21,800     INFO Received trigger 5
+2018-06-03 19:45:22,799     INFO Received trigger 5
+2018-06-03 19:45:23,801     INFO Received trigger 5
+2018-06-03 19:45:24,799     INFO Received trigger 5
+2018-06-03 19:45:24,800     INFO End of fixation
+2018-06-03 19:45:24,800     INFO Showing anchor face
+2018-06-03 19:45:25,800     INFO Received trigger 5
+2018-06-03 19:45:25,800     INFO End of anchor face
+2018-06-03 19:45:25,806     INFO Showing fixation
+2018-06-03 19:45:26,311     INFO End of fixation
+2018-06-03 19:45:26,314     INFO Showing number
+2018-06-03 19:45:26,799     INFO Received trigger 5
+2018-06-03 19:45:26,800     INFO End of number
+2018-06-03 19:45:26,803     INFO Showing fixation
+2018-06-03 19:45:27,800     INFO Received trigger 5
+2018-06-03 19:45:28,799     INFO Received trigger 5
+2018-06-03 19:45:29,799     INFO Received trigger 5
+2018-06-03 19:45:30,798     INFO Received trigger 5
+2018-06-03 19:45:31,799     INFO Received trigger 5
+2018-06-03 19:45:32,798     INFO Received trigger 5
+2018-06-03 19:45:32,798     INFO End of fixation
+2018-06-03 19:45:32,816     INFO Showing options
+2018-06-03 19:45:33,563     INFO Received response [('1', 0.7364540100097656)]
+2018-06-03 19:45:34,341     INFO End of options
+2018-06-03 19:45:34,344     INFO Showing feedback
+2018-06-03 19:45:34,798     INFO Received trigger 5
+2018-06-03 19:45:35,798     INFO Received trigger 5
+2018-06-03 19:45:35,798     INFO End of feedback
+2018-06-03 19:45:35,799     INFO End of trial
+2018-06-03 19:45:35,803     INFO Showing fixation
+2018-06-03 19:45:36,799     INFO Received trigger 5
+2018-06-03 19:45:37,798     INFO Received trigger 5
+2018-06-03 19:45:38,798     INFO Received trigger 5
+2018-06-03 19:45:39,797     INFO Received trigger 5
+2018-06-03 19:45:40,798     INFO Received trigger 5
+2018-06-03 19:45:41,798     INFO Received trigger 5
+2018-06-03 19:45:42,798     INFO Received trigger 5
+2018-06-03 19:45:42,798     INFO End of fixation
+2018-06-03 19:45:42,799     INFO Showing anchor face
+2018-06-03 19:45:43,797     INFO Received trigger 5
+2018-06-03 19:45:43,798     INFO End of anchor face
+2018-06-03 19:45:43,801     INFO Showing fixation
+2018-06-03 19:45:44,310     INFO End of fixation
+2018-06-03 19:45:44,313     INFO Showing number
+2018-06-03 19:45:44,798     INFO Received trigger 5
+2018-06-03 19:45:44,798     INFO End of number
+2018-06-03 19:45:44,803     INFO Showing fixation
+2018-06-03 19:45:45,797     INFO Received trigger 5
+2018-06-03 19:45:46,798     INFO Received trigger 5
+2018-06-03 19:45:47,797     INFO Received trigger 5
+2018-06-03 19:45:48,798     INFO Received trigger 5
+2018-06-03 19:45:49,797     INFO Received trigger 5
+2018-06-03 19:45:50,798     INFO Received trigger 5
+2018-06-03 19:45:50,798     INFO End of fixation
+2018-06-03 19:45:50,818     INFO Showing options
+2018-06-03 19:45:51,924     INFO Received response [('3', 1.098046064376831)]
+2018-06-03 19:45:52,345     INFO End of options
+2018-06-03 19:45:52,359     INFO Showing feedback
+2018-06-03 19:45:52,797     INFO Received trigger 5
+2018-06-03 19:45:53,797     INFO Received trigger 5
+2018-06-03 19:45:53,798     INFO End of feedback
+2018-06-03 19:45:53,799     INFO End of trial
+2018-06-03 19:45:53,805     INFO Showing fixation
+2018-06-03 19:45:54,797     INFO Received trigger 5
+2018-06-03 19:45:55,796     INFO Received trigger 5
+2018-06-03 19:45:56,796     INFO Received trigger 5
+2018-06-03 19:45:57,796     INFO Received trigger 5
+2018-06-03 19:45:58,796     INFO Received trigger 5
+2018-06-03 19:45:58,796     INFO End of fixation
+2018-06-03 19:45:58,796     INFO Showing anchor face
+2018-06-03 19:45:59,796     INFO Received trigger 5
+2018-06-03 19:45:59,796     INFO End of anchor face
+2018-06-03 19:45:59,801     INFO Showing fixation
+2018-06-03 19:46:00,309     INFO End of fixation
+2018-06-03 19:46:00,312     INFO Showing number
+2018-06-03 19:46:00,795     INFO Received trigger 5
+2018-06-03 19:46:00,796     INFO End of number
+2018-06-03 19:46:00,799     INFO Showing fixation
+2018-06-03 19:46:01,796     INFO Received trigger 5
+2018-06-03 19:46:02,795     INFO Received trigger 5
+2018-06-03 19:46:03,795     INFO Received trigger 5
+2018-06-03 19:46:04,795     INFO Received trigger 5
+2018-06-03 19:46:05,796     INFO Received trigger 5
+2018-06-03 19:46:06,795     INFO Received trigger 5
+2018-06-03 19:46:06,795     INFO End of fixation
+2018-06-03 19:46:06,814     INFO Showing options
+2018-06-03 19:46:07,453     INFO Received response [('1', 0.6283140182495117)]
+2018-06-03 19:46:08,330     INFO End of options
+2018-06-03 19:46:08,341     INFO Showing feedback
+2018-06-03 19:46:08,795     INFO Received trigger 5
+2018-06-03 19:46:09,795     INFO Received trigger 5
+2018-06-03 19:46:09,795     INFO End of feedback
+2018-06-03 19:46:09,796     INFO End of trial
+2018-06-03 19:46:09,799     INFO Showing fixation
+2018-06-03 19:46:10,795     INFO Received trigger 5
+2018-06-03 19:46:11,794     INFO Received trigger 5
+2018-06-03 19:46:12,795     INFO Received trigger 5
+2018-06-03 19:46:13,795     INFO Received trigger 5
+2018-06-03 19:46:13,795     INFO End of fixation
+2018-06-03 19:46:13,795     INFO Showing anchor face
+2018-06-03 19:46:14,794     INFO Received trigger 5
+2018-06-03 19:46:14,795     INFO End of anchor face
+2018-06-03 19:46:14,798     INFO Showing fixation
+2018-06-03 19:46:15,308     INFO End of fixation
+2018-06-03 19:46:15,311     INFO Showing number
+2018-06-03 19:46:15,795     INFO Received trigger 5
+2018-06-03 19:46:15,795     INFO End of number
+2018-06-03 19:46:15,800     INFO Showing fixation
+2018-06-03 19:46:16,794     INFO Received trigger 5
+2018-06-03 19:46:17,795     INFO Received trigger 5
+2018-06-03 19:46:18,794     INFO Received trigger 5
+2018-06-03 19:46:19,795     INFO Received trigger 5
+2018-06-03 19:46:20,794     INFO Received trigger 5
+2018-06-03 19:46:21,793     INFO Received trigger 5
+2018-06-03 19:46:21,793     INFO End of fixation
+2018-06-03 19:46:21,814     INFO Showing options
+2018-06-03 19:46:23,243     INFO Received response [('2', 1.4187798500061035)]
+2018-06-03 19:46:23,338     INFO End of options
+2018-06-03 19:46:23,340     INFO Showing feedback
+2018-06-03 19:46:23,793     INFO Received trigger 5
+2018-06-03 19:46:24,793     INFO Received trigger 5
+2018-06-03 19:46:24,794     INFO End of feedback
+2018-06-03 19:46:24,796     INFO End of trial
+2018-06-03 19:46:24,803     INFO Showing fixation
+2018-06-03 19:46:25,793     INFO Received trigger 5
+2018-06-03 19:46:26,793     INFO Received trigger 5
+2018-06-03 19:46:27,793     INFO Received trigger 5
+2018-06-03 19:46:28,793     INFO Received trigger 5
+2018-06-03 19:46:29,793     INFO Received trigger 5
+2018-06-03 19:46:30,793     INFO Received trigger 5
+2018-06-03 19:46:30,793     INFO End of fixation
+2018-06-03 19:46:30,793     INFO Showing anchor face
+2018-06-03 19:46:31,792     INFO Received trigger 5
+2018-06-03 19:46:31,793     INFO End of anchor face
+2018-06-03 19:46:31,796     INFO Showing fixation
+2018-06-03 19:46:32,308     INFO End of fixation
+2018-06-03 19:46:32,310     INFO Showing number
+2018-06-03 19:46:32,793     INFO Received trigger 5
+2018-06-03 19:46:32,793     INFO End of number
+2018-06-03 19:46:32,798     INFO Showing fixation
+2018-06-03 19:46:33,792     INFO Received trigger 5
+2018-06-03 19:46:34,792     INFO Received trigger 5
+2018-06-03 19:46:35,792     INFO Received trigger 5
+2018-06-03 19:46:36,792     INFO Received trigger 5
+2018-06-03 19:46:37,792     INFO Received trigger 5
+2018-06-03 19:46:38,792     INFO Received trigger 5
+2018-06-03 19:46:38,792     INFO End of fixation
+2018-06-03 19:46:38,814     INFO Showing options
+2018-06-03 19:46:39,841     INFO Received response [('3', 1.0179998874664307)]
+2018-06-03 19:46:40,339     INFO End of options
+2018-06-03 19:46:40,356     INFO Showing feedback
+2018-06-03 19:46:40,792     INFO Received trigger 5
+2018-06-03 19:46:41,792     INFO Received trigger 5
+2018-06-03 19:46:41,792     INFO End of feedback
+2018-06-03 19:46:41,794     INFO End of trial
+2018-06-03 19:46:41,799     INFO Showing fixation
+2018-06-03 19:46:42,791     INFO Received trigger 5
+2018-06-03 19:46:43,792     INFO Received trigger 5
+2018-06-03 19:46:44,791     INFO Received trigger 5
+2018-06-03 19:46:45,792     INFO Received trigger 5
+2018-06-03 19:46:45,792     INFO End of fixation
+2018-06-03 19:46:45,792     INFO Showing instructions
+2018-06-03 19:46:45,812     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:46:46,790     INFO Received response [('5', 0.9678440093994141)]
+2018-06-03 19:46:46,790     INFO End of instructions
+2018-06-03 19:46:46,791     INFO Showing instructions
+2018-06-03 19:46:46,870     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:46:47,790     INFO Received response [('5', 0.9175870418548584)]
+2018-06-03 19:46:47,790     INFO End of instructions
+2018-06-03 19:46:47,791     INFO Showing instructions
+2018-06-03 19:46:47,806     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:46:48,790     INFO Received response [('5', 0.9680008888244629)]
+2018-06-03 19:46:48,791     INFO End of instructions
+2018-06-03 19:46:48,797     INFO Showing instructions
+2018-06-03 19:46:48,832     INFO Instruction: You have completed Run #1.  Ru...
+2018-06-03 19:47:19,769     INFO Received response [('space', 30.929747819900513)]
+2018-06-03 19:47:19,769     INFO End of instructions
+2018-06-03 19:47:19,769     INFO Showing instructions
+2018-06-03 19:47:19,804     INFO Instruction: You have completed Run #1.  Ru...
+2018-06-03 19:47:30,295     INFO Received response [('5', 10.474534034729004)]
+2018-06-03 19:47:30,296     INFO End of instructions
+2018-06-03 19:47:30,296     INFO Showing anchor face
+2018-06-03 19:47:31,295     INFO Received trigger 5
+2018-06-03 19:47:31,295     INFO End of anchor face
+2018-06-03 19:47:31,298     INFO Showing fixation
+2018-06-03 19:47:31,804     INFO End of fixation
+2018-06-03 19:47:31,807     INFO Showing number
+2018-06-03 19:47:32,296     INFO Received trigger 5
+2018-06-03 19:47:32,296     INFO End of number
+2018-06-03 19:47:32,300     INFO Showing fixation
+2018-06-03 19:47:33,295     INFO Received trigger 5
+2018-06-03 19:47:34,296     INFO Received trigger 5
+2018-06-03 19:47:35,295     INFO Received trigger 5
+2018-06-03 19:47:36,295     INFO Received trigger 5
+2018-06-03 19:47:37,294     INFO Received trigger 5
+2018-06-03 19:47:38,295     INFO Received trigger 5
+2018-06-03 19:47:38,296     INFO End of fixation
+2018-06-03 19:47:38,316     INFO Showing options
+2018-06-03 19:47:39,402     INFO Received response [('2', 1.0823040008544922)]
+2018-06-03 19:47:39,838     INFO End of options
+2018-06-03 19:47:39,852     INFO Showing feedback
+2018-06-03 19:47:40,294     INFO Received trigger 5
+2018-06-03 19:47:41,295     INFO Received trigger 5
+2018-06-03 19:47:41,295     INFO End of feedback
+2018-06-03 19:47:41,297     INFO End of trial
+2018-06-03 19:47:41,302     INFO Showing fixation
+2018-06-03 19:47:42,294     INFO Received trigger 5
+2018-06-03 19:47:43,295     INFO Received trigger 5
+2018-06-03 19:47:44,294     INFO Received trigger 5
+2018-06-03 19:47:45,294     INFO Received trigger 5
+2018-06-03 19:47:45,294     INFO End of fixation
+2018-06-03 19:47:45,295     INFO Showing anchor face
+2018-06-03 19:47:46,294     INFO Received trigger 5
+2018-06-03 19:47:46,294     INFO End of anchor face
+2018-06-03 19:47:46,297     INFO Showing fixation
+2018-06-03 19:47:46,803     INFO End of fixation
+2018-06-03 19:47:46,806     INFO Showing number
+2018-06-03 19:47:47,294     INFO Received trigger 5
+2018-06-03 19:47:47,294     INFO End of number
+2018-06-03 19:47:47,298     INFO Showing fixation
+2018-06-03 19:47:48,293     INFO Received trigger 5
+2018-06-03 19:47:49,294     INFO Received trigger 5
+2018-06-03 19:47:50,293     INFO Received trigger 5
+2018-06-03 19:47:51,293     INFO Received trigger 5
+2018-06-03 19:47:52,293     INFO Received trigger 5
+2018-06-03 19:47:53,294     INFO Received trigger 5
+2018-06-03 19:47:53,294     INFO End of fixation
+2018-06-03 19:47:53,314     INFO Showing options
+2018-06-03 19:47:54,128     INFO Received response [('1', 0.809736967086792)]
+2018-06-03 19:47:54,826     INFO End of options
+2018-06-03 19:47:54,835     INFO Showing feedback
+2018-06-03 19:47:55,293     INFO Received trigger 5
+2018-06-03 19:47:56,292     INFO Received trigger 5
+2018-06-03 19:47:56,293     INFO End of feedback
+2018-06-03 19:47:56,294     INFO End of trial
+2018-06-03 19:47:56,297     INFO Showing fixation
+2018-06-03 19:47:57,293     INFO Received trigger 5
+2018-06-03 19:47:58,292     INFO Received trigger 5
+2018-06-03 19:47:59,293     INFO Received trigger 5
+2018-06-03 19:48:00,292     INFO Received trigger 5
+2018-06-03 19:48:00,292     INFO End of fixation
+2018-06-03 19:48:00,293     INFO Showing anchor face
+2018-06-03 19:48:01,293     INFO Received trigger 5
+2018-06-03 19:48:01,293     INFO End of anchor face
+2018-06-03 19:48:01,297     INFO Showing fixation
+2018-06-03 19:48:01,802     INFO End of fixation
+2018-06-03 19:48:01,805     INFO Showing number
+2018-06-03 19:48:02,292     INFO Received trigger 5
+2018-06-03 19:48:02,292     INFO End of number
+2018-06-03 19:48:02,295     INFO Showing fixation
+2018-06-03 19:48:03,293     INFO Received trigger 5
+2018-06-03 19:48:04,292     INFO Received trigger 5
+2018-06-03 19:48:05,293     INFO Received trigger 5
+2018-06-03 19:48:06,292     INFO Received trigger 5
+2018-06-03 19:48:07,293     INFO Received trigger 5
+2018-06-03 19:48:08,291     INFO Received trigger 5
+2018-06-03 19:48:08,292     INFO End of fixation
+2018-06-03 19:48:08,309     INFO Showing options
+2018-06-03 19:48:09,163     INFO Received response [('4', 0.8447861671447754)]
+2018-06-03 19:48:09,823     INFO End of options
+2018-06-03 19:48:09,834     INFO Showing feedback
+2018-06-03 19:48:10,291     INFO Received trigger 5
+2018-06-03 19:48:11,292     INFO Received trigger 5
+2018-06-03 19:48:11,292     INFO End of feedback
+2018-06-03 19:48:11,293     INFO End of trial
+2018-06-03 19:48:11,296     INFO Showing fixation
+2018-06-03 19:48:12,292     INFO Received trigger 5
+2018-06-03 19:48:13,290     INFO Received trigger 5
+2018-06-03 19:48:14,293     INFO Received trigger 5
+2018-06-03 19:48:15,290     INFO Received trigger 5
+2018-06-03 19:48:16,291     INFO Received trigger 5
+2018-06-03 19:48:17,290     INFO Received trigger 5
+2018-06-03 19:48:17,290     INFO End of fixation
+2018-06-03 19:48:17,291     INFO Showing anchor face
+2018-06-03 19:48:18,291     INFO Received trigger 5
+2018-06-03 19:48:18,291     INFO End of anchor face
+2018-06-03 19:48:18,296     INFO Showing fixation
+2018-06-03 19:48:18,801     INFO End of fixation
+2018-06-03 19:48:18,804     INFO Showing number
+2018-06-03 19:48:19,290     INFO Received trigger 5
+2018-06-03 19:48:19,290     INFO End of number
+2018-06-03 19:48:19,293     INFO Showing fixation
+2018-06-03 19:48:20,290     INFO Received trigger 5
+2018-06-03 19:48:21,290     INFO Received trigger 5
+2018-06-03 19:48:22,291     INFO Received trigger 5
+2018-06-03 19:48:23,290     INFO Received trigger 5
+2018-06-03 19:48:24,290     INFO Received trigger 5
+2018-06-03 19:48:25,289     INFO Received trigger 5
+2018-06-03 19:48:25,290     INFO End of fixation
+2018-06-03 19:48:25,308     INFO Showing options
+2018-06-03 19:48:26,693     INFO Received response [('2', 1.376828908920288)]
+2018-06-03 19:48:26,822     INFO End of options
+2018-06-03 19:48:26,833     INFO Showing feedback
+2018-06-03 19:48:27,290     INFO Received trigger 5
+2018-06-03 19:48:28,290     INFO Received trigger 5
+2018-06-03 19:48:28,290     INFO End of feedback
+2018-06-03 19:48:28,291     INFO End of trial
+2018-06-03 19:48:28,297     INFO Showing fixation
+2018-06-03 19:48:29,289     INFO Received trigger 5
+2018-06-03 19:48:30,290     INFO Received trigger 5
+2018-06-03 19:48:31,289     INFO Received trigger 5
+2018-06-03 19:48:32,290     INFO Received trigger 5
+2018-06-03 19:48:33,289     INFO Received trigger 5
+2018-06-03 19:48:34,290     INFO Received trigger 5
+2018-06-03 19:48:34,290     INFO End of fixation
+2018-06-03 19:48:34,291     INFO Showing anchor face
+2018-06-03 19:48:35,289     INFO Received trigger 5
+2018-06-03 19:48:35,289     INFO End of anchor face
+2018-06-03 19:48:35,292     INFO Showing fixation
+2018-06-03 19:48:35,800     INFO End of fixation
+2018-06-03 19:48:35,803     INFO Showing number
+2018-06-03 19:48:36,290     INFO Received trigger 5
+2018-06-03 19:48:36,292     INFO End of number
+2018-06-03 19:48:36,295     INFO Showing fixation
+2018-06-03 19:48:37,289     INFO Received trigger 5
+2018-06-03 19:48:38,290     INFO Received trigger 5
+2018-06-03 19:48:39,288     INFO Received trigger 5
+2018-06-03 19:48:40,289     INFO Received trigger 5
+2018-06-03 19:48:41,288     INFO Received trigger 5
+2018-06-03 19:48:42,288     INFO Received trigger 5
+2018-06-03 19:48:42,289     INFO End of fixation
+2018-06-03 19:48:42,309     INFO Showing options
+2018-06-03 19:48:43,180     INFO Received response [('4', 0.8637089729309082)]
+2018-06-03 19:48:43,819     INFO End of options
+2018-06-03 19:48:43,832     INFO Showing feedback
+2018-06-03 19:48:44,288     INFO Received trigger 5
+2018-06-03 19:48:45,287     INFO Received trigger 5
+2018-06-03 19:48:45,287     INFO End of feedback
+2018-06-03 19:48:45,289     INFO End of trial
+2018-06-03 19:48:45,292     INFO Showing fixation
+2018-06-03 19:48:46,288     INFO Received trigger 5
+2018-06-03 19:48:47,287     INFO Received trigger 5
+2018-06-03 19:48:48,288     INFO Received trigger 5
+2018-06-03 19:48:49,287     INFO Received trigger 5
+2018-06-03 19:48:50,288     INFO Received trigger 5
+2018-06-03 19:48:51,287     INFO Received trigger 5
+2018-06-03 19:48:52,288     INFO Received trigger 5
+2018-06-03 19:48:52,288     INFO End of fixation
+2018-06-03 19:48:52,289     INFO Showing anchor face
+2018-06-03 19:48:53,287     INFO Received trigger 5
+2018-06-03 19:48:53,287     INFO End of anchor face
+2018-06-03 19:48:53,290     INFO Showing fixation
+2018-06-03 19:48:53,799     INFO End of fixation
+2018-06-03 19:48:53,802     INFO Showing number
+2018-06-03 19:48:54,288     INFO Received trigger 5
+2018-06-03 19:48:54,288     INFO End of number
+2018-06-03 19:48:54,293     INFO Showing fixation
+2018-06-03 19:48:55,287     INFO Received trigger 5
+2018-06-03 19:48:56,288     INFO Received trigger 5
+2018-06-03 19:48:57,287     INFO Received trigger 5
+2018-06-03 19:48:58,288     INFO Received trigger 5
+2018-06-03 19:48:59,287     INFO Received trigger 5
+2018-06-03 19:49:00,287     INFO Received trigger 5
+2018-06-03 19:49:00,287     INFO End of fixation
+2018-06-03 19:49:00,309     INFO Showing options
+2018-06-03 19:49:01,614     INFO Received response [('4', 1.3000528812408447)]
+2018-06-03 19:49:01,831     INFO End of options
+2018-06-03 19:49:01,847     INFO Showing feedback
+2018-06-03 19:49:02,286     INFO Received trigger 5
+2018-06-03 19:49:03,287     INFO Received trigger 5
+2018-06-03 19:49:03,287     INFO End of feedback
+2018-06-03 19:49:03,289     INFO End of trial
+2018-06-03 19:49:03,295     INFO Showing fixation
+2018-06-03 19:49:04,285     INFO Received trigger 5
+2018-06-03 19:49:05,286     INFO Received trigger 5
+2018-06-03 19:49:06,285     INFO Received trigger 5
+2018-06-03 19:49:07,285     INFO Received trigger 5
+2018-06-03 19:49:08,285     INFO Received trigger 5
+2018-06-03 19:49:08,285     INFO End of fixation
+2018-06-03 19:49:08,286     INFO Showing anchor face
+2018-06-03 19:49:09,285     INFO Received trigger 5
+2018-06-03 19:49:09,285     INFO End of anchor face
+2018-06-03 19:49:09,290     INFO Showing fixation
+2018-06-03 19:49:09,798     INFO End of fixation
+2018-06-03 19:49:09,801     INFO Showing number
+2018-06-03 19:49:10,285     INFO Received trigger 5
+2018-06-03 19:49:10,285     INFO End of number
+2018-06-03 19:49:10,289     INFO Showing fixation
+2018-06-03 19:49:11,286     INFO Received trigger 5
+2018-06-03 19:49:12,285     INFO Received trigger 5
+2018-06-03 19:49:13,285     INFO Received trigger 5
+2018-06-03 19:49:14,284     INFO Received trigger 5
+2018-06-03 19:49:15,286     INFO Received trigger 5
+2018-06-03 19:49:16,284     INFO Received trigger 5
+2018-06-03 19:49:16,285     INFO End of fixation
+2018-06-03 19:49:16,303     INFO Showing options
+2018-06-03 19:49:17,443     INFO Received response [('3', 1.1294519901275635)]
+2018-06-03 19:49:17,818     INFO End of options
+2018-06-03 19:49:17,830     INFO Showing feedback
+2018-06-03 19:49:18,284     INFO Received trigger 5
+2018-06-03 19:49:19,285     INFO Received trigger 5
+2018-06-03 19:49:19,285     INFO End of feedback
+2018-06-03 19:49:19,287     INFO End of trial
+2018-06-03 19:49:19,293     INFO Showing fixation
+2018-06-03 19:49:20,284     INFO Received trigger 5
+2018-06-03 19:49:21,285     INFO Received trigger 5
+2018-06-03 19:49:22,284     INFO Received trigger 5
+2018-06-03 19:49:23,285     INFO Received trigger 5
+2018-06-03 19:49:24,284     INFO Received trigger 5
+2018-06-03 19:49:25,285     INFO Received trigger 5
+2018-06-03 19:49:26,284     INFO Received trigger 5
+2018-06-03 19:49:26,284     INFO End of fixation
+2018-06-03 19:49:26,285     INFO Showing anchor face
+2018-06-03 19:49:27,285     INFO Received trigger 5
+2018-06-03 19:49:27,285     INFO End of anchor face
+2018-06-03 19:49:27,290     INFO Showing fixation
+2018-06-03 19:49:27,797     INFO End of fixation
+2018-06-03 19:49:27,800     INFO Showing number
+2018-06-03 19:49:28,284     INFO Received trigger 5
+2018-06-03 19:49:28,284     INFO End of number
+2018-06-03 19:49:28,287     INFO Showing fixation
+2018-06-03 19:49:29,284     INFO Received trigger 5
+2018-06-03 19:49:30,283     INFO Received trigger 5
+2018-06-03 19:49:31,283     INFO Received trigger 5
+2018-06-03 19:49:32,283     INFO Received trigger 5
+2018-06-03 19:49:33,283     INFO Received trigger 5
+2018-06-03 19:49:34,283     INFO Received trigger 5
+2018-06-03 19:49:34,283     INFO End of fixation
+2018-06-03 19:49:34,301     INFO Showing options
+2018-06-03 19:49:35,109     INFO Received response [('1', 0.7968599796295166)]
+2018-06-03 19:49:35,816     INFO End of options
+2018-06-03 19:49:35,828     INFO Showing feedback
+2018-06-03 19:49:36,282     INFO Received trigger 5
+2018-06-03 19:49:37,282     INFO Received trigger 5
+2018-06-03 19:49:37,282     INFO End of feedback
+2018-06-03 19:49:37,284     INFO End of trial
+2018-06-03 19:49:37,287     INFO Showing fixation
+2018-06-03 19:49:38,283     INFO Received trigger 5
+2018-06-03 19:49:39,282     INFO Received trigger 5
+2018-06-03 19:49:40,282     INFO Received trigger 5
+2018-06-03 19:49:41,282     INFO Received trigger 5
+2018-06-03 19:49:42,282     INFO Received trigger 5
+2018-06-03 19:49:43,282     INFO Received trigger 5
+2018-06-03 19:49:44,282     INFO Received trigger 5
+2018-06-03 19:49:44,282     INFO End of fixation
+2018-06-03 19:49:44,283     INFO Showing anchor face
+2018-06-03 19:49:45,282     INFO Received trigger 5
+2018-06-03 19:49:45,282     INFO End of anchor face
+2018-06-03 19:49:45,285     INFO Showing fixation
+2018-06-03 19:49:45,796     INFO End of fixation
+2018-06-03 19:49:45,798     INFO Showing number
+2018-06-03 19:49:46,282     INFO Received trigger 5
+2018-06-03 19:49:46,283     INFO End of number
+2018-06-03 19:49:46,288     INFO Showing fixation
+2018-06-03 19:49:47,282     INFO Received trigger 5
+2018-06-03 19:49:48,282     INFO Received trigger 5
+2018-06-03 19:49:49,281     INFO Received trigger 5
+2018-06-03 19:49:50,282     INFO Received trigger 5
+2018-06-03 19:49:51,282     INFO Received trigger 5
+2018-06-03 19:49:52,282     INFO Received trigger 5
+2018-06-03 19:49:52,282     INFO End of fixation
+2018-06-03 19:49:52,302     INFO Showing options
+2018-06-03 19:49:53,012     INFO Received response [('4', 0.700659990310669)]
+2018-06-03 19:49:53,828     INFO End of options
+2018-06-03 19:49:53,844     INFO Showing feedback
+2018-06-03 19:49:54,281     INFO Received trigger 5
+2018-06-03 19:49:55,281     INFO Received trigger 5
+2018-06-03 19:49:55,282     INFO End of feedback
+2018-06-03 19:49:55,283     INFO End of trial
+2018-06-03 19:49:55,286     INFO Showing fixation
+2018-06-03 19:49:56,280     INFO Received trigger 5
+2018-06-03 19:49:57,280     INFO Received trigger 5
+2018-06-03 19:49:58,281     INFO Received trigger 5
+2018-06-03 19:49:59,280     INFO Received trigger 5
+2018-06-03 19:50:00,280     INFO Received trigger 5
+2018-06-03 19:50:01,280     INFO Received trigger 5
+2018-06-03 19:50:01,280     INFO End of fixation
+2018-06-03 19:50:01,281     INFO Showing anchor face
+2018-06-03 19:50:02,280     INFO Received trigger 5
+2018-06-03 19:50:02,280     INFO End of anchor face
+2018-06-03 19:50:02,285     INFO Showing fixation
+2018-06-03 19:50:02,795     INFO End of fixation
+2018-06-03 19:50:02,798     INFO Showing number
+2018-06-03 19:50:03,280     INFO Received trigger 5
+2018-06-03 19:50:03,280     INFO End of number
+2018-06-03 19:50:03,284     INFO Showing fixation
+2018-06-03 19:50:04,280     INFO Received trigger 5
+2018-06-03 19:50:05,279     INFO Received trigger 5
+2018-06-03 19:50:06,280     INFO Received trigger 5
+2018-06-03 19:50:07,279     INFO Received trigger 5
+2018-06-03 19:50:08,279     INFO Received trigger 5
+2018-06-03 19:50:09,279     INFO Received trigger 5
+2018-06-03 19:50:09,280     INFO End of fixation
+2018-06-03 19:50:09,297     INFO Showing options
+2018-06-03 19:50:10,220     INFO Received response [('4', 0.9099709987640381)]
+2018-06-03 19:50:10,817     INFO End of options
+2018-06-03 19:50:10,826     INFO Showing feedback
+2018-06-03 19:50:11,279     INFO Received trigger 5
+2018-06-03 19:50:12,280     INFO Received trigger 5
+2018-06-03 19:50:12,280     INFO End of feedback
+2018-06-03 19:50:12,282     INFO End of trial
+2018-06-03 19:50:12,287     INFO Showing fixation
+2018-06-03 19:50:13,279     INFO Received trigger 5
+2018-06-03 19:50:14,280     INFO Received trigger 5
+2018-06-03 19:50:15,279     INFO Received trigger 5
+2018-06-03 19:50:16,279     INFO Received trigger 5
+2018-06-03 19:50:17,279     INFO Received trigger 5
+2018-06-03 19:50:18,279     INFO Received trigger 5
+2018-06-03 19:50:18,279     INFO End of fixation
+2018-06-03 19:50:18,280     INFO Showing anchor face
+2018-06-03 19:50:19,279     INFO Received trigger 5
+2018-06-03 19:50:19,279     INFO End of anchor face
+2018-06-03 19:50:19,282     INFO Showing fixation
+2018-06-03 19:50:19,794     INFO End of fixation
+2018-06-03 19:50:19,796     INFO Showing number
+2018-06-03 19:50:20,278     INFO Received trigger 5
+2018-06-03 19:50:20,279     INFO End of number
+2018-06-03 19:50:20,283     INFO Showing fixation
+2018-06-03 19:50:21,278     INFO Received trigger 5
+2018-06-03 19:50:22,278     INFO Received trigger 5
+2018-06-03 19:50:23,277     INFO Received trigger 5
+2018-06-03 19:50:24,278     INFO Received trigger 5
+2018-06-03 19:50:25,277     INFO Received trigger 5
+2018-06-03 19:50:26,278     INFO Received trigger 5
+2018-06-03 19:50:26,278     INFO End of fixation
+2018-06-03 19:50:26,297     INFO Showing options
+2018-06-03 19:50:26,930     INFO Received response [('1', 0.6206269264221191)]
+2018-06-03 19:50:27,822     INFO End of options
+2018-06-03 19:50:27,825     INFO Showing feedback
+2018-06-03 19:50:28,277     INFO Received trigger 5
+2018-06-03 19:50:29,277     INFO Received trigger 5
+2018-06-03 19:50:29,277     INFO End of feedback
+2018-06-03 19:50:29,279     INFO End of trial
+2018-06-03 19:50:29,282     INFO Showing fixation
+2018-06-03 19:50:30,277     INFO Received trigger 5
+2018-06-03 19:50:31,277     INFO Received trigger 5
+2018-06-03 19:50:32,277     INFO Received trigger 5
+2018-06-03 19:50:33,277     INFO Received trigger 5
+2018-06-03 19:50:34,277     INFO Received trigger 5
+2018-06-03 19:50:35,277     INFO Received trigger 5
+2018-06-03 19:50:36,277     INFO Received trigger 5
+2018-06-03 19:50:37,277     INFO Received trigger 5
+2018-06-03 19:50:37,277     INFO End of fixation
+2018-06-03 19:50:37,277     INFO Showing anchor face
+2018-06-03 19:50:38,277     INFO Received trigger 5
+2018-06-03 19:50:38,277     INFO End of anchor face
+2018-06-03 19:50:38,281     INFO Showing fixation
+2018-06-03 19:50:38,792     INFO End of fixation
+2018-06-03 19:50:38,795     INFO Showing number
+2018-06-03 19:50:39,277     INFO Received trigger 5
+2018-06-03 19:50:39,277     INFO End of number
+2018-06-03 19:50:39,280     INFO Showing fixation
+2018-06-03 19:50:40,277     INFO Received trigger 5
+2018-06-03 19:50:41,276     INFO Received trigger 5
+2018-06-03 19:50:42,276     INFO Received trigger 5
+2018-06-03 19:50:43,276     INFO Received trigger 5
+2018-06-03 19:50:44,276     INFO Received trigger 5
+2018-06-03 19:50:45,276     INFO Received trigger 5
+2018-06-03 19:50:45,276     INFO End of fixation
+2018-06-03 19:50:45,295     INFO Showing options
+2018-06-03 19:50:46,043     INFO Received response [('4', 0.7348268032073975)]
+2018-06-03 19:50:46,823     INFO End of options
+2018-06-03 19:50:46,841     INFO Showing feedback
+2018-06-03 19:50:47,276     INFO Received trigger 5
+2018-06-03 19:50:48,275     INFO Received trigger 5
+2018-06-03 19:50:48,275     INFO End of feedback
+2018-06-03 19:50:48,277     INFO End of trial
+2018-06-03 19:50:48,280     INFO Showing fixation
+2018-06-03 19:50:49,275     INFO Received trigger 5
+2018-06-03 19:50:50,275     INFO Received trigger 5
+2018-06-03 19:50:51,275     INFO Received trigger 5
+2018-06-03 19:50:52,275     INFO Received trigger 5
+2018-06-03 19:50:53,275     INFO Received trigger 5
+2018-06-03 19:50:54,275     INFO Received trigger 5
+2018-06-03 19:50:55,275     INFO Received trigger 5
+2018-06-03 19:50:56,275     INFO Received trigger 5
+2018-06-03 19:50:56,275     INFO End of fixation
+2018-06-03 19:50:56,275     INFO Showing anchor face
+2018-06-03 19:50:57,274     INFO Received trigger 5
+2018-06-03 19:50:57,275     INFO End of anchor face
+2018-06-03 19:50:57,278     INFO Showing fixation
+2018-06-03 19:50:57,791     INFO End of fixation
+2018-06-03 19:50:57,794     INFO Showing number
+2018-06-03 19:50:58,274     INFO Received trigger 5
+2018-06-03 19:50:58,274     INFO End of number
+2018-06-03 19:50:58,278     INFO Showing fixation
+2018-06-03 19:50:59,274     INFO Received trigger 5
+2018-06-03 19:51:00,274     INFO Received trigger 5
+2018-06-03 19:51:01,274     INFO Received trigger 5
+2018-06-03 19:51:02,274     INFO Received trigger 5
+2018-06-03 19:51:03,274     INFO Received trigger 5
+2018-06-03 19:51:04,274     INFO Received trigger 5
+2018-06-03 19:51:04,274     INFO End of fixation
+2018-06-03 19:51:04,292     INFO Showing options
+2018-06-03 19:51:05,017     INFO Received response [('1', 0.7099158763885498)]
+2018-06-03 19:51:05,814     INFO End of options
+2018-06-03 19:51:05,823     INFO Showing feedback
+2018-06-03 19:51:06,274     INFO Received trigger 5
+2018-06-03 19:51:07,274     INFO Received trigger 5
+2018-06-03 19:51:07,274     INFO End of feedback
+2018-06-03 19:51:07,275     INFO End of trial
+2018-06-03 19:51:07,278     INFO Showing fixation
+2018-06-03 19:51:08,274     INFO Received trigger 5
+2018-06-03 19:51:09,274     INFO Received trigger 5
+2018-06-03 19:51:10,274     INFO Received trigger 5
+2018-06-03 19:51:11,274     INFO Received trigger 5
+2018-06-03 19:51:12,274     INFO Received trigger 5
+2018-06-03 19:51:12,274     INFO End of fixation
+2018-06-03 19:51:12,275     INFO Showing anchor face
+2018-06-03 19:51:13,274     INFO Received trigger 5
+2018-06-03 19:51:13,274     INFO End of anchor face
+2018-06-03 19:51:13,277     INFO Showing fixation
+2018-06-03 19:51:13,790     INFO End of fixation
+2018-06-03 19:51:13,793     INFO Showing number
+2018-06-03 19:51:14,273     INFO Received trigger 5
+2018-06-03 19:51:14,274     INFO End of number
+2018-06-03 19:51:14,277     INFO Showing fixation
+2018-06-03 19:51:15,273     INFO Received trigger 5
+2018-06-03 19:51:16,272     INFO Received trigger 5
+2018-06-03 19:51:17,273     INFO Received trigger 5
+2018-06-03 19:51:18,272     INFO Received trigger 5
+2018-06-03 19:51:19,272     INFO Received trigger 5
+2018-06-03 19:51:20,272     INFO Received trigger 5
+2018-06-03 19:51:20,272     INFO End of fixation
+2018-06-03 19:51:20,290     INFO Showing options
+2018-06-03 19:51:20,999     INFO Received response [('1', 0.6929879188537598)]
+2018-06-03 19:51:21,814     INFO End of options
+2018-06-03 19:51:21,822     INFO Showing feedback
+2018-06-03 19:51:22,272     INFO Received trigger 5
+2018-06-03 19:51:23,272     INFO Received trigger 5
+2018-06-03 19:51:23,272     INFO End of feedback
+2018-06-03 19:51:23,273     INFO End of trial
+2018-06-03 19:51:23,277     INFO Showing fixation
+2018-06-03 19:51:24,272     INFO Received trigger 5
+2018-06-03 19:51:25,272     INFO Received trigger 5
+2018-06-03 19:51:26,272     INFO Received trigger 5
+2018-06-03 19:51:27,272     INFO Received trigger 5
+2018-06-03 19:51:28,272     INFO Received trigger 5
+2018-06-03 19:51:29,271     INFO Received trigger 5
+2018-06-03 19:51:30,272     INFO Received trigger 5
+2018-06-03 19:51:31,272     INFO Received trigger 5
+2018-06-03 19:51:31,272     INFO End of fixation
+2018-06-03 19:51:31,272     INFO Showing anchor face
+2018-06-03 19:51:32,271     INFO Received trigger 5
+2018-06-03 19:51:32,272     INFO End of anchor face
+2018-06-03 19:51:32,275     INFO Showing fixation
+2018-06-03 19:51:32,789     INFO End of fixation
+2018-06-03 19:51:32,792     INFO Showing number
+2018-06-03 19:51:33,271     INFO Received trigger 5
+2018-06-03 19:51:33,272     INFO End of number
+2018-06-03 19:51:33,275     INFO Showing fixation
+2018-06-03 19:51:34,271     INFO Received trigger 5
+2018-06-03 19:51:35,271     INFO Received trigger 5
+2018-06-03 19:51:36,271     INFO Received trigger 5
+2018-06-03 19:51:37,271     INFO Received trigger 5
+2018-06-03 19:51:38,271     INFO Received trigger 5
+2018-06-03 19:51:39,271     INFO Received trigger 5
+2018-06-03 19:51:39,271     INFO End of fixation
+2018-06-03 19:51:39,289     INFO Showing options
+2018-06-03 19:51:40,469     INFO Received response [('1', 1.1637110710144043)]
+2018-06-03 19:51:40,808     INFO End of options
+2018-06-03 19:51:40,821     INFO Showing feedback
+2018-06-03 19:51:41,270     INFO Received trigger 5
+2018-06-03 19:51:42,270     INFO Received trigger 5
+2018-06-03 19:51:42,270     INFO End of feedback
+2018-06-03 19:51:42,271     INFO End of trial
+2018-06-03 19:51:42,274     INFO Showing fixation
+2018-06-03 19:51:43,270     INFO Received trigger 5
+2018-06-03 19:51:44,270     INFO Received trigger 5
+2018-06-03 19:51:45,269     INFO Received trigger 5
+2018-06-03 19:51:46,270     INFO Received trigger 5
+2018-06-03 19:51:47,270     INFO Received trigger 5
+2018-06-03 19:51:48,269     INFO Received trigger 5
+2018-06-03 19:51:48,269     INFO End of fixation
+2018-06-03 19:51:48,270     INFO Showing anchor face
+2018-06-03 19:51:49,269     INFO Received trigger 5
+2018-06-03 19:51:49,270     INFO End of anchor face
+2018-06-03 19:51:49,273     INFO Showing fixation
+2018-06-03 19:51:49,788     INFO End of fixation
+2018-06-03 19:51:49,791     INFO Showing number
+2018-06-03 19:51:50,269     INFO Received trigger 5
+2018-06-03 19:51:50,269     INFO End of number
+2018-06-03 19:51:50,274     INFO Showing fixation
+2018-06-03 19:51:51,269     INFO Received trigger 5
+2018-06-03 19:51:52,269     INFO Received trigger 5
+2018-06-03 19:51:53,269     INFO Received trigger 5
+2018-06-03 19:51:54,269     INFO Received trigger 5
+2018-06-03 19:51:55,269     INFO Received trigger 5
+2018-06-03 19:51:56,269     INFO Received trigger 5
+2018-06-03 19:51:56,269     INFO End of fixation
+2018-06-03 19:51:56,290     INFO Showing options
+2018-06-03 19:51:57,328     INFO Received response [('2', 1.0239949226379395)]
+2018-06-03 19:51:57,814     INFO End of options
+2018-06-03 19:51:57,820     INFO Showing feedback
+2018-06-03 19:51:58,269     INFO Received trigger 5
+2018-06-03 19:51:59,269     INFO Received trigger 5
+2018-06-03 19:51:59,269     INFO End of feedback
+2018-06-03 19:51:59,270     INFO End of trial
+2018-06-03 19:51:59,273     INFO Showing fixation
+2018-06-03 19:52:00,269     INFO Received trigger 5
+2018-06-03 19:52:01,269     INFO Received trigger 5
+2018-06-03 19:52:02,269     INFO Received trigger 5
+2018-06-03 19:52:03,269     INFO Received trigger 5
+2018-06-03 19:52:04,268     INFO Received trigger 5
+2018-06-03 19:52:05,268     INFO Received trigger 5
+2018-06-03 19:52:05,268     INFO End of fixation
+2018-06-03 19:52:05,269     INFO Showing anchor face
+2018-06-03 19:52:06,268     INFO Received trigger 5
+2018-06-03 19:52:06,269     INFO End of anchor face
+2018-06-03 19:52:06,272     INFO Showing fixation
+2018-06-03 19:52:06,787     INFO End of fixation
+2018-06-03 19:52:06,790     INFO Showing number
+2018-06-03 19:52:07,267     INFO Received trigger 5
+2018-06-03 19:52:07,268     INFO End of number
+2018-06-03 19:52:07,271     INFO Showing fixation
+2018-06-03 19:52:08,267     INFO Received trigger 5
+2018-06-03 19:52:09,267     INFO Received trigger 5
+2018-06-03 19:52:10,267     INFO Received trigger 5
+2018-06-03 19:52:11,267     INFO Received trigger 5
+2018-06-03 19:52:12,267     INFO Received trigger 5
+2018-06-03 19:52:13,267     INFO Received trigger 5
+2018-06-03 19:52:13,267     INFO End of fixation
+2018-06-03 19:52:13,290     INFO Showing options
+2018-06-03 19:52:14,580     INFO Received response [('3', 1.2763988971710205)]
+2018-06-03 19:52:14,809     INFO End of options
+2018-06-03 19:52:14,819     INFO Showing feedback
+2018-06-03 19:52:15,267     INFO Received trigger 5
+2018-06-03 19:52:16,267     INFO Received trigger 5
+2018-06-03 19:52:16,267     INFO End of feedback
+2018-06-03 19:52:16,268     INFO End of trial
+2018-06-03 19:52:16,271     INFO Showing fixation
+2018-06-03 19:52:17,267     INFO Received trigger 5
+2018-06-03 19:52:18,267     INFO Received trigger 5
+2018-06-03 19:52:19,266     INFO Received trigger 5
+2018-06-03 19:52:20,266     INFO Received trigger 5
+2018-06-03 19:52:21,266     INFO Received trigger 5
+2018-06-03 19:52:21,266     INFO End of fixation
+2018-06-03 19:52:21,267     INFO Showing anchor face
+2018-06-03 19:52:22,267     INFO Received trigger 5
+2018-06-03 19:52:22,267     INFO End of anchor face
+2018-06-03 19:52:22,270     INFO Showing fixation
+2018-06-03 19:52:22,786     INFO End of fixation
+2018-06-03 19:52:22,789     INFO Showing number
+2018-06-03 19:52:23,266     INFO Received trigger 5
+2018-06-03 19:52:23,266     INFO End of number
+2018-06-03 19:52:23,269     INFO Showing fixation
+2018-06-03 19:52:24,266     INFO Received trigger 5
+2018-06-03 19:52:25,266     INFO Received trigger 5
+2018-06-03 19:52:26,266     INFO Received trigger 5
+2018-06-03 19:52:27,266     INFO Received trigger 5
+2018-06-03 19:52:28,266     INFO Received trigger 5
+2018-06-03 19:52:29,266     INFO Received trigger 5
+2018-06-03 19:52:29,266     INFO End of fixation
+2018-06-03 19:52:29,284     INFO Showing options
+2018-06-03 19:52:30,802     INFO No response received, showing feedback
+2018-06-03 19:52:31,266     INFO Received trigger 5
+2018-06-03 19:52:32,265     INFO Received trigger 5
+2018-06-03 19:52:32,265     INFO End of feedback
+2018-06-03 19:52:32,266     INFO End of trial
+2018-06-03 19:52:32,268     INFO Showing fixation
+2018-06-03 19:52:33,264     INFO Received trigger 5
+2018-06-03 19:52:34,265     INFO Received trigger 5
+2018-06-03 19:52:35,264     INFO Received trigger 5
+2018-06-03 19:52:36,264     INFO Received trigger 5
+2018-06-03 19:52:36,266     INFO End of fixation
+2018-06-03 19:52:36,267     INFO Showing anchor face
+2018-06-03 19:52:37,265     INFO Received trigger 5
+2018-06-03 19:52:37,265     INFO End of anchor face
+2018-06-03 19:52:37,268     INFO Showing fixation
+2018-06-03 19:52:37,785     INFO End of fixation
+2018-06-03 19:52:37,788     INFO Showing number
+2018-06-03 19:52:38,265     INFO Received trigger 5
+2018-06-03 19:52:38,265     INFO End of number
+2018-06-03 19:52:38,268     INFO Showing fixation
+2018-06-03 19:52:39,264     INFO Received trigger 5
+2018-06-03 19:52:40,265     INFO Received trigger 5
+2018-06-03 19:52:41,264     INFO Received trigger 5
+2018-06-03 19:52:42,264     INFO Received trigger 5
+2018-06-03 19:52:43,264     INFO Received trigger 5
+2018-06-03 19:52:44,264     INFO Received trigger 5
+2018-06-03 19:52:44,264     INFO End of fixation
+2018-06-03 19:52:44,284     INFO Showing options
+2018-06-03 19:52:45,212     INFO Received response [('3', 0.9109811782836914)]
+2018-06-03 19:52:45,807     INFO End of options
+2018-06-03 19:52:45,817     INFO Showing feedback
+2018-06-03 19:52:46,264     INFO Received trigger 5
+2018-06-03 19:52:47,264     INFO Received trigger 5
+2018-06-03 19:52:47,264     INFO End of feedback
+2018-06-03 19:52:47,265     INFO End of trial
+2018-06-03 19:52:47,268     INFO Showing fixation
+2018-06-03 19:52:48,264     INFO Received trigger 5
+2018-06-03 19:52:49,264     INFO Received trigger 5
+2018-06-03 19:52:50,264     INFO Received trigger 5
+2018-06-03 19:52:51,264     INFO Received trigger 5
+2018-06-03 19:52:51,264     INFO End of fixation
+2018-06-03 19:52:51,264     INFO Showing anchor face
+2018-06-03 19:52:52,263     INFO Received trigger 5
+2018-06-03 19:52:52,264     INFO End of anchor face
+2018-06-03 19:52:52,267     INFO Showing fixation
+2018-06-03 19:52:52,784     INFO End of fixation
+2018-06-03 19:52:52,787     INFO Showing number
+2018-06-03 19:52:53,264     INFO Received trigger 5
+2018-06-03 19:52:53,264     INFO End of number
+2018-06-03 19:52:53,267     INFO Showing fixation
+2018-06-03 19:52:54,264     INFO Received trigger 5
+2018-06-03 19:52:55,263     INFO Received trigger 5
+2018-06-03 19:52:56,263     INFO Received trigger 5
+2018-06-03 19:52:57,263     INFO Received trigger 5
+2018-06-03 19:52:58,262     INFO Received trigger 5
+2018-06-03 19:52:59,262     INFO Received trigger 5
+2018-06-03 19:52:59,262     INFO End of fixation
+2018-06-03 19:52:59,281     INFO Showing options
+2018-06-03 19:53:00,250     INFO Received response [('3', 0.9496338367462158)]
+2018-06-03 19:53:00,818     INFO End of options
+2018-06-03 19:53:00,833     INFO Showing feedback
+2018-06-03 19:53:01,262     INFO Received trigger 5
+2018-06-03 19:53:02,262     INFO Received trigger 5
+2018-06-03 19:53:02,262     INFO End of feedback
+2018-06-03 19:53:02,264     INFO End of trial
+2018-06-03 19:53:02,267     INFO Showing fixation
+2018-06-03 19:53:03,262     INFO Received trigger 5
+2018-06-03 19:53:04,262     INFO Received trigger 5
+2018-06-03 19:53:05,262     INFO Received trigger 5
+2018-06-03 19:53:06,262     INFO Received trigger 5
+2018-06-03 19:53:06,264     INFO End of fixation
+2018-06-03 19:53:06,264     INFO Showing anchor face
+2018-06-03 19:53:07,262     INFO Received trigger 5
+2018-06-03 19:53:07,262     INFO End of anchor face
+2018-06-03 19:53:07,265     INFO Showing fixation
+2018-06-03 19:53:07,784     INFO End of fixation
+2018-06-03 19:53:07,786     INFO Showing number
+2018-06-03 19:53:08,262     INFO Received trigger 5
+2018-06-03 19:53:08,262     INFO End of number
+2018-06-03 19:53:08,265     INFO Showing fixation
+2018-06-03 19:53:09,261     INFO Received trigger 5
+2018-06-03 19:53:10,261     INFO Received trigger 5
+2018-06-03 19:53:11,261     INFO Received trigger 5
+2018-06-03 19:53:12,261     INFO Received trigger 5
+2018-06-03 19:53:13,262     INFO Received trigger 5
+2018-06-03 19:53:14,261     INFO Received trigger 5
+2018-06-03 19:53:14,261     INFO End of fixation
+2018-06-03 19:53:14,279     INFO Showing options
+2018-06-03 19:53:15,361     INFO Received response [('3', 1.0782630443572998)]
+2018-06-03 19:53:15,788     INFO End of options
+2018-06-03 19:53:15,799     INFO Showing feedback
+2018-06-03 19:53:16,261     INFO Received trigger 5
+2018-06-03 19:53:17,261     INFO Received trigger 5
+2018-06-03 19:53:17,261     INFO End of feedback
+2018-06-03 19:53:17,262     INFO End of trial
+2018-06-03 19:53:17,265     INFO Showing fixation
+2018-06-03 19:53:18,261     INFO Received trigger 5
+2018-06-03 19:53:19,261     INFO Received trigger 5
+2018-06-03 19:53:20,261     INFO Received trigger 5
+2018-06-03 19:53:21,261     INFO Received trigger 5
+2018-06-03 19:53:22,261     INFO Received trigger 5
+2018-06-03 19:53:23,260     INFO Received trigger 5
+2018-06-03 19:53:24,260     INFO Received trigger 5
+2018-06-03 19:53:24,260     INFO End of fixation
+2018-06-03 19:53:24,260     INFO Showing anchor face
+2018-06-03 19:53:25,260     INFO Received trigger 5
+2018-06-03 19:53:25,260     INFO End of anchor face
+2018-06-03 19:53:25,263     INFO Showing fixation
+2018-06-03 19:53:25,766     INFO End of fixation
+2018-06-03 19:53:25,768     INFO Showing number
+2018-06-03 19:53:26,260     INFO Received trigger 5
+2018-06-03 19:53:26,260     INFO End of number
+2018-06-03 19:53:26,263     INFO Showing fixation
+2018-06-03 19:53:27,259     INFO Received trigger 5
+2018-06-03 19:53:28,259     INFO Received trigger 5
+2018-06-03 19:53:29,259     INFO Received trigger 5
+2018-06-03 19:53:30,259     INFO Received trigger 5
+2018-06-03 19:53:31,259     INFO Received trigger 5
+2018-06-03 19:53:32,259     INFO Received trigger 5
+2018-06-03 19:53:32,259     INFO End of fixation
+2018-06-03 19:53:32,277     INFO Showing options
+2018-06-03 19:53:33,504     INFO Received response [('3', 1.222470998764038)]
+2018-06-03 19:53:33,793     INFO End of options
+2018-06-03 19:53:33,798     INFO Showing feedback
+2018-06-03 19:53:34,259     INFO Received trigger 5
+2018-06-03 19:53:35,259     INFO Received trigger 5
+2018-06-03 19:53:35,259     INFO End of feedback
+2018-06-03 19:53:35,260     INFO End of trial
+2018-06-03 19:53:35,263     INFO Showing fixation
+2018-06-03 19:53:36,259     INFO Received trigger 5
+2018-06-03 19:53:37,259     INFO Received trigger 5
+2018-06-03 19:53:38,259     INFO Received trigger 5
+2018-06-03 19:53:39,259     INFO Received trigger 5
+2018-06-03 19:53:39,259     INFO End of fixation
+2018-06-03 19:53:39,259     INFO Showing anchor face
+2018-06-03 19:53:40,259     INFO Received trigger 5
+2018-06-03 19:53:40,259     INFO End of anchor face
+2018-06-03 19:53:40,262     INFO Showing fixation
+2018-06-03 19:53:40,766     INFO End of fixation
+2018-06-03 19:53:40,769     INFO Showing number
+2018-06-03 19:53:41,259     INFO Received trigger 5
+2018-06-03 19:53:41,259     INFO End of number
+2018-06-03 19:53:41,262     INFO Showing fixation
+2018-06-03 19:53:42,259     INFO Received trigger 5
+2018-06-03 19:53:43,259     INFO Received trigger 5
+2018-06-03 19:53:44,258     INFO Received trigger 5
+2018-06-03 19:53:45,258     INFO Received trigger 5
+2018-06-03 19:53:46,258     INFO Received trigger 5
+2018-06-03 19:53:47,258     INFO Received trigger 5
+2018-06-03 19:53:47,258     INFO End of fixation
+2018-06-03 19:53:47,280     INFO Showing options
+2018-06-03 19:53:48,508     INFO Received response [('2', 1.2106380462646484)]
+2018-06-03 19:53:48,804     INFO End of options
+2018-06-03 19:53:48,813     INFO Showing feedback
+2018-06-03 19:53:49,258     INFO Received trigger 5
+2018-06-03 19:53:50,257     INFO Received trigger 5
+2018-06-03 19:53:50,257     INFO End of feedback
+2018-06-03 19:53:50,259     INFO End of trial
+2018-06-03 19:53:50,262     INFO Showing fixation
+2018-06-03 19:53:51,257     INFO Received trigger 5
+2018-06-03 19:53:52,258     INFO Received trigger 5
+2018-06-03 19:53:53,258     INFO Received trigger 5
+2018-06-03 19:53:54,258     INFO Received trigger 5
+2018-06-03 19:53:54,258     INFO End of fixation
+2018-06-03 19:53:54,258     INFO Showing anchor face
+2018-06-03 19:53:55,257     INFO Received trigger 5
+2018-06-03 19:53:55,258     INFO End of anchor face
+2018-06-03 19:53:55,261     INFO Showing fixation
+2018-06-03 19:53:55,764     INFO End of fixation
+2018-06-03 19:53:55,767     INFO Showing number
+2018-06-03 19:53:56,257     INFO Received trigger 5
+2018-06-03 19:53:56,257     INFO End of number
+2018-06-03 19:53:56,260     INFO Showing fixation
+2018-06-03 19:53:57,257     INFO Received trigger 5
+2018-06-03 19:53:58,257     INFO Received trigger 5
+2018-06-03 19:53:59,257     INFO Received trigger 5
+2018-06-03 19:54:00,257     INFO Received trigger 5
+2018-06-03 19:54:01,257     INFO Received trigger 5
+2018-06-03 19:54:02,257     INFO Received trigger 5
+2018-06-03 19:54:02,258     INFO End of fixation
+2018-06-03 19:54:02,282     INFO Showing options
+2018-06-03 19:54:03,278     INFO Received response [('2', 0.9817230701446533)]
+2018-06-03 19:54:03,815     INFO End of options
+2018-06-03 19:54:03,829     INFO Showing feedback
+2018-06-03 19:54:04,256     INFO Received trigger 5
+2018-06-03 19:54:05,257     INFO Received trigger 5
+2018-06-03 19:54:05,257     INFO End of feedback
+2018-06-03 19:54:05,259     INFO End of trial
+2018-06-03 19:54:05,262     INFO Showing fixation
+2018-06-03 19:54:06,256     INFO Received trigger 5
+2018-06-03 19:54:07,256     INFO Received trigger 5
+2018-06-03 19:54:08,256     INFO Received trigger 5
+2018-06-03 19:54:09,256     INFO Received trigger 5
+2018-06-03 19:54:09,256     INFO End of fixation
+2018-06-03 19:54:09,257     INFO Showing instructions
+2018-06-03 19:54:09,268     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:54:10,256     INFO Received response [('5', 0.9765450954437256)]
+2018-06-03 19:54:10,256     INFO End of instructions
+2018-06-03 19:54:10,256     INFO Showing instructions
+2018-06-03 19:54:10,266     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:54:11,256     INFO Received response [('5', 0.9767589569091797)]
+2018-06-03 19:54:11,256     INFO End of instructions
+2018-06-03 19:54:11,256     INFO Showing instructions
+2018-06-03 19:54:11,268     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 19:54:12,256     INFO Received response [('5', 0.9766080379486084)]
+2018-06-03 19:54:12,256     INFO End of instructions
+2018-06-03 19:54:12,264     INFO Showing instructions
+2018-06-03 19:54:12,299     INFO Instruction: You have completed Run #2.  Ru...
+2018-06-03 19:54:35,484     INFO Received response [('space', 23.170796155929565)]
+2018-06-03 19:54:35,484     INFO End of instructions
+2018-06-03 19:54:35,484     INFO Showing instructions
+2018-06-03 19:54:35,518     INFO Instruction: You have completed Run #2.  Ru...
+2018-06-03 19:54:46,020     INFO Received response [('5', 10.49216604232788)]
+2018-06-03 19:54:46,020     INFO End of instructions
+2018-06-03 19:54:46,021     INFO Showing anchor face
+2018-06-03 19:54:47,019     INFO Received trigger 5
+2018-06-03 19:54:47,020     INFO End of anchor face
+2018-06-03 19:54:47,022     INFO Showing fixation
+2018-06-03 19:54:47,528     INFO End of fixation
+2018-06-03 19:54:47,531     INFO Showing number
+2018-06-03 19:54:48,020     INFO Received trigger 5
+2018-06-03 19:54:48,021     INFO End of number
+2018-06-03 19:54:48,025     INFO Showing fixation
+2018-06-03 19:54:49,019     INFO Received trigger 5
+2018-06-03 19:54:50,021     INFO Received trigger 5
+2018-06-03 19:54:51,019     INFO Received trigger 5
+2018-06-03 19:54:52,020     INFO Received trigger 5
+2018-06-03 19:54:53,019     INFO Received trigger 5
+2018-06-03 19:54:54,020     INFO Received trigger 5
+2018-06-03 19:54:54,021     INFO End of fixation
+2018-06-03 19:54:54,041     INFO Showing options
+2018-06-03 19:54:55,132     INFO Received response [('3', 1.0722529888153076)]
+2018-06-03 19:54:55,572     INFO End of options
+2018-06-03 19:54:55,576     INFO Showing feedback
+2018-06-03 19:54:56,019     INFO Received trigger 5
+2018-06-03 19:54:57,020     INFO Received trigger 5
+2018-06-03 19:54:57,021     INFO End of feedback
+2018-06-03 19:54:57,023     INFO End of trial
+2018-06-03 19:54:57,028     INFO Showing fixation
+2018-06-03 19:54:58,019     INFO Received trigger 5
+2018-06-03 19:54:59,019     INFO Received trigger 5
+2018-06-03 19:55:00,019     INFO Received trigger 5
+2018-06-03 19:55:01,020     INFO Received trigger 5
+2018-06-03 19:55:01,020     INFO End of fixation
+2018-06-03 19:55:01,021     INFO Showing anchor face
+2018-06-03 19:55:02,019     INFO Received trigger 5
+2018-06-03 19:55:02,019     INFO End of anchor face
+2018-06-03 19:55:02,022     INFO Showing fixation
+2018-06-03 19:55:02,527     INFO End of fixation
+2018-06-03 19:55:02,530     INFO Showing number
+2018-06-03 19:55:03,020     INFO Received trigger 5
+2018-06-03 19:55:03,020     INFO End of number
+2018-06-03 19:55:03,023     INFO Showing fixation
+2018-06-03 19:55:04,019     INFO Received trigger 5
+2018-06-03 19:55:05,019     INFO Received trigger 5
+2018-06-03 19:55:06,019     INFO Received trigger 5
+2018-06-03 19:55:07,019     INFO Received trigger 5
+2018-06-03 19:55:08,018     INFO Received trigger 5
+2018-06-03 19:55:09,019     INFO Received trigger 5
+2018-06-03 19:55:09,019     INFO End of fixation
+2018-06-03 19:55:09,038     INFO Showing options
+2018-06-03 19:55:10,055     INFO Received response [('2', 1.0126137733459473)]
+2018-06-03 19:55:10,547     INFO End of options
+2018-06-03 19:55:10,558     INFO Showing feedback
+2018-06-03 19:55:11,017     INFO Received trigger 5
+2018-06-03 19:55:12,018     INFO Received trigger 5
+2018-06-03 19:55:12,019     INFO End of feedback
+2018-06-03 19:55:12,021     INFO End of trial
+2018-06-03 19:55:12,025     INFO Showing fixation
+2018-06-03 19:55:13,017     INFO Received trigger 5
+2018-06-03 19:55:14,017     INFO Received trigger 5
+2018-06-03 19:55:15,017     INFO Received trigger 5
+2018-06-03 19:55:16,017     INFO Received trigger 5
+2018-06-03 19:55:16,017     INFO End of fixation
+2018-06-03 19:55:16,018     INFO Showing anchor face
+2018-06-03 19:55:17,017     INFO Received trigger 5
+2018-06-03 19:55:17,017     INFO End of anchor face
+2018-06-03 19:55:17,020     INFO Showing fixation
+2018-06-03 19:55:17,526     INFO End of fixation
+2018-06-03 19:55:17,529     INFO Showing number
+2018-06-03 19:55:18,018     INFO Received trigger 5
+2018-06-03 19:55:18,018     INFO End of number
+2018-06-03 19:55:18,022     INFO Showing fixation
+2018-06-03 19:55:19,017     INFO Received trigger 5
+2018-06-03 19:55:20,018     INFO Received trigger 5
+2018-06-03 19:55:21,017     INFO Received trigger 5
+2018-06-03 19:55:22,017     INFO Received trigger 5
+2018-06-03 19:55:23,017     INFO Received trigger 5
+2018-06-03 19:55:24,017     INFO Received trigger 5
+2018-06-03 19:55:24,017     INFO End of fixation
+2018-06-03 19:55:24,037     INFO Showing options
+2018-06-03 19:55:25,072     INFO Received response [('3', 1.030649185180664)]
+2018-06-03 19:55:25,544     INFO End of options
+2018-06-03 19:55:25,557     INFO Showing feedback
+2018-06-03 19:55:26,016     INFO Received trigger 5
+2018-06-03 19:55:27,017     INFO Received trigger 5
+2018-06-03 19:55:27,018     INFO End of feedback
+2018-06-03 19:55:27,020     INFO End of trial
+2018-06-03 19:55:27,024     INFO Showing fixation
+2018-06-03 19:55:28,016     INFO Received trigger 5
+2018-06-03 19:55:29,017     INFO Received trigger 5
+2018-06-03 19:55:30,016     INFO Received trigger 5
+2018-06-03 19:55:31,017     INFO Received trigger 5
+2018-06-03 19:55:32,016     INFO Received trigger 5
+2018-06-03 19:55:33,016     INFO Received trigger 5
+2018-06-03 19:55:34,016     INFO Received trigger 5
+2018-06-03 19:55:34,016     INFO End of fixation
+2018-06-03 19:55:34,017     INFO Showing anchor face
+2018-06-03 19:55:35,018     INFO Received trigger 5
+2018-06-03 19:55:35,018     INFO End of anchor face
+2018-06-03 19:55:35,025     INFO Showing fixation
+2018-06-03 19:55:35,541     INFO End of fixation
+2018-06-03 19:55:35,544     INFO Showing number
+2018-06-03 19:55:36,015     INFO Received trigger 5
+2018-06-03 19:55:36,020     INFO End of number
+2018-06-03 19:55:36,024     INFO Showing fixation
+2018-06-03 19:55:37,016     INFO Received trigger 5
+2018-06-03 19:55:38,014     INFO Received trigger 5
+2018-06-03 19:55:39,015     INFO Received trigger 5
+2018-06-03 19:55:40,015     INFO Received trigger 5
+2018-06-03 19:55:41,015     INFO Received trigger 5
+2018-06-03 19:55:42,014     INFO Received trigger 5
+2018-06-03 19:55:42,014     INFO End of fixation
+2018-06-03 19:55:42,032     INFO Showing options
+2018-06-03 19:55:43,251     INFO Received response [('3', 1.210988998413086)]
+2018-06-03 19:55:43,547     INFO End of options
+2018-06-03 19:55:43,556     INFO Showing feedback
+2018-06-03 19:55:44,014     INFO Received trigger 5
+2018-06-03 19:55:45,015     INFO Received trigger 5
+2018-06-03 19:55:45,015     INFO End of feedback
+2018-06-03 19:55:45,017     INFO End of trial
+2018-06-03 19:55:45,022     INFO Showing fixation
+2018-06-03 19:55:46,014     INFO Received trigger 5
+2018-06-03 19:55:47,015     INFO Received trigger 5
+2018-06-03 19:55:48,014     INFO Received trigger 5
+2018-06-03 19:55:49,015     INFO Received trigger 5
+2018-06-03 19:55:50,014     INFO Received trigger 5
+2018-06-03 19:55:51,014     INFO Received trigger 5
+2018-06-03 19:55:51,015     INFO End of fixation
+2018-06-03 19:55:51,015     INFO Showing anchor face
+2018-06-03 19:55:52,014     INFO Received trigger 5
+2018-06-03 19:55:52,014     INFO End of anchor face
+2018-06-03 19:55:52,017     INFO Showing fixation
+2018-06-03 19:55:52,524     INFO End of fixation
+2018-06-03 19:55:52,527     INFO Showing number
+2018-06-03 19:55:53,014     INFO Received trigger 5
+2018-06-03 19:55:53,014     INFO End of number
+2018-06-03 19:55:53,018     INFO Showing fixation
+2018-06-03 19:55:54,014     INFO Received trigger 5
+2018-06-03 19:55:55,015     INFO Received trigger 5
+2018-06-03 19:55:56,013     INFO Received trigger 5
+2018-06-03 19:55:57,014     INFO Received trigger 5
+2018-06-03 19:55:58,014     INFO Received trigger 5
+2018-06-03 19:55:59,014     INFO Received trigger 5
+2018-06-03 19:55:59,015     INFO End of fixation
+2018-06-03 19:55:59,036     INFO Showing options
+2018-06-03 19:56:00,030     INFO Received response [('3', 0.9892959594726562)]
+2018-06-03 19:56:00,550     INFO End of options
+2018-06-03 19:56:00,555     INFO Showing feedback
+2018-06-03 19:56:01,013     INFO Received trigger 5
+2018-06-03 19:56:02,013     INFO Received trigger 5
+2018-06-03 19:56:02,013     INFO End of feedback
+2018-06-03 19:56:02,015     INFO End of trial
+2018-06-03 19:56:02,018     INFO Showing fixation
+2018-06-03 19:56:03,012     INFO Received trigger 5
+2018-06-03 19:56:04,013     INFO Received trigger 5
+2018-06-03 19:56:05,012     INFO Received trigger 5
+2018-06-03 19:56:06,013     INFO Received trigger 5
+2018-06-03 19:56:07,012     INFO Received trigger 5
+2018-06-03 19:56:08,013     INFO Received trigger 5
+2018-06-03 19:56:08,013     INFO End of fixation
+2018-06-03 19:56:08,013     INFO Showing anchor face
+2018-06-03 19:56:09,012     INFO Received trigger 5
+2018-06-03 19:56:09,012     INFO End of anchor face
+2018-06-03 19:56:09,015     INFO Showing fixation
+2018-06-03 19:56:09,523     INFO End of fixation
+2018-06-03 19:56:09,526     INFO Showing number
+2018-06-03 19:56:10,012     INFO Received trigger 5
+2018-06-03 19:56:10,013     INFO End of number
+2018-06-03 19:56:10,018     INFO Showing fixation
+2018-06-03 19:56:11,011     INFO Received trigger 5
+2018-06-03 19:56:12,012     INFO Received trigger 5
+2018-06-03 19:56:13,011     INFO Received trigger 5
+2018-06-03 19:56:14,012     INFO Received trigger 5
+2018-06-03 19:56:15,011     INFO Received trigger 5
+2018-06-03 19:56:16,012     INFO Received trigger 5
+2018-06-03 19:56:16,012     INFO End of fixation
+2018-06-03 19:56:16,033     INFO Showing options
+2018-06-03 19:56:17,115     INFO Received response [('2', 1.0769619941711426)]
+2018-06-03 19:56:17,545     INFO End of options
+2018-06-03 19:56:17,554     INFO Showing feedback
+2018-06-03 19:56:18,011     INFO Received trigger 5
+2018-06-03 19:56:19,012     INFO Received trigger 5
+2018-06-03 19:56:19,012     INFO End of feedback
+2018-06-03 19:56:19,013     INFO End of trial
+2018-06-03 19:56:19,019     INFO Showing fixation
+2018-06-03 19:56:20,011     INFO Received trigger 5
+2018-06-03 19:56:21,012     INFO Received trigger 5
+2018-06-03 19:56:22,011     INFO Received trigger 5
+2018-06-03 19:56:23,011     INFO Received trigger 5
+2018-06-03 19:56:24,011     INFO Received trigger 5
+2018-06-03 19:56:24,011     INFO End of fixation
+2018-06-03 19:56:24,011     INFO Showing anchor face
+2018-06-03 19:56:25,011     INFO Received trigger 5
+2018-06-03 19:56:25,012     INFO End of anchor face
+2018-06-03 19:56:25,017     INFO Showing fixation
+2018-06-03 19:56:25,522     INFO End of fixation
+2018-06-03 19:56:25,525     INFO Showing number
+2018-06-03 19:56:26,011     INFO Received trigger 5
+2018-06-03 19:56:26,011     INFO End of number
+2018-06-03 19:56:26,014     INFO Showing fixation
+2018-06-03 19:56:27,012     INFO Received trigger 5
+2018-06-03 19:56:28,009     INFO Received trigger 5
+2018-06-03 19:56:29,010     INFO Received trigger 5
+2018-06-03 19:56:30,009     INFO Received trigger 5
+2018-06-03 19:56:31,010     INFO Received trigger 5
+2018-06-03 19:56:32,009     INFO Received trigger 5
+2018-06-03 19:56:32,009     INFO End of fixation
+2018-06-03 19:56:32,027     INFO Showing options
+2018-06-03 19:56:33,025     INFO Received response [('3', 0.986940860748291)]
+2018-06-03 19:56:33,551     INFO End of options
+2018-06-03 19:56:33,553     INFO Showing feedback
+2018-06-03 19:56:34,009     INFO Received trigger 5
+2018-06-03 19:56:35,010     INFO Received trigger 5
+2018-06-03 19:56:35,010     INFO End of feedback
+2018-06-03 19:56:35,012     INFO End of trial
+2018-06-03 19:56:35,016     INFO Showing fixation
+2018-06-03 19:56:36,009     INFO Received trigger 5
+2018-06-03 19:56:37,010     INFO Received trigger 5
+2018-06-03 19:56:38,009     INFO Received trigger 5
+2018-06-03 19:56:39,010     INFO Received trigger 5
+2018-06-03 19:56:40,009     INFO Received trigger 5
+2018-06-03 19:56:41,010     INFO Received trigger 5
+2018-06-03 19:56:41,010     INFO End of fixation
+2018-06-03 19:56:41,011     INFO Showing anchor face
+2018-06-03 19:56:42,009     INFO Received trigger 5
+2018-06-03 19:56:42,009     INFO End of anchor face
+2018-06-03 19:56:42,012     INFO Showing fixation
+2018-06-03 19:56:42,521     INFO End of fixation
+2018-06-03 19:56:42,524     INFO Showing number
+2018-06-03 19:56:43,009     INFO Received trigger 5
+2018-06-03 19:56:43,010     INFO End of number
+2018-06-03 19:56:43,013     INFO Showing fixation
+2018-06-03 19:56:44,009     INFO Received trigger 5
+2018-06-03 19:56:45,009     INFO Received trigger 5
+2018-06-03 19:56:46,008     INFO Received trigger 5
+2018-06-03 19:56:47,009     INFO Received trigger 5
+2018-06-03 19:56:48,008     INFO Received trigger 5
+2018-06-03 19:56:49,009     INFO Received trigger 5
+2018-06-03 19:56:49,009     INFO End of fixation
+2018-06-03 19:56:49,031     INFO Showing options
+2018-06-03 19:56:50,536     INFO No response received, showing feedback
+2018-06-03 19:56:51,008     INFO Received trigger 5
+2018-06-03 19:56:52,009     INFO Received trigger 5
+2018-06-03 19:56:52,009     INFO End of feedback
+2018-06-03 19:56:52,011     INFO End of trial
+2018-06-03 19:56:52,016     INFO Showing fixation
+2018-06-03 19:56:53,008     INFO Received trigger 5
+2018-06-03 19:56:54,008     INFO Received trigger 5
+2018-06-03 19:56:55,007     INFO Received trigger 5
+2018-06-03 19:56:56,008     INFO Received trigger 5
+2018-06-03 19:56:57,007     INFO Received trigger 5
+2018-06-03 19:56:58,008     INFO Received trigger 5
+2018-06-03 19:56:58,008     INFO End of fixation
+2018-06-03 19:56:58,008     INFO Showing anchor face
+2018-06-03 19:56:59,007     INFO Received trigger 5
+2018-06-03 19:56:59,007     INFO End of anchor face
+2018-06-03 19:56:59,010     INFO Showing fixation
+2018-06-03 19:56:59,520     INFO End of fixation
+2018-06-03 19:56:59,522     INFO Showing number
+2018-06-03 19:57:00,007     INFO Received trigger 5
+2018-06-03 19:57:00,007     INFO End of number
+2018-06-03 19:57:00,011     INFO Showing fixation
+2018-06-03 19:57:01,007     INFO Received trigger 5
+2018-06-03 19:57:02,007     INFO Received trigger 5
+2018-06-03 19:57:03,007     INFO Received trigger 5
+2018-06-03 19:57:04,007     INFO Received trigger 5
+2018-06-03 19:57:05,007     INFO Received trigger 5
+2018-06-03 19:57:06,007     INFO Received trigger 5
+2018-06-03 19:57:06,014     INFO End of fixation
+2018-06-03 19:57:06,039     INFO Showing options
+2018-06-03 19:57:07,176     INFO Received response [('4', 1.1239330768585205)]
+2018-06-03 19:57:07,562     INFO End of options
+2018-06-03 19:57:07,568     INFO Showing feedback
+2018-06-03 19:57:08,006     INFO Received trigger 5
+2018-06-03 19:57:09,007     INFO Received trigger 5
+2018-06-03 19:57:09,007     INFO End of feedback
+2018-06-03 19:57:09,009     INFO End of trial
+2018-06-03 19:57:09,014     INFO Showing fixation
+2018-06-03 19:57:10,006     INFO Received trigger 5
+2018-06-03 19:57:11,007     INFO Received trigger 5
+2018-06-03 19:57:12,006     INFO Received trigger 5
+2018-06-03 19:57:13,007     INFO Received trigger 5
+2018-06-03 19:57:14,006     INFO Received trigger 5
+2018-06-03 19:57:15,007     INFO Received trigger 5
+2018-06-03 19:57:16,006     INFO Received trigger 5
+2018-06-03 19:57:16,006     INFO End of fixation
+2018-06-03 19:57:16,006     INFO Showing anchor face
+2018-06-03 19:57:17,007     INFO Received trigger 5
+2018-06-03 19:57:17,007     INFO End of anchor face
+2018-06-03 19:57:17,012     INFO Showing fixation
+2018-06-03 19:57:17,519     INFO End of fixation
+2018-06-03 19:57:17,521     INFO Showing number
+2018-06-03 19:57:18,006     INFO Received trigger 5
+2018-06-03 19:57:18,006     INFO End of number
+2018-06-03 19:57:18,011     INFO Showing fixation
+2018-06-03 19:57:19,006     INFO Received trigger 5
+2018-06-03 19:57:20,005     INFO Received trigger 5
+2018-06-03 19:57:21,005     INFO Received trigger 5
+2018-06-03 19:57:22,004     INFO Received trigger 5
+2018-06-03 19:57:23,005     INFO Received trigger 5
+2018-06-03 19:57:24,004     INFO Received trigger 5
+2018-06-03 19:57:24,004     INFO End of fixation
+2018-06-03 19:57:24,022     INFO Showing options
+2018-06-03 19:57:24,829     INFO Received response [('4', 0.7950549125671387)]
+2018-06-03 19:57:25,540     INFO End of options
+2018-06-03 19:57:25,550     INFO Showing feedback
+2018-06-03 19:57:26,004     INFO Received trigger 5
+2018-06-03 19:57:27,004     INFO Received trigger 5
+2018-06-03 19:57:27,004     INFO End of feedback
+2018-06-03 19:57:27,005     INFO End of trial
+2018-06-03 19:57:27,008     INFO Showing fixation
+2018-06-03 19:57:28,004     INFO Received trigger 5
+2018-06-03 19:57:29,004     INFO Received trigger 5
+2018-06-03 19:57:30,004     INFO Received trigger 5
+2018-06-03 19:57:31,004     INFO Received trigger 5
+2018-06-03 19:57:31,004     INFO End of fixation
+2018-06-03 19:57:31,004     INFO Showing anchor face
+2018-06-03 19:57:32,004     INFO Received trigger 5
+2018-06-03 19:57:32,004     INFO End of anchor face
+2018-06-03 19:57:32,007     INFO Showing fixation
+2018-06-03 19:57:32,518     INFO End of fixation
+2018-06-03 19:57:32,520     INFO Showing number
+2018-06-03 19:57:33,004     INFO Received trigger 5
+2018-06-03 19:57:33,004     INFO End of number
+2018-06-03 19:57:33,007     INFO Showing fixation
+2018-06-03 19:57:34,004     INFO Received trigger 5
+2018-06-03 19:57:35,003     INFO Received trigger 5
+2018-06-03 19:57:36,005     INFO Received trigger 5
+2018-06-03 19:57:37,003     INFO Received trigger 5
+2018-06-03 19:57:38,004     INFO Received trigger 5
+2018-06-03 19:57:39,004     INFO Received trigger 5
+2018-06-03 19:57:39,004     INFO End of fixation
+2018-06-03 19:57:39,022     INFO Showing options
+2018-06-03 19:57:39,843     INFO Received response [('1', 0.8097789287567139)]
+2018-06-03 19:57:40,541     INFO End of options
+2018-06-03 19:57:40,549     INFO Showing feedback
+2018-06-03 19:57:41,003     INFO Received trigger 5
+2018-06-03 19:57:42,003     INFO Received trigger 5
+2018-06-03 19:57:42,003     INFO End of feedback
+2018-06-03 19:57:42,004     INFO End of trial
+2018-06-03 19:57:42,007     INFO Showing fixation
+2018-06-03 19:57:43,003     INFO Received trigger 5
+2018-06-03 19:57:44,003     INFO Received trigger 5
+2018-06-03 19:57:45,004     INFO Received trigger 5
+2018-06-03 19:57:46,003     INFO Received trigger 5
+2018-06-03 19:57:46,003     INFO End of fixation
+2018-06-03 19:57:46,004     INFO Showing anchor face
+2018-06-03 19:57:47,002     INFO Received trigger 5
+2018-06-03 19:57:47,002     INFO End of anchor face
+2018-06-03 19:57:47,007     INFO Showing fixation
+2018-06-03 19:57:47,517     INFO End of fixation
+2018-06-03 19:57:47,520     INFO Showing number
+2018-06-03 19:57:48,002     INFO Received trigger 5
+2018-06-03 19:57:48,002     INFO End of number
+2018-06-03 19:57:48,005     INFO Showing fixation
+2018-06-03 19:57:49,002     INFO Received trigger 5
+2018-06-03 19:57:50,002     INFO Received trigger 5
+2018-06-03 19:57:51,002     INFO Received trigger 5
+2018-06-03 19:57:52,002     INFO Received trigger 5
+2018-06-03 19:57:53,002     INFO Received trigger 5
+2018-06-03 19:57:54,002     INFO Received trigger 5
+2018-06-03 19:57:54,002     INFO End of fixation
+2018-06-03 19:57:54,020     INFO Showing options
+2018-06-03 19:57:55,193     INFO Received response [('4', 1.16068696975708)]
+2018-06-03 19:57:55,539     INFO End of options
+2018-06-03 19:57:55,549     INFO Showing feedback
+2018-06-03 19:57:56,001     INFO Received trigger 5
+2018-06-03 19:57:57,001     INFO Received trigger 5
+2018-06-03 19:57:57,002     INFO End of feedback
+2018-06-03 19:57:57,003     INFO End of trial
+2018-06-03 19:57:57,008     INFO Showing fixation
+2018-06-03 19:57:58,001     INFO Received trigger 5
+2018-06-03 19:57:59,001     INFO Received trigger 5
+2018-06-03 19:58:00,001     INFO Received trigger 5
+2018-06-03 19:58:01,001     INFO Received trigger 5
+2018-06-03 19:58:02,001     INFO Received trigger 5
+2018-06-03 19:58:02,001     INFO End of fixation
+2018-06-03 19:58:02,002     INFO Showing anchor face
+2018-06-03 19:58:03,001     INFO Received trigger 5
+2018-06-03 19:58:03,001     INFO End of anchor face
+2018-06-03 19:58:03,005     INFO Showing fixation
+2018-06-03 19:58:03,516     INFO End of fixation
+2018-06-03 19:58:03,518     INFO Showing number
+2018-06-03 19:58:04,001     INFO Received trigger 5
+2018-06-03 19:58:04,001     INFO End of number
+2018-06-03 19:58:04,004     INFO Showing fixation
+2018-06-03 19:58:05,001     INFO Received trigger 5
+2018-06-03 19:58:06,001     INFO Received trigger 5
+2018-06-03 19:58:07,001     INFO Received trigger 5
+2018-06-03 19:58:08,000     INFO Received trigger 5
+2018-06-03 19:58:09,000     INFO Received trigger 5
+2018-06-03 19:58:10,000     INFO Received trigger 5
+2018-06-03 19:58:10,001     INFO End of fixation
+2018-06-03 19:58:10,019     INFO Showing options
+2018-06-03 19:58:11,411     INFO Received response [('2', 1.3800020217895508)]
+2018-06-03 19:58:11,534     INFO End of options
+2018-06-03 19:58:11,548     INFO Showing feedback
+2018-06-03 19:58:11,999     INFO Received trigger 5
+2018-06-03 19:58:13,000     INFO Received trigger 5
+2018-06-03 19:58:13,000     INFO End of feedback
+2018-06-03 19:58:13,001     INFO End of trial
+2018-06-03 19:58:13,004     INFO Showing fixation
+2018-06-03 19:58:13,999     INFO Received trigger 5
+2018-06-03 19:58:14,999     INFO Received trigger 5
+2018-06-03 19:58:15,999     INFO Received trigger 5
+2018-06-03 19:58:16,999     INFO Received trigger 5
+2018-06-03 19:58:17,999     INFO Received trigger 5
+2018-06-03 19:58:18,999     INFO Received trigger 5
+2018-06-03 19:58:19,999     INFO Received trigger 5
+2018-06-03 19:58:20,999     INFO Received trigger 5
+2018-06-03 19:58:20,999     INFO End of fixation
+2018-06-03 19:58:20,999     INFO Showing anchor face
+2018-06-03 19:58:21,999     INFO Received trigger 5
+2018-06-03 19:58:21,999     INFO End of anchor face
+2018-06-03 19:58:22,002     INFO Showing fixation
+2018-06-03 19:58:22,515     INFO End of fixation
+2018-06-03 19:58:22,517     INFO Showing number
+2018-06-03 19:58:22,999     INFO Received trigger 5
+2018-06-03 19:58:22,999     INFO End of number
+2018-06-03 19:58:23,002     INFO Showing fixation
+2018-06-03 19:58:23,999     INFO Received trigger 5
+2018-06-03 19:58:24,998     INFO Received trigger 5
+2018-06-03 19:58:25,999     INFO Received trigger 5
+2018-06-03 19:58:26,998     INFO Received trigger 5
+2018-06-03 19:58:27,999     INFO Received trigger 5
+2018-06-03 19:58:28,999     INFO Received trigger 5
+2018-06-03 19:58:28,999     INFO End of fixation
+2018-06-03 19:58:29,023     INFO Showing options
+2018-06-03 19:58:29,833     INFO Received response [('1', 0.802940845489502)]
+2018-06-03 19:58:30,545     INFO End of options
+2018-06-03 19:58:30,547     INFO Showing feedback
+2018-06-03 19:58:30,998     INFO Received trigger 5
+2018-06-03 19:58:31,998     INFO Received trigger 5
+2018-06-03 19:58:31,999     INFO End of feedback
+2018-06-03 19:58:32,000     INFO End of trial
+2018-06-03 19:58:32,004     INFO Showing fixation
+2018-06-03 19:58:32,998     INFO Received trigger 5
+2018-06-03 19:58:33,998     INFO Received trigger 5
+2018-06-03 19:58:34,998     INFO Received trigger 5
+2018-06-03 19:58:35,998     INFO Received trigger 5
+2018-06-03 19:58:36,998     INFO Received trigger 5
+2018-06-03 19:58:37,997     INFO Received trigger 5
+2018-06-03 19:58:37,997     INFO End of fixation
+2018-06-03 19:58:37,998     INFO Showing anchor face
+2018-06-03 19:58:38,997     INFO Received trigger 5
+2018-06-03 19:58:38,997     INFO End of anchor face
+2018-06-03 19:58:39,000     INFO Showing fixation
+2018-06-03 19:58:39,514     INFO End of fixation
+2018-06-03 19:58:39,516     INFO Showing number
+2018-06-03 19:58:39,997     INFO Received trigger 5
+2018-06-03 19:58:39,997     INFO End of number
+2018-06-03 19:58:40,001     INFO Showing fixation
+2018-06-03 19:58:40,997     INFO Received trigger 5
+2018-06-03 19:58:41,997     INFO Received trigger 5
+2018-06-03 19:58:42,996     INFO Received trigger 5
+2018-06-03 19:58:43,997     INFO Received trigger 5
+2018-06-03 19:58:44,996     INFO Received trigger 5
+2018-06-03 19:58:45,996     INFO Received trigger 5
+2018-06-03 19:58:45,996     INFO End of fixation
+2018-06-03 19:58:46,019     INFO Showing options
+2018-06-03 19:58:47,529     INFO No response received, showing feedback
+2018-06-03 19:58:47,996     INFO Received trigger 5
+2018-06-03 19:58:48,996     INFO Received trigger 5
+2018-06-03 19:58:48,996     INFO End of feedback
+2018-06-03 19:58:48,997     INFO End of trial
+2018-06-03 19:58:49,000     INFO Showing fixation
+2018-06-03 19:58:49,996     INFO Received trigger 5
+2018-06-03 19:58:50,996     INFO Received trigger 5
+2018-06-03 19:58:51,996     INFO Received trigger 5
+2018-06-03 19:58:52,996     INFO Received trigger 5
+2018-06-03 19:58:53,996     INFO Received trigger 5
+2018-06-03 19:58:53,996     INFO End of fixation
+2018-06-03 19:58:53,997     INFO Showing anchor face
+2018-06-03 19:58:54,996     INFO Received trigger 5
+2018-06-03 19:58:54,996     INFO End of anchor face
+2018-06-03 19:58:54,999     INFO Showing fixation
+2018-06-03 19:58:55,513     INFO End of fixation
+2018-06-03 19:58:55,516     INFO Showing number
+2018-06-03 19:58:55,996     INFO Received trigger 5
+2018-06-03 19:58:55,996     INFO End of number
+2018-06-03 19:58:56,000     INFO Showing fixation
+2018-06-03 19:58:56,996     INFO Received trigger 5
+2018-06-03 19:58:57,996     INFO Received trigger 5
+2018-06-03 19:58:58,995     INFO Received trigger 5
+2018-06-03 19:58:59,996     INFO Received trigger 5
+2018-06-03 19:59:00,996     INFO Received trigger 5
+2018-06-03 19:59:01,996     INFO Received trigger 5
+2018-06-03 19:59:01,996     INFO End of fixation
+2018-06-03 19:59:02,016     INFO Showing options
+2018-06-03 19:59:03,208     INFO Received response [('2', 1.1791281700134277)]
+2018-06-03 19:59:03,533     INFO End of options
+2018-06-03 19:59:03,544     INFO Showing feedback
+2018-06-03 19:59:03,995     INFO Received trigger 5
+2018-06-03 19:59:04,994     INFO Received trigger 5
+2018-06-03 19:59:04,994     INFO End of feedback
+2018-06-03 19:59:04,995     INFO End of trial
+2018-06-03 19:59:04,998     INFO Showing fixation
+2018-06-03 19:59:05,994     INFO Received trigger 5
+2018-06-03 19:59:06,994     INFO Received trigger 5
+2018-06-03 19:59:07,994     INFO Received trigger 5
+2018-06-03 19:59:08,994     INFO Received trigger 5
+2018-06-03 19:59:09,994     INFO Received trigger 5
+2018-06-03 19:59:10,994     INFO Received trigger 5
+2018-06-03 19:59:11,994     INFO Received trigger 5
+2018-06-03 19:59:11,994     INFO End of fixation
+2018-06-03 19:59:11,994     INFO Showing anchor face
+2018-06-03 19:59:12,994     INFO Received trigger 5
+2018-06-03 19:59:12,994     INFO End of anchor face
+2018-06-03 19:59:12,997     INFO Showing fixation
+2018-06-03 19:59:13,512     INFO End of fixation
+2018-06-03 19:59:13,515     INFO Showing number
+2018-06-03 19:59:13,994     INFO Received trigger 5
+2018-06-03 19:59:13,994     INFO End of number
+2018-06-03 19:59:13,997     INFO Showing fixation
+2018-06-03 19:59:14,994     INFO Received trigger 5
+2018-06-03 19:59:15,993     INFO Received trigger 5
+2018-06-03 19:59:16,994     INFO Received trigger 5
+2018-06-03 19:59:17,994     INFO Received trigger 5
+2018-06-03 19:59:18,993     INFO Received trigger 5
+2018-06-03 19:59:19,993     INFO Received trigger 5
+2018-06-03 19:59:19,994     INFO End of fixation
+2018-06-03 19:59:20,012     INFO Showing options
+2018-06-03 19:59:20,983     INFO Received response [('2', 0.9560089111328125)]
+2018-06-03 19:59:21,538     INFO End of options
+2018-06-03 19:59:21,543     INFO Showing feedback
+2018-06-03 19:59:21,993     INFO Received trigger 5
+2018-06-03 19:59:22,993     INFO Received trigger 5
+2018-06-03 19:59:22,993     INFO End of feedback
+2018-06-03 19:59:22,994     INFO End of trial
+2018-06-03 19:59:22,998     INFO Showing fixation
+2018-06-03 19:59:23,993     INFO Received trigger 5
+2018-06-03 19:59:24,993     INFO Received trigger 5
+2018-06-03 19:59:25,993     INFO Received trigger 5
+2018-06-03 19:59:26,993     INFO Received trigger 5
+2018-06-03 19:59:26,993     INFO End of fixation
+2018-06-03 19:59:26,994     INFO Showing anchor face
+2018-06-03 19:59:27,993     INFO Received trigger 5
+2018-06-03 19:59:27,993     INFO End of anchor face
+2018-06-03 19:59:27,996     INFO Showing fixation
+2018-06-03 19:59:28,511     INFO End of fixation
+2018-06-03 19:59:28,514     INFO Showing number
+2018-06-03 19:59:28,993     INFO Received trigger 5
+2018-06-03 19:59:28,993     INFO End of number
+2018-06-03 19:59:28,996     INFO Showing fixation
+2018-06-03 19:59:29,992     INFO Received trigger 5
+2018-06-03 19:59:30,991     INFO Received trigger 5
+2018-06-03 19:59:31,992     INFO Received trigger 5
+2018-06-03 19:59:32,992     INFO Received trigger 5
+2018-06-03 19:59:33,991     INFO Received trigger 5
+2018-06-03 19:59:34,991     INFO Received trigger 5
+2018-06-03 19:59:34,991     INFO End of fixation
+2018-06-03 19:59:35,012     INFO Showing options
+2018-06-03 19:59:35,947     INFO Received response [('2', 0.9206430912017822)]
+2018-06-03 19:59:36,540     INFO End of options
+2018-06-03 19:59:36,542     INFO Showing feedback
+2018-06-03 19:59:36,991     INFO Received trigger 5
+2018-06-03 19:59:37,991     INFO Received trigger 5
+2018-06-03 19:59:37,991     INFO End of feedback
+2018-06-03 19:59:37,993     INFO End of trial
+2018-06-03 19:59:37,997     INFO Showing fixation
+2018-06-03 19:59:38,991     INFO Received trigger 5
+2018-06-03 19:59:39,991     INFO Received trigger 5
+2018-06-03 19:59:40,991     INFO Received trigger 5
+2018-06-03 19:59:41,991     INFO Received trigger 5
+2018-06-03 19:59:42,991     INFO Received trigger 5
+2018-06-03 19:59:43,991     INFO Received trigger 5
+2018-06-03 19:59:44,991     INFO Received trigger 5
+2018-06-03 19:59:44,991     INFO End of fixation
+2018-06-03 19:59:44,991     INFO Showing anchor face
+2018-06-03 19:59:45,991     INFO Received trigger 5
+2018-06-03 19:59:45,991     INFO End of anchor face
+2018-06-03 19:59:45,994     INFO Showing fixation
+2018-06-03 19:59:46,510     INFO End of fixation
+2018-06-03 19:59:46,513     INFO Showing number
+2018-06-03 19:59:46,991     INFO Received trigger 5
+2018-06-03 19:59:46,991     INFO End of number
+2018-06-03 19:59:46,994     INFO Showing fixation
+2018-06-03 19:59:47,991     INFO Received trigger 5
+2018-06-03 19:59:48,991     INFO Received trigger 5
+2018-06-03 19:59:49,991     INFO Received trigger 5
+2018-06-03 19:59:50,990     INFO Received trigger 5
+2018-06-03 19:59:51,991     INFO Received trigger 5
+2018-06-03 19:59:52,990     INFO Received trigger 5
+2018-06-03 19:59:52,991     INFO End of fixation
+2018-06-03 19:59:53,009     INFO Showing options
+2018-06-03 19:59:53,677     INFO Received response [('1', 0.6518371105194092)]
+2018-06-03 19:59:54,541     INFO End of options
+2018-06-03 19:59:54,558     INFO Showing feedback
+2018-06-03 19:59:54,990     INFO Received trigger 5
+2018-06-03 19:59:55,989     INFO Received trigger 5
+2018-06-03 19:59:55,989     INFO End of feedback
+2018-06-03 19:59:55,990     INFO End of trial
+2018-06-03 19:59:55,993     INFO Showing fixation
+2018-06-03 19:59:56,989     INFO Received trigger 5
+2018-06-03 19:59:57,989     INFO Received trigger 5
+2018-06-03 19:59:58,989     INFO Received trigger 5
+2018-06-03 19:59:59,989     INFO Received trigger 5
+2018-06-03 20:00:00,989     INFO Received trigger 5
+2018-06-03 20:00:00,989     INFO End of fixation
+2018-06-03 20:00:00,989     INFO Showing anchor face
+2018-06-03 20:00:01,989     INFO Received trigger 5
+2018-06-03 20:00:01,989     INFO End of anchor face
+2018-06-03 20:00:01,992     INFO Showing fixation
+2018-06-03 20:00:02,508     INFO End of fixation
+2018-06-03 20:00:02,510     INFO Showing number
+2018-06-03 20:00:02,989     INFO Received trigger 5
+2018-06-03 20:00:02,989     INFO End of number
+2018-06-03 20:00:02,992     INFO Showing fixation
+2018-06-03 20:00:03,989     INFO Received trigger 5
+2018-06-03 20:00:04,989     INFO Received trigger 5
+2018-06-03 20:00:05,989     INFO Received trigger 5
+2018-06-03 20:00:06,989     INFO Received trigger 5
+2018-06-03 20:00:07,988     INFO Received trigger 5
+2018-06-03 20:00:08,988     INFO Received trigger 5
+2018-06-03 20:00:08,988     INFO End of fixation
+2018-06-03 20:00:09,013     INFO Showing options
+2018-06-03 20:00:09,899     INFO Received response [('1', 0.874675989151001)]
+2018-06-03 20:00:10,534     INFO End of options
+2018-06-03 20:00:10,540     INFO Showing feedback
+2018-06-03 20:00:10,988     INFO Received trigger 5
+2018-06-03 20:00:11,988     INFO Received trigger 5
+2018-06-03 20:00:11,988     INFO End of feedback
+2018-06-03 20:00:11,989     INFO End of trial
+2018-06-03 20:00:11,992     INFO Showing fixation
+2018-06-03 20:00:12,988     INFO Received trigger 5
+2018-06-03 20:00:13,988     INFO Received trigger 5
+2018-06-03 20:00:14,988     INFO Received trigger 5
+2018-06-03 20:00:15,988     INFO Received trigger 5
+2018-06-03 20:00:15,988     INFO End of fixation
+2018-06-03 20:00:15,989     INFO Showing anchor face
+2018-06-03 20:00:16,988     INFO Received trigger 5
+2018-06-03 20:00:16,988     INFO End of anchor face
+2018-06-03 20:00:16,991     INFO Showing fixation
+2018-06-03 20:00:17,508     INFO End of fixation
+2018-06-03 20:00:17,510     INFO Showing number
+2018-06-03 20:00:17,988     INFO Received trigger 5
+2018-06-03 20:00:17,988     INFO End of number
+2018-06-03 20:00:17,991     INFO Showing fixation
+2018-06-03 20:00:18,988     INFO Received trigger 5
+2018-06-03 20:00:19,988     INFO Received trigger 5
+2018-06-03 20:00:20,988     INFO Received trigger 5
+2018-06-03 20:00:21,987     INFO Received trigger 5
+2018-06-03 20:00:22,987     INFO Received trigger 5
+2018-06-03 20:00:23,987     INFO Received trigger 5
+2018-06-03 20:00:23,987     INFO End of fixation
+2018-06-03 20:00:24,007     INFO Showing options
+2018-06-03 20:00:24,693     INFO Received response [('1', 0.6687657833099365)]
+2018-06-03 20:00:25,539     INFO End of options
+2018-06-03 20:00:25,556     INFO Showing feedback
+2018-06-03 20:00:25,986     INFO Received trigger 5
+2018-06-03 20:00:26,986     INFO Received trigger 5
+2018-06-03 20:00:26,986     INFO End of feedback
+2018-06-03 20:00:26,988     INFO End of trial
+2018-06-03 20:00:26,991     INFO Showing fixation
+2018-06-03 20:00:27,986     INFO Received trigger 5
+2018-06-03 20:00:28,986     INFO Received trigger 5
+2018-06-03 20:00:29,986     INFO Received trigger 5
+2018-06-03 20:00:30,986     INFO Received trigger 5
+2018-06-03 20:00:31,986     INFO Received trigger 5
+2018-06-03 20:00:32,986     INFO Received trigger 5
+2018-06-03 20:00:33,986     INFO Received trigger 5
+2018-06-03 20:00:33,986     INFO End of fixation
+2018-06-03 20:00:33,987     INFO Showing anchor face
+2018-06-03 20:00:34,986     INFO Received trigger 5
+2018-06-03 20:00:34,986     INFO End of anchor face
+2018-06-03 20:00:34,989     INFO Showing fixation
+2018-06-03 20:00:35,507     INFO End of fixation
+2018-06-03 20:00:35,510     INFO Showing number
+2018-06-03 20:00:35,986     INFO Received trigger 5
+2018-06-03 20:00:35,986     INFO End of number
+2018-06-03 20:00:35,989     INFO Showing fixation
+2018-06-03 20:00:36,986     INFO Received trigger 5
+2018-06-03 20:00:37,986     INFO Received trigger 5
+2018-06-03 20:00:38,986     INFO Received trigger 5
+2018-06-03 20:00:39,985     INFO Received trigger 5
+2018-06-03 20:00:40,986     INFO Received trigger 5
+2018-06-03 20:00:41,986     INFO Received trigger 5
+2018-06-03 20:00:41,986     INFO End of fixation
+2018-06-03 20:00:42,010     INFO Showing options
+2018-06-03 20:00:43,213     INFO Received response [('3', 1.1909570693969727)]
+2018-06-03 20:00:43,532     INFO End of options
+2018-06-03 20:00:43,538     INFO Showing feedback
+2018-06-03 20:00:43,985     INFO Received trigger 5
+2018-06-03 20:00:44,985     INFO Received trigger 5
+2018-06-03 20:00:44,986     INFO End of feedback
+2018-06-03 20:00:44,987     INFO End of trial
+2018-06-03 20:00:44,989     INFO Showing fixation
+2018-06-03 20:00:45,985     INFO Received trigger 5
+2018-06-03 20:00:46,985     INFO Received trigger 5
+2018-06-03 20:00:47,984     INFO Received trigger 5
+2018-06-03 20:00:48,984     INFO Received trigger 5
+2018-06-03 20:00:49,984     INFO Received trigger 5
+2018-06-03 20:00:50,984     INFO Received trigger 5
+2018-06-03 20:00:50,984     INFO End of fixation
+2018-06-03 20:00:50,984     INFO Showing anchor face
+2018-06-03 20:00:51,984     INFO Received trigger 5
+2018-06-03 20:00:51,984     INFO End of anchor face
+2018-06-03 20:00:51,987     INFO Showing fixation
+2018-06-03 20:00:52,506     INFO End of fixation
+2018-06-03 20:00:52,508     INFO Showing number
+2018-06-03 20:00:52,984     INFO Received trigger 5
+2018-06-03 20:00:52,984     INFO End of number
+2018-06-03 20:00:52,987     INFO Showing fixation
+2018-06-03 20:00:53,984     INFO Received trigger 5
+2018-06-03 20:00:54,984     INFO Received trigger 5
+2018-06-03 20:00:55,984     INFO Received trigger 5
+2018-06-03 20:00:56,984     INFO Received trigger 5
+2018-06-03 20:00:57,984     INFO Received trigger 5
+2018-06-03 20:00:58,984     INFO Received trigger 5
+2018-06-03 20:00:58,984     INFO End of fixation
+2018-06-03 20:00:59,005     INFO Showing options
+2018-06-03 20:01:00,522     INFO No response received, showing feedback
+2018-06-03 20:01:00,983     INFO Received trigger 5
+2018-06-03 20:01:01,983     INFO Received trigger 5
+2018-06-03 20:01:01,983     INFO End of feedback
+2018-06-03 20:01:01,984     INFO End of trial
+2018-06-03 20:01:01,988     INFO Showing fixation
+2018-06-03 20:01:02,983     INFO Received trigger 5
+2018-06-03 20:01:03,983     INFO Received trigger 5
+2018-06-03 20:01:04,983     INFO Received trigger 5
+2018-06-03 20:01:05,983     INFO Received trigger 5
+2018-06-03 20:01:06,983     INFO Received trigger 5
+2018-06-03 20:01:07,983     INFO Received trigger 5
+2018-06-03 20:01:08,983     INFO Received trigger 5
+2018-06-03 20:01:09,983     INFO Received trigger 5
+2018-06-03 20:01:09,983     INFO End of fixation
+2018-06-03 20:01:09,984     INFO Showing anchor face
+2018-06-03 20:01:10,983     INFO Received trigger 5
+2018-06-03 20:01:10,983     INFO End of anchor face
+2018-06-03 20:01:10,986     INFO Showing fixation
+2018-06-03 20:01:11,505     INFO End of fixation
+2018-06-03 20:01:11,507     INFO Showing number
+2018-06-03 20:01:11,983     INFO Received trigger 5
+2018-06-03 20:01:11,983     INFO End of number
+2018-06-03 20:01:11,986     INFO Showing fixation
+2018-06-03 20:01:12,983     INFO Received trigger 5
+2018-06-03 20:01:13,981     INFO Received trigger 5
+2018-06-03 20:01:14,982     INFO Received trigger 5
+2018-06-03 20:01:15,982     INFO Received trigger 5
+2018-06-03 20:01:16,982     INFO Received trigger 5
+2018-06-03 20:01:17,981     INFO Received trigger 5
+2018-06-03 20:01:17,981     INFO End of fixation
+2018-06-03 20:01:18,006     INFO Showing options
+2018-06-03 20:01:18,812     INFO Received response [('4', 0.7919461727142334)]
+2018-06-03 20:01:19,528     INFO End of options
+2018-06-03 20:01:19,537     INFO Showing feedback
+2018-06-03 20:01:19,981     INFO Received trigger 5
+2018-06-03 20:01:20,981     INFO Received trigger 5
+2018-06-03 20:01:20,981     INFO End of feedback
+2018-06-03 20:01:20,983     INFO End of trial
+2018-06-03 20:01:20,986     INFO Showing fixation
+2018-06-03 20:01:21,981     INFO Received trigger 5
+2018-06-03 20:01:22,981     INFO Received trigger 5
+2018-06-03 20:01:23,981     INFO Received trigger 5
+2018-06-03 20:01:24,981     INFO Received trigger 5
+2018-06-03 20:01:24,981     INFO End of fixation
+2018-06-03 20:01:24,982     INFO Showing instructions
+2018-06-03 20:01:24,991     INFO Instruction: You earned 21 point(s) out of ...
+2018-06-03 20:01:25,981     INFO Received response [('5', 0.9778139591217041)]
+2018-06-03 20:01:25,981     INFO End of instructions
+2018-06-03 20:01:25,981     INFO Showing instructions
+2018-06-03 20:01:25,991     INFO Instruction: You earned 21 point(s) out of ...
+2018-06-03 20:01:26,981     INFO Received response [('5', 0.9776651859283447)]
+2018-06-03 20:01:26,981     INFO End of instructions
+2018-06-03 20:01:26,981     INFO Showing instructions
+2018-06-03 20:01:26,991     INFO Instruction: You earned 21 point(s) out of ...
+2018-06-03 20:01:27,981     INFO Received response [('5', 0.9777481555938721)]
+2018-06-03 20:01:27,981     INFO End of instructions
+2018-06-03 20:01:27,988     INFO Showing instructions
+2018-06-03 20:01:28,027     INFO Instruction: You have completed Run #3.  Ru...
+2018-06-03 20:01:57,186     INFO Received response [('space', 29.149832010269165)]
+2018-06-03 20:01:57,186     INFO End of instructions
+2018-06-03 20:01:57,187     INFO Showing instructions
+2018-06-03 20:01:57,227     INFO Instruction: You have completed Run #3.  Ru...
+2018-06-03 20:02:08,282     INFO Received response [('5', 11.047713994979858)]
+2018-06-03 20:02:08,283     INFO End of instructions
+2018-06-03 20:02:08,283     INFO Showing anchor face
+2018-06-03 20:02:09,282     INFO Received trigger 5
+2018-06-03 20:02:09,282     INFO End of anchor face
+2018-06-03 20:02:09,285     INFO Showing fixation
+2018-06-03 20:02:09,801     INFO End of fixation
+2018-06-03 20:02:09,804     INFO Showing number
+2018-06-03 20:02:10,282     INFO Received trigger 5
+2018-06-03 20:02:10,282     INFO End of number
+2018-06-03 20:02:10,285     INFO Showing fixation
+2018-06-03 20:02:11,282     INFO Received trigger 5
+2018-06-03 20:02:12,282     INFO Received trigger 5
+2018-06-03 20:02:13,282     INFO Received trigger 5
+2018-06-03 20:02:14,282     INFO Received trigger 5
+2018-06-03 20:02:15,282     INFO Received trigger 5
+2018-06-03 20:02:16,282     INFO Received trigger 5
+2018-06-03 20:02:16,282     INFO End of fixation
+2018-06-03 20:02:16,306     INFO Showing options
+2018-06-03 20:02:17,322     INFO Received response [('2', 1.0058321952819824)]
+2018-06-03 20:02:17,828     INFO End of options
+2018-06-03 20:02:17,833     INFO Showing feedback
+2018-06-03 20:02:18,282     INFO Received trigger 5
+2018-06-03 20:02:19,281     INFO Received trigger 5
+2018-06-03 20:02:19,281     INFO End of feedback
+2018-06-03 20:02:19,282     INFO End of trial
+2018-06-03 20:02:19,285     INFO Showing fixation
+2018-06-03 20:02:20,280     INFO Received trigger 5
+2018-06-03 20:02:21,281     INFO Received trigger 5
+2018-06-03 20:02:22,280     INFO Received trigger 5
+2018-06-03 20:02:23,280     INFO Received trigger 5
+2018-06-03 20:02:23,281     INFO End of fixation
+2018-06-03 20:02:23,281     INFO Showing anchor face
+2018-06-03 20:02:24,280     INFO Received trigger 5
+2018-06-03 20:02:24,280     INFO End of anchor face
+2018-06-03 20:02:24,283     INFO Showing fixation
+2018-06-03 20:02:24,800     INFO End of fixation
+2018-06-03 20:02:24,803     INFO Showing number
+2018-06-03 20:02:25,280     INFO Received trigger 5
+2018-06-03 20:02:25,281     INFO End of number
+2018-06-03 20:02:25,284     INFO Showing fixation
+2018-06-03 20:02:26,280     INFO Received trigger 5
+2018-06-03 20:02:27,280     INFO Received trigger 5
+2018-06-03 20:02:28,280     INFO Received trigger 5
+2018-06-03 20:02:29,280     INFO Received trigger 5
+2018-06-03 20:02:30,280     INFO Received trigger 5
+2018-06-03 20:02:31,280     INFO Received trigger 5
+2018-06-03 20:02:31,280     INFO End of fixation
+2018-06-03 20:02:31,304     INFO Showing options
+2018-06-03 20:02:32,231     INFO Received response [('4', 0.9147019386291504)]
+2018-06-03 20:02:32,835     INFO End of options
+2018-06-03 20:02:32,849     INFO Showing feedback
+2018-06-03 20:02:33,280     INFO Received trigger 5
+2018-06-03 20:02:34,280     INFO Received trigger 5
+2018-06-03 20:02:34,280     INFO End of feedback
+2018-06-03 20:02:34,281     INFO End of trial
+2018-06-03 20:02:34,284     INFO Showing fixation
+2018-06-03 20:02:35,279     INFO Received trigger 5
+2018-06-03 20:02:36,280     INFO Received trigger 5
+2018-06-03 20:02:37,279     INFO Received trigger 5
+2018-06-03 20:02:38,279     INFO Received trigger 5
+2018-06-03 20:02:38,280     INFO End of fixation
+2018-06-03 20:02:38,280     INFO Showing anchor face
+2018-06-03 20:02:39,279     INFO Received trigger 5
+2018-06-03 20:02:39,279     INFO End of anchor face
+2018-06-03 20:02:39,283     INFO Showing fixation
+2018-06-03 20:02:39,799     INFO End of fixation
+2018-06-03 20:02:39,803     INFO Showing number
+2018-06-03 20:02:40,279     INFO Received trigger 5
+2018-06-03 20:02:40,279     INFO End of number
+2018-06-03 20:02:40,282     INFO Showing fixation
+2018-06-03 20:02:41,279     INFO Received trigger 5
+2018-06-03 20:02:42,279     INFO Received trigger 5
+2018-06-03 20:02:43,279     INFO Received trigger 5
+2018-06-03 20:02:44,279     INFO Received trigger 5
+2018-06-03 20:02:45,279     INFO Received trigger 5
+2018-06-03 20:02:46,278     INFO Received trigger 5
+2018-06-03 20:02:46,278     INFO End of fixation
+2018-06-03 20:02:46,299     INFO Showing options
+2018-06-03 20:02:47,234     INFO Received response [('1', 0.9187099933624268)]
+2018-06-03 20:02:47,830     INFO End of options
+2018-06-03 20:02:47,848     INFO Showing feedback
+2018-06-03 20:02:48,278     INFO Received trigger 5
+2018-06-03 20:02:49,278     INFO Received trigger 5
+2018-06-03 20:02:49,278     INFO End of feedback
+2018-06-03 20:02:49,279     INFO End of trial
+2018-06-03 20:02:49,282     INFO Showing fixation
+2018-06-03 20:02:50,278     INFO Received trigger 5
+2018-06-03 20:02:51,278     INFO Received trigger 5
+2018-06-03 20:02:52,277     INFO Received trigger 5
+2018-06-03 20:02:53,278     INFO Received trigger 5
+2018-06-03 20:02:54,277     INFO Received trigger 5
+2018-06-03 20:02:55,277     INFO Received trigger 5
+2018-06-03 20:02:56,277     INFO Received trigger 5
+2018-06-03 20:02:56,278     INFO End of fixation
+2018-06-03 20:02:56,278     INFO Showing anchor face
+2018-06-03 20:02:57,278     INFO Received trigger 5
+2018-06-03 20:02:57,278     INFO End of anchor face
+2018-06-03 20:02:57,281     INFO Showing fixation
+2018-06-03 20:02:57,798     INFO End of fixation
+2018-06-03 20:02:57,801     INFO Showing number
+2018-06-03 20:02:58,277     INFO Received trigger 5
+2018-06-03 20:02:58,277     INFO End of number
+2018-06-03 20:02:58,280     INFO Showing fixation
+2018-06-03 20:02:59,278     INFO Received trigger 5
+2018-06-03 20:03:00,277     INFO Received trigger 5
+2018-06-03 20:03:01,277     INFO Received trigger 5
+2018-06-03 20:03:02,277     INFO Received trigger 5
+2018-06-03 20:03:03,277     INFO Received trigger 5
+2018-06-03 20:03:04,277     INFO Received trigger 5
+2018-06-03 20:03:04,277     INFO End of fixation
+2018-06-03 20:03:04,295     INFO Showing options
+2018-06-03 20:03:05,517     INFO Received response [('4', 1.2028560638427734)]
+2018-06-03 20:03:05,828     INFO End of options
+2018-06-03 20:03:05,831     INFO Showing feedback
+2018-06-03 20:03:06,277     INFO Received trigger 5
+2018-06-03 20:03:07,277     INFO Received trigger 5
+2018-06-03 20:03:07,277     INFO End of feedback
+2018-06-03 20:03:07,278     INFO End of trial
+2018-06-03 20:03:07,283     INFO Showing fixation
+2018-06-03 20:03:08,277     INFO Received trigger 5
+2018-06-03 20:03:09,276     INFO Received trigger 5
+2018-06-03 20:03:10,276     INFO Received trigger 5
+2018-06-03 20:03:11,276     INFO Received trigger 5
+2018-06-03 20:03:12,275     INFO Received trigger 5
+2018-06-03 20:03:12,276     INFO End of fixation
+2018-06-03 20:03:12,276     INFO Showing anchor face
+2018-06-03 20:03:13,275     INFO Received trigger 5
+2018-06-03 20:03:13,276     INFO End of anchor face
+2018-06-03 20:03:13,279     INFO Showing fixation
+2018-06-03 20:03:13,797     INFO End of fixation
+2018-06-03 20:03:13,800     INFO Showing number
+2018-06-03 20:03:14,275     INFO Received trigger 5
+2018-06-03 20:03:14,275     INFO End of number
+2018-06-03 20:03:14,278     INFO Showing fixation
+2018-06-03 20:03:15,275     INFO Received trigger 5
+2018-06-03 20:03:16,275     INFO Received trigger 5
+2018-06-03 20:03:17,275     INFO Received trigger 5
+2018-06-03 20:03:18,275     INFO Received trigger 5
+2018-06-03 20:03:19,275     INFO Received trigger 5
+2018-06-03 20:03:20,275     INFO Received trigger 5
+2018-06-03 20:03:20,275     INFO End of fixation
+2018-06-03 20:03:20,293     INFO Showing options
+2018-06-03 20:03:21,318     INFO Received response [('2', 1.0209810733795166)]
+2018-06-03 20:03:21,809     INFO End of options
+2018-06-03 20:03:21,812     INFO Showing feedback
+2018-06-03 20:03:22,275     INFO Received trigger 5
+2018-06-03 20:03:23,275     INFO Received trigger 5
+2018-06-03 20:03:23,275     INFO End of feedback
+2018-06-03 20:03:23,276     INFO End of trial
+2018-06-03 20:03:23,279     INFO Showing fixation
+2018-06-03 20:03:24,275     INFO Received trigger 5
+2018-06-03 20:03:25,275     INFO Received trigger 5
+2018-06-03 20:03:26,275     INFO Received trigger 5
+2018-06-03 20:03:27,275     INFO Received trigger 5
+2018-06-03 20:03:28,274     INFO Received trigger 5
+2018-06-03 20:03:28,274     INFO End of fixation
+2018-06-03 20:03:28,275     INFO Showing anchor face
+2018-06-03 20:03:29,274     INFO Received trigger 5
+2018-06-03 20:03:29,275     INFO End of anchor face
+2018-06-03 20:03:29,278     INFO Showing fixation
+2018-06-03 20:03:29,796     INFO End of fixation
+2018-06-03 20:03:29,799     INFO Showing number
+2018-06-03 20:03:30,274     INFO Received trigger 5
+2018-06-03 20:03:30,274     INFO End of number
+2018-06-03 20:03:30,277     INFO Showing fixation
+2018-06-03 20:03:31,274     INFO Received trigger 5
+2018-06-03 20:03:32,274     INFO Received trigger 5
+2018-06-03 20:03:33,274     INFO Received trigger 5
+2018-06-03 20:03:34,274     INFO Received trigger 5
+2018-06-03 20:03:35,274     INFO Received trigger 5
+2018-06-03 20:03:36,274     INFO Received trigger 5
+2018-06-03 20:03:36,276     INFO End of fixation
+2018-06-03 20:03:36,294     INFO Showing options
+2018-06-03 20:03:37,336     INFO Received response [('2', 1.0235440731048584)]
+2018-06-03 20:03:37,822     INFO End of options
+2018-06-03 20:03:37,828     INFO Showing feedback
+2018-06-03 20:03:38,273     INFO Received trigger 5
+2018-06-03 20:03:39,273     INFO Received trigger 5
+2018-06-03 20:03:39,273     INFO End of feedback
+2018-06-03 20:03:39,274     INFO End of trial
+2018-06-03 20:03:39,277     INFO Showing fixation
+2018-06-03 20:03:40,273     INFO Received trigger 5
+2018-06-03 20:03:41,273     INFO Received trigger 5
+2018-06-03 20:03:42,273     INFO Received trigger 5
+2018-06-03 20:03:43,272     INFO Received trigger 5
+2018-06-03 20:03:44,272     INFO Received trigger 5
+2018-06-03 20:03:45,272     INFO Received trigger 5
+2018-06-03 20:03:46,272     INFO Received trigger 5
+2018-06-03 20:03:46,273     INFO End of fixation
+2018-06-03 20:03:46,273     INFO Showing anchor face
+2018-06-03 20:03:47,272     INFO Received trigger 5
+2018-06-03 20:03:47,272     INFO End of anchor face
+2018-06-03 20:03:47,275     INFO Showing fixation
+2018-06-03 20:03:47,779     INFO End of fixation
+2018-06-03 20:03:47,781     INFO Showing number
+2018-06-03 20:03:48,272     INFO Received trigger 5
+2018-06-03 20:03:48,272     INFO End of number
+2018-06-03 20:03:48,276     INFO Showing fixation
+2018-06-03 20:03:49,272     INFO Received trigger 5
+2018-06-03 20:03:50,272     INFO Received trigger 5
+2018-06-03 20:03:51,272     INFO Received trigger 5
+2018-06-03 20:03:52,272     INFO Received trigger 5
+2018-06-03 20:03:53,272     INFO Received trigger 5
+2018-06-03 20:03:54,272     INFO Received trigger 5
+2018-06-03 20:03:54,272     INFO End of fixation
+2018-06-03 20:03:54,290     INFO Showing options
+2018-06-03 20:03:55,109     INFO Received response [('1', 0.8147459030151367)]
+2018-06-03 20:03:55,813     INFO End of options
+2018-06-03 20:03:55,827     INFO Showing feedback
+2018-06-03 20:03:56,272     INFO Received trigger 5
+2018-06-03 20:03:57,272     INFO Received trigger 5
+2018-06-03 20:03:57,272     INFO End of feedback
+2018-06-03 20:03:57,273     INFO End of trial
+2018-06-03 20:03:57,276     INFO Showing fixation
+2018-06-03 20:03:58,272     INFO Received trigger 5
+2018-06-03 20:03:59,272     INFO Received trigger 5
+2018-06-03 20:04:00,271     INFO Received trigger 5
+2018-06-03 20:04:01,272     INFO Received trigger 5
+2018-06-03 20:04:01,272     INFO End of fixation
+2018-06-03 20:04:01,272     INFO Showing anchor face
+2018-06-03 20:04:02,271     INFO Received trigger 5
+2018-06-03 20:04:02,271     INFO End of anchor face
+2018-06-03 20:04:02,275     INFO Showing fixation
+2018-06-03 20:04:02,778     INFO End of fixation
+2018-06-03 20:04:02,781     INFO Showing number
+2018-06-03 20:04:03,271     INFO Received trigger 5
+2018-06-03 20:04:03,272     INFO End of number
+2018-06-03 20:04:03,275     INFO Showing fixation
+2018-06-03 20:04:04,270     INFO Received trigger 5
+2018-06-03 20:04:05,270     INFO Received trigger 5
+2018-06-03 20:04:06,270     INFO Received trigger 5
+2018-06-03 20:04:07,270     INFO Received trigger 5
+2018-06-03 20:04:08,270     INFO Received trigger 5
+2018-06-03 20:04:09,270     INFO Received trigger 5
+2018-06-03 20:04:09,270     INFO End of fixation
+2018-06-03 20:04:09,288     INFO Showing options
+2018-06-03 20:04:10,119     INFO Received response [('2', 0.8253400325775146)]
+2018-06-03 20:04:10,802     INFO End of options
+2018-06-03 20:04:10,809     INFO Showing feedback
+2018-06-03 20:04:11,270     INFO Received trigger 5
+2018-06-03 20:04:12,270     INFO Received trigger 5
+2018-06-03 20:04:12,270     INFO End of feedback
+2018-06-03 20:04:12,271     INFO End of trial
+2018-06-03 20:04:12,274     INFO Showing fixation
+2018-06-03 20:04:13,270     INFO Received trigger 5
+2018-06-03 20:04:14,270     INFO Received trigger 5
+2018-06-03 20:04:15,270     INFO Received trigger 5
+2018-06-03 20:04:16,269     INFO Received trigger 5
+2018-06-03 20:04:17,270     INFO Received trigger 5
+2018-06-03 20:04:18,269     INFO Received trigger 5
+2018-06-03 20:04:18,270     INFO End of fixation
+2018-06-03 20:04:18,270     INFO Showing anchor face
+2018-06-03 20:04:19,270     INFO Received trigger 5
+2018-06-03 20:04:19,270     INFO End of anchor face
+2018-06-03 20:04:19,273     INFO Showing fixation
+2018-06-03 20:04:19,777     INFO End of fixation
+2018-06-03 20:04:19,780     INFO Showing number
+2018-06-03 20:04:20,269     INFO Received trigger 5
+2018-06-03 20:04:20,269     INFO End of number
+2018-06-03 20:04:20,272     INFO Showing fixation
+2018-06-03 20:04:21,269     INFO Received trigger 5
+2018-06-03 20:04:22,269     INFO Received trigger 5
+2018-06-03 20:04:23,269     INFO Received trigger 5
+2018-06-03 20:04:24,269     INFO Received trigger 5
+2018-06-03 20:04:25,269     INFO Received trigger 5
+2018-06-03 20:04:26,269     INFO Received trigger 5
+2018-06-03 20:04:26,269     INFO End of fixation
+2018-06-03 20:04:26,287     INFO Showing options
+2018-06-03 20:04:27,466     INFO Received response [('2', 1.1735398769378662)]
+2018-06-03 20:04:27,802     INFO End of options
+2018-06-03 20:04:27,808     INFO Showing feedback
+2018-06-03 20:04:28,269     INFO Received trigger 5
+2018-06-03 20:04:29,269     INFO Received trigger 5
+2018-06-03 20:04:29,269     INFO End of feedback
+2018-06-03 20:04:29,270     INFO End of trial
+2018-06-03 20:04:29,274     INFO Showing fixation
+2018-06-03 20:04:30,268     INFO Received trigger 5
+2018-06-03 20:04:31,268     INFO Received trigger 5
+2018-06-03 20:04:32,268     INFO Received trigger 5
+2018-06-03 20:04:33,268     INFO Received trigger 5
+2018-06-03 20:04:34,267     INFO Received trigger 5
+2018-06-03 20:04:35,267     INFO Received trigger 5
+2018-06-03 20:04:36,267     INFO Received trigger 5
+2018-06-03 20:04:37,267     INFO Received trigger 5
+2018-06-03 20:04:37,267     INFO End of fixation
+2018-06-03 20:04:37,268     INFO Showing anchor face
+2018-06-03 20:04:38,267     INFO Received trigger 5
+2018-06-03 20:04:38,267     INFO End of anchor face
+2018-06-03 20:04:38,270     INFO Showing fixation
+2018-06-03 20:04:38,775     INFO End of fixation
+2018-06-03 20:04:38,779     INFO Showing number
+2018-06-03 20:04:39,267     INFO Received trigger 5
+2018-06-03 20:04:39,267     INFO End of number
+2018-06-03 20:04:39,270     INFO Showing fixation
+2018-06-03 20:04:40,267     INFO Received trigger 5
+2018-06-03 20:04:41,267     INFO Received trigger 5
+2018-06-03 20:04:42,267     INFO Received trigger 5
+2018-06-03 20:04:43,267     INFO Received trigger 5
+2018-06-03 20:04:44,267     INFO Received trigger 5
+2018-06-03 20:04:45,267     INFO Received trigger 5
+2018-06-03 20:04:45,267     INFO End of fixation
+2018-06-03 20:04:45,287     INFO Showing options
+2018-06-03 20:04:46,588     INFO Received response [('4', 1.2964818477630615)]
+2018-06-03 20:04:46,794     INFO End of options
+2018-06-03 20:04:46,807     INFO Showing feedback
+2018-06-03 20:04:47,267     INFO Received trigger 5
+2018-06-03 20:04:48,267     INFO Received trigger 5
+2018-06-03 20:04:48,267     INFO End of feedback
+2018-06-03 20:04:48,268     INFO End of trial
+2018-06-03 20:04:48,271     INFO Showing fixation
+2018-06-03 20:04:49,266     INFO Received trigger 5
+2018-06-03 20:04:50,266     INFO Received trigger 5
+2018-06-03 20:04:51,267     INFO Received trigger 5
+2018-06-03 20:04:52,266     INFO Received trigger 5
+2018-06-03 20:04:52,267     INFO End of fixation
+2018-06-03 20:04:52,267     INFO Showing anchor face
+2018-06-03 20:04:53,266     INFO Received trigger 5
+2018-06-03 20:04:53,267     INFO End of anchor face
+2018-06-03 20:04:53,269     INFO Showing fixation
+2018-06-03 20:04:53,774     INFO End of fixation
+2018-06-03 20:04:53,777     INFO Showing number
+2018-06-03 20:04:54,266     INFO Received trigger 5
+2018-06-03 20:04:54,267     INFO End of number
+2018-06-03 20:04:54,270     INFO Showing fixation
+2018-06-03 20:04:55,265     INFO Received trigger 5
+2018-06-03 20:04:56,265     INFO Received trigger 5
+2018-06-03 20:04:57,265     INFO Received trigger 5
+2018-06-03 20:04:58,265     INFO Received trigger 5
+2018-06-03 20:04:59,265     INFO Received trigger 5
+2018-06-03 20:05:00,265     INFO Received trigger 5
+2018-06-03 20:05:00,265     INFO End of fixation
+2018-06-03 20:05:00,287     INFO Showing options
+2018-06-03 20:05:01,417     INFO Received response [('3', 1.1099588871002197)]
+2018-06-03 20:05:01,814     INFO End of options
+2018-06-03 20:05:01,823     INFO Showing feedback
+2018-06-03 20:05:02,265     INFO Received trigger 5
+2018-06-03 20:05:03,265     INFO Received trigger 5
+2018-06-03 20:05:03,265     INFO End of feedback
+2018-06-03 20:05:03,266     INFO End of trial
+2018-06-03 20:05:03,269     INFO Showing fixation
+2018-06-03 20:05:04,264     INFO Received trigger 5
+2018-06-03 20:05:05,265     INFO Received trigger 5
+2018-06-03 20:05:06,264     INFO Received trigger 5
+2018-06-03 20:05:07,265     INFO Received trigger 5
+2018-06-03 20:05:08,264     INFO Received trigger 5
+2018-06-03 20:05:09,264     INFO Received trigger 5
+2018-06-03 20:05:10,264     INFO Received trigger 5
+2018-06-03 20:05:10,264     INFO End of fixation
+2018-06-03 20:05:10,265     INFO Showing anchor face
+2018-06-03 20:05:11,264     INFO Received trigger 5
+2018-06-03 20:05:11,264     INFO End of anchor face
+2018-06-03 20:05:11,268     INFO Showing fixation
+2018-06-03 20:05:11,773     INFO End of fixation
+2018-06-03 20:05:11,776     INFO Showing number
+2018-06-03 20:05:12,264     INFO Received trigger 5
+2018-06-03 20:05:12,265     INFO End of number
+2018-06-03 20:05:12,268     INFO Showing fixation
+2018-06-03 20:05:13,264     INFO Received trigger 5
+2018-06-03 20:05:14,264     INFO Received trigger 5
+2018-06-03 20:05:15,264     INFO Received trigger 5
+2018-06-03 20:05:16,264     INFO Received trigger 5
+2018-06-03 20:05:17,264     INFO Received trigger 5
+2018-06-03 20:05:18,264     INFO Received trigger 5
+2018-06-03 20:05:18,264     INFO End of fixation
+2018-06-03 20:05:18,282     INFO Showing options
+2018-06-03 20:05:19,572     INFO Received response [('4', 1.282214879989624)]
+2018-06-03 20:05:19,807     INFO End of options
+2018-06-03 20:05:19,822     INFO Showing feedback
+2018-06-03 20:05:20,264     INFO Received trigger 5
+2018-06-03 20:05:21,263     INFO Received trigger 5
+2018-06-03 20:05:21,263     INFO End of feedback
+2018-06-03 20:05:21,264     INFO End of trial
+2018-06-03 20:05:21,267     INFO Showing fixation
+2018-06-03 20:05:22,262     INFO Received trigger 5
+2018-06-03 20:05:23,263     INFO Received trigger 5
+2018-06-03 20:05:24,262     INFO Received trigger 5
+2018-06-03 20:05:25,263     INFO Received trigger 5
+2018-06-03 20:05:26,262     INFO Received trigger 5
+2018-06-03 20:05:26,263     INFO End of fixation
+2018-06-03 20:05:26,263     INFO Showing anchor face
+2018-06-03 20:05:27,263     INFO Received trigger 5
+2018-06-03 20:05:27,263     INFO End of anchor face
+2018-06-03 20:05:27,266     INFO Showing fixation
+2018-06-03 20:05:27,773     INFO End of fixation
+2018-06-03 20:05:27,776     INFO Showing number
+2018-06-03 20:05:28,262     INFO Received trigger 5
+2018-06-03 20:05:28,263     INFO End of number
+2018-06-03 20:05:28,266     INFO Showing fixation
+2018-06-03 20:05:29,262     INFO Received trigger 5
+2018-06-03 20:05:30,262     INFO Received trigger 5
+2018-06-03 20:05:31,262     INFO Received trigger 5
+2018-06-03 20:05:32,262     INFO Received trigger 5
+2018-06-03 20:05:33,262     INFO Received trigger 5
+2018-06-03 20:05:34,261     INFO Received trigger 5
+2018-06-03 20:05:34,262     INFO End of fixation
+2018-06-03 20:05:34,279     INFO Showing options
+2018-06-03 20:05:35,500     INFO Received response [('3', 1.2116539478302002)]
+2018-06-03 20:05:35,794     INFO End of options
+2018-06-03 20:05:35,804     INFO Showing feedback
+2018-06-03 20:05:36,262     INFO Received trigger 5
+2018-06-03 20:05:37,262     INFO Received trigger 5
+2018-06-03 20:05:37,262     INFO End of feedback
+2018-06-03 20:05:37,263     INFO End of trial
+2018-06-03 20:05:37,266     INFO Showing fixation
+2018-06-03 20:05:38,262     INFO Received trigger 5
+2018-06-03 20:05:39,261     INFO Received trigger 5
+2018-06-03 20:05:40,261     INFO Received trigger 5
+2018-06-03 20:05:41,262     INFO Received trigger 5
+2018-06-03 20:05:42,261     INFO Received trigger 5
+2018-06-03 20:05:43,261     INFO Received trigger 5
+2018-06-03 20:05:44,261     INFO Received trigger 5
+2018-06-03 20:05:45,261     INFO Received trigger 5
+2018-06-03 20:05:45,261     INFO End of fixation
+2018-06-03 20:05:45,262     INFO Showing anchor face
+2018-06-03 20:05:46,261     INFO Received trigger 5
+2018-06-03 20:05:46,261     INFO End of anchor face
+2018-06-03 20:05:46,265     INFO Showing fixation
+2018-06-03 20:05:46,771     INFO End of fixation
+2018-06-03 20:05:46,774     INFO Showing number
+2018-06-03 20:05:47,261     INFO Received trigger 5
+2018-06-03 20:05:47,261     INFO End of number
+2018-06-03 20:05:47,264     INFO Showing fixation
+2018-06-03 20:05:48,260     INFO Received trigger 5
+2018-06-03 20:05:49,260     INFO Received trigger 5
+2018-06-03 20:05:50,260     INFO Received trigger 5
+2018-06-03 20:05:51,260     INFO Received trigger 5
+2018-06-03 20:05:52,260     INFO Received trigger 5
+2018-06-03 20:05:53,260     INFO Received trigger 5
+2018-06-03 20:05:53,260     INFO End of fixation
+2018-06-03 20:05:53,280     INFO Showing options
+2018-06-03 20:05:54,582     INFO Received response [('3', 1.2946460247039795)]
+2018-06-03 20:05:54,793     INFO End of options
+2018-06-03 20:05:54,803     INFO Showing feedback
+2018-06-03 20:05:55,260     INFO Received trigger 5
+2018-06-03 20:05:56,260     INFO Received trigger 5
+2018-06-03 20:05:56,260     INFO End of feedback
+2018-06-03 20:05:56,261     INFO End of trial
+2018-06-03 20:05:56,264     INFO Showing fixation
+2018-06-03 20:05:57,259     INFO Received trigger 5
+2018-06-03 20:05:58,260     INFO Received trigger 5
+2018-06-03 20:05:59,260     INFO Received trigger 5
+2018-06-03 20:06:00,259     INFO Received trigger 5
+2018-06-03 20:06:01,259     INFO Received trigger 5
+2018-06-03 20:06:01,259     INFO End of fixation
+2018-06-03 20:06:01,260     INFO Showing anchor face
+2018-06-03 20:06:02,259     INFO Received trigger 5
+2018-06-03 20:06:02,259     INFO End of anchor face
+2018-06-03 20:06:02,263     INFO Showing fixation
+2018-06-03 20:06:02,770     INFO End of fixation
+2018-06-03 20:06:02,773     INFO Showing number
+2018-06-03 20:06:03,259     INFO Received trigger 5
+2018-06-03 20:06:03,259     INFO End of number
+2018-06-03 20:06:03,262     INFO Showing fixation
+2018-06-03 20:06:04,259     INFO Received trigger 5
+2018-06-03 20:06:05,259     INFO Received trigger 5
+2018-06-03 20:06:06,259     INFO Received trigger 5
+2018-06-03 20:06:07,259     INFO Received trigger 5
+2018-06-03 20:06:08,259     INFO Received trigger 5
+2018-06-03 20:06:09,259     INFO Received trigger 5
+2018-06-03 20:06:09,259     INFO End of fixation
+2018-06-03 20:06:09,277     INFO Showing options
+2018-06-03 20:06:10,202     INFO Received response [('4', 0.9153439998626709)]
+2018-06-03 20:06:10,805     INFO End of options
+2018-06-03 20:06:10,819     INFO Showing feedback
+2018-06-03 20:06:11,258     INFO Received trigger 5
+2018-06-03 20:06:12,259     INFO Received trigger 5
+2018-06-03 20:06:12,259     INFO End of feedback
+2018-06-03 20:06:12,260     INFO End of trial
+2018-06-03 20:06:12,263     INFO Showing fixation
+2018-06-03 20:06:13,257     INFO Received trigger 5
+2018-06-03 20:06:14,259     INFO Received trigger 5
+2018-06-03 20:06:15,257     INFO Received trigger 5
+2018-06-03 20:06:16,257     INFO Received trigger 5
+2018-06-03 20:06:17,257     INFO Received trigger 5
+2018-06-03 20:06:18,257     INFO Received trigger 5
+2018-06-03 20:06:19,257     INFO Received trigger 5
+2018-06-03 20:06:19,257     INFO End of fixation
+2018-06-03 20:06:19,258     INFO Showing anchor face
+2018-06-03 20:06:20,257     INFO Received trigger 5
+2018-06-03 20:06:20,257     INFO End of anchor face
+2018-06-03 20:06:20,260     INFO Showing fixation
+2018-06-03 20:06:20,769     INFO End of fixation
+2018-06-03 20:06:20,772     INFO Showing number
+2018-06-03 20:06:21,257     INFO Received trigger 5
+2018-06-03 20:06:21,257     INFO End of number
+2018-06-03 20:06:21,260     INFO Showing fixation
+2018-06-03 20:06:22,257     INFO Received trigger 5
+2018-06-03 20:06:23,257     INFO Received trigger 5
+2018-06-03 20:06:24,257     INFO Received trigger 5
+2018-06-03 20:06:25,257     INFO Received trigger 5
+2018-06-03 20:06:26,257     INFO Received trigger 5
+2018-06-03 20:06:27,257     INFO Received trigger 5
+2018-06-03 20:06:27,257     INFO End of fixation
+2018-06-03 20:06:27,276     INFO Showing options
+2018-06-03 20:06:28,785     INFO No response received, showing feedback
+2018-06-03 20:06:29,256     INFO Received trigger 5
+2018-06-03 20:06:30,257     INFO Received trigger 5
+2018-06-03 20:06:30,257     INFO End of feedback
+2018-06-03 20:06:30,258     INFO End of trial
+2018-06-03 20:06:30,261     INFO Showing fixation
+2018-06-03 20:06:31,256     INFO Received trigger 5
+2018-06-03 20:06:32,256     INFO Received trigger 5
+2018-06-03 20:06:33,256     INFO Received trigger 5
+2018-06-03 20:06:34,256     INFO Received trigger 5
+2018-06-03 20:06:35,256     INFO Received trigger 5
+2018-06-03 20:06:36,256     INFO Received trigger 5
+2018-06-03 20:06:37,256     INFO Received trigger 5
+2018-06-03 20:06:37,256     INFO End of fixation
+2018-06-03 20:06:37,257     INFO Showing anchor face
+2018-06-03 20:06:38,256     INFO Received trigger 5
+2018-06-03 20:06:38,256     INFO End of anchor face
+2018-06-03 20:06:38,259     INFO Showing fixation
+2018-06-03 20:06:38,767     INFO End of fixation
+2018-06-03 20:06:38,770     INFO Showing number
+2018-06-03 20:06:39,255     INFO Received trigger 5
+2018-06-03 20:06:39,255     INFO End of number
+2018-06-03 20:06:39,258     INFO Showing fixation
+2018-06-03 20:06:40,255     INFO Received trigger 5
+2018-06-03 20:06:41,255     INFO Received trigger 5
+2018-06-03 20:06:42,255     INFO Received trigger 5
+2018-06-03 20:06:43,255     INFO Received trigger 5
+2018-06-03 20:06:44,255     INFO Received trigger 5
+2018-06-03 20:06:45,255     INFO Received trigger 5
+2018-06-03 20:06:45,255     INFO End of fixation
+2018-06-03 20:06:45,273     INFO Showing options
+2018-06-03 20:06:46,175     INFO Received response [('1', 0.8909189701080322)]
+2018-06-03 20:06:46,794     INFO End of options
+2018-06-03 20:06:46,800     INFO Showing feedback
+2018-06-03 20:06:47,254     INFO Received trigger 5
+2018-06-03 20:06:48,254     INFO Received trigger 5
+2018-06-03 20:06:48,255     INFO End of feedback
+2018-06-03 20:06:48,256     INFO End of trial
+2018-06-03 20:06:48,259     INFO Showing fixation
+2018-06-03 20:06:49,254     INFO Received trigger 5
+2018-06-03 20:06:50,254     INFO Received trigger 5
+2018-06-03 20:06:51,254     INFO Received trigger 5
+2018-06-03 20:06:52,254     INFO Received trigger 5
+2018-06-03 20:06:53,254     INFO Received trigger 5
+2018-06-03 20:06:53,254     INFO End of fixation
+2018-06-03 20:06:53,255     INFO Showing anchor face
+2018-06-03 20:06:54,254     INFO Received trigger 5
+2018-06-03 20:06:54,254     INFO End of anchor face
+2018-06-03 20:06:54,258     INFO Showing fixation
+2018-06-03 20:06:54,767     INFO End of fixation
+2018-06-03 20:06:54,770     INFO Showing number
+2018-06-03 20:06:55,254     INFO Received trigger 5
+2018-06-03 20:06:55,254     INFO End of number
+2018-06-03 20:06:55,258     INFO Showing fixation
+2018-06-03 20:06:56,254     INFO Received trigger 5
+2018-06-03 20:06:57,254     INFO Received trigger 5
+2018-06-03 20:06:58,254     INFO Received trigger 5
+2018-06-03 20:06:59,254     INFO Received trigger 5
+2018-06-03 20:07:00,254     INFO Received trigger 5
+2018-06-03 20:07:01,254     INFO Received trigger 5
+2018-06-03 20:07:01,254     INFO End of fixation
+2018-06-03 20:07:01,272     INFO Showing options
+2018-06-03 20:07:02,215     INFO Received response [('4', 0.9317688941955566)]
+2018-06-03 20:07:02,802     INFO End of options
+2018-06-03 20:07:02,816     INFO Showing feedback
+2018-06-03 20:07:03,253     INFO Received trigger 5
+2018-06-03 20:07:04,254     INFO Received trigger 5
+2018-06-03 20:07:04,254     INFO End of feedback
+2018-06-03 20:07:04,255     INFO End of trial
+2018-06-03 20:07:04,258     INFO Showing fixation
+2018-06-03 20:07:05,253     INFO Received trigger 5
+2018-06-03 20:07:06,252     INFO Received trigger 5
+2018-06-03 20:07:07,252     INFO Received trigger 5
+2018-06-03 20:07:08,252     INFO Received trigger 5
+2018-06-03 20:07:09,252     INFO Received trigger 5
+2018-06-03 20:07:10,252     INFO Received trigger 5
+2018-06-03 20:07:11,252     INFO Received trigger 5
+2018-06-03 20:07:11,252     INFO End of fixation
+2018-06-03 20:07:11,253     INFO Showing anchor face
+2018-06-03 20:07:12,252     INFO Received trigger 5
+2018-06-03 20:07:12,252     INFO End of anchor face
+2018-06-03 20:07:12,255     INFO Showing fixation
+2018-06-03 20:07:12,766     INFO End of fixation
+2018-06-03 20:07:12,769     INFO Showing number
+2018-06-03 20:07:13,252     INFO Received trigger 5
+2018-06-03 20:07:13,252     INFO End of number
+2018-06-03 20:07:13,255     INFO Showing fixation
+2018-06-03 20:07:14,252     INFO Received trigger 5
+2018-06-03 20:07:15,252     INFO Received trigger 5
+2018-06-03 20:07:16,252     INFO Received trigger 5
+2018-06-03 20:07:17,252     INFO Received trigger 5
+2018-06-03 20:07:18,252     INFO Received trigger 5
+2018-06-03 20:07:19,251     INFO Received trigger 5
+2018-06-03 20:07:19,252     INFO End of fixation
+2018-06-03 20:07:19,270     INFO Showing options
+2018-06-03 20:07:20,129     INFO Received response [('1', 0.8471639156341553)]
+2018-06-03 20:07:20,802     INFO End of options
+2018-06-03 20:07:20,815     INFO Showing feedback
+2018-06-03 20:07:21,251     INFO Received trigger 5
+2018-06-03 20:07:22,251     INFO Received trigger 5
+2018-06-03 20:07:22,252     INFO End of feedback
+2018-06-03 20:07:22,253     INFO End of trial
+2018-06-03 20:07:22,256     INFO Showing fixation
+2018-06-03 20:07:23,251     INFO Received trigger 5
+2018-06-03 20:07:24,251     INFO Received trigger 5
+2018-06-03 20:07:25,251     INFO Received trigger 5
+2018-06-03 20:07:26,251     INFO Received trigger 5
+2018-06-03 20:07:27,251     INFO Received trigger 5
+2018-06-03 20:07:28,251     INFO Received trigger 5
+2018-06-03 20:07:28,251     INFO End of fixation
+2018-06-03 20:07:28,252     INFO Showing anchor face
+2018-06-03 20:07:29,251     INFO Received trigger 5
+2018-06-03 20:07:29,251     INFO End of anchor face
+2018-06-03 20:07:29,254     INFO Showing fixation
+2018-06-03 20:07:29,765     INFO End of fixation
+2018-06-03 20:07:29,768     INFO Showing number
+2018-06-03 20:07:30,251     INFO Received trigger 5
+2018-06-03 20:07:30,251     INFO End of number
+2018-06-03 20:07:30,254     INFO Showing fixation
+2018-06-03 20:07:31,250     INFO Received trigger 5
+2018-06-03 20:07:32,250     INFO Received trigger 5
+2018-06-03 20:07:33,250     INFO Received trigger 5
+2018-06-03 20:07:34,249     INFO Received trigger 5
+2018-06-03 20:07:35,250     INFO Received trigger 5
+2018-06-03 20:07:36,249     INFO Received trigger 5
+2018-06-03 20:07:36,251     INFO End of fixation
+2018-06-03 20:07:36,269     INFO Showing options
+2018-06-03 20:07:37,256     INFO Received response [('3', 0.9751040935516357)]
+2018-06-03 20:07:37,790     INFO End of options
+2018-06-03 20:07:37,797     INFO Showing feedback
+2018-06-03 20:07:38,249     INFO Received trigger 5
+2018-06-03 20:07:39,249     INFO Received trigger 5
+2018-06-03 20:07:39,249     INFO End of feedback
+2018-06-03 20:07:39,251     INFO End of trial
+2018-06-03 20:07:39,254     INFO Showing fixation
+2018-06-03 20:07:40,249     INFO Received trigger 5
+2018-06-03 20:07:41,249     INFO Received trigger 5
+2018-06-03 20:07:42,250     INFO Received trigger 5
+2018-06-03 20:07:43,249     INFO Received trigger 5
+2018-06-03 20:07:44,249     INFO Received trigger 5
+2018-06-03 20:07:45,249     INFO Received trigger 5
+2018-06-03 20:07:45,249     INFO End of fixation
+2018-06-03 20:07:45,250     INFO Showing anchor face
+2018-06-03 20:07:46,249     INFO Received trigger 5
+2018-06-03 20:07:46,249     INFO End of anchor face
+2018-06-03 20:07:46,252     INFO Showing fixation
+2018-06-03 20:07:46,764     INFO End of fixation
+2018-06-03 20:07:46,767     INFO Showing number
+2018-06-03 20:07:47,249     INFO Received trigger 5
+2018-06-03 20:07:47,249     INFO End of number
+2018-06-03 20:07:47,253     INFO Showing fixation
+2018-06-03 20:07:48,249     INFO Received trigger 5
+2018-06-03 20:07:49,249     INFO Received trigger 5
+2018-06-03 20:07:50,249     INFO Received trigger 5
+2018-06-03 20:07:51,249     INFO Received trigger 5
+2018-06-03 20:07:52,248     INFO Received trigger 5
+2018-06-03 20:07:53,248     INFO Received trigger 5
+2018-06-03 20:07:53,249     INFO End of fixation
+2018-06-03 20:07:53,267     INFO Showing options
+2018-06-03 20:07:54,138     INFO Received response [('1', 0.8584918975830078)]
+2018-06-03 20:07:54,788     INFO End of options
+2018-06-03 20:07:54,796     INFO Showing feedback
+2018-06-03 20:07:55,248     INFO Received trigger 5
+2018-06-03 20:07:56,248     INFO Received trigger 5
+2018-06-03 20:07:56,249     INFO End of feedback
+2018-06-03 20:07:56,250     INFO End of trial
+2018-06-03 20:07:56,253     INFO Showing fixation
+2018-06-03 20:07:57,248     INFO Received trigger 5
+2018-06-03 20:07:58,247     INFO Received trigger 5
+2018-06-03 20:07:59,247     INFO Received trigger 5
+2018-06-03 20:08:00,247     INFO Received trigger 5
+2018-06-03 20:08:01,247     INFO Received trigger 5
+2018-06-03 20:08:02,247     INFO Received trigger 5
+2018-06-03 20:08:03,247     INFO Received trigger 5
+2018-06-03 20:08:03,247     INFO End of fixation
+2018-06-03 20:08:03,247     INFO Showing anchor face
+2018-06-03 20:08:04,247     INFO Received trigger 5
+2018-06-03 20:08:04,247     INFO End of anchor face
+2018-06-03 20:08:04,250     INFO Showing fixation
+2018-06-03 20:08:04,763     INFO End of fixation
+2018-06-03 20:08:04,766     INFO Showing number
+2018-06-03 20:08:05,247     INFO Received trigger 5
+2018-06-03 20:08:05,247     INFO End of number
+2018-06-03 20:08:05,250     INFO Showing fixation
+2018-06-03 20:08:06,247     INFO Received trigger 5
+2018-06-03 20:08:07,247     INFO Received trigger 5
+2018-06-03 20:08:08,247     INFO Received trigger 5
+2018-06-03 20:08:09,246     INFO Received trigger 5
+2018-06-03 20:08:10,247     INFO Received trigger 5
+2018-06-03 20:08:11,247     INFO Received trigger 5
+2018-06-03 20:08:11,247     INFO End of fixation
+2018-06-03 20:08:11,265     INFO Showing options
+2018-06-03 20:08:12,307     INFO Received response [('3', 1.0283451080322266)]
+2018-06-03 20:08:12,784     INFO End of options
+2018-06-03 20:08:12,795     INFO Showing feedback
+2018-06-03 20:08:13,246     INFO Received trigger 5
+2018-06-03 20:08:14,246     INFO Received trigger 5
+2018-06-03 20:08:14,246     INFO End of feedback
+2018-06-03 20:08:14,248     INFO End of trial
+2018-06-03 20:08:14,250     INFO Showing fixation
+2018-06-03 20:08:15,246     INFO Received trigger 5
+2018-06-03 20:08:16,246     INFO Received trigger 5
+2018-06-03 20:08:17,246     INFO Received trigger 5
+2018-06-03 20:08:18,246     INFO Received trigger 5
+2018-06-03 20:08:19,246     INFO Received trigger 5
+2018-06-03 20:08:19,246     INFO End of fixation
+2018-06-03 20:08:19,247     INFO Showing anchor face
+2018-06-03 20:08:20,246     INFO Received trigger 5
+2018-06-03 20:08:20,246     INFO End of anchor face
+2018-06-03 20:08:20,249     INFO Showing fixation
+2018-06-03 20:08:20,762     INFO End of fixation
+2018-06-03 20:08:20,765     INFO Showing number
+2018-06-03 20:08:21,246     INFO Received trigger 5
+2018-06-03 20:08:21,246     INFO End of number
+2018-06-03 20:08:21,249     INFO Showing fixation
+2018-06-03 20:08:22,246     INFO Received trigger 5
+2018-06-03 20:08:23,246     INFO Received trigger 5
+2018-06-03 20:08:24,245     INFO Received trigger 5
+2018-06-03 20:08:25,245     INFO Received trigger 5
+2018-06-03 20:08:26,245     INFO Received trigger 5
+2018-06-03 20:08:27,244     INFO Received trigger 5
+2018-06-03 20:08:27,244     INFO End of fixation
+2018-06-03 20:08:27,262     INFO Showing options
+2018-06-03 20:08:28,031     INFO Received response [('1', 0.7534580230712891)]
+2018-06-03 20:08:28,791     INFO End of options
+2018-06-03 20:08:28,794     INFO Showing feedback
+2018-06-03 20:08:29,245     INFO Received trigger 5
+2018-06-03 20:08:30,244     INFO Received trigger 5
+2018-06-03 20:08:30,244     INFO End of feedback
+2018-06-03 20:08:30,245     INFO End of trial
+2018-06-03 20:08:30,248     INFO Showing fixation
+2018-06-03 20:08:31,244     INFO Received trigger 5
+2018-06-03 20:08:32,244     INFO Received trigger 5
+2018-06-03 20:08:33,244     INFO Received trigger 5
+2018-06-03 20:08:34,244     INFO Received trigger 5
+2018-06-03 20:08:34,244     INFO End of fixation
+2018-06-03 20:08:34,245     INFO Showing anchor face
+2018-06-03 20:08:35,244     INFO Received trigger 5
+2018-06-03 20:08:35,244     INFO End of anchor face
+2018-06-03 20:08:35,247     INFO Showing fixation
+2018-06-03 20:08:35,761     INFO End of fixation
+2018-06-03 20:08:35,764     INFO Showing number
+2018-06-03 20:08:36,244     INFO Received trigger 5
+2018-06-03 20:08:36,244     INFO End of number
+2018-06-03 20:08:36,247     INFO Showing fixation
+2018-06-03 20:08:37,244     INFO Received trigger 5
+2018-06-03 20:08:38,244     INFO Received trigger 5
+2018-06-03 20:08:39,244     INFO Received trigger 5
+2018-06-03 20:08:40,244     INFO Received trigger 5
+2018-06-03 20:08:41,244     INFO Received trigger 5
+2018-06-03 20:08:42,244     INFO Received trigger 5
+2018-06-03 20:08:42,244     INFO End of fixation
+2018-06-03 20:08:42,263     INFO Showing options
+2018-06-03 20:08:43,317     INFO Received response [('3', 1.040057897567749)]
+2018-06-03 20:08:43,787     INFO End of options
+2018-06-03 20:08:43,793     INFO Showing feedback
+2018-06-03 20:08:44,244     INFO Received trigger 5
+2018-06-03 20:08:45,244     INFO Received trigger 5
+2018-06-03 20:08:45,244     INFO End of feedback
+2018-06-03 20:08:45,245     INFO End of trial
+2018-06-03 20:08:45,248     INFO Showing fixation
+2018-06-03 20:08:46,243     INFO Received trigger 5
+2018-06-03 20:08:47,243     INFO Received trigger 5
+2018-06-03 20:08:48,243     INFO Received trigger 5
+2018-06-03 20:08:49,243     INFO Received trigger 5
+2018-06-03 20:08:49,243     INFO End of fixation
+2018-06-03 20:08:49,244     INFO Showing instructions
+2018-06-03 20:08:49,253     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 20:08:50,242     INFO Received response [('5', 0.9823050498962402)]
+2018-06-03 20:08:50,242     INFO End of instructions
+2018-06-03 20:08:50,242     INFO Showing instructions
+2018-06-03 20:08:50,252     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 20:08:51,242     INFO Received response [('5', 0.9823169708251953)]
+2018-06-03 20:08:51,242     INFO End of instructions
+2018-06-03 20:08:51,242     INFO Showing instructions
+2018-06-03 20:08:51,252     INFO Instruction: You earned 23 point(s) out of ...
+2018-06-03 20:08:52,242     INFO Received response [('5', 0.982234001159668)]
+2018-06-03 20:08:52,242     INFO End of instructions
+2018-06-03 20:08:52,249     INFO Showing instructions
+2018-06-03 20:08:52,259     INFO Instruction: This task is complete! Thank y...
+2018-06-03 20:08:56,717     INFO Received response [('space', 4.440255165100098)]
+2018-06-03 20:08:56,717     INFO End of instructions
+2018-06-03 20:08:56,717     INFO Experiment ended
