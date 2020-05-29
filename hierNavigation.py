@@ -107,8 +107,8 @@ def generate_trials():
     trials = [list(unique_trials) for i in range(NUM_RUNS)]
     for prac in practices:
         prac['answer_index'] = random.randrange(4)
-    ans_indexes = [[i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)],
-                   [i for _ in range(len(unique_trials) / 4 / 2) for i in range(4)]]  # up & down trials
+    ans_indexes = [[i for _ in range(int(len(unique_trials) / 4 / 2)) for i in range(4)],
+                   [i for _ in range(int(len(unique_trials) / 4 / 2)) for i in range(4)]]  # up & down trials
     for run in trials:
         random.shuffle(ans_indexes[0])
         random.shuffle(ans_indexes[1])
@@ -303,7 +303,7 @@ if __name__ == '__main__':
             if trial_counter >= MAX_NUM_TRIALS:
                 break
         accuracy = float(total_correct_counter)/len(trials)/len(trials[0])  # overall accuracy
-        print 'accuracy', accuracy
+        print('accuracy', accuracy)
         dataLogger.write_data({'overall_accuracy': accuracy})
 
     # show a free response question (strategy)
